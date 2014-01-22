@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>52C18EC7-D165-4C12-A014-2619B669B2BE</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Funagrams</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>EB446532-16C5-4E3C-A081-42F5F7D1E9A1</key>
+		<string>https://github.com/immasara/Funagrams.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Funagrams.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>EB446532-16C5-4E3C-A081-42F5F7D1E9A1</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/immasara/Funagrams.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>EB446532-16C5-4E3C-A081-42F5F7D1E9A1</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EB446532-16C5-4E3C-A081-42F5F7D1E9A1</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Funagrams</string>
+		</dict>
+	</array>
+</dict>
+</plist>
