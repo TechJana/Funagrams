@@ -18,6 +18,16 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    // Show something once when the application lauch
+    if (![@"1" isEqualToString:[[NSUserDefaults standardUserDefaults]
+                                objectForKey:@"Avalue"]]) {
+        [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"Avalue"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        //Action here
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning

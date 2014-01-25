@@ -22,6 +22,7 @@
 		12AE7D41188F8E5B00E00848 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AE7D20188F8E5B00E00848 /* UIKit.framework */; };
 		12AE7D49188F8E5B00E00848 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12AE7D47188F8E5B00E00848 /* InfoPlist.strings */; };
 		12AE7D4B188F8E5B00E00848 /* FunagramsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AE7D4A188F8E5B00E00848 /* FunagramsTests.m */; };
+		12E98758189360C400FC296B /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E98757189360C400FC296B /* GameViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		12AE7D46188F8E5B00E00848 /* FunagramsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FunagramsTests-Info.plist"; sourceTree = "<group>"; };
 		12AE7D48188F8E5B00E00848 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		12AE7D4A188F8E5B00E00848 /* FunagramsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FunagramsTests.m; sourceTree = "<group>"; };
+		12E98756189360C400FC296B /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		12E98757189360C400FC296B /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,8 @@
 				12AE7D2B188F8E5B00E00848 /* AppDelegate.h */,
 				12AE7D2C188F8E5B00E00848 /* AppDelegate.m */,
 				12AE7D2E188F8E5B00E00848 /* Main_iPhone.storyboard */,
+				12E98756189360C400FC296B /* GameViewController.h */,
+				12E98757189360C400FC296B /* GameViewController.m */,
 				12AE7D31188F8E5B00E00848 /* Main_iPad.storyboard */,
 				12AE7D34188F8E5B00E00848 /* ViewController.h */,
 				12AE7D35188F8E5B00E00848 /* ViewController.m */,
@@ -253,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12E98758189360C400FC296B /* GameViewController.m in Sources */,
 				12AE7D36188F8E5B00E00848 /* ViewController.m in Sources */,
 				12AE7D2D188F8E5B00E00848 /* AppDelegate.m in Sources */,
 				12AE7D29188F8E5B00E00848 /* main.m in Sources */,
@@ -474,6 +480,7 @@
 				12AE7D50188F8E5B00E00848 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		12AE7D51188F8E5B00E00848 /* Build configuration list for PBXNativeTarget "FunagramsTests" */ = {
 			isa = XCConfigurationList;
@@ -482,6 +489,7 @@
 				12AE7D53188F8E5B00E00848 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
