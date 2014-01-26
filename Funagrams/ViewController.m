@@ -14,10 +14,18 @@
 
 @implementation ViewController
 
+@synthesize gameScoreBoard;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    scoreBoard = [[ScoreBoard alloc] init];
+    gameScoreBoard = scoreBoard;
+    
+#if TEST_MODE_DEF
+    scoreBoard.currentGameScore = 10;
+#endif
     
     // Show something once when the application lauch
     if (![@"1" isEqualToString:[[NSUserDefaults standardUserDefaults]

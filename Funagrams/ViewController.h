@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ScoreBoard.h"
 
 @interface ViewController : UIViewController
+{
+    ScoreBoard *scoreBoard;
+}
+
+@property (nonatomic, retain) ScoreBoard *gameScoreBoard;
 
 @end

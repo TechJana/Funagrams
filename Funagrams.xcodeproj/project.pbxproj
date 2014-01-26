@@ -23,6 +23,7 @@
 		12AE7D49188F8E5B00E00848 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12AE7D47188F8E5B00E00848 /* InfoPlist.strings */; };
 		12AE7D4B188F8E5B00E00848 /* FunagramsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AE7D4A188F8E5B00E00848 /* FunagramsTests.m */; };
 		12E98758189360C400FC296B /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E98757189360C400FC296B /* GameViewController.m */; };
+		12E9875B18942BD000FC296B /* ScoreBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9875A18942BD000FC296B /* ScoreBoard.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		12AE7D4A188F8E5B00E00848 /* FunagramsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FunagramsTests.m; sourceTree = "<group>"; };
 		12E98756189360C400FC296B /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		12E98757189360C400FC296B /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		12E9875918942BD000FC296B /* ScoreBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreBoard.h; sourceTree = "<group>"; };
+		12E9875A18942BD000FC296B /* ScoreBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreBoard.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,10 +122,12 @@
 			children = (
 				12AE7D2B188F8E5B00E00848 /* AppDelegate.h */,
 				12AE7D2C188F8E5B00E00848 /* AppDelegate.m */,
-				12AE7D2E188F8E5B00E00848 /* Main_iPhone.storyboard */,
 				12E98756189360C400FC296B /* GameViewController.h */,
 				12E98757189360C400FC296B /* GameViewController.m */,
+				12AE7D2E188F8E5B00E00848 /* Main_iPhone.storyboard */,
 				12AE7D31188F8E5B00E00848 /* Main_iPad.storyboard */,
+				12E9875918942BD000FC296B /* ScoreBoard.h */,
+				12E9875A18942BD000FC296B /* ScoreBoard.m */,
 				12AE7D34188F8E5B00E00848 /* ViewController.h */,
 				12AE7D35188F8E5B00E00848 /* ViewController.m */,
 				12AE7D37188F8E5B00E00848 /* Images.xcassets */,
@@ -260,6 +265,7 @@
 			files = (
 				12E98758189360C400FC296B /* GameViewController.m in Sources */,
 				12AE7D36188F8E5B00E00848 /* ViewController.m in Sources */,
+				12E9875B18942BD000FC296B /* ScoreBoard.m in Sources */,
 				12AE7D2D188F8E5B00E00848 /* AppDelegate.m in Sources */,
 				12AE7D29188F8E5B00E00848 /* main.m in Sources */,
 			);
@@ -400,7 +406,13 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Funagrams/Funagrams-Prefix.pch";
+				"GCC_PREPROCESSOR_DEFINITIONS[arch=*]" = (
+					"DEBUG=1",
+					"$(inherited)",
+					TEST_MODE_DEF,
+				);
 				INFOPLIST_FILE = "Funagrams/Funagrams-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -414,6 +426,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Funagrams/Funagrams-Prefix.pch";
 				INFOPLIST_FILE = "Funagrams/Funagrams-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
