@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ViewController.h"
+#import "Anagram.h"
 
 @interface GameViewController : UIViewController
 {
@@ -18,9 +19,23 @@
     IBOutlet UIButton *buttonSubmit;
     IBOutlet UILabel *labelHint;
     IBOutlet UILabel *labelHintValue;
+    IBOutlet UIButton *buttonSampleQuestion;
+    IBOutlet UIButton *buttonSampleResult;
     
     ScoreBoard *scoreBoard;
+    Anagram *currentAnagram;
+    NSMutableArray *anagramHistory;
+    
+    NSMutableArray *buttonQuestions;
+    NSMutableArray *buttonResults;
 }
+
+- (IBAction) buttonHint_click:(id)sender;
+
+- (void) loadHint;
+- (void) loadAnagram;
+- (void) verifyResult;
+- (void) loadQuestionResultButtons;
 
 @property (retain, nonatomic) IBOutlet UILabel *labelScore;
 @property (retain, nonatomic) IBOutlet UIButton *buttonHint;
@@ -29,5 +44,7 @@
 @property (retain, nonatomic) IBOutlet UIButton *buttonSubmit;
 @property (retain, nonatomic) IBOutlet UILabel *labelHint;
 @property (retain, nonatomic) IBOutlet UILabel *labelHintValue;
+@property (retain, nonatomic) IBOutlet UIButton *buttonSampleQuestion;
+@property (retain, nonatomic) IBOutlet UIButton *buttonSampleResult;
 
 @end

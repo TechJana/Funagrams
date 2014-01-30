@@ -24,6 +24,7 @@
 		12AE7D4B188F8E5B00E00848 /* FunagramsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AE7D4A188F8E5B00E00848 /* FunagramsTests.m */; };
 		12E98758189360C400FC296B /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E98757189360C400FC296B /* GameViewController.m */; };
 		12E9875B18942BD000FC296B /* ScoreBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9875A18942BD000FC296B /* ScoreBoard.m */; };
+		12E9875E1899FACA00FC296B /* Anagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9875D1899FACA00FC296B /* Anagram.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		12E98757189360C400FC296B /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		12E9875918942BD000FC296B /* ScoreBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreBoard.h; sourceTree = "<group>"; };
 		12E9875A18942BD000FC296B /* ScoreBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreBoard.m; sourceTree = "<group>"; };
+		12E9875C1899FACA00FC296B /* Anagram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Anagram.h; sourceTree = "<group>"; };
+		12E9875D1899FACA00FC296B /* Anagram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Anagram.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,14 +123,13 @@
 		12AE7D22188F8E5B00E00848 /* Funagrams */ = {
 			isa = PBXGroup;
 			children = (
+				12E9875F1899FAEF00FC296B /* DataStructure */,
 				12AE7D2B188F8E5B00E00848 /* AppDelegate.h */,
 				12AE7D2C188F8E5B00E00848 /* AppDelegate.m */,
 				12E98756189360C400FC296B /* GameViewController.h */,
 				12E98757189360C400FC296B /* GameViewController.m */,
 				12AE7D2E188F8E5B00E00848 /* Main_iPhone.storyboard */,
 				12AE7D31188F8E5B00E00848 /* Main_iPad.storyboard */,
-				12E9875918942BD000FC296B /* ScoreBoard.h */,
-				12E9875A18942BD000FC296B /* ScoreBoard.m */,
 				12AE7D34188F8E5B00E00848 /* ViewController.h */,
 				12AE7D35188F8E5B00E00848 /* ViewController.m */,
 				12AE7D37188F8E5B00E00848 /* Images.xcassets */,
@@ -163,6 +165,17 @@
 				12AE7D47188F8E5B00E00848 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		12E9875F1899FAEF00FC296B /* DataStructure */ = {
+			isa = PBXGroup;
+			children = (
+				12E9875C1899FACA00FC296B /* Anagram.h */,
+				12E9875D1899FACA00FC296B /* Anagram.m */,
+				12E9875918942BD000FC296B /* ScoreBoard.h */,
+				12E9875A18942BD000FC296B /* ScoreBoard.m */,
+			);
+			name = DataStructure;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,6 +279,7 @@
 				12E98758189360C400FC296B /* GameViewController.m in Sources */,
 				12AE7D36188F8E5B00E00848 /* ViewController.m in Sources */,
 				12E9875B18942BD000FC296B /* ScoreBoard.m in Sources */,
+				12E9875E1899FACA00FC296B /* Anagram.m in Sources */,
 				12AE7D2D188F8E5B00E00848 /* AppDelegate.m in Sources */,
 				12AE7D29188F8E5B00E00848 /* main.m in Sources */,
 			);
