@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ViewController.h"
 #import "Anagram.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface GameViewController : UIViewController
 {
@@ -28,9 +29,14 @@
     
     NSMutableArray *buttonQuestions;
     NSMutableArray *buttonResults;
+    
+    int selectedQuestion;
+    int selectedResult;
 }
 
 - (IBAction) buttonHint_click:(id)sender;
+- (IBAction) buttonQuestions_click:(id)sender;
+- (IBAction) buttonResults_click:(id)sender;
 
 - (void) loadHint;
 - (void) loadAnagram;

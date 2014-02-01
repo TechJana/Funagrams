@@ -33,12 +33,27 @@
     return self;
 }
 
+/*- (void)loadView
+{
+    [super loadView];
+    //buttonSampleQuestion.layer.cornerRadius = 100; // this value vary as per your desire
+    //buttonSampleQuestion.clipsToBounds = YES;
+    
+    CALayer * layer = [buttonSampleQuestion layer];
+    [layer setMasksToBounds:YES];
+    [layer setCornerRadius:0.0]; //when radius is 0, the border is a rectangle
+    [layer setBorderWidth:1.0];
+    [layer setBorderColor:[[UIColor grayColor] CGColor]];
+    
+//    [super loadView];
+}*/
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
 	// Do any additional setup after loading the view.
-    
+
     // Identify the mainMenu ViewController to get the ScoreBoard object
     NSArray* controllers = self.navigationController.viewControllers;
     ViewController* firstViewController = [controllers objectAtIndex:0];
@@ -58,6 +73,8 @@
     [self verifyResult];
     
     labelScore.text = [NSString stringWithFormat:@"%d ", scoreBoard.currentGameScore];
+    selectedQuestion = -1;
+    selectedResult = -1;
 }
 
 - (void)didReceiveMemoryWarning
@@ -76,6 +93,88 @@
     }
 }
 
+- (IBAction)buttonQuestions_click:(id)sender
+{
+    // check if the same question is selected again, then de-select the button and do nothing
+    if (selectedQuestion >= 0  && [buttonQuestions objectAtIndex:selectedQuestion] == sender) {
+        [(UIButton *)[buttonQuestions objectAtIndex:selectedQuestion] setBackgroundColor:nil];
+        selectedQuestion = -1;
+    }
+    else
+    {
+        UIButton *buttonThis = (UIButton *)sender;
+        if (selectedResult >= 0)
+        {
+            // if the result button was selected then set the current selected question as the selected result
+            UIButton *buttonResult = (UIButton *)[buttonResults objectAtIndex:selectedResult];
+            NSString *resultText = buttonResult.titleLabel.text;
+            [buttonResult setTitle:buttonThis.titleLabel.text forState:UIControlStateNormal];
+            [buttonThis setTitle:resultText forState:UIControlStateNormal];
+        }
+        else
+        {
+            // change the background color to highlight selection
+            UIColor *newBackground = buttonThis.tintColor.copy;
+            [buttonThis setBackgroundColor:newBackground];
+        }
+        
+        // check for previous selection
+        if (selectedQuestion >= 0) {
+            // clear pervious selection
+            UIButton *previousSelection = (UIButton *)[buttonQuestions objectAtIndex:selectedQuestion];
+            [previousSelection setBackgroundColor:nil];
+        }
+        
+        // only if the result was not selected
+        if (selectedResult == -1)
+        {
+            // make the current as new selection
+            selectedQuestion = [buttonQuestions indexOfObject:buttonThis];
+        }
+    }
+}
+
+- (IBAction)buttonResults_click:(id)sender
+{
+    // check if the same result is selected again, then de-select the button and do nothing
+    if (selectedResult >= 0  && [buttonResults objectAtIndex:selectedResult] == sender) {
+        [(UIButton *)[buttonResults objectAtIndex:selectedResult] setBackgroundColor:nil];
+        selectedResult = -1;
+    }
+    else
+    {
+        UIButton *buttonThis = (UIButton *)sender;
+        if (selectedQuestion >= 0)
+        {
+            // if the question button was selected then set the current selected result as the selected question
+            UIButton *buttonQuestion = (UIButton *)[buttonQuestions objectAtIndex:selectedQuestion];
+            NSString *resultText = buttonQuestion.titleLabel.text;
+            [buttonQuestion setTitle:buttonThis.titleLabel.text forState:UIControlStateNormal];
+            [buttonThis setTitle:resultText forState:UIControlStateNormal];
+        }
+        else
+        {
+            // change the background color to highlight selection
+            UIColor *newBackground = buttonThis.tintColor.copy;
+            [buttonThis setBackgroundColor:newBackground];
+        }
+        
+        // check for previous selection
+        if (selectedResult >= 0) {
+            // clear pervious selection
+            UIButton *previousSelection = (UIButton *)[buttonResults objectAtIndex:selectedResult];
+            [previousSelection setBackgroundColor:nil];
+        }
+        
+        // only if the question was not selected
+        if (selectedQuestion == -1)
+        {
+            // make the current as new selection
+            selectedResult = [buttonResults indexOfObject:buttonThis];
+        }
+    }
+}
+
 - (void)loadQuestionResultButtons
 {
     UIButton *buttonIndex;
@@ -83,6 +182,7 @@
     CGRect screenRect = [[UIScreen mainScreen] bounds];
 
     buttonQuestions = [[NSMutableArray alloc] init];
+    buttonResults = [[NSMutableArray alloc] init];
 
     buttonCount=( screenRect.size.height - (2 * buttonSampleQuestion.frame.origin.x) ) / (buttonSampleQuestion.frame.size.width + buttonSpacingWidth);
     
@@ -99,6 +199,7 @@
         
         // Reset the value of the button to empty string to load the required question
         [buttonIndex setTitle:@"" forState:UIControlStateNormal];
+        [buttonIndex addTarget:self action:@selector(buttonQuestions_click:) forControlEvents:UIControlEventTouchUpInside];
         
         [self.view addSubview:buttonIndex];
         
@@ -119,6 +220,7 @@
         
         // Reset the value of the button to box character to initiate play mode
         [buttonIndex setTitle:@"▢" forState:UIControlStateNormal];
+        [buttonIndex addTarget:self action:@selector(buttonResults_click:) forControlEvents:UIControlEventTouchUpInside];
         
         [self.view addSubview:buttonIndex];
         
@@ -144,6 +246,16 @@
     for (indexButton=0; (indexButton<buttonQuestions.count && indexButton<currentAnagram.question.length); indexButton++) {
         UIButton *buttonIndex = [buttonQuestions objectAtIndex:indexButton];
         [buttonIndex setTitle:[currentAnagram.question substringWithRange:NSMakeRange(indexButton, 1)] forState:UIControlStateNormal];
+    }
+    
+    // load answer positioning
+    for (indexButton=0; (indexButton<buttonResults.count && indexButton<currentAnagram.result.length); indexButton++) {
+        if ([currentAnagram.result characterAtIndex:indexButton] == ' ')
+        {
+            UIButton *buttonIndex = [buttonResults objectAtIndex:indexButton];
+            [buttonIndex setTitle:@" " forState:UIControlStateNormal];
+            buttonIndex.enabled = false;
+        }
     }
     
     // load hint
