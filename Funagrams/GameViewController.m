@@ -63,14 +63,13 @@
 #if TEST_MODE_DEF
     currentAnagram.question = @"DEULLIFLUARP";
     currentAnagram.result = @"Pleural fluid";
-    currentAnagram.hint = @"Liquid in Anatomy";
+    currentAnagram.hint = @"Liquid in human anatomy";
     currentAnagram.level = 5;
     currentAnagram.levelDescription = @"Level 5";
 #endif
     
     [self loadQuestionResultButtons];
     [self loadAnagram];
-    [self verifyResult];
     
     labelScore.text = [NSString stringWithFormat:@"%d ", scoreBoard.currentGameScore];
     selectedQuestion = -1;
@@ -110,6 +109,9 @@
             NSString *resultText = buttonResult.titleLabel.text;
             [buttonResult setTitle:buttonThis.titleLabel.text forState:UIControlStateNormal];
             [buttonThis setTitle:resultText forState:UIControlStateNormal];
+            [buttonResult setNeedsDisplay];
+            
+            [self verifyResult];
         }
         else
         {
@@ -129,7 +131,14 @@
         if (selectedResult == -1)
         {
             // make the current as new selection
-            selectedQuestion = [buttonQuestions indexOfObject:buttonThis];
+            selectedQuestion = (int)[buttonQuestions indexOfObject:buttonThis];
+        }
+        else
+        {
+            // reset the selection
+            [(UIButton *)[buttonResults objectAtIndex:selectedResult] setBackgroundColor:nil];
+            
+            selectedResult = -1;
         }
     }
 }
@@ -151,6 +160,9 @@
             NSString *resultText = buttonQuestion.titleLabel.text;
             [buttonQuestion setTitle:buttonThis.titleLabel.text forState:UIControlStateNormal];
             [buttonThis setTitle:resultText forState:UIControlStateNormal];
+            [buttonThis setNeedsDisplay];
+            
+            [self verifyResult];
         }
         else
         {
@@ -170,15 +182,30 @@
         if (selectedQuestion == -1)
         {
             // make the current as new selection
-            selectedResult = [buttonResults indexOfObject:buttonThis];
+            selectedResult = (int)[buttonResults indexOfObject:buttonThis];
+        }
+        else
+        {
+            // reset the selection
+            [(UIButton *)[buttonQuestions objectAtIndex:selectedQuestion] setBackgroundColor:nil];
+
+            selectedQuestion = -1;
         }
     }
+}
+
+- (IBAction)buttonSubmit_click:(id)sender
+{
+    BOOL result;
+    result = [self verifyResult];
+    
+    
 }
 
 - (void)loadQuestionResultButtons
 {
     UIButton *buttonIndex;
-    int indexButton=0, buttonCount=0, buttonSpacingWidth=-3;
+    int indexButton=0, buttonCount=0, buttonSpacingWidth=10;
     CGRect screenRect = [[UIScreen mainScreen] bounds];
 
     buttonQuestions = [[NSMutableArray alloc] init];
@@ -198,8 +225,10 @@
         buttonIndex.frame = CGRectMake(buttonIndex.frame.origin.x + ( indexButton * (buttonIndex.frame.size.width + buttonSpacingWidth) ), buttonIndex.frame.origin.y, buttonIndex.frame.size.width, buttonIndex.frame.size.height);
         
         // Reset the value of the button to empty string to load the required question
-        [buttonIndex setTitle:@"" forState:UIControlStateNormal];
+        [buttonIndex setTitle:@" " forState:UIControlStateNormal];
         [buttonIndex addTarget:self action:@selector(buttonQuestions_click:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [self setButtonBorder:buttonIndex];
         
         [self.view addSubview:buttonIndex];
         
@@ -219,8 +248,10 @@
         buttonIndex.frame = CGRectMake(buttonIndex.frame.origin.x + ( indexButton * (buttonIndex.frame.size.width + buttonSpacingWidth) ), buttonIndex.frame.origin.y, buttonIndex.frame.size.width, buttonIndex.frame.size.height);
         
         // Reset the value of the button to box character to initiate play mode
-        [buttonIndex setTitle:@"▢" forState:UIControlStateNormal];
+        [buttonIndex setTitle:@" " forState:UIControlStateNormal];
         [buttonIndex addTarget:self action:@selector(buttonResults_click:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [self setButtonBorder:buttonIndex];
         
         [self.view addSubview:buttonIndex];
         
@@ -230,6 +261,15 @@
     
     buttonSampleQuestion.hidden = true;
     buttonSampleResult.hidden = true;
+}
+
+- (void) setButtonBorder:(UIButton *)buttonThis
+{
+    // set the border
+    buttonThis.layer.cornerRadius = 10;
+    buttonThis.layer.borderWidth = 1;
+    buttonThis.layer.borderColor = [UIColor blueColor].CGColor;
+    [buttonThis.titleLabel setFont:[UIFont systemFontOfSize:25]];
 }
 
 - (void)loadHint
@@ -247,24 +287,70 @@
         UIButton *buttonIndex = [buttonQuestions objectAtIndex:indexButton];
         [buttonIndex setTitle:[currentAnagram.question substringWithRange:NSMakeRange(indexButton, 1)] forState:UIControlStateNormal];
     }
+    // make any additional button invisible
+    for ( ; indexButton<buttonQuestions.count; indexButton++)
+    {
+        UIButton *buttonIndex = [buttonQuestions objectAtIndex:indexButton];
+        buttonIndex.hidden = true;
+    }
     
     // load answer positioning
     for (indexButton=0; (indexButton<buttonResults.count && indexButton<currentAnagram.result.length); indexButton++) {
         if ([currentAnagram.result characterAtIndex:indexButton] == ' ')
         {
             UIButton *buttonIndex = [buttonResults objectAtIndex:indexButton];
-            [buttonIndex setTitle:@" " forState:UIControlStateNormal];
-            buttonIndex.enabled = false;
+            buttonIndex.hidden = true;
         }
+    }
+    // make any additional button invisible
+    for ( ; indexButton<buttonResults.count; indexButton++)
+    {
+        UIButton *buttonIndex = [buttonResults objectAtIndex:indexButton];
+        buttonIndex.hidden = true;
     }
     
     // load hint
     labelHintValue.text = currentAnagram.hint;
 }
 
-- (void)verifyResult
+- (BOOL)verifyResult
 {
+    int indexButton;
+    NSString *resultValue=@"", *resultAnswer=@"";
+    UIButton *buttonThis;
     
+    // concatenate the values in result button
+    for (indexButton=0; indexButton<buttonResults.count; indexButton++) {
+        buttonThis = (UIButton *)[buttonResults objectAtIndex:indexButton];
+        if (![buttonThis.titleLabel.text  isEqual: @""] && buttonThis.titleLabel.text != nil) {
+            resultValue = [resultValue stringByAppendingString:buttonThis.titleLabel.text];
+        }
+    }
+    
+    // clean-up to compare
+    resultValue = [resultValue stringByReplacingOccurrencesOfString:@" " withString:@""];
+    resultValue = [resultValue uppercaseString];
+    
+    // clean-up to compare
+    resultAnswer = currentAnagram.result;
+    resultAnswer = [resultAnswer stringByReplacingOccurrencesOfString:@" " withString:@""];
+    resultAnswer = [resultAnswer uppercaseString];
+    
+    if ([resultAnswer isEqualToString:resultValue])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"you must be smart"
+                                                        message:@"You cracked it!!!"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"hi5"
+                                              otherButtonTitles:nil];
+        [alert show];
+        
+        return TRUE;
+    }
+    else
+    {
+        return FALSE;
+    }
 }
 
 @end
