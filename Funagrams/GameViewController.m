@@ -23,6 +23,7 @@
 @synthesize labelHintValue;
 @synthesize buttonSampleQuestion;
 @synthesize buttonSampleResult;
+//@synthesize gameCenterManager;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -205,7 +206,7 @@
 - (void)loadQuestionResultButtons
 {
     UIButton *buttonIndex;
-    int indexButton=0, buttonCount=0, buttonSpacingWidth=10;
+    int indexButton=0, buttonCount=0, buttonSpacingWidth=4;
     CGRect screenRect = [[UIScreen mainScreen] bounds];
 
     buttonQuestions = [[NSMutableArray alloc] init];
@@ -351,6 +352,19 @@
     {
         return FALSE;
     }
+}
+
+#pragma mark GameCenter View Controllers
+- (void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController
+{
+	[self dismissViewControllerAnimated:YES completion:nil];
+	//[viewController release];
+}
+
+- (void)achievementViewControllerDidFinish:(GKAchievementViewController *)viewController;
+{
+	[self dismissViewControllerAnimated: YES completion:nil];
+	//[viewController release];
 }
 
 @end

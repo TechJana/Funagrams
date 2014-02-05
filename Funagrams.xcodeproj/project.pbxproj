@@ -23,7 +23,7 @@
 		122699F1189F2AEC00861799 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 122699E1189F2AEC00861799 /* Icon@2x.png */; };
 		122699F2189F2AEC00861799 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 122699E2189F2AEC00861799 /* iTunesArtwork.png */; };
 		122699F3189F2AEC00861799 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 122699E3189F2AEC00861799 /* iTunesArtwork@2x.png */; };
-		122699F8189F321F00861799 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 122699F7189F321F00861799 /* GameKit.framework */; };
+		122BCF5C18A203BE00AF14E1 /* GCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 122BCF5B18A203BE00AF14E1 /* GCHelper.m */; };
 		12AE7D1D188F8E5B00E00848 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AE7D1C188F8E5B00E00848 /* Foundation.framework */; };
 		12AE7D1F188F8E5B00E00848 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AE7D1E188F8E5B00E00848 /* CoreGraphics.framework */; };
 		12AE7D21188F8E5B00E00848 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AE7D20188F8E5B00E00848 /* UIKit.framework */; };
@@ -39,6 +39,7 @@
 		12AE7D41188F8E5B00E00848 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AE7D20188F8E5B00E00848 /* UIKit.framework */; };
 		12AE7D49188F8E5B00E00848 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12AE7D47188F8E5B00E00848 /* InfoPlist.strings */; };
 		12AE7D4B188F8E5B00E00848 /* FunagramsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AE7D4A188F8E5B00E00848 /* FunagramsTests.m */; };
+		12C06F7F18A216BD0030942C /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12C06F7E18A216BD0030942C /* GameKit.framework */; };
 		12E98758189360C400FC296B /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E98757189360C400FC296B /* GameViewController.m */; };
 		12E9875B18942BD000FC296B /* ScoreBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9875A18942BD000FC296B /* ScoreBoard.m */; };
 		12E9875E1899FACA00FC296B /* Anagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9875D1899FACA00FC296B /* Anagram.m */; };
@@ -71,7 +72,8 @@
 		122699E1189F2AEC00861799 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		122699E2189F2AEC00861799 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		122699E3189F2AEC00861799 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
-		122699F7189F321F00861799 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		122BCF5A18A203BE00AF14E1 /* GCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCHelper.h; sourceTree = "<group>"; };
+		122BCF5B18A203BE00AF14E1 /* GCHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCHelper.m; sourceTree = "<group>"; };
 		12AE7D19188F8E5B00E00848 /* Funagrams.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Funagrams.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12AE7D1C188F8E5B00E00848 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		12AE7D1E188F8E5B00E00848 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -92,6 +94,8 @@
 		12AE7D46188F8E5B00E00848 /* FunagramsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FunagramsTests-Info.plist"; sourceTree = "<group>"; };
 		12AE7D48188F8E5B00E00848 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		12AE7D4A188F8E5B00E00848 /* FunagramsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FunagramsTests.m; sourceTree = "<group>"; };
+		12C06F7B18A215A40030942C /* Funagrams.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Funagrams.entitlements; sourceTree = "<group>"; };
+		12C06F7E18A216BD0030942C /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		12E98756189360C400FC296B /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		12E98757189360C400FC296B /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		12E9875918942BD000FC296B /* ScoreBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreBoard.h; sourceTree = "<group>"; };
@@ -108,7 +112,7 @@
 				12AE7D1F188F8E5B00E00848 /* CoreGraphics.framework in Frameworks */,
 				12AE7D21188F8E5B00E00848 /* UIKit.framework in Frameworks */,
 				12AE7D1D188F8E5B00E00848 /* Foundation.framework in Frameworks */,
-				122699F8189F321F00861799 /* GameKit.framework in Frameworks */,
+				12C06F7F18A216BD0030942C /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,7 +174,7 @@
 		12AE7D1B188F8E5B00E00848 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				122699F7189F321F00861799 /* GameKit.framework */,
+				12C06F7E18A216BD0030942C /* GameKit.framework */,
 				12AE7D1C188F8E5B00E00848 /* Foundation.framework */,
 				12AE7D1E188F8E5B00E00848 /* CoreGraphics.framework */,
 				12AE7D20188F8E5B00E00848 /* UIKit.framework */,
@@ -182,11 +186,14 @@
 		12AE7D22188F8E5B00E00848 /* Funagrams */ = {
 			isa = PBXGroup;
 			children = (
+				12C06F7B18A215A40030942C /* Funagrams.entitlements */,
 				12E9875F1899FAEF00FC296B /* DataStructure */,
 				12AE7D2B188F8E5B00E00848 /* AppDelegate.h */,
 				12AE7D2C188F8E5B00E00848 /* AppDelegate.m */,
 				12E98756189360C400FC296B /* GameViewController.h */,
 				12E98757189360C400FC296B /* GameViewController.m */,
+				122BCF5A18A203BE00AF14E1 /* GCHelper.h */,
+				122BCF5B18A203BE00AF14E1 /* GCHelper.m */,
 				12AE7D2E188F8E5B00E00848 /* Main_iPhone.storyboard */,
 				12AE7D31188F8E5B00E00848 /* Main_iPad.storyboard */,
 				12AE7D34188F8E5B00E00848 /* ViewController.h */,
@@ -291,6 +298,9 @@
 							com.apple.GameCenter = {
 								enabled = 1;
 							};
+							com.apple.iCloud = {
+								enabled = 0;
+							};
 						};
 					};
 					12AE7D3C188F8E5B00E00848 = {
@@ -366,6 +376,7 @@
 				12E9875E1899FACA00FC296B /* Anagram.m in Sources */,
 				12AE7D2D188F8E5B00E00848 /* AppDelegate.m in Sources */,
 				12AE7D29188F8E5B00E00848 /* main.m in Sources */,
+				122BCF5C18A203BE00AF14E1 /* GCHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

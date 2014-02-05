@@ -10,8 +10,12 @@
 #import "ViewController.h"
 #import "Anagram.h"
 #import <QuartzCore/QuartzCore.h>
+/*
+#import <GameKit/GameKit.h>
+#import "GameCenterManager.h"
+ */
 
-@interface GameViewController : UIViewController
+@interface GameViewController : UIViewController /*<UIActionSheetDelegate, GKLeaderboardViewControllerDelegate, GKAchievementViewControllerDelegate, GameCenterManagerDelegate>*/
 {
     IBOutlet UILabel *labelScore;
     IBOutlet UIButton *buttonHint;
@@ -26,6 +30,7 @@
     ScoreBoard *scoreBoard;
     Anagram *currentAnagram;
     NSMutableArray *anagramHistory;
+	//GameCenterManager* gameCenterManager;
     
     NSMutableArray *buttonQuestions;
     NSMutableArray *buttonResults;
@@ -53,5 +58,6 @@
 @property (retain, nonatomic) IBOutlet UILabel *labelHintValue;
 @property (retain, nonatomic) IBOutlet UIButton *buttonSampleQuestion;
 @property (retain, nonatomic) IBOutlet UIButton *buttonSampleResult;
+//@property (nonatomic, retain) GameCenterManager *gameCenterManager;
 
 @end
