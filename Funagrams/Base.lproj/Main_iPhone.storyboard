@@ -17,8 +17,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BackgroundGradientLine.png" translatesAutoresizingMaskIntoConstraints="NO" id="SSR-7z-rg2">
+                                <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VtB-GI-wi5">
-                                <rect key="frame" x="185" y="130" width="199" height="30"/>
+                                <rect key="frame" x="185" y="115" width="199" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" title="Play">
@@ -28,48 +32,43 @@
                                     <segue destination="NfE-KG-Vgi" kind="push" id="bar-6e-Qae"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tAF-Op-adQ">
-                                <rect key="frame" x="238" y="178" width="93" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tAF-Op-adQ">
+                                <rect key="frame" x="93" y="164" width="65" height="58"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="Score">
+                                <state key="normal" image="Scorecard.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="F22-F6-3nU" kind="push" id="s4F-cj-0kY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sGq-wK-7Qi">
-                                <rect key="frame" x="391" y="178" width="131" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sGq-wK-7Qi">
+                                <rect key="frame" x="430" y="164" width="50" height="58"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="Leader Board">
+                                <state key="normal" image="Trophy.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="showLeaderboard:" destination="vXZ-lx-hvc" eventType="touchDown" id="cR0-tN-9FN"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p69-5M-3IM">
-                                <rect key="frame" x="185" y="232" width="199" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p69-5M-3IM">
+                                <rect key="frame" x="250" y="230" width="68" height="58"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="Credits">
+                                <state key="normal" image="Credits.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="Lkc-ms-iiT" kind="push" id="3b7-hS-k9A"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="funagrams" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gB-K2-aGD">
-                                <rect key="frame" x="170" y="37" width="229" height="66"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LogoImage" translatesAutoresizingMaskIntoConstraints="NO" id="yfy-7q-KbN">
+                                <rect key="frame" x="155" y="31" width="258" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="37"/>
-                                <color key="textColor" red="0.2499812317" green="0.60726377450000002" blue="0.98341836729999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="0.91270727040816324" green="0.91270727040816324" blue="0.91270727040816324" alpha="1" colorSpace="calibratedRGB"/>
-                                <size key="shadowOffset" width="3" height="3"/>
-                            </label>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -165,8 +164,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BackgroundGradientLine.png" translatesAutoresizingMaskIntoConstraints="NO" id="HyU-zD-A1h">
+                                <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hint" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npu-nv-rVg">
-                                <rect key="frame" x="20" y="139" width="42" height="21"/>
+                                <rect key="frame" x="20" y="125" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="42" id="VAv-Ti-OgO"/>
@@ -176,7 +179,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;&lt; score >>" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODo-bT-5rm">
-                                <rect key="frame" x="401" y="41" width="147" height="27"/>
+                                <rect key="frame" x="401" y="27" width="147" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="BOx-f4-oPJ"/>
@@ -188,14 +191,14 @@
                                 <size key="shadowOffset" width="2" height="2"/>
                             </label>
                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;&lt; Hint Value >>" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PER-th-OIf">
-                                <rect key="frame" x="63" y="139" width="478" height="20"/>
+                                <rect key="frame" x="63" y="125" width="478" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                                 <color key="textColor" red="0.33932125796178347" green="0.33932125796178347" blue="0.33932125796178347" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIk-Li-SUb">
-                                <rect key="frame" x="20" y="264" width="61" height="30"/>
+                                <rect key="frame" x="243" y="264" width="61" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="CANCEL">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -205,16 +208,19 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XOa-wv-BQq">
-                                <rect key="frame" x="205" y="264" width="159" height="30"/>
+                                <rect key="frame" x="20" y="264" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="SCRAMBLE">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mSu-29-RHp">
-                                <rect key="frame" x="513" y="264" width="35" height="30"/>
+                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mSu-29-RHp">
+                                <rect key="frame" x="489" y="236" width="59" height="58"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="HINT">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="59" id="aci-Hy-gOJ"/>
+                                </constraints>
+                                <state key="normal" image="Hint.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -222,7 +228,7 @@
                                 </connections>
                             </button>
                             <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F74-ud-nDS">
-                                <rect key="frame" x="20" y="95" width="35" height="35"/>
+                                <rect key="frame" x="20" y="61" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="MXZ-zQ-k9y"/>
@@ -242,7 +248,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ye-d6-oLn">
-                                <rect key="frame" x="20" y="175" width="35" height="35"/>
+                                <rect key="frame" x="20" y="180" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="1hT-G0-ddA"/>
@@ -255,39 +261,29 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="funagrams" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D73-aF-8HZ">
-                                <rect key="frame" x="10" y="26" width="149" height="46"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="30"/>
-                                <color key="textColor" red="0.17647059261798859" green="0.66274511814117432" blue="1" alpha="1" colorSpace="deviceRGB"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="0.95621412627551017" green="0.95621412627551017" blue="0.95621412627551017" alpha="1" colorSpace="calibratedRGB"/>
-                                <size key="shadowOffset" width="3" height="3"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="zIk-Li-SUb" firstAttribute="leading" secondItem="npu-nv-rVg" secondAttribute="leading" id="4m2-34-luG"/>
+                            <constraint firstItem="zIk-Li-SUb" firstAttribute="leading" secondItem="npu-nv-rVg" secondAttribute="leading" constant="223" id="4m2-34-luG"/>
                             <constraint firstAttribute="trailing" secondItem="ODo-bT-5rm" secondAttribute="trailing" constant="20" symbolic="YES" id="5KB-hA-gDQ"/>
-                            <constraint firstItem="zIk-Li-SUb" firstAttribute="top" secondItem="6ye-d6-oLn" secondAttribute="bottom" constant="54" id="76j-ZH-M96"/>
-                            <constraint firstItem="XOa-wv-BQq" firstAttribute="centerX" secondItem="guw-iY-4XT" secondAttribute="centerX" id="7zr-sO-V9u"/>
+                            <constraint firstItem="zIk-Li-SUb" firstAttribute="top" secondItem="6ye-d6-oLn" secondAttribute="bottom" constant="49" id="76j-ZH-M96"/>
                             <constraint firstItem="PER-th-OIf" firstAttribute="leading" secondItem="npu-nv-rVg" secondAttribute="trailing" constant="1" id="8Qz-lT-1uT"/>
-                            <constraint firstItem="XOa-wv-BQq" firstAttribute="leading" secondItem="zIk-Li-SUb" secondAttribute="trailing" constant="124" id="AAv-rf-zOC"/>
-                            <constraint firstItem="mSu-29-RHp" firstAttribute="leading" secondItem="XOa-wv-BQq" secondAttribute="trailing" constant="149" id="DqE-hw-XqR"/>
+                            <constraint firstItem="6ye-d6-oLn" firstAttribute="leading" secondItem="XOa-wv-BQq" secondAttribute="leading" id="DdE-5b-cMv"/>
                             <constraint firstItem="6ye-d6-oLn" firstAttribute="leading" secondItem="F74-ud-nDS" secondAttribute="leading" id="GKg-6g-ChX"/>
                             <constraint firstItem="npu-nv-rVg" firstAttribute="baseline" secondItem="PER-th-OIf" secondAttribute="baseline" id="SS6-H7-uHK"/>
                             <constraint firstItem="ODo-bT-5rm" firstAttribute="leading" secondItem="guw-iY-4XT" secondAttribute="leading" constant="401" id="Sp1-fb-LUV"/>
-                            <constraint firstItem="XOa-wv-BQq" firstAttribute="baseline" secondItem="zIk-Li-SUb" secondAttribute="baseline" id="Ti4-bK-aid"/>
-                            <constraint firstItem="XOa-wv-BQq" firstAttribute="baseline" secondItem="mSu-29-RHp" secondAttribute="baseline" id="ZGq-73-8Ko"/>
-                            <constraint firstItem="ODo-bT-5rm" firstAttribute="top" secondItem="WRR-1K-8rV" secondAttribute="bottom" constant="21" id="bms-Pn-knH"/>
+                            <constraint firstItem="ODo-bT-5rm" firstAttribute="top" secondItem="WRR-1K-8rV" secondAttribute="bottom" constant="7" id="bms-Pn-knH"/>
                             <constraint firstItem="F74-ud-nDS" firstAttribute="leading" secondItem="guw-iY-4XT" secondAttribute="leading" constant="20" id="eba-k5-oOE"/>
-                            <constraint firstItem="Af8-NO-T9T" firstAttribute="top" secondItem="F74-ud-nDS" secondAttribute="bottom" constant="190" id="gyh-Zu-dll"/>
-                            <constraint firstItem="6ye-d6-oLn" firstAttribute="top" secondItem="npu-nv-rVg" secondAttribute="bottom" constant="15" id="k6U-62-oQq"/>
-                            <constraint firstItem="Af8-NO-T9T" firstAttribute="top" secondItem="XOa-wv-BQq" secondAttribute="bottom" constant="26" id="kd6-AZ-bbs"/>
-                            <constraint firstItem="F74-ud-nDS" firstAttribute="leading" secondItem="D73-aF-8HZ" secondAttribute="leading" constant="10" id="o8i-8g-eSl"/>
-                            <constraint firstItem="zIk-Li-SUb" firstAttribute="leading" secondItem="guw-iY-4XT" secondAttribute="leading" constant="20" symbolic="YES" id="taQ-hY-dYM"/>
+                            <constraint firstItem="Af8-NO-T9T" firstAttribute="top" secondItem="F74-ud-nDS" secondAttribute="bottom" constant="224" id="gyh-Zu-dll"/>
+                            <constraint firstItem="6ye-d6-oLn" firstAttribute="top" secondItem="npu-nv-rVg" secondAttribute="bottom" constant="34" id="k6U-62-oQq"/>
+                            <constraint firstItem="mSu-29-RHp" firstAttribute="top" secondItem="PER-th-OIf" secondAttribute="bottom" constant="91" id="l3r-w6-pfz"/>
+                            <constraint firstItem="npu-nv-rVg" firstAttribute="top" secondItem="F74-ud-nDS" secondAttribute="bottom" constant="29" id="lai-kK-meT"/>
+                            <constraint firstItem="mSu-29-RHp" firstAttribute="trailing" secondItem="ODo-bT-5rm" secondAttribute="trailing" id="lgG-ZQ-51I"/>
+                            <constraint firstItem="zIk-Li-SUb" firstAttribute="baseline" secondItem="XOa-wv-BQq" secondAttribute="baseline" id="qVi-a2-EGg"/>
+                            <constraint firstItem="zIk-Li-SUb" firstAttribute="leading" secondItem="guw-iY-4XT" secondAttribute="leading" constant="243" id="taQ-hY-dYM"/>
+                            <constraint firstItem="Af8-NO-T9T" firstAttribute="top" secondItem="zIk-Li-SUb" secondAttribute="bottom" constant="26" id="uYV-EV-pB1"/>
                             <constraint firstItem="ODo-bT-5rm" firstAttribute="trailing" secondItem="PER-th-OIf" secondAttribute="trailing" constant="7" id="wpE-VM-tHV"/>
-                            <constraint firstItem="F74-ud-nDS" firstAttribute="top" secondItem="D73-aF-8HZ" secondAttribute="bottom" constant="23" id="xBW-jJ-c9s"/>
+                            <constraint firstItem="zIk-Li-SUb" firstAttribute="bottom" secondItem="mSu-29-RHp" secondAttribute="bottom" id="xCZ-zT-xou"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
@@ -369,6 +365,14 @@
             <point key="canvasLocation" x="-23" y="71"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="BackgroundGradientLine.png" width="1920" height="1"/>
+        <image name="Credits.png" width="95" height="81"/>
+        <image name="Hint.png" width="83" height="81"/>
+        <image name="LogoImage" width="327" height="78"/>
+        <image name="Scorecard.png" width="90" height="81"/>
+        <image name="Trophy.png" width="70" height="81"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
