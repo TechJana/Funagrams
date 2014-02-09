@@ -29,6 +29,7 @@
 		12C06F8C18A6F0EF0030942C /* Scorecard.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C06F8B18A6F0EF0030942C /* Scorecard.png */; };
 		12C06F8E18A6F7650030942C /* Credits.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C06F8D18A6F7650030942C /* Credits.png */; };
 		12C06F9018A6FF9C0030942C /* Hint.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C06F8F18A6FF9C0030942C /* Hint.png */; };
+		12C06F9218A728890030942C /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12C06F9118A728890030942C /* iAd.framework */; };
 		12E98758189360C400FC296B /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E98757189360C400FC296B /* GameViewController.m */; };
 		12E9875B18942BD000FC296B /* ScoreBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9875A18942BD000FC296B /* ScoreBoard.m */; };
 		12E9875E1899FACA00FC296B /* Anagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9875D1899FACA00FC296B /* Anagram.m */; };
@@ -73,6 +74,7 @@
 		12C06F8B18A6F0EF0030942C /* Scorecard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Scorecard.png; sourceTree = SOURCE_ROOT; };
 		12C06F8D18A6F7650030942C /* Credits.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Credits.png; sourceTree = SOURCE_ROOT; };
 		12C06F8F18A6FF9C0030942C /* Hint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hint.png; sourceTree = SOURCE_ROOT; };
+		12C06F9118A728890030942C /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		12E98756189360C400FC296B /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		12E98757189360C400FC296B /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		12E9875918942BD000FC296B /* ScoreBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreBoard.h; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12C06F9218A728890030942C /* iAd.framework in Frameworks */,
 				12AE7D1F188F8E5B00E00848 /* CoreGraphics.framework in Frameworks */,
 				12AE7D21188F8E5B00E00848 /* UIKit.framework in Frameworks */,
 				12AE7D1D188F8E5B00E00848 /* Foundation.framework in Frameworks */,
@@ -128,6 +131,7 @@
 		12AE7D1B188F8E5B00E00848 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				12C06F9118A728890030942C /* iAd.framework */,
 				12C06F8218A3479E0030942C /* GameKit.framework */,
 				12AE7D1C188F8E5B00E00848 /* Foundation.framework */,
 				12AE7D1E188F8E5B00E00848 /* CoreGraphics.framework */,

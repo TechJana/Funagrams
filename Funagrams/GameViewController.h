@@ -10,12 +10,13 @@
 #import "ViewController.h"
 #import "Anagram.h"
 #import <QuartzCore/QuartzCore.h>
+#import <iAd/iAd.h>
 /*
 #import <GameKit/GameKit.h>
 #import "GameCenterManager.h"
  */
 
-@interface GameViewController : UIViewController /*<UIActionSheetDelegate, GKLeaderboardViewControllerDelegate, GKAchievementViewControllerDelegate, GameCenterManagerDelegate>*/
+@interface GameViewController : UIViewController <ADBannerViewDelegate> /*<UIActionSheetDelegate, GKLeaderboardViewControllerDelegate, GKAchievementViewControllerDelegate, GameCenterManagerDelegate>*/
 {
     IBOutlet UILabel *labelScore;
     IBOutlet UIButton *buttonHint;

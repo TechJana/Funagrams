@@ -9,7 +9,8 @@
 #import "GCHelper.h"
 //#import "Constants.h"
 
-NSString* const kLeaderBoardIdentifier = @"com.pluggables.Funagrams.Leaderboard";
+NSString* const kLeaderBoardIdentifier = @"com.pluggables.funagrams.leaderBoard.HighScore";
+NSString* const kAchievementLevel1 = @"com.pluggables.funagrams.achievement.Level1";
 
 @interface GCHelper ()
 

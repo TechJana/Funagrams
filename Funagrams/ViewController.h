@@ -12,7 +12,7 @@
 #import "GCHelper.h"
 //#import "GameCenterManager.h"
 
-@interface ViewController : UIViewController <GKLocalPlayerListener, UIAlertViewDelegate>
+@interface ViewController : UIViewController <GKLocalPlayerListener, UIAlertViewDelegate, GKLeaderboardViewControllerDelegate, GKAchievementViewControllerDelegate>
 {
     ScoreBoard *scoreBoard;
 }

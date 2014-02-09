@@ -198,7 +198,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIk-Li-SUb">
-                                <rect key="frame" x="243" y="264" width="61" height="30"/>
+                                <rect key="frame" x="243" y="227" width="61" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="CANCEL">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -208,14 +208,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XOa-wv-BQq">
-                                <rect key="frame" x="20" y="264" width="83" height="30"/>
+                                <rect key="frame" x="20" y="227" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="SCRAMBLE">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mSu-29-RHp">
-                                <rect key="frame" x="489" y="236" width="59" height="58"/>
+                                <rect key="frame" x="489" y="199" width="59" height="58"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="59" id="aci-Hy-gOJ"/>
@@ -261,12 +261,19 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nJC-dR-EnW">
+                                <rect key="frame" x="0.0" y="288" width="480" height="32"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="NfE-KG-Vgi" id="XWv-k0-XeC"/>
+                                </connections>
+                            </adBannerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="zIk-Li-SUb" firstAttribute="leading" secondItem="npu-nv-rVg" secondAttribute="leading" constant="223" id="4m2-34-luG"/>
                             <constraint firstAttribute="trailing" secondItem="ODo-bT-5rm" secondAttribute="trailing" constant="20" symbolic="YES" id="5KB-hA-gDQ"/>
-                            <constraint firstItem="zIk-Li-SUb" firstAttribute="top" secondItem="6ye-d6-oLn" secondAttribute="bottom" constant="49" id="76j-ZH-M96"/>
+                            <constraint firstItem="zIk-Li-SUb" firstAttribute="top" secondItem="6ye-d6-oLn" secondAttribute="bottom" constant="12" id="76j-ZH-M96"/>
                             <constraint firstItem="PER-th-OIf" firstAttribute="leading" secondItem="npu-nv-rVg" secondAttribute="trailing" constant="1" id="8Qz-lT-1uT"/>
                             <constraint firstItem="6ye-d6-oLn" firstAttribute="leading" secondItem="XOa-wv-BQq" secondAttribute="leading" id="DdE-5b-cMv"/>
                             <constraint firstItem="6ye-d6-oLn" firstAttribute="leading" secondItem="F74-ud-nDS" secondAttribute="leading" id="GKg-6g-ChX"/>
@@ -276,12 +283,12 @@
                             <constraint firstItem="F74-ud-nDS" firstAttribute="leading" secondItem="guw-iY-4XT" secondAttribute="leading" constant="20" id="eba-k5-oOE"/>
                             <constraint firstItem="Af8-NO-T9T" firstAttribute="top" secondItem="F74-ud-nDS" secondAttribute="bottom" constant="224" id="gyh-Zu-dll"/>
                             <constraint firstItem="6ye-d6-oLn" firstAttribute="top" secondItem="npu-nv-rVg" secondAttribute="bottom" constant="34" id="k6U-62-oQq"/>
-                            <constraint firstItem="mSu-29-RHp" firstAttribute="top" secondItem="PER-th-OIf" secondAttribute="bottom" constant="91" id="l3r-w6-pfz"/>
+                            <constraint firstItem="mSu-29-RHp" firstAttribute="top" secondItem="PER-th-OIf" secondAttribute="bottom" constant="54" id="l3r-w6-pfz"/>
                             <constraint firstItem="npu-nv-rVg" firstAttribute="top" secondItem="F74-ud-nDS" secondAttribute="bottom" constant="29" id="lai-kK-meT"/>
                             <constraint firstItem="mSu-29-RHp" firstAttribute="trailing" secondItem="ODo-bT-5rm" secondAttribute="trailing" id="lgG-ZQ-51I"/>
                             <constraint firstItem="zIk-Li-SUb" firstAttribute="baseline" secondItem="XOa-wv-BQq" secondAttribute="baseline" id="qVi-a2-EGg"/>
                             <constraint firstItem="zIk-Li-SUb" firstAttribute="leading" secondItem="guw-iY-4XT" secondAttribute="leading" constant="243" id="taQ-hY-dYM"/>
-                            <constraint firstItem="Af8-NO-T9T" firstAttribute="top" secondItem="zIk-Li-SUb" secondAttribute="bottom" constant="26" id="uYV-EV-pB1"/>
+                            <constraint firstItem="Af8-NO-T9T" firstAttribute="top" secondItem="zIk-Li-SUb" secondAttribute="bottom" constant="63" id="uYV-EV-pB1"/>
                             <constraint firstItem="ODo-bT-5rm" firstAttribute="trailing" secondItem="PER-th-OIf" secondAttribute="trailing" constant="7" id="wpE-VM-tHV"/>
                             <constraint firstItem="zIk-Li-SUb" firstAttribute="bottom" secondItem="mSu-29-RHp" secondAttribute="bottom" id="xCZ-zT-xou"/>
                         </constraints>
@@ -298,7 +305,6 @@
                         <outlet property="labelHint" destination="npu-nv-rVg" id="j1n-NK-puO"/>
                         <outlet property="labelHintValue" destination="PER-th-OIf" id="hdO-BC-0rR"/>
                         <outlet property="labelScore" destination="ODo-bT-5rm" id="c0D-Gu-A5W"/>
-                        <outlet property="view" destination="guw-iY-4XT" id="4bR-gu-ljw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uV5-uC-DKm" userLabel="First Responder" sceneMemberID="firstResponder"/>
