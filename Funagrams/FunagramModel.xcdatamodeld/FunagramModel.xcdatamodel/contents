@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Anagram" syncable="YES">
+        <attribute name="answerText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="questionID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="questionText" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Hint" syncable="YES">
+        <attribute name="hintID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="hintLetter" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Level" syncable="YES">
+        <attribute name="levelID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="levelText" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Mode" syncable="YES">
+        <attribute name="modeID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="modeText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="numHints" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Player" syncable="YES"/>
+    <entity name="Score" syncable="YES">
+        <attribute name="attribute" optional="YES" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Level" positionX="160" positionY="192" width="128" height="75"/>
+        <element name="Mode" positionX="63" positionY="45" width="128" height="88"/>
+        <element name="Anagram" positionX="241" positionY="-27" width="128" height="90"/>
+        <element name="Hint" positionX="403" positionY="81" width="128" height="58"/>
+        <element name="Score" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Player" positionX="0" positionY="0" width="0" height="0"/>
+    </elements>
+</model>
