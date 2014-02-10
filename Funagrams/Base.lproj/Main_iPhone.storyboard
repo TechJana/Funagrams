@@ -213,6 +213,9 @@
                                 <state key="normal" title="SCRAMBLE">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="buttonScramble_click:" destination="NfE-KG-Vgi" eventType="touchUpInside" id="w5r-Gx-ap8"/>
+                                </connections>
                             </button>
                             <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mSu-29-RHp">
                                 <rect key="frame" x="489" y="199" width="59" height="58"/>
@@ -301,7 +304,7 @@
                         <outlet property="buttonHint" destination="mSu-29-RHp" id="Jwj-sZ-z7F"/>
                         <outlet property="buttonSampleQuestion" destination="6ye-d6-oLn" id="iT8-9c-1tW"/>
                         <outlet property="buttonSampleResult" destination="F74-ud-nDS" id="Hqm-pB-r90"/>
-                        <outlet property="buttonScramble" destination="XOa-wv-BQq" id="Vqk-Nd-NMn"/>
+                        <outlet property="buttonScramble" destination="XOa-wv-BQq" id="gon-Gq-3Ki"/>
                         <outlet property="labelHint" destination="npu-nv-rVg" id="j1n-NK-puO"/>
                         <outlet property="labelHintValue" destination="PER-th-OIf" id="hdO-BC-0rR"/>
                         <outlet property="labelScore" destination="ODo-bT-5rm" id="c0D-Gu-A5W"/>
