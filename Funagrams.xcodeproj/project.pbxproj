@@ -24,11 +24,6 @@
 		12AE7D49188F8E5B00E00848 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 12AE7D47188F8E5B00E00848 /* InfoPlist.strings */; };
 		12AE7D4B188F8E5B00E00848 /* FunagramsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AE7D4A188F8E5B00E00848 /* FunagramsTests.m */; };
 		12C06F8318A3479E0030942C /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12C06F8218A3479E0030942C /* GameKit.framework */; };
-		12C06F8618A6DAF70030942C /* BackgroundGradientLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C06F8518A6DAF70030942C /* BackgroundGradientLine.png */; };
-		12C06F8A18A6E9E70030942C /* Trophy.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C06F8918A6E9E70030942C /* Trophy.png */; };
-		12C06F8C18A6F0EF0030942C /* Scorecard.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C06F8B18A6F0EF0030942C /* Scorecard.png */; };
-		12C06F8E18A6F7650030942C /* Credits.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C06F8D18A6F7650030942C /* Credits.png */; };
-		12C06F9018A6FF9C0030942C /* Hint.png in Resources */ = {isa = PBXBuildFile; fileRef = 12C06F8F18A6FF9C0030942C /* Hint.png */; };
 		12C06F9218A728890030942C /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12C06F9118A728890030942C /* iAd.framework */; };
 		12E98758189360C400FC296B /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E98757189360C400FC296B /* GameViewController.m */; };
 		12E9875B18942BD000FC296B /* ScoreBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9875A18942BD000FC296B /* ScoreBoard.m */; };
@@ -69,11 +64,6 @@
 		12AE7D48188F8E5B00E00848 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		12AE7D4A188F8E5B00E00848 /* FunagramsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FunagramsTests.m; sourceTree = "<group>"; };
 		12C06F8218A3479E0030942C /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		12C06F8518A6DAF70030942C /* BackgroundGradientLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundGradientLine.png; sourceTree = SOURCE_ROOT; };
-		12C06F8918A6E9E70030942C /* Trophy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Trophy.png; sourceTree = SOURCE_ROOT; };
-		12C06F8B18A6F0EF0030942C /* Scorecard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Scorecard.png; sourceTree = SOURCE_ROOT; };
-		12C06F8D18A6F7650030942C /* Credits.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Credits.png; sourceTree = SOURCE_ROOT; };
-		12C06F8F18A6FF9C0030942C /* Hint.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hint.png; sourceTree = SOURCE_ROOT; };
 		12C06F9118A728890030942C /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		12E98756189360C400FC296B /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		12E98757189360C400FC296B /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
@@ -156,7 +146,6 @@
 				12AE7D34188F8E5B00E00848 /* ViewController.h */,
 				12AE7D35188F8E5B00E00848 /* ViewController.m */,
 				12AE7D37188F8E5B00E00848 /* Images.xcassets */,
-				12C06F8418A6D8B40030942C /* Images */,
 				12AE7D23188F8E5B00E00848 /* Supporting Files */,
 			);
 			path = Funagrams;
@@ -189,18 +178,6 @@
 				12AE7D47188F8E5B00E00848 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		12C06F8418A6D8B40030942C /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				12C06F8F18A6FF9C0030942C /* Hint.png */,
-				12C06F8D18A6F7650030942C /* Credits.png */,
-				12C06F8B18A6F0EF0030942C /* Scorecard.png */,
-				12C06F8518A6DAF70030942C /* BackgroundGradientLine.png */,
-				12C06F8918A6E9E70030942C /* Trophy.png */,
-			);
-			name = Images;
 			sourceTree = "<group>";
 		};
 		12E9875F1899FAEF00FC296B /* DataStructure */ = {
@@ -301,14 +278,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12C06F8A18A6E9E70030942C /* Trophy.png in Resources */,
-				12C06F9018A6FF9C0030942C /* Hint.png in Resources */,
-				12C06F8618A6DAF70030942C /* BackgroundGradientLine.png in Resources */,
 				12AE7D33188F8E5B00E00848 /* Main_iPad.storyboard in Resources */,
-				12C06F8E18A6F7650030942C /* Credits.png in Resources */,
 				12AE7D38188F8E5B00E00848 /* Images.xcassets in Resources */,
 				12AE7D30188F8E5B00E00848 /* Main_iPhone.storyboard in Resources */,
-				12C06F8C18A6F0EF0030942C /* Scorecard.png in Resources */,
 				12AE7D27188F8E5B00E00848 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
