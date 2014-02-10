@@ -203,6 +203,51 @@
     
 }
 
+- (IBAction)buttonScramble_click:(id)sender {
+    
+    //Scramble the letters in the Question
+    currentAnagram.question = [self doScramble:currentAnagram.result];
+    
+    //Load the scrambled letters as Buttons
+    [self loadAnagram];
+}
+
+- (NSString*) doScramble:(NSString*)scrambledWord{
+    NSString * result = @"";
+    scrambledWord = [scrambledWord stringByReplacingOccurrencesOfString:@" " withString:@""];
+    scrambledWord = [scrambledWord uppercaseString];
+    int length = [scrambledWord length];
+    NSMutableArray *letters = [NSMutableArray arrayWithCapacity:length];
+    
+    for(int i = 0; i < length; i++){
+        char ch = [scrambledWord characterAtIndex:i];
+        NSString * cur = [NSString stringWithFormat:@"%c", ch];
+        [letters insertObject:cur atIndex:i];
+    }
+    
+    NSLog(@"LETTERS:: %@", letters);
+    
+    for(int i = length - 1; i >= 0; i--){
+        int j = arc4random() % (i + 1);
+        //NSLog(@"%d %d", i, j);
+        //swap at positions i and j
+        NSString * str_i = [letters objectAtIndex:i];
+        [letters replaceObjectAtIndex:i withObject:[letters objectAtIndex:j]];
+        [letters replaceObjectAtIndex:j withObject:str_i];
+    }
+    NSLog(@"NEW SHUFFLED LETTERS %@", letters);
+    
+    
+    for(int i = 0; i < length; i++){
+        result = [result stringByAppendingString:[letters objectAtIndex:i]];
+    }
+    
+    NSLog(@"Final string: %@", result);
+    
+    return result;
+    
+}
+
 - (void)loadQuestionResultButtons
 {
     UIButton *buttonIndex;
