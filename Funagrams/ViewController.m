@@ -8,8 +8,13 @@
 
 #import "ViewController.h"
 #import "AppDelegate.h"
+#import "InAppPurchase.h"
+#import <StoreKit/StoreKit.h>
 
-@interface ViewController ()
+@interface ViewController () {
+    NSArray *_products;
+    NSNumberFormatter * _priceFormatter;
+}
 
 @end
 
@@ -32,6 +37,12 @@
     [[GCHelper defaultHelper] authenticateLocalUserOnViewController:self setCallbackObject:self withPauseSelector:@selector(authenticationRequired)];
     [[GCHelper defaultHelper] registerListener:self];
     
+    // in app purchase
+    _priceFormatter = [[NSNumberFormatter alloc] init];
+    [_priceFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
+    [_priceFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Restore" style:UIBarButtonItemStyleBordered target:self action:@selector(restoreTapped:)];
+    
     // Show something once when the application lauch
     if (![@"1" isEqualToString:[[NSUserDefaults standardUserDefaults]
                                 objectForKey:@"Avalue"]]) {
@@ -41,6 +52,74 @@
         //Action here
         
     }
+}
+
+- (void)getInAppProducts
+{
+    _products = nil;
+    [[InAppPurchase sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
+        if (success) {
+            _products = products;
+        }
+    }];
+}
+
+- (void)showInAppProducts
+{
+    // loop through all products and display
+    for (int indexCount=0; indexCount<_products.count; indexCount++) {
+        SKProduct *product = (SKProduct *) _products[indexCount];
+        //textLabel.text = product.localizedTitle;
+        [_priceFormatter setLocale:product.priceLocale];
+        //detailTextLabel.text = [_priceFormatter stringFromNumber:product.price];
+        
+        if ([[InAppPurchase sharedInstance] productPurchased:product.productIdentifier]) {
+            //accessoryType = UITableViewCellAccessoryCheckmark;
+            //accessoryView = nil;
+        } else {
+            UIButton *buyButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            buyButton.frame = CGRectMake(0, 0, 72, 37);
+            [buyButton setTitle:@"Buy" forState:UIControlStateNormal];
+            buyButton.tag = indexCount;
+            [buyButton addTarget:self action:@selector(buyButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+            //accessoryType = UITableViewCellAccessoryNone;
+            //accessoryView = buyButton;
+        }
+    }
+}
+
+- (void)buyButtonTapped:(id)sender {
+    
+    UIButton *buyButton = (UIButton *)sender;
+    SKProduct *product = _products[buyButton.tag];
+    
+    NSLog(@"Buying %@...", product.productIdentifier);
+    [[InAppPurchase sharedInstance] buyProduct:product];
+    
+}
+
+- (void)restoreTapped:(id)sender {
+    [[InAppPurchase sharedInstance] restoreCompletedTransactions];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)productPurchased:(NSNotification *)notification {
+    
+    NSString * productIdentifier = notification.object;
+    [_products enumerateObjectsUsingBlock:^(SKProduct * product, NSUInteger idx, BOOL *stop) {
+        if ([product.productIdentifier isEqualToString:productIdentifier]) {
+            //[self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:idx inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+            *stop = YES;
+        }
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning
