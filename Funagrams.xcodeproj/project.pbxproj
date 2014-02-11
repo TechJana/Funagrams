@@ -25,6 +25,7 @@
 		12AE7D4B188F8E5B00E00848 /* FunagramsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AE7D4A188F8E5B00E00848 /* FunagramsTests.m */; };
 		12C06F8318A3479E0030942C /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12C06F8218A3479E0030942C /* GameKit.framework */; };
 		12C06F9218A728890030942C /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12C06F9118A728890030942C /* iAd.framework */; };
+		12C06F9618A8A6F80030942C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12C06F9518A8A6F80030942C /* StoreKit.framework */; };
 		12E98758189360C400FC296B /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E98757189360C400FC296B /* GameViewController.m */; };
 		12E9875B18942BD000FC296B /* ScoreBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9875A18942BD000FC296B /* ScoreBoard.m */; };
 		12E9875E1899FACA00FC296B /* Anagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 12E9875D1899FACA00FC296B /* Anagram.m */; };
@@ -67,6 +68,7 @@
 		12AE7D4A188F8E5B00E00848 /* FunagramsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FunagramsTests.m; sourceTree = "<group>"; };
 		12C06F8218A3479E0030942C /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		12C06F9118A728890030942C /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		12C06F9518A8A6F80030942C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		12E98756189360C400FC296B /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		12E98757189360C400FC296B /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		12E9875918942BD000FC296B /* ScoreBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreBoard.h; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12C06F9618A8A6F80030942C /* StoreKit.framework in Frameworks */,
 				8AC7741618A88FB9007F226D /* CoreData.framework in Frameworks */,
 				12C06F9218A728890030942C /* iAd.framework in Frameworks */,
 				12AE7D1F188F8E5B00E00848 /* CoreGraphics.framework in Frameworks */,
@@ -126,6 +129,7 @@
 		12AE7D1B188F8E5B00E00848 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				12C06F9518A8A6F80030942C /* StoreKit.framework */,
 				8AC7741518A88FB9007F226D /* CoreData.framework */,
 				12C06F9118A728890030942C /* iAd.framework */,
 				12C06F8218A3479E0030942C /* GameKit.framework */,
@@ -249,6 +253,9 @@
 						DevelopmentTeam = FE4KUE66JE;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
 								enabled = 1;
 							};
 							com.apple.iCloud = {
