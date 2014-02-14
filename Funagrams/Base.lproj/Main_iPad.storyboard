@@ -22,7 +22,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0u-Nz-Rzi">
-                                <rect key="frame" x="351" y="340" width="314" height="88"/>
+                                <rect key="frame" x="355" y="340" width="314" height="88"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="PlayImage">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -36,7 +36,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6TM-jT-haW">
-                                <rect key="frame" x="157" y="342" width="90" height="81"/>
+                                <rect key="frame" x="58" y="645" width="90" height="81"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" image="ScoresheetImage">
@@ -44,7 +44,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yOX-pz-kHA">
-                                <rect key="frame" x="792" y="342" width="70" height="81"/>
+                                <rect key="frame" x="885" y="645" width="70" height="81"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" image="TrophyImage">
@@ -52,7 +52,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U8I-K6-tjg">
-                                <rect key="frame" x="466" y="508" width="95" height="81"/>
+                                <rect key="frame" x="465" y="645" width="95" height="81"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" image="Credits.png">
@@ -70,10 +70,10 @@
             </objects>
             <point key="canvasLocation" x="321" y="-195"/>
         </scene>
-        <!--View Controller-->
+        <!--Game View Controller-->
         <scene sceneID="Qg6-lD-xon">
             <objects>
-                <viewController id="Hcv-SH-tyx" sceneMemberID="viewController">
+                <viewController id="Hcv-SH-tyx" customClass="GameViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="l08-44-tOq"/>
                         <viewControllerLayoutGuide type="bottom" id="yub-bS-71d"/>
@@ -86,22 +86,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1032" height="768"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hint" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kdV-Wa-6Vk">
-                                <rect key="frame" x="82" y="251" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;&lt; Hint Value >>" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ksn-8a-7Fp">
-                                <rect key="frame" x="125" y="251" width="128" height="20"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;&lt; Hint Value >>" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ksn-8a-7Fp">
+                                <rect key="frame" x="20" y="169" width="984" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                                 <color key="textColor" red="0.33932125800000001" green="0.33932125800000001" blue="0.33932125800000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3P-PU-bNT">
-                                <rect key="frame" x="82" y="116" width="35" height="35"/>
+                                <rect key="frame" x="20" y="366" width="45" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="tintColor" red="0.4059863963" green="0.65726591889999997" blue="0.99877649550000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -117,7 +110,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BUz-TS-odf">
-                                <rect key="frame" x="82" y="306" width="35" height="35"/>
+                                <rect key="frame" x="20" y="259" width="45" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="tintColor" red="0.4059863963" green="0.65726591889999997" blue="0.99877649550000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -136,23 +129,29 @@
                                 <size key="shadowOffset" width="2" height="2"/>
                             </label>
                             <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zYj-9G-cEO">
-                                <rect key="frame" x="777" y="325" width="83" height="81"/>
+                                <rect key="frame" x="790" y="607" width="214" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="HintImage">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="buttonHint_click:" destination="Hcv-SH-tyx" eventType="touchDown" id="FvC-TW-QM7"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8VF-Sa-3CN">
-                                <rect key="frame" x="82" y="376" width="83" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8VF-Sa-3CN">
+                                <rect key="frame" x="20" y="608" width="214" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="SCRAMBLE">
+                                <state key="normal" image="ScrambleImage">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="buttonScramble_click:" destination="Hcv-SH-tyx" eventType="touchDown" id="u48-b2-ImI"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Iu-c7-tLf">
-                                <rect key="frame" x="507" y="376" width="61" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Iu-c7-tLf">
+                                <rect key="frame" x="405" y="607" width="215" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="CANCEL">
+                                <state key="normal" image="CancelImage">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -165,6 +164,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="uDh-Fq-rHH"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="buttonCancel" destination="8Iu-c7-tLf" id="NRp-pc-tzb"/>
+                        <outlet property="buttonHint" destination="zYj-9G-cEO" id="Rel-Pr-cb5"/>
+                        <outlet property="buttonSampleQuestion" destination="BUz-TS-odf" id="XE4-1f-ZJp"/>
+                        <outlet property="buttonSampleResult" destination="T3P-PU-bNT" id="XEE-ey-0By"/>
+                        <outlet property="buttonScramble" destination="8VF-Sa-3CN" id="SIQ-Ec-KKh"/>
+                        <outlet property="labelHintValue" destination="Ksn-8a-7Fp" id="KoV-R3-FF6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gEq-mN-U6D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -192,11 +199,13 @@
     </scenes>
     <resources>
         <image name="BackgroundImage" width="1" height="3042"/>
+        <image name="CancelImage" width="215" height="46"/>
         <image name="Credits.png" width="95" height="81"/>
-        <image name="HintImage" width="124" height="116"/>
+        <image name="HintImage" width="214" height="46"/>
         <image name="LogoImage" width="473" height="108"/>
         <image name="PlayImage" width="314" height="88"/>
         <image name="ScoresheetImage" width="154" height="143"/>
+        <image name="ScrambleImage" width="214" height="45"/>
         <image name="TrophyImage" width="116" height="141"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

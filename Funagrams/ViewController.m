@@ -32,7 +32,8 @@
 #if TEST_MODE_DEF
     scoreBoard.currentGameScore = 10;
 #endif
-   
+       
+    // Game center
     ((AppDelegate*)[[UIApplication sharedApplication] delegate]).navController = (UINavigationController*)self.parentViewController;
     [[GCHelper defaultHelper] authenticateLocalUserOnViewController:self setCallbackObject:self withPauseSelector:@selector(authenticationRequired)];
     [[GCHelper defaultHelper] registerListener:self];
