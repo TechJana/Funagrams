@@ -34,5 +34,6 @@ extern NSString* const kLeaderBoardIdentifier;
 - (void)resetAchievements;
 - (void)completeMultipleAchievements:(NSArray*)achievements;
 - (void)registerListener:(id<GKLocalPlayerListener>)listener;
+- (void) showAchievementsOnViewController:(UIViewController*)viewController;
 
 @end

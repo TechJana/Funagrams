@@ -38,6 +38,8 @@
     
     int selectedQuestion;
     int selectedResult;
+    
+    int questionMaxLength;
 }
 
 - (IBAction) buttonHint_click:(id)sender;

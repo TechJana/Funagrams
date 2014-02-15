@@ -213,6 +213,18 @@ static GCHelper *_sharedHelper = nil;
     }];
 }
 
+- (void) showAchievementsOnViewController:(UIViewController*)viewController
+{
+    GKAchievementViewController *achievements = [[GKAchievementViewController alloc] init];
+    if (achievements != nil)
+    {
+        achievements.achievementDelegate = self;
+        achievements.viewState = GKGameCenterViewControllerStateAchievements;
+
+        [viewController presentViewController: achievements animated: YES completion:nil];
+    }
+}
+
 #pragma mark Challenges
 
 - (void)registerListener:(id<GKLocalPlayerListener>)listener

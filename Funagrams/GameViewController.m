@@ -60,17 +60,10 @@
     ViewController* firstViewController = [controllers objectAtIndex:0];
     scoreBoard = firstViewController.gameScoreBoard;
     currentAnagram = [[Anagram alloc] init];
-    
-#if TEST_MODE_DEF
-    currentAnagram.question = @"DORMITORY";
-    currentAnagram.questionRemaining = [currentAnagram.question copy];
-    currentAnagram.result = @"DIRTY ROOM";
-    currentAnagram.hint = @"Dormitory";
-    currentAnagram.level = 1;
-    currentAnagram.levelDescription = @"Level 1";
-#endif
-    
+    questionMaxLength = 0;
+
     [self loadQuestionResultButtons];
+    [self getAnagram];
     [self loadAnagram];
     
     labelScore.text = [NSString stringWithFormat:@"%d ", scoreBoard.currentGameScore];
@@ -228,7 +221,7 @@
         [letters insertObject:cur atIndex:i];
     }
     
-    NSLog(@"LETTERS:: '%@'", letters);
+    NSLog(@"LETTERS:: %@", letters);
     
     for(int i = length - 1; i >= 0; i--){
         int j = arc4random() % (i + 1);
@@ -238,7 +231,7 @@
         [letters replaceObjectAtIndex:i withObject:[letters objectAtIndex:j]];
         [letters replaceObjectAtIndex:j withObject:str_i];
     }
-    NSLog(@"NEW SHUFFLED LETTERS '%@'", letters);
+    NSLog(@"NEW SHUFFLED LETTERS %@", letters);
     
     
     for(int i = 0; i < length; i++){
@@ -253,6 +246,21 @@
     
 }
 
+- (void)getAnagram
+{
+#if TEST_MODE_DEF
+    currentAnagram.question = @"DORMITORY";
+    currentAnagram.questionRemaining = [currentAnagram.question copy];
+    currentAnagram.result = @"DIRTY ROOM";
+    currentAnagram.hint = @"Dormitory";
+    currentAnagram.level = 1;
+    currentAnagram.levelDescription = @"Level 1";
+#endif
+
+    // get Anagram which doesn't exceed questionMaxLength
+    //questionMaxLength;
+}
+
 - (void)loadQuestionResultButtons
 {
     UIButton *buttonIndex;
@@ -263,6 +271,7 @@
     buttonResults = [[NSMutableArray alloc] init];
 
     buttonCount=( screenRect.size.height - (2 * buttonSampleQuestion.frame.origin.x) ) / (buttonSampleQuestion.frame.size.width + buttonSpacingWidth);
+    questionMaxLength = buttonCount;
     
     // CREATE QUESTION BUTTONS
     // Archive the button to unarchive a copy every time
@@ -345,28 +354,35 @@
     //@"▢"
     int indexButton;
 
-    [self loadQuestionRemaining];
-    
-    // make any additional button invisible
-    for (indexButton=currentAnagram.questionRemaining.length; indexButton<buttonQuestions.count; indexButton++)
+    if (currentAnagram.question.length <= questionMaxLength)
     {
-        UIButton *buttonIndex = [buttonQuestions objectAtIndex:indexButton];
-        buttonIndex.hidden = true;
-    }
-    
-    // load answer positioning
-    for (indexButton=0; (indexButton<buttonResults.count && indexButton<currentAnagram.result.length); indexButton++) {
-        if ([currentAnagram.result characterAtIndex:indexButton] == ' ')
+        [self loadQuestionRemaining];
+        
+        // make any additional button invisible
+        for (indexButton=currentAnagram.questionRemaining.length; indexButton<buttonQuestions.count; indexButton++)
+        {
+            UIButton *buttonIndex = [buttonQuestions objectAtIndex:indexButton];
+            buttonIndex.hidden = true;
+        }
+        
+        // load answer positioning
+        for (indexButton=0; (indexButton<buttonResults.count && indexButton<currentAnagram.result.length); indexButton++) {
+            if ([currentAnagram.result characterAtIndex:indexButton] == ' ')
+            {
+                UIButton *buttonIndex = [buttonResults objectAtIndex:indexButton];
+                buttonIndex.hidden = true;
+            }
+        }
+        // make any additional button invisible
+        for ( ; indexButton<buttonResults.count; indexButton++)
         {
             UIButton *buttonIndex = [buttonResults objectAtIndex:indexButton];
             buttonIndex.hidden = true;
         }
     }
-    // make any additional button invisible
-    for ( ; indexButton<buttonResults.count; indexButton++)
+    else
     {
-        UIButton *buttonIndex = [buttonResults objectAtIndex:indexButton];
-        buttonIndex.hidden = true;
+        NSLog(@"Error 10001: Anagram's length is more than '%d' for this device", questionMaxLength);
     }
     
     // load hint

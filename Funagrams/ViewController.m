@@ -140,6 +140,10 @@
     }*/
 }
 
+- (IBAction)showAchievement:(id)sender {
+    [[GCHelper defaultHelper] showAchievementsOnViewController:self];
+}
+
 - (IBAction)showLeaderboard:(id)sender {
     [[GCHelper defaultHelper] showLeaderboardOnViewController:self];
 }
