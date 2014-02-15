@@ -19,7 +19,8 @@
 {
     // Override point for customization after application launch.
     [InAppPurchase sharedInstance];
-    
+    [self playBackgroundMusic];
+        
     return YES;
 }
 							
@@ -49,6 +50,19 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
+- (void)playBackgroundMusic
+{
+    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"Vivaldi - Spring from Four Seasons" ofType:@"mp3"];
+    NSURL *soundFileURL = [NSURL fileURLWithPath:soundFilePath];
+    player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundFileURL error:nil];
+    player.numberOfLoops = -1; //infinite
+    //player.volume = 100;
+    
+    [player play];
+}
+
 
 //1
 - (NSManagedObjectContext *) managedObjectContext {

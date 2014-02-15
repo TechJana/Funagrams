@@ -10,6 +10,8 @@
 		122BCF5C18A203BE00AF14E1 /* GCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 122BCF5B18A203BE00AF14E1 /* GCHelper.m */; };
 		122E8A2618A9CF2F004668CC /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 122E8A2518A9CF2F004668CC /* IAPHelper.m */; };
 		122E8A2918A9D10E004668CC /* InAppPurchase.m in Sources */ = {isa = PBXBuildFile; fileRef = 122E8A2818A9D10E004668CC /* InAppPurchase.m */; };
+		123EDC8418AF3D2C00F2712F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 123EDC8318AF3D2C00F2712F /* AudioToolbox.framework */; };
+		123EDC8618AF3F8E00F2712F /* Vivaldi - Spring from Four Seasons.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 123EDC8518AF3F8E00F2712F /* Vivaldi - Spring from Four Seasons.mp3 */; };
 		12AE7D1D188F8E5B00E00848 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AE7D1C188F8E5B00E00848 /* Foundation.framework */; };
 		12AE7D1F188F8E5B00E00848 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AE7D1E188F8E5B00E00848 /* CoreGraphics.framework */; };
 		12AE7D21188F8E5B00E00848 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AE7D20188F8E5B00E00848 /* UIKit.framework */; };
@@ -52,6 +54,8 @@
 		122E8A2518A9CF2F004668CC /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
 		122E8A2718A9D10E004668CC /* InAppPurchase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InAppPurchase.h; sourceTree = "<group>"; };
 		122E8A2818A9D10E004668CC /* InAppPurchase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InAppPurchase.m; sourceTree = "<group>"; };
+		123EDC8318AF3D2C00F2712F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		123EDC8518AF3F8E00F2712F /* Vivaldi - Spring from Four Seasons.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Vivaldi - Spring from Four Seasons.mp3"; sourceTree = SOURCE_ROOT; };
 		12AE7D19188F8E5B00E00848 /* Funagrams.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Funagrams.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12AE7D1C188F8E5B00E00848 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		12AE7D1E188F8E5B00E00848 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -90,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				123EDC8418AF3D2C00F2712F /* AudioToolbox.framework in Frameworks */,
 				12C06F9618A8A6F80030942C /* StoreKit.framework in Frameworks */,
 				8AC7741618A88FB9007F226D /* CoreData.framework in Frameworks */,
 				12C06F9218A728890030942C /* iAd.framework in Frameworks */,
@@ -146,6 +151,7 @@
 		12AE7D1B188F8E5B00E00848 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				123EDC8318AF3D2C00F2712F /* AudioToolbox.framework */,
 				12C06F9518A8A6F80030942C /* StoreKit.framework */,
 				8AC7741518A88FB9007F226D /* CoreData.framework */,
 				12C06F9118A728890030942C /* iAd.framework */,
@@ -182,6 +188,7 @@
 		12AE7D23188F8E5B00E00848 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				123EDC8518AF3F8E00F2712F /* Vivaldi - Spring from Four Seasons.mp3 */,
 				12AE7D24188F8E5B00E00848 /* Funagrams-Info.plist */,
 				12AE7D25188F8E5B00E00848 /* InfoPlist.strings */,
 				12AE7D28188F8E5B00E00848 /* main.m */,
@@ -310,6 +317,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				123EDC8618AF3F8E00F2712F /* Vivaldi - Spring from Four Seasons.mp3 in Resources */,
 				12AE7D33188F8E5B00E00848 /* Main_iPad.storyboard in Resources */,
 				12AE7D38188F8E5B00E00848 /* Images.xcassets in Resources */,
 				12AE7D30188F8E5B00E00848 /* Main_iPhone.storyboard in Resources */,

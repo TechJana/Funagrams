@@ -10,7 +10,6 @@
 #import "ScoreBoard.h"
 #import <GameKit/GameKit.h>
 #import "GCHelper.h"
-//#import "GameCenterManager.h"
 
 @interface ViewController : UIViewController <GKLocalPlayerListener, UIAlertViewDelegate, GKLeaderboardViewControllerDelegate, GKAchievementViewControllerDelegate>
 {
