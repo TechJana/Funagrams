@@ -13,6 +13,7 @@
 @synthesize level;
 @synthesize levelDescription;
 @synthesize question;
+@synthesize questionRemaining;
 @synthesize result;
 @synthesize hint;
 
@@ -24,6 +25,7 @@
     {
         // initialize here
         _question = @"";
+        _questionRemaining = @"";
         _result = @"";
         _hint = @"";
         _levelDescription = @"";

@@ -62,11 +62,12 @@
     currentAnagram = [[Anagram alloc] init];
     
 #if TEST_MODE_DEF
-    currentAnagram.question = @"DEULLIFLUARP";
-    currentAnagram.result = @"Pleural fluid";
-    currentAnagram.hint = @"Liquid in human anatomy";
-    currentAnagram.level = 5;
-    currentAnagram.levelDescription = @"Level 5";
+    currentAnagram.question = @"DORMITORY";
+    currentAnagram.questionRemaining = [currentAnagram.question copy];
+    currentAnagram.result = @"DIRTY ROOM";
+    currentAnagram.hint = @"Dormitory";
+    currentAnagram.level = 1;
+    currentAnagram.levelDescription = @"Level 1";
 #endif
     
     [self loadQuestionResultButtons];
@@ -203,19 +204,21 @@
     
 }
 
-- (IBAction)buttonScramble_click:(id)sender {
+- (IBAction)buttonScramble_click:(id)sender
+{
+    [self getQuestionRemaining];
     
     //Scramble the letters in the Question
-    currentAnagram.question = [self doScramble:currentAnagram.result];
+    currentAnagram.questionRemaining = [self doScramble:currentAnagram.questionRemaining];
     
     //Load the scrambled letters as Buttons
-    [self loadAnagram];
+    [self loadQuestionRemaining];
 }
 
 - (NSString*) doScramble:(NSString*)scrambledWord{
     NSString * result = @"";
     scrambledWord = [scrambledWord stringByReplacingOccurrencesOfString:@" " withString:@""];
-    scrambledWord = [scrambledWord uppercaseString];
+    //scrambledWord = [scrambledWord uppercaseString];
     int length = [scrambledWord length];
     NSMutableArray *letters = [NSMutableArray arrayWithCapacity:length];
     
@@ -225,7 +228,7 @@
         [letters insertObject:cur atIndex:i];
     }
     
-    NSLog(@"LETTERS:: %@", letters);
+    NSLog(@"LETTERS:: '%@'", letters);
     
     for(int i = length - 1; i >= 0; i--){
         int j = arc4random() % (i + 1);
@@ -235,14 +238,16 @@
         [letters replaceObjectAtIndex:i withObject:[letters objectAtIndex:j]];
         [letters replaceObjectAtIndex:j withObject:str_i];
     }
-    NSLog(@"NEW SHUFFLED LETTERS %@", letters);
+    NSLog(@"NEW SHUFFLED LETTERS '%@'", letters);
     
     
     for(int i = 0; i < length; i++){
         result = [result stringByAppendingString:[letters objectAtIndex:i]];
     }
     
-    NSLog(@"Final string: %@", result);
+    result = [NSString stringWithFormat:@"%@%*s", result, currentAnagram.question.length-result.length, ""];;
+    
+    NSLog(@"Final string: '%@'", result);
     
     return result;
     
@@ -323,18 +328,27 @@
     
 }
 
-- (void)loadAnagram
+- (void)loadQuestionRemaining
 {
     //@"▢"
     int indexButton;
     
     // load question
-    for (indexButton=0; (indexButton<buttonQuestions.count && indexButton<currentAnagram.question.length); indexButton++) {
+    for (indexButton=0; (indexButton<buttonQuestions.count && indexButton<currentAnagram.questionRemaining.length); indexButton++) {
         UIButton *buttonIndex = [buttonQuestions objectAtIndex:indexButton];
-        [buttonIndex setTitle:[currentAnagram.question substringWithRange:NSMakeRange(indexButton, 1)] forState:UIControlStateNormal];
+        [buttonIndex setTitle:[currentAnagram.questionRemaining substringWithRange:NSMakeRange(indexButton, 1)] forState:UIControlStateNormal];
     }
+}
+
+- (void)loadAnagram
+{
+    //@"▢"
+    int indexButton;
+
+    [self loadQuestionRemaining];
+    
     // make any additional button invisible
-    for ( ; indexButton<buttonQuestions.count; indexButton++)
+    for (indexButton=currentAnagram.questionRemaining.length; indexButton<buttonQuestions.count; indexButton++)
     {
         UIButton *buttonIndex = [buttonQuestions objectAtIndex:indexButton];
         buttonIndex.hidden = true;
@@ -357,6 +371,23 @@
     
     // load hint
     labelHintValue.text = currentAnagram.hint;
+}
+
+- (void)getQuestionRemaining
+{
+    int indexButton;
+    NSString *questionValue=@"";
+    UIButton *buttonThis;
+    
+    // concatenate the values in result button
+    for (indexButton=0; indexButton<buttonQuestions.count; indexButton++) {
+        buttonThis = (UIButton *)[buttonQuestions objectAtIndex:indexButton];
+        if (![buttonThis.titleLabel.text  isEqual: @""] && buttonThis.titleLabel.text != nil) {
+            questionValue = [questionValue stringByAppendingString:buttonThis.titleLabel.text];
+        }
+    }
+    
+    currentAnagram.questionRemaining = questionValue;
 }
 
 - (BOOL)verifyResult

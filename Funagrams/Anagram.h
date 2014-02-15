@@ -14,6 +14,7 @@
     NSString *_hint;
     NSString *_result;
     NSString *_levelDescription;
+    NSString *_questionRemaining;
     int _level;
 }
 
@@ -21,6 +22,7 @@
 @property NSString *hint;
 @property NSString *result;
 @property NSString *levelDescription;
+@property NSString *questionRemaining;
 @property int level;
 
 @end
