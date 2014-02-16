@@ -60,7 +60,8 @@
     ViewController* firstViewController = [controllers objectAtIndex:0];
     scoreBoard = firstViewController.gameScoreBoard;
     currentAnagram = [[Anagram alloc] init];
-    questionMaxLength = 0;
+    questionMaxLength = 0;  // set max. length to 0
+    hintButtonChar = -1;    // set invalid position
 
     [self loadQuestionResultButtons];
     [self getAnagram];
@@ -79,12 +80,7 @@
 
 - (IBAction)buttonHint_click:(id)sender
 {
-    [self loadHint];
-    
-    if (labelHint.hidden == true) {
-        labelHint.hidden = false;
-        labelHintValue.hidden = false;
-    }
+    [self showHint];
 }
 
 - (IBAction)buttonQuestions_click:(id)sender
@@ -103,6 +99,8 @@
             UIButton *buttonResult = (UIButton *)[buttonResults objectAtIndex:selectedResult];
             NSString *resultText = buttonResult.titleLabel.text;
             [buttonResult setTitle:buttonThis.titleLabel.text forState:UIControlStateNormal];
+            // set the result in the user result for verification later
+            currentAnagram.userResult = [currentAnagram.userResult stringByReplacingCharactersInRange:NSMakeRange(selectedResult, 1) withString:buttonThis.titleLabel.text];
             [buttonThis setTitle:resultText forState:UIControlStateNormal];
             [buttonResult setNeedsDisplay];
             
@@ -154,6 +152,8 @@
             UIButton *buttonQuestion = (UIButton *)[buttonQuestions objectAtIndex:selectedQuestion];
             NSString *resultText = buttonQuestion.titleLabel.text;
             [buttonQuestion setTitle:buttonThis.titleLabel.text forState:UIControlStateNormal];
+            // set the result in the user result for verification later
+            currentAnagram.userResult = [currentAnagram.userResult stringByReplacingCharactersInRange:NSMakeRange((int)[buttonResults indexOfObject:buttonThis], 1) withString:resultText];
             [buttonThis setTitle:resultText forState:UIControlStateNormal];
             [buttonThis setNeedsDisplay];
             
@@ -238,7 +238,7 @@
         result = [result stringByAppendingString:[letters objectAtIndex:i]];
     }
     
-    result = [NSString stringWithFormat:@"%@%*s", result, currentAnagram.question.length-result.length, ""];;
+    result = [NSString stringWithFormat:@"%@%*s", result, currentAnagram.question.length-result.length, ""];
     
     NSLog(@"Final string: '%@'", result);
     
@@ -255,7 +255,11 @@
     currentAnagram.hint = @"Dormitory";
     currentAnagram.level = 1;
     currentAnagram.levelDescription = @"Level 1";
+    currentAnagram.hintPercentile = 90.0/100.0;
+    currentAnagram.hintsProvided = 0;
+    currentAnagram.maxHintCount = currentAnagram.question.length * currentAnagram.hintPercentile;
 #endif
+    currentAnagram.userResult = [NSString stringWithFormat:@"%*s", currentAnagram.result.length, ""];
 
     // get Anagram which doesn't exceed questionMaxLength
     //questionMaxLength;
@@ -330,11 +334,6 @@
     buttonThis.layer.borderWidth = 1;
     buttonThis.layer.borderColor = [UIColor blueColor].CGColor;
     [buttonThis.titleLabel setFont:[UIFont systemFontOfSize:25]];
-}
-
-- (void)loadHint
-{
-    
 }
 
 - (void)loadQuestionRemaining
@@ -412,6 +411,7 @@
     NSString *resultValue=@"", *resultAnswer=@"";
     UIButton *buttonThis;
     
+    /*
     // concatenate the values in result button
     for (indexButton=0; indexButton<buttonResults.count; indexButton++) {
         buttonThis = (UIButton *)[buttonResults objectAtIndex:indexButton];
@@ -419,8 +419,10 @@
             resultValue = [resultValue stringByAppendingString:buttonThis.titleLabel.text];
         }
     }
+     */
     
     // clean-up to compare
+    resultValue = currentAnagram.userResult;
     resultValue = [resultValue stringByReplacingOccurrencesOfString:@" " withString:@""];
     resultValue = [resultValue uppercaseString];
     
@@ -431,7 +433,7 @@
     
     if ([resultAnswer isEqualToString:resultValue])
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"you must be smart"
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"SMART"
                                                         message:@"You cracked it!!!"
                                                        delegate:nil
                                               cancelButtonTitle:@"hi5"
@@ -443,6 +445,96 @@
     else
     {
         return FALSE;
+    }
+}
+
+- (void)fadeOffHint:(id)sender
+{
+    // fade off the Hint selection
+    if (hintButtonChar != -1)
+    {
+        // clear pervious selection
+        UIButton *previousSelection = (UIButton *)[buttonResults objectAtIndex:hintButtonChar];
+        [previousSelection setBackgroundColor:nil];
+        
+        hintButtonChar = -1;
+    }
+}
+
+- (void)showHint
+{
+    // if the hint is already visible, turn it off
+    if (hintButtonChar != -1)
+    {
+        [self fadeOffHint:nil];
+    }
+    
+    // if the hints provided exceeds max hint to show, stop this process
+    if (currentAnagram.hintsProvided >= currentAnagram.maxHintCount)
+    {
+        buttonHint.enabled = FALSE;
+    }
+    
+    int indexButton;
+    NSString *currentChar;
+    UIButton *buttonResult, *buttonQuestion;
+    NSMutableArray *indexArray = [[NSMutableArray alloc] init];
+    
+    // identify a random character which is not selected right by user
+    for (indexButton=0; indexButton<currentAnagram.result.length; indexButton++)
+    {
+        buttonResult = (UIButton *)[buttonResults objectAtIndex:indexButton];
+        if (![buttonResult.titleLabel.text  isEqual: @""] && buttonResult.titleLabel.text != nil) {
+            currentChar = [NSString stringWithFormat:@"%c", [currentAnagram.result characterAtIndex:indexButton]];
+            if (![buttonResult.titleLabel.text isEqualToString:currentChar]) {
+                [indexArray addObject:[NSNumber numberWithInt:indexButton]];
+            }
+        }
+    }
+
+    // only if there is pending invalid result character, suggest answer
+    if (indexArray.count > 0)
+    {
+        NSNumber *tempValue = (NSNumber *)[indexArray objectAtIndex:(arc4random() % (indexArray.count + 0))];
+        hintButtonChar = [tempValue intValue];
+        
+        // remove the random selection from the Question/Result from incorrect position
+        NSString *newResult = [NSString stringWithFormat:@"%c", [currentAnagram.result characterAtIndex:hintButtonChar]];
+        for (indexButton=0; indexButton<buttonQuestions.count; indexButton++)
+        {
+            buttonQuestion = (UIButton *)[buttonQuestions objectAtIndex:indexButton];
+            if (![buttonQuestion.titleLabel.text  isEqual: @""] && buttonQuestion.titleLabel.text != nil) {
+                if ([buttonQuestion.titleLabel.text isEqualToString:newResult]) {   // set the question as the current content of result button
+                    [buttonQuestion setTitle:((UIButton *)[buttonResults objectAtIndex:hintButtonChar]).titleLabel.text forState:UIControlStateNormal];
+                    break;
+                }
+            }
+        }
+        
+        // set the right character for the random selection
+        buttonResult = (UIButton *)[buttonResults objectAtIndex:hintButtonChar];
+        [buttonResult setTitle:newResult forState:UIControlStateNormal];
+        // set the result in the user result for verification later
+        currentAnagram.userResult = [currentAnagram.userResult stringByReplacingCharactersInRange:NSMakeRange(hintButtonChar, 1) withString:newResult];
+
+        
+        // highlight the random character with specific color
+        UIButton *previousSelection = (UIButton *)[buttonResults objectAtIndex:hintButtonChar];
+        [previousSelection setBackgroundColor:[UIColor greenColor]];
+        
+        [NSTimer scheduledTimerWithTimeInterval:4 target:self selector:@selector(fadeOffHint:) userInfo:nil repeats:NO];
+
+        currentAnagram.hintsProvided = currentAnagram.hintsProvided + 1;
+        
+        // if the hints provided exceeds max hint to show, stop this process
+        if (currentAnagram.hintsProvided >= currentAnagram.maxHintCount)
+        {
+            buttonHint.enabled = FALSE;
+        }
+    }
+    else
+    {
+        buttonHint.enabled = FALSE;
     }
 }
 

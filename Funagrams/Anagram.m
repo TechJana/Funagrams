@@ -16,6 +16,10 @@
 @synthesize questionRemaining;
 @synthesize result;
 @synthesize hint;
+@synthesize hintPercentile;
+@synthesize maxHintCount;
+@synthesize hintsProvided;
+@synthesize userResult;
 
 - (id) init
 {
@@ -30,6 +34,10 @@
         _hint = @"";
         _levelDescription = @"";
         _level = -1;
+        _hintPercentile = 1;
+        _maxHintCount = 1;
+        _hintsProvided = 0;
+        _userResult = @"";
     }
     
     return self;
