@@ -142,7 +142,16 @@
                                 </state>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="&lt;&lt; score >>" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUH-3B-CjQ">
-                                <rect key="frame" x="238" y="86" width="591" height="27"/>
+                                <rect key="frame" x="531" y="83" width="424" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.94901960780000005" green="0.14180239750000001" blue="0.37976926020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.84598395469999998" green="0.85570790819999998" blue="0.85570790819999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="2" height="2"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;&lt; level >>" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYX-M7-uJG">
+                                <rect key="frame" x="30" y="83" width="424" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.94901960780000005" green="0.14180239750000001" blue="0.37976926020000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -200,6 +209,7 @@
                         <outlet property="buttonSampleResult" destination="T3P-PU-bNT" id="XEE-ey-0By"/>
                         <outlet property="buttonScramble" destination="8VF-Sa-3CN" id="SIQ-Ec-KKh"/>
                         <outlet property="labelHintValue" destination="Ksn-8a-7Fp" id="KoV-R3-FF6"/>
+                        <outlet property="labelLevel" destination="iYX-M7-uJG" id="OIu-Je-17y"/>
                         <outlet property="labelScore" destination="LUH-3B-CjQ" id="RV8-Ax-GMS"/>
                     </connections>
                 </viewController>

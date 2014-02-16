@@ -23,6 +23,7 @@
 @synthesize labelHintValue;
 @synthesize buttonSampleQuestion;
 @synthesize buttonSampleResult;
+@synthesize labelLevel;
 //@synthesize gameCenterManager;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -384,8 +385,8 @@
         NSLog(@"Error 10001: Anagram's length is more than '%d' for this device", questionMaxLength);
     }
     
-    // load hint
-    labelHintValue.text = currentAnagram.hint;
+    labelHintValue.text = currentAnagram.hint;  // load hint
+    labelLevel.text = currentAnagram.levelDescription;  // load level description
 }
 
 - (void)getQuestionRemaining

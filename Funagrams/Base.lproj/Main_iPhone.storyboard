@@ -100,12 +100,21 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="&lt;&lt; score >>" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODo-bT-5rm">
-                                <rect key="frame" x="20" y="27" width="528" height="27"/>
+                                <rect key="frame" x="268" y="27" width="280" height="27"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.94901960780000005" green="0.14180239750000001" blue="0.37976926020000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.84598395466140996" green="0.85570790816326525" blue="0.85570790816326525" alpha="1" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="2" height="2"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;&lt; level >>" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdg-0F-NoM">
+                                <rect key="frame" x="20" y="27" width="228" height="27"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.94901960780000005" green="0.14180239750000001" blue="0.37976926020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.84598395469999998" green="0.85570790819999998" blue="0.85570790819999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <size key="shadowOffset" width="2" height="2"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIk-Li-SUb">
@@ -183,12 +192,10 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ODo-bT-5rm" secondAttribute="trailing" constant="20" id="I01-6d-EE5"/>
                             <constraint firstItem="XOa-wv-BQq" firstAttribute="leading" secondItem="guw-iY-4XT" secondAttribute="leading" constant="20" id="MtJ-SD-QQd"/>
-                            <constraint firstItem="ODo-bT-5rm" firstAttribute="leading" secondItem="guw-iY-4XT" secondAttribute="leading" constant="20" id="Ny7-B3-n1v"/>
                             <constraint firstAttribute="trailing" secondItem="Gjb-NR-Aw8" secondAttribute="trailing" constant="20" id="UQN-2V-DNA"/>
                             <constraint firstItem="Gjb-NR-Aw8" firstAttribute="leading" secondItem="guw-iY-4XT" secondAttribute="leading" constant="20" id="WVU-cF-uXm"/>
                             <constraint firstAttribute="centerX" secondItem="zIk-Li-SUb" secondAttribute="centerX" id="i3U-fP-Zg3"/>
                             <constraint firstAttribute="trailing" secondItem="mSu-29-RHp" secondAttribute="trailing" constant="20" id="jh0-X7-uCx"/>
-                            <constraint firstAttribute="centerX" secondItem="ODo-bT-5rm" secondAttribute="centerX" id="qhk-b5-Wzd"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
@@ -201,6 +208,7 @@
                         <outlet property="buttonSampleResult" destination="BzW-Jz-efx" id="Seo-vn-mfB"/>
                         <outlet property="buttonScramble" destination="XOa-wv-BQq" id="gon-Gq-3Ki"/>
                         <outlet property="labelHintValue" destination="Gjb-NR-Aw8" id="sq8-71-Ren"/>
+                        <outlet property="labelLevel" destination="gdg-0F-NoM" id="kbE-eG-MMp"/>
                         <outlet property="labelScore" destination="ODo-bT-5rm" id="c0D-Gu-A5W"/>
                     </connections>
                 </viewController>

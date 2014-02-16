@@ -27,6 +27,7 @@
     IBOutlet UILabel *labelHintValue;
     IBOutlet UIButton *buttonSampleQuestion;
     IBOutlet UIButton *buttonSampleResult;
+    IBOutlet UILabel *labelLevel;
     
     ScoreBoard *scoreBoard;
     Anagram *currentAnagram;
@@ -64,6 +65,7 @@
 @property (retain, nonatomic) IBOutlet UILabel *labelHintValue;
 @property (retain, nonatomic) IBOutlet UIButton *buttonSampleQuestion;
 @property (retain, nonatomic) IBOutlet UIButton *buttonSampleResult;
+@property (retain, nonatomic) IBOutlet UILabel *labelLevel;
 //@property (nonatomic, retain) GameCenterManager *gameCenterManager;
 
 @end
