@@ -11,10 +11,8 @@
 #import "Anagram.h"
 #import <QuartzCore/QuartzCore.h>
 #import <iAd/iAd.h>
-/*
-#import <GameKit/GameKit.h>
-#import "GameCenterManager.h"
- */
+#import "GCHelper.h"
+
 
 @interface GameViewController : UIViewController <ADBannerViewDelegate> /*<UIActionSheetDelegate, GKLeaderboardViewControllerDelegate, GKAchievementViewControllerDelegate, GameCenterManagerDelegate>*/
 {

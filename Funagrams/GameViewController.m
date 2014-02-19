@@ -259,6 +259,7 @@
     currentAnagram.hintPercentile = 90.0/100.0;
     currentAnagram.hintsProvided = 0;
     currentAnagram.maxHintCount = currentAnagram.question.length * currentAnagram.hintPercentile;
+    currentAnagram.levelMaxScore = 1500;
 #endif
     currentAnagram.userResult = [NSString stringWithFormat:@"%*s", currentAnagram.result.length, ""];
 
@@ -382,7 +383,7 @@
     }
     else
     {
-        NSLog(@"Error 10001: Anagram's length is more than '%d' for this device", questionMaxLength);
+        NSLog(NSLocalizedString(@"Error 10001", nil), questionMaxLength);
     }
     
     labelHintValue.text = currentAnagram.hint;  // load hint
@@ -408,19 +409,7 @@
 
 - (BOOL)verifyResult
 {
-    int indexButton;
     NSString *resultValue=@"", *resultAnswer=@"";
-    UIButton *buttonThis;
-    
-    /*
-    // concatenate the values in result button
-    for (indexButton=0; indexButton<buttonResults.count; indexButton++) {
-        buttonThis = (UIButton *)[buttonResults objectAtIndex:indexButton];
-        if (![buttonThis.titleLabel.text  isEqual: @""] && buttonThis.titleLabel.text != nil) {
-            resultValue = [resultValue stringByAppendingString:buttonThis.titleLabel.text];
-        }
-    }
-     */
     
     // clean-up to compare
     resultValue = currentAnagram.userResult;
@@ -434,10 +423,14 @@
     
     if ([resultAnswer isEqualToString:resultValue])
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"SMART"
-                                                        message:@"You cracked it!!!"
+        [self scoreThisGame];
+        labelScore.text = [NSString stringWithFormat:@"%d", scoreBoard.currentGameScore];
+        [self reportScore];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"GameOverTitle", nil)
+                                                        message:NSLocalizedString(@"GameOverDescription", nil)
                                                        delegate:nil
-                                              cancelButtonTitle:@"hi5"
+                                              cancelButtonTitle:NSLocalizedString(@"GameOverButtonTitle", nil)
                                               otherButtonTitles:nil];
         [alert show];
         
@@ -447,6 +440,19 @@
     {
         return FALSE;
     }
+}
+
+- (void)reportScore
+{
+    [[GCHelper defaultHelper] reportScore:scoreBoard.currentGameScore forLeaderboardID:kLeaderBoardIdentifier];
+}
+
+- (void)scoreThisGame
+{
+    // score = (1 - hintsProvided/maxHintCount) * levelMaxScore
+    int score = 0;
+    score = (1.0 - (currentAnagram.hintsProvided / currentAnagram.maxHintCount)) * currentAnagram.levelMaxScore;
+    scoreBoard.currentGameScore = score;
 }
 
 - (void)fadeOffHint:(id)sender

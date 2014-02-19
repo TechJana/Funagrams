@@ -11,6 +11,7 @@
 
 //constants
 extern NSString* const kLeaderBoardIdentifier;
+extern NSString* const kAchievementLevel1;
 
 @interface GCHelper : NSObject<GKGameCenterControllerDelegate, GKChallengeListener> {
     BOOL gameCenterAvailable;

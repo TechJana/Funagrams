@@ -20,6 +20,7 @@
 @synthesize maxHintCount;
 @synthesize hintsProvided;
 @synthesize userResult;
+@synthesize levelMaxScore;
 
 - (id) init
 {
@@ -38,6 +39,7 @@
         _maxHintCount = 1;
         _hintsProvided = 0;
         _userResult = @"";
+        _levelMaxScore = 0;
     }
     
     return self;

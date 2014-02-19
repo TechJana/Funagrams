@@ -20,6 +20,7 @@
     int _maxHintCount;
     int _hintsProvided;
     NSString *_userResult;
+    int _levelMaxScore;
 }
 
 @property NSString *question;
@@ -32,5 +33,6 @@
 @property int maxHintCount;
 @property int hintsProvided;
 @property NSString *userResult;
+@property int levelMaxScore;
 
 @end

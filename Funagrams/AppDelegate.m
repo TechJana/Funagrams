@@ -54,7 +54,7 @@
 
 - (void)playBackgroundMusic
 {
-    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"Vivaldi - Spring from Four Seasons" ofType:@"mp3"];
+    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:NSLocalizedString(@"BackgroundMusicFileName", nil) ofType:NSLocalizedString(@"BackgroundMusicFileType", nil)];
     NSURL *soundFileURL = [NSURL fileURLWithPath:soundFilePath];
     player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundFileURL error:nil];
     player.numberOfLoops = -1; //infinite
