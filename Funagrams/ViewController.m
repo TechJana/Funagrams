@@ -44,7 +44,7 @@
     [_priceFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Restore" style:UIBarButtonItemStyleBordered target:self action:@selector(restoreTapped:)];
     
-    // Show something once when the application lauch
+    // Show something once when the application lauch after installation
     if (![@"1" isEqualToString:[[NSUserDefaults standardUserDefaults]
                                 objectForKey:@"Avalue"]]) {
         [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:@"Avalue"];

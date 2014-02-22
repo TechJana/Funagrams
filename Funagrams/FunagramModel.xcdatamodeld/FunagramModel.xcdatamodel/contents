@@ -21,11 +21,11 @@
     <entity name="Player" syncable="YES"/>
     <entity name="Score" syncable="YES"/>
     <elements>
-        <element name="Anagram" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Hint" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Level" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Mode" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Player" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Score" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Anagram" positionX="0" positionY="0" width="128" height="90"/>
+        <element name="Hint" positionX="0" positionY="0" width="128" height="75"/>
+        <element name="Level" positionX="0" positionY="0" width="128" height="75"/>
+        <element name="Mode" positionX="0" positionY="0" width="128" height="90"/>
+        <element name="Player" positionX="0" positionY="0" width="128" height="45"/>
+        <element name="Score" positionX="0" positionY="0" width="128" height="45"/>
     </elements>
 </model>

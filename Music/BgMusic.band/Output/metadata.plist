@@ -11,17 +11,17 @@
 	<key>com_apple_garageband_metadata_machine</key>
 	<string>x86_64</string>
 	<key>com_apple_garageband_metadata_mediaTrackType</key>
-	<string>Undefined</string>
+	<string>Movie Track</string>
 	<key>com_apple_garageband_metadata_numberOfArrangeTracks</key>
-	<integer>7</integer>
+	<integer>3</integer>
 	<key>com_apple_garageband_metadata_numberOfRITracks</key>
-	<integer>0</integer>
+	<integer>2</integer>
 	<key>com_apple_garageband_metadata_numberOfSITracks</key>
-	<integer>7</integer>
+	<integer>1</integer>
 	<key>com_apple_garageband_metadata_parentalAdvisory</key>
 	<string>None</string>
 	<key>com_apple_garageband_metadata_songDuration</key>
-	<real>10</real>
+	<real>11.5</real>
 	<key>com_apple_garageband_metadata_songGender</key>
 	<string>major</string>
 	<key>com_apple_garageband_metadata_songKey</key>
