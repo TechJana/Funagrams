@@ -29,7 +29,9 @@
     
     // Core Data Model
     NSManagedObjectContext *context = [self managedObjectContext];
-#if TEST_MODE_DEF
+    NSError *error;
+
+#if TEST_MODE_DEF_1
     Modes *modes = [NSEntityDescription
                     insertNewObjectForEntityForName:@"Modes"
                     inManagedObjectContext:context];
@@ -84,7 +86,6 @@
     games.anagram = anagrams;
     games.score = scores;
     
-    NSError *error;
     if (![context save:&error])
     {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
@@ -179,8 +180,32 @@
     if (_persistentStoreCoordinator != nil) {
         return _persistentStoreCoordinator;
     }
+    
     NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory]
                                                stringByAppendingPathComponent: @"Funagrams.sqlite"]];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[storeUrl path]]) {
+        NSURL *targetUrl = [storeUrl URLByDeletingPathExtension];
+        NSURL *preloadURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Funagrams" ofType:@"sqlite"]];
+        NSError* err = nil;
+        
+        if (![[NSFileManager defaultManager] copyItemAtURL:preloadURL toURL:[targetUrl URLByAppendingPathExtension:@"sqlite"] error:&err]) {
+            NSLog(@"Oops, could copy preloaded data");
+        }
+        
+        preloadURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Funagrams" ofType:@"sqlite-shm"]];
+        err = nil;
+        if (![[NSFileManager defaultManager] copyItemAtURL:preloadURL toURL:[targetUrl URLByAppendingPathExtension:@"sqlite-shm"] error:&err]) {
+            NSLog(@"Oops, could copy preloaded sqlite-shm file");
+        }
+        
+        preloadURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Funagrams" ofType:@"sqlite-wal"]];
+        err = nil;
+        if (![[NSFileManager defaultManager] copyItemAtURL:preloadURL toURL:[targetUrl URLByAppendingPathExtension:@"sqlite-wal"] error:&err]) {
+            NSLog(@"Oops, could copy preloaded sqlite-wal file");
+        }
+    }
+    
     NSError *error = nil;
     NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
     						 [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
