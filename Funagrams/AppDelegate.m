@@ -20,7 +20,80 @@
     // Override point for customization after application launch.
     [InAppPurchase sharedInstance];
     [self playBackgroundMusic];
-        
+    
+    // Core Data Model
+    NSManagedObjectContext *context = [self managedObjectContext];
+#if TEST_MODE_DEF
+   NSManagedObject *levels = [NSEntityDescription
+                               insertNewObjectForEntityForName:@"Levels"
+                               inManagedObjectContext:context];
+    NSManagedObject *anagrams = [NSEntityDescription
+                                 insertNewObjectForEntityForName:@"Anagrams"
+                                 inManagedObjectContext:context];
+    NSManagedObject *modes = [NSEntityDescription
+                              insertNewObjectForEntityForName:@"Modes"
+                              inManagedObjectContext:context];
+    NSManagedObject *games = [NSEntityDescription
+                              insertNewObjectForEntityForName:@"Games"
+                              inManagedObjectContext:context];
+    NSManagedObject *scores = [NSEntityDescription
+                              insertNewObjectForEntityForName:@"Scores"
+                              inManagedObjectContext:context];
+
+    [levels setValue:[NSNumber numberWithInt:1] forKey:@"levelId"];
+    [levels setValue:@"Level 1" forKey:@"levelDescription"];
+
+    [modes setValue:[NSNumber numberWithInt:1] forKey:@"modeId"];
+    [modes setValue:@"Beginner" forKey:@"modeDescription"];
+    [modes setValue:[NSNumber numberWithFloat:0.90] forKey:@"hintsPercentile"];
+
+    [anagrams setValue:[NSNumber numberWithInt:1] forKey:@"anagramId"];
+    [anagrams setValue:@"DORMITORY" forKey:@"questionText"];
+    [anagrams setValue:@"DIRTY ROOM" forKey:@"answerText"];
+
+    [games setValue:[NSNumber numberWithInt:1] forKey:@"gameId"];
+    [games setValue:[NSNumber numberWithInt:1] forKey:@"modeId"];
+    [games setValue:[NSNumber numberWithInt:1] forKey:@"levelId"];
+    [games setValue:[NSNumber numberWithInt:1] forKey:@"anagramId"];
+    [games setValue:[NSNumber numberWithInt:1000] forKey:@"maxScore"];
+
+    [scores setValue:[NSNumber numberWithInt:1] forKey:@"scoreId"];
+    [scores setValue:[NSNumber numberWithInt:1] forKey:@"gameId"];
+    [scores setValue:[NSNumber numberWithInt:1] forKey:@"score"];
+
+    [modes setValue:games forKey:@"games"];
+    [levels setValue:games forKey:@"games"];
+    [anagrams setValue:games forKey:@"games"];
+    [scores setValue:games forKey:@"game"];
+
+    [games setValue:modes forKey:@"mode"];
+    [games setValue:levels forKey:@"level"];
+    [games setValue:anagrams forKey:@"anagram"];
+    [games setValue:scores forKey:@"score"];
+    
+    NSError *error;
+    if (![context save:&error])
+    {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
+#endif
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription
+                                   entityForName:@"Games" inManagedObjectContext:context];
+    [fetchRequest setEntity:entity];
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+#if TEST_MODE_DEF
+    for (NSManagedObject *info in fetchedObjects) {
+        NSLog(@"Game Id: %@", [info valueForKey:@"gameId"]);
+        NSLog(@"Mode Id: %@", [info valueForKey:@"modeId"]);
+        NSLog(@"Level Id: %@", [info valueForKey:@"levelId"]);
+        NSLog(@"Anagram Id: %@", [info valueForKey:@"anagramId"]);
+        NSLog(@"Max Score Id: %@", [info valueForKey:@"maxScore"]);
+        NSManagedObject *details = [info valueForKey:@"mode"];
+        NSLog(@"Mode Description: %@", [details valueForKey:@"modeDescription"]);
+    }
+#endif
     return YES;
 }
 							
@@ -92,7 +165,7 @@
         return _persistentStoreCoordinator;
     }
     NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory]
-                                               stringByAppendingPathComponent: @"PhoneBook.sqlite"]];
+                                               stringByAppendingPathComponent: @"Funagrams.sqlite"]];
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc]
                                    initWithManagedObjectModel:[self managedObjectModel]];

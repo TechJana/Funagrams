@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		122B41DB18B95D9A00DE4CF3 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 122B41D918B95D9A00DE4CF3 /* iTunesArtwork */; };
+		122B41DC18B95D9A00DE4CF3 /* iTunesArtwork@2x in Resources */ = {isa = PBXBuildFile; fileRef = 122B41DA18B95D9A00DE4CF3 /* iTunesArtwork@2x */; };
 		122BCF5C18A203BE00AF14E1 /* GCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 122BCF5B18A203BE00AF14E1 /* GCHelper.m */; };
 		122E8A2618A9CF2F004668CC /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 122E8A2518A9CF2F004668CC /* IAPHelper.m */; };
 		122E8A2918A9D10E004668CC /* InAppPurchase.m in Sources */ = {isa = PBXBuildFile; fileRef = 122E8A2818A9D10E004668CC /* InAppPurchase.m */; };
@@ -49,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		122B41D918B95D9A00DE4CF3 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		122B41DA18B95D9A00DE4CF3 /* iTunesArtwork@2x */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iTunesArtwork@2x"; sourceTree = "<group>"; };
 		122BCF5A18A203BE00AF14E1 /* GCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCHelper.h; sourceTree = "<group>"; };
 		122BCF5B18A203BE00AF14E1 /* GCHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCHelper.m; sourceTree = "<group>"; };
 		122E8A2418A9CF2F004668CC /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
@@ -190,6 +194,8 @@
 		12AE7D23188F8E5B00E00848 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				122B41D918B95D9A00DE4CF3 /* iTunesArtwork */,
+				122B41DA18B95D9A00DE4CF3 /* iTunesArtwork@2x */,
 				123EDC8918B3212900F2712F /* BgMusic.mp3 */,
 				12AE7D24188F8E5B00E00848 /* Funagrams-Info.plist */,
 				12AE7D25188F8E5B00E00848 /* InfoPlist.strings */,
@@ -322,7 +328,9 @@
 			files = (
 				123EDC8818B31C1E00F2712F /* Localizable.strings in Resources */,
 				12AE7D33188F8E5B00E00848 /* Main_iPad.storyboard in Resources */,
+				122B41DB18B95D9A00DE4CF3 /* iTunesArtwork in Resources */,
 				12AE7D38188F8E5B00E00848 /* Images.xcassets in Resources */,
+				122B41DC18B95D9A00DE4CF3 /* iTunesArtwork@2x in Resources */,
 				12AE7D30188F8E5B00E00848 /* Main_iPhone.storyboard in Resources */,
 				12AE7D27188F8E5B00E00848 /* InfoPlist.strings in Resources */,
 				123EDC8A18B3212900F2712F /* BgMusic.mp3 in Resources */,

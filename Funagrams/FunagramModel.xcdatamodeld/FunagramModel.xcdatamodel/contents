@@ -1,31 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Anagram" syncable="YES">
+    <entity name="Anagrams" syncable="YES">
+        <attribute name="anagramId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="answerText" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="questionID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="questionText" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="games" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Games" inverseName="anagram" inverseEntity="Games" syncable="YES"/>
     </entity>
-    <entity name="Hint" syncable="YES">
-        <attribute name="hintID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="hintLetter" optional="YES" attributeType="String" syncable="YES"/>
+    <entity name="Games" syncable="YES">
+        <attribute name="anagramId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="gameId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="levelId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="maxScore" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="modeId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="anagram" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Anagrams" inverseName="games" inverseEntity="Anagrams" syncable="YES"/>
+        <relationship name="level" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Levels" inverseName="games" inverseEntity="Levels" syncable="YES"/>
+        <relationship name="mode" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Modes" inverseName="games" inverseEntity="Modes" syncable="YES"/>
+        <relationship name="score" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Scores" inverseName="game" inverseEntity="Scores" syncable="YES"/>
     </entity>
-    <entity name="Level" syncable="YES">
-        <attribute name="levelID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="levelText" optional="YES" attributeType="String" syncable="YES"/>
+    <entity name="Levels" syncable="YES">
+        <attribute name="levelDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="levelId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="games" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Games" inverseName="level" inverseEntity="Games" syncable="YES"/>
     </entity>
-    <entity name="Mode" syncable="YES">
-        <attribute name="modeID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="modeText" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="numHints" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+    <entity name="Modes" syncable="YES">
+        <attribute name="hintsPercentile" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
+        <attribute name="modeDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="modeId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="games" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Games" inverseName="mode" inverseEntity="Games" syncable="YES"/>
     </entity>
-    <entity name="Player" syncable="YES"/>
-    <entity name="Score" syncable="YES"/>
+    <entity name="Scores" syncable="YES">
+        <attribute name="gameId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="score" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="scoreId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="game" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Games" inverseName="score" inverseEntity="Games" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Anagram" positionX="0" positionY="0" width="128" height="90"/>
-        <element name="Hint" positionX="0" positionY="0" width="128" height="75"/>
-        <element name="Level" positionX="0" positionY="0" width="128" height="75"/>
-        <element name="Mode" positionX="0" positionY="0" width="128" height="90"/>
-        <element name="Player" positionX="0" positionY="0" width="128" height="45"/>
-        <element name="Score" positionX="0" positionY="0" width="128" height="45"/>
+        <element name="Anagrams" positionX="-308" positionY="18" width="128" height="103"/>
+        <element name="Levels" positionX="-81" positionY="-151" width="128" height="88"/>
+        <element name="Modes" positionX="144" positionY="27" width="128" height="103"/>
+        <element name="Scores" positionX="-90" positionY="261" width="128" height="103"/>
+        <element name="Games" positionX="-101" positionY="8" width="164" height="163"/>
     </elements>
 </model>
