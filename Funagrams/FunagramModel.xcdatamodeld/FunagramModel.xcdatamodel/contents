@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Anagrams" syncable="YES">
+    <entity name="Anagrams" representedClassName="Anagrams" syncable="YES">
         <attribute name="anagramId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="answerText" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="questionText" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="categories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Categories" inverseName="anagrams" inverseEntity="Categories" syncable="YES"/>
         <relationship name="games" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Games" inverseName="anagram" inverseEntity="Games" syncable="YES"/>
     </entity>
-    <entity name="Games" syncable="YES">
+    <entity name="Categories" representedClassName="Categories" syncable="YES">
+        <attribute name="categoryDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="categoryId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="anagrams" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Anagrams" inverseName="categories" inverseEntity="Anagrams" syncable="YES"/>
+    </entity>
+    <entity name="Games" representedClassName="Games" syncable="YES">
         <attribute name="anagramId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="gameId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="levelId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -17,18 +23,18 @@
         <relationship name="mode" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Modes" inverseName="games" inverseEntity="Modes" syncable="YES"/>
         <relationship name="score" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Scores" inverseName="game" inverseEntity="Scores" syncable="YES"/>
     </entity>
-    <entity name="Levels" syncable="YES">
+    <entity name="Levels" representedClassName="Levels" syncable="YES">
         <attribute name="levelDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="levelId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="games" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Games" inverseName="level" inverseEntity="Games" syncable="YES"/>
     </entity>
-    <entity name="Modes" syncable="YES">
+    <entity name="Modes" representedClassName="Modes" syncable="YES">
         <attribute name="hintsPercentile" optional="YES" attributeType="Float" defaultValueString="0" syncable="YES"/>
         <attribute name="modeDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="modeId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="games" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Games" inverseName="mode" inverseEntity="Games" syncable="YES"/>
     </entity>
-    <entity name="Scores" syncable="YES">
+    <entity name="Scores" representedClassName="Scores" syncable="YES">
         <attribute name="gameId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="score" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="scoreId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -39,6 +45,7 @@
         <element name="Levels" positionX="-81" positionY="-151" width="128" height="88"/>
         <element name="Modes" positionX="144" positionY="27" width="128" height="103"/>
         <element name="Scores" positionX="-90" positionY="261" width="128" height="103"/>
-        <element name="Games" positionX="-101" positionY="8" width="164" height="163"/>
+        <element name="Games" positionX="-101" positionY="8" width="164" height="193"/>
+        <element name="Categories" positionX="-299" positionY="-97" width="128" height="88"/>
     </elements>
 </model>

@@ -8,6 +8,12 @@
 
 #import "AppDelegate.h"
 #import "InAppPurchase.h"
+#import "Levels.h"
+#import "Modes.h"
+#import "Anagrams.h"
+#import "Games.h"
+#import "Scores.h"
+#import "Categories.h"
 
 @implementation AppDelegate
 
@@ -24,52 +30,59 @@
     // Core Data Model
     NSManagedObjectContext *context = [self managedObjectContext];
 #if TEST_MODE_DEF
-   NSManagedObject *levels = [NSEntityDescription
-                               insertNewObjectForEntityForName:@"Levels"
-                               inManagedObjectContext:context];
-    NSManagedObject *anagrams = [NSEntityDescription
+    Modes *modes = [NSEntityDescription
+                    insertNewObjectForEntityForName:@"Modes"
+                    inManagedObjectContext:context];
+    Levels *levels = [NSEntityDescription
+                      insertNewObjectForEntityForName:@"Levels"
+                      inManagedObjectContext:context];
+    Categories *categories = [NSEntityDescription
+                      insertNewObjectForEntityForName:@"Categories"
+                      inManagedObjectContext:context];
+    Anagrams *anagrams = [NSEntityDescription
                                  insertNewObjectForEntityForName:@"Anagrams"
                                  inManagedObjectContext:context];
-    NSManagedObject *modes = [NSEntityDescription
-                              insertNewObjectForEntityForName:@"Modes"
-                              inManagedObjectContext:context];
-    NSManagedObject *games = [NSEntityDescription
+    Games *games = [NSEntityDescription
                               insertNewObjectForEntityForName:@"Games"
                               inManagedObjectContext:context];
-    NSManagedObject *scores = [NSEntityDescription
+    Scores *scores = [NSEntityDescription
                               insertNewObjectForEntityForName:@"Scores"
                               inManagedObjectContext:context];
 
-    [levels setValue:[NSNumber numberWithInt:1] forKey:@"levelId"];
-    [levels setValue:@"Level 1" forKey:@"levelDescription"];
+    modes.modeId = [NSNumber numberWithInt:1];
+    modes.modeDescription = @"Beginner";
+    modes.hintsPercentile = [NSNumber numberWithFloat:0.9];
+    
+    levels.levelId = [NSNumber numberWithInt:1];
+    levels.levelDescription = @"Level 1";
 
-    [modes setValue:[NSNumber numberWithInt:1] forKey:@"modeId"];
-    [modes setValue:@"Beginner" forKey:@"modeDescription"];
-    [modes setValue:[NSNumber numberWithFloat:0.90] forKey:@"hintsPercentile"];
+    categories.categoryId = [NSNumber numberWithInt:1];
+    categories.categoryDescription = @"General";
+    
+    anagrams.anagramId = [NSNumber numberWithInt:1];
+    anagrams.questionText = @"DORMITORY";
+    anagrams.answerText = @"DIRTY ROOM";
 
-    [anagrams setValue:[NSNumber numberWithInt:1] forKey:@"anagramId"];
-    [anagrams setValue:@"DORMITORY" forKey:@"questionText"];
-    [anagrams setValue:@"DIRTY ROOM" forKey:@"answerText"];
+    games.gameId = [NSNumber numberWithInt:1];
+    games.modeId = [NSNumber numberWithInt:1];
+    games.levelId = [NSNumber numberWithInt:1];
+    games.anagramId = [NSNumber numberWithInt:1];
+    games.maxScore = [NSNumber numberWithInt:1000];
 
-    [games setValue:[NSNumber numberWithInt:1] forKey:@"gameId"];
-    [games setValue:[NSNumber numberWithInt:1] forKey:@"modeId"];
-    [games setValue:[NSNumber numberWithInt:1] forKey:@"levelId"];
-    [games setValue:[NSNumber numberWithInt:1] forKey:@"anagramId"];
-    [games setValue:[NSNumber numberWithInt:1000] forKey:@"maxScore"];
+    scores.scoreId = [NSNumber numberWithInt:1];
+    scores.gameId = [NSNumber numberWithInt:1];
+    scores.score = [NSNumber numberWithInt:500];
 
-    [scores setValue:[NSNumber numberWithInt:1] forKey:@"scoreId"];
-    [scores setValue:[NSNumber numberWithInt:1] forKey:@"gameId"];
-    [scores setValue:[NSNumber numberWithInt:1] forKey:@"score"];
-
-    [modes setValue:games forKey:@"games"];
-    [levels setValue:games forKey:@"games"];
-    [anagrams setValue:games forKey:@"games"];
-    [scores setValue:games forKey:@"game"];
-
-    [games setValue:modes forKey:@"mode"];
-    [games setValue:levels forKey:@"level"];
-    [games setValue:anagrams forKey:@"anagram"];
-    [games setValue:scores forKey:@"score"];
+    modes.games = games;
+    levels.games = games;
+    anagrams.games = games;
+    scores.game = games;
+    [anagrams addCategoriesObject:categories];
+    
+    games.mode = modes;
+    games.level = levels;
+    games.anagram = anagrams;
+    games.score = scores;
     
     NSError *error;
     if (![context save:&error])
@@ -84,14 +97,16 @@
     [fetchRequest setEntity:entity];
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
 #if TEST_MODE_DEF
-    for (NSManagedObject *info in fetchedObjects) {
-        NSLog(@"Game Id: %@", [info valueForKey:@"gameId"]);
-        NSLog(@"Mode Id: %@", [info valueForKey:@"modeId"]);
-        NSLog(@"Level Id: %@", [info valueForKey:@"levelId"]);
-        NSLog(@"Anagram Id: %@", [info valueForKey:@"anagramId"]);
-        NSLog(@"Max Score Id: %@", [info valueForKey:@"maxScore"]);
-        NSManagedObject *details = [info valueForKey:@"mode"];
-        NSLog(@"Mode Description: %@", [details valueForKey:@"modeDescription"]);
+    for (Games *game in fetchedObjects) {
+        NSLog(@"Game Id: %@", game.gameId);
+        NSLog(@"Mode Id: %@", game.mode);
+        NSLog(@"Level Id: %@", game.levelId);
+        NSLog(@"Anagram Id: %@", game.anagram);
+        NSLog(@"Max Score: %@", game.maxScore);
+        NSLog(@"Mode: %@", game.mode);
+        NSLog(@"Level: %@", game.level);
+        NSLog(@"Anagram: %@", game.anagram);
+        NSLog(@"Score: %@", game.score);
     }
 #endif
     return YES;
@@ -167,10 +182,13 @@
     NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory]
                                                stringByAppendingPathComponent: @"Funagrams.sqlite"]];
     NSError *error = nil;
+    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+    						 [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+    						 [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc]
                                    initWithManagedObjectModel:[self managedObjectModel]];
     if(![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
-                                                  configuration:nil URL:storeUrl options:nil error:&error]) {
+                                                  configuration:nil URL:storeUrl options:options error:&error]) {
         /*Error for store creation should be handled in here*/
     }
     return _persistentStoreCoordinator;
