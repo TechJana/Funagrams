@@ -21,6 +21,7 @@
 		122F844B18BAA062007489E3 /* Funagrams.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 122F844818BAA062007489E3 /* Funagrams.sqlite */; };
 		122F844C18BAA062007489E3 /* Funagrams.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = 122F844918BAA062007489E3 /* Funagrams.sqlite-shm */; };
 		122F844D18BAA062007489E3 /* Funagrams.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = 122F844A18BAA062007489E3 /* Funagrams.sqlite-wal */; };
+		122F8EDF18BD7DA2003043EB /* AnagramsData.json in Resources */ = {isa = PBXBuildFile; fileRef = 122F8EDE18BD7DA2003043EB /* AnagramsData.json */; };
 		123EDC8418AF3D2C00F2712F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 123EDC8318AF3D2C00F2712F /* AudioToolbox.framework */; };
 		123EDC8818B31C1E00F2712F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 123EDC8718B31C1E00F2712F /* Localizable.strings */; };
 		123EDC8A18B3212900F2712F /* BgMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 123EDC8918B3212900F2712F /* BgMusic.mp3 */; };
@@ -83,6 +84,7 @@
 		122F844818BAA062007489E3 /* Funagrams.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Funagrams.sqlite; sourceTree = "<group>"; };
 		122F844918BAA062007489E3 /* Funagrams.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Funagrams.sqlite-shm"; sourceTree = "<group>"; };
 		122F844A18BAA062007489E3 /* Funagrams.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Funagrams.sqlite-wal"; sourceTree = "<group>"; };
+		122F8EDE18BD7DA2003043EB /* AnagramsData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AnagramsData.json; sourceTree = "<group>"; };
 		123EDC8318AF3D2C00F2712F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		123EDC8718B31C1E00F2712F /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		123EDC8918B3212900F2712F /* BgMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BgMusic.mp3; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 		12AE7D23188F8E5B00E00848 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				122F8EDE18BD7DA2003043EB /* AnagramsData.json */,
 				122F844818BAA062007489E3 /* Funagrams.sqlite */,
 				122F844918BAA062007489E3 /* Funagrams.sqlite-shm */,
 				122F844A18BAA062007489E3 /* Funagrams.sqlite-wal */,
@@ -370,6 +373,7 @@
 				122F844C18BAA062007489E3 /* Funagrams.sqlite-shm in Resources */,
 				12AE7D33188F8E5B00E00848 /* Main_iPad.storyboard in Resources */,
 				122B41DB18B95D9A00DE4CF3 /* iTunesArtwork in Resources */,
+				122F8EDF18BD7DA2003043EB /* AnagramsData.json in Resources */,
 				12AE7D38188F8E5B00E00848 /* Images.xcassets in Resources */,
 				122B41DC18B95D9A00DE4CF3 /* iTunesArtwork@2x in Resources */,
 				122F844B18BAA062007489E3 /* Funagrams.sqlite in Resources */,
