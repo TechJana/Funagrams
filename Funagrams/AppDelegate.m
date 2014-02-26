@@ -90,14 +90,13 @@
     {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
-#endif
-    
+
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription
                                    entityForName:@"Games" inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-#if TEST_MODE_DEF
+
     for (Games *game in fetchedObjects) {
         NSLog(@"Game Id: %@", game.gameId);
         NSLog(@"Mode Id: %@", game.mode);
