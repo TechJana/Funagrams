@@ -324,9 +324,12 @@
     NSError *error;
     
     NSArray *matchingGamesforMode = [context executeFetchRequest:fetchRequest error:&error];
+    
+    NSInteger randomLevel = arc4random()%matchingGamesforMode.count;
     //TO DO
     //Read particular anagram from the games.
     //currentAnagram = [context executeFetchRequest:fetchRequest error:&error];
+    NSlog(@"This is a child object: %@", [[matchingGamesforMode.Anagrams allObjects]objectAtIndex:0]);
 }
 
 - (void) loadQuestionResultButtons
