@@ -21,6 +21,7 @@
 @implementation ViewController
 
 @synthesize gameScoreBoard;
+@synthesize buttonPlay;
 
 - (void)viewDidLoad
 {
@@ -87,6 +88,28 @@
             //accessoryView = buyButton;
         }
     }
+}
+    
+- (IBAction) buttonPlay_click:(id)sender
+{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Mode" delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+    
+    [actionSheet showFromToolbar:self.view];
+}
+    
+- (IBAction) buttonBeginner_click:(id)sender
+{
+    
+}
+    
+- (IBAction) buttonIntermediate_click:(id)sender
+{
+        
+}
+
+- (IBAction) buttonExpert_click:(id)sender
+{
+    
 }
 
 - (void)buyButtonTapped:(id)sender {

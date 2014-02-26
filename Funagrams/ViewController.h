@@ -14,8 +14,15 @@
 @interface ViewController : UIViewController <GKLocalPlayerListener, UIAlertViewDelegate, GKLeaderboardViewControllerDelegate, GKAchievementViewControllerDelegate>
 {
     ScoreBoard *scoreBoard;
+    IBOutlet UIButton *buttonPlay;
 }
+    
+- (IBAction) buttonPlay_click:(id)sender;
+- (IBAction) buttonBeginner_click:(id)sender;
+- (IBAction) buttonIntermediate_click:(id)sender;
+- (IBAction) buttonExpert_click:(id)sender;
 
 @property (nonatomic, retain) ScoreBoard *gameScoreBoard;
+@property (retain, nonatomic) IBOutlet UIButton *buttonPlay;
 
 @end
