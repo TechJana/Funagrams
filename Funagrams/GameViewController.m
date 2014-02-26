@@ -7,9 +7,12 @@
 //
 
 #import "GameViewController.h"
+#import "AppDelegate.h"
 
 @interface GameViewController ()
-
+{
+    NSManagedObjectContext *context;
+}
 @end
 
 @implementation GameViewController
@@ -55,6 +58,8 @@
     [super viewDidLoad];
     
 	// Do any additional setup after loading the view.
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    context = [appDelegate managedObjectContext];
 
     // Identify the mainMenu ViewController to get the ScoreBoard object
     NSArray* controllers = self.navigationController.viewControllers;
@@ -261,13 +266,31 @@
     currentAnagram.maxHintCount = currentAnagram.question.length * currentAnagram.hintPercentile;
     currentAnagram.levelMaxScore = 1500;
 #endif
+    
     currentAnagram.userResult = [NSString stringWithFormat:@"%*s", currentAnagram.result.length, ""];
 
     // get Anagram which doesn't exceed questionMaxLength
     //questionMaxLength;
 }
 
-- (void)loadQuestionResultButtons
+- (void)getAnagramForMode:(NSNumber*)numModeID
+{
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Games" inManagedObjectContext:context];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:entity];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"modeID = %@",numModeID];
+    [fetchRequest setPredicate:predicate];
+    
+    NSError *error;
+    
+    NSArray *matchingGamesforMode = [context executeFetchRequest:fetchRequest error:&error];
+    //TO DO
+    //Read particular anagram from the games.
+    //currentAnagram = [context executeFetchRequest:fetchRequest error:&error];
+}
+
+- (void) loadQuestionResultButtons
 {
     UIButton *buttonIndex;
     int indexButton=0, buttonCount=0, buttonSpacingWidth=4;

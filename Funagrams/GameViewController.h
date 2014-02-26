@@ -53,6 +53,10 @@
 - (void) loadAnagram;
 - (BOOL) verifyResult;
 - (void) loadQuestionResultButtons;
+- (void) showHint;
+- (void) getQuestionRemaining;
+- (void) loadQuestionRemaining;
+
 
 @property (retain, nonatomic) IBOutlet UILabel *labelScore;
 @property (retain, nonatomic) IBOutlet UIButton *buttonHint;
@@ -65,5 +69,4 @@
 @property (retain, nonatomic) IBOutlet UIButton *buttonSampleResult;
 @property (retain, nonatomic) IBOutlet UILabel *labelLevel;
 //@property (nonatomic, retain) GameCenterManager *gameCenterManager;
-
 @end
