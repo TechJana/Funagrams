@@ -15,6 +15,8 @@
 {
     ScoreBoard *scoreBoard;
     IBOutlet UIButton *buttonPlay;
+    IBOutlet UIButton *buttonBeginner, *buttonIntermediate, *buttonExpert;
+    UIActionSheet *actionSheet;
 }
     
 - (IBAction) buttonPlay_click:(id)sender;
@@ -22,7 +24,10 @@
 - (IBAction) buttonIntermediate_click:(id)sender;
 - (IBAction) buttonExpert_click:(id)sender;
 
-@property (nonatomic, retain) ScoreBoard *gameScoreBoard;
-@property (retain, nonatomic) IBOutlet UIButton *buttonPlay;
-
+    @property (nonatomic, retain) ScoreBoard *gameScoreBoard;
+    @property (retain, nonatomic) IBOutlet UIButton *buttonPlay;
+    @property (retain, nonatomic) IBOutlet UIButton *buttonBeginner;
+    @property (retain, nonatomic) IBOutlet UIButton *buttonIntermediate;
+    @property (retain, nonatomic) IBOutlet UIButton *buttonExpert;
+    
 @end

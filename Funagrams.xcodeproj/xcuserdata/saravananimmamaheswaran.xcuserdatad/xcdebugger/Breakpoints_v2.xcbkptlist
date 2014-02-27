@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "381"
             endingLineNumber = "381"
-            landmarkName = "-loadQuestionRemaining"
+            landmarkName = "-loadQuestionResultButtons"
             landmarkType = "5">
             <Locations>
                <Location
@@ -72,11 +72,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Funagrams/ViewController.m"
-            timestampString = "415086232.961557"
+            timestampString = "415166469.775151"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -125,7 +125,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "487"
             endingLineNumber = "487"
-            landmarkName = "-reportScore"
+            landmarkName = "-verifyResult"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

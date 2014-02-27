@@ -10,6 +10,8 @@
 #import "AppDelegate.h"
 #import "InAppPurchase.h"
 #import <StoreKit/StoreKit.h>
+#import "GameViewController.h"
+#import "GlobalConstants.h"
 
 @interface ViewController () {
     NSArray *_products;
@@ -20,8 +22,11 @@
 
 @implementation ViewController
 
-@synthesize gameScoreBoard;
-@synthesize buttonPlay;
+    @synthesize gameScoreBoard;
+    @synthesize buttonPlay;
+    @synthesize buttonBeginner;
+    @synthesize buttonIntermediate;
+    @synthesize buttonExpert;
 
 - (void)viewDidLoad
 {
@@ -92,24 +97,62 @@
     
 - (IBAction) buttonPlay_click:(id)sender
 {
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Mode" delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+    actionSheet = [[UIActionSheet alloc] initWithTitle:@"Mode" delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+    //[actionSheet setAlpha:0.5];
+    
+    UIImage *imageButton = [UIImage imageNamed:@"BeginnerImage"];
+    int marginHeight=10;
+    
+    buttonBeginner = [UIButton buttonWithType: UIButtonTypeCustom];
+    buttonBeginner.frame = CGRectMake((self.view.frame.size.width-(imageButton.size.width*3))/2, marginHeight/2, imageButton.size.width, imageButton.size.height);
+    buttonBeginner.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    [buttonBeginner setBackgroundImage:imageButton forState: UIControlStateNormal];
+    [buttonBeginner addTarget:self action:@selector(buttonBeginner_click:) forControlEvents:UIControlEventTouchUpInside];
+    [actionSheet addSubview: buttonBeginner];
+    
+    imageButton = [UIImage imageNamed:@"IntermediateImage"];
+    buttonIntermediate = [UIButton buttonWithType: UIButtonTypeCustom];
+    buttonIntermediate.frame = CGRectMake(((self.view.frame.size.width-(imageButton.size.width*3))/2)+imageButton.size.width, marginHeight/2, imageButton.size.width, imageButton.size.height);
+    buttonIntermediate.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    [buttonIntermediate setBackgroundImage:imageButton forState: UIControlStateNormal];
+    [buttonIntermediate addTarget:self action:@selector(buttonIntermediate_click:) forControlEvents:UIControlEventTouchUpInside];
+    [actionSheet addSubview: buttonIntermediate];
+    
+    imageButton = [UIImage imageNamed:@"ExpertImage"];
+    buttonIntermediate = [UIButton buttonWithType: UIButtonTypeCustom];
+    buttonIntermediate.frame = CGRectMake(((self.view.frame.size.width-(imageButton.size.width*3))/2)+imageButton.size.width*2, marginHeight/2, imageButton.size.width, imageButton.size.height);
+    buttonIntermediate.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    [buttonIntermediate setBackgroundImage:imageButton forState: UIControlStateNormal];
+    [buttonIntermediate addTarget:self action:@selector(buttonExpert_click:) forControlEvents:UIControlEventTouchUpInside];
+    [actionSheet addSubview: buttonIntermediate];
+    
+    [actionSheet setBounds:CGRectMake(actionSheet.frame.origin.x, actionSheet.frame.origin.y, self.view.frame.size.width, actionSheet.frame.size.height)];
     
     [actionSheet showFromToolbar:self.view];
 }
     
 - (IBAction) buttonBeginner_click:(id)sender
 {
-    
+    [actionSheet dismissWithClickedButtonIndex:0 animated:YES];
+    GameViewController *myController = [self.storyboard instantiateViewControllerWithIdentifier:@"gameViewController"];
+    myController.currentGameMode = kGameModeBeginner;
+    [self.navigationController pushViewController: myController animated:YES];
 }
     
 - (IBAction) buttonIntermediate_click:(id)sender
 {
-        
+    [actionSheet dismissWithClickedButtonIndex:0 animated:YES];
+    GameViewController *myController = [self.storyboard instantiateViewControllerWithIdentifier:@"gameViewController"];
+    myController.currentGameMode = kGameModeIntermediate;
+    [self.navigationController pushViewController: myController animated:YES];
 }
 
 - (IBAction) buttonExpert_click:(id)sender
 {
-    
+    [actionSheet dismissWithClickedButtonIndex:0 animated:YES];
+    GameViewController *myController = [self.storyboard instantiateViewControllerWithIdentifier:@"gameViewController"];
+    myController.currentGameMode = kGameModeExpert;
+    [self.navigationController pushViewController: myController animated:YES];
 }
 
 - (void)buyButtonTapped:(id)sender {

@@ -27,7 +27,7 @@
 @synthesize buttonSampleQuestion;
 @synthesize buttonSampleResult;
 @synthesize labelLevel;
-//@synthesize gameCenterManager;
+@synthesize currentGameMode;
 @synthesize fetchedResultsController = _fetchedResultsController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

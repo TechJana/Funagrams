@@ -69,5 +69,6 @@
 @property (retain, nonatomic) IBOutlet UIButton *buttonSampleResult;
 @property (retain, nonatomic) IBOutlet UILabel *labelLevel;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
-//@property (nonatomic, retain) GameCenterManager *gameCenterManager;
+@property (readwrite, nonatomic) int currentGameMode;
+
 @end
