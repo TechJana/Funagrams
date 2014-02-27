@@ -79,9 +79,10 @@
 	}
 
     [self loadQuestionResultButtons];
-    [self getAnagram];
+    //[self getAnagram];
+    [self getAnagramForMode:[NSNumber numberWithInt:1]];
     [self loadAnagram];
-    //[self getAnagramForMode:[NSNumber numberWithInt:1]];
+    
     
     labelScore.text = [NSString stringWithFormat:@"%d ", scoreBoard.currentGameScore];
     selectedQuestion = -1;
@@ -313,37 +314,58 @@
     //questionMaxLength;
 }
 
-- (void)getAnagramForMode:(NSNumber*)numModeID
+- (void)getAnagramForMode:(NSNumber*)numModeId
 {
     NSEntityDescription *gamesEntity = [NSEntityDescription entityForName:@"Games" inManagedObjectContext:context];
     NSFetchRequest *gamesFetchRequest = [[NSFetchRequest alloc] init];
     [gamesFetchRequest setEntity:gamesEntity];
     
-    NSPredicate *gamesPredicate = [NSPredicate predicateWithFormat:@"modeID = %@",numModeID];
+    NSPredicate *gamesPredicate = [NSPredicate predicateWithFormat:@"modeId = %@",numModeId];
     [gamesFetchRequest setPredicate:gamesPredicate];
     
     NSError *error;
     
     NSArray *matchingGamesforMode = [context executeFetchRequest:gamesFetchRequest error:&error];
     
-    //NSlog(@"ModeID: %@ - Games for this mode: %@ - Random GameID Selected: %@", numModeID, matchingGamesforMode.count);
+    NSLog(@"ModeID: %@ - Games for this mode: %lu ", numModeId,(unsigned long)matchingGamesforMode.count);
     
-    NSInteger randomGameID = arc4random()%matchingGamesforMode.count;
-    //NSlog([NSString stringWithFormat:@"Random GameID Selected: %ld", (long)randomGameID]);
+    if (matchingGamesforMode.count > 0)
+    {
     
-    NSEntityDescription *anagramsEntity = [NSEntityDescription entityForName:@"Anagrams" inManagedObjectContext:context];
-    NSFetchRequest *anagramsFetchRequest = [[NSFetchRequest alloc] init];
-    [anagramsFetchRequest setEntity:anagramsEntity];
-    
-    NSPredicate *anagramsPredicate = [NSPredicate predicateWithFormat:@"anagramID = %@",randomGameID];
-    [anagramsFetchRequest setPredicate:anagramsPredicate];
-    
-    NSArray *randomAnagram = [context executeFetchRequest:anagramsFetchRequest error:&error];
-    
-    //TO DO
-    //Read particular anagram from the games.
-    //currentAnagram = [context executeFetchRequest:fetchRequest error:&error];
-    //NSlog(@"This is a child object: %@", [[matchingGamesforMode.Anagrams allObjects]objectAtIndex:0]);
+        NSInteger randomGameId = arc4random()% (matchingGamesforMode.count + 0);
+        //currentGame = [[Games alloc] init];
+        currentGamesFromModel = [NSEntityDescription insertNewObjectForEntityForName:@"Games" inManagedObjectContext:context];
+        
+        currentGamesFromModel = (Games*)[matchingGamesforMode objectAtIndex:randomGameId];
+        NSLog(@"Current Game ID : %@", currentGamesFromModel.gameId);
+       
+//        NSEntityDescription *anagramsEntity = [NSEntityDescription entityForName:@"Anagrams" inManagedObjectContext:context];
+//        NSFetchRequest *anagramsFetchRequest = [[NSFetchRequest alloc] init];
+//        [anagramsFetchRequest setEntity:anagramsEntity];
+//
+//        NSPredicate *anagramsPredicate = [NSPredicate predicateWithFormat:@"ANY anagramId == %@",[NSNumber numberWithInt:randomGameId]];
+//        
+//        //NSPredicate *anagramsPredicate = [NSPredicate predicateWithFormat:@"questionText = 'ELVIS'"];
+//        [anagramsFetchRequest setPredicate:anagramsPredicate];
+//        //NSError *error;
+//        NSArray *randomAnagram = [context executeFetchRequest:anagramsFetchRequest error:&error];
+//        //currentAnagram = [context executeFetchRequest:fetchRequest error:&error];
+//        NSLog(@"This is a child object: %@", [randomAnagram objectAtIndex:0]);
+        
+        //Assign the attributes of randomAnagram object to the Current Anagram
+        currentAnagram.question = currentGamesFromModel.anagram.questionText;
+        currentAnagram.questionRemaining = [currentAnagram.question copy];
+        currentAnagram.result = currentGamesFromModel.anagram.answerText;
+        currentAnagram.hint = currentGamesFromModel.anagram.questionText;
+        currentAnagram.level = (int)currentGamesFromModel.levelId;
+        currentAnagram.levelDescription = currentGamesFromModel.level.levelDescription;
+        currentAnagram.hintPercentile = [currentGamesFromModel.mode.hintsPercentile floatValue];
+        currentAnagram.hintsProvided = 0;
+        currentAnagram.maxHintCount = currentAnagram.question.length * currentAnagram.hintPercentile;
+        currentAnagram.levelMaxScore = (int)currentGamesFromModel.maxScore;
+    }
+    else
+        NSLog(@"No Games available for this mode.");
 }
 
 - (void) loadQuestionResultButtons

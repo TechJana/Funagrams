@@ -12,7 +12,10 @@
 #import <QuartzCore/QuartzCore.h>
 #import <iAd/iAd.h>
 #import "GCHelper.h"
-
+#import "Games.h"
+#import "Anagrams.h"
+#import "Levels.h"
+#import "Modes.h"
 
 @interface GameViewController : UIViewController <ADBannerViewDelegate> /*<UIActionSheetDelegate, GKLeaderboardViewControllerDelegate, GKAchievementViewControllerDelegate, GameCenterManagerDelegate>*/
 {
@@ -29,6 +32,10 @@
     
     ScoreBoard *scoreBoard;
     Anagram *currentAnagram;
+    Games *currentGamesFromModel;
+    //Anagrams *currentAnagramsFromModel;
+    //Levels *currentLevelsFromModel;
+    //Modes *currentModesFromModel;
     NSMutableArray *anagramHistory;
 	//GameCenterManager* gameCenterManager;
     
