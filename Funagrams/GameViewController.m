@@ -414,7 +414,14 @@
     buttonThis.layer.cornerRadius = 10;
     buttonThis.layer.borderWidth = 1;
     buttonThis.layer.borderColor = [UIColor blueColor].CGColor;
-    [buttonThis.titleLabel setFont:[UIFont systemFontOfSize:25]];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+        [buttonThis.titleLabel setFont:[UIFont systemFontOfSize:40]];
+    }
+    else
+    {
+        [buttonThis.titleLabel setFont:[UIFont systemFontOfSize:27]];
+    }
 }
 
 - (void)loadQuestionRemaining

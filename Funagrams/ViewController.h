@@ -17,6 +17,7 @@
     IBOutlet UIButton *buttonPlay;
     IBOutlet UIButton *buttonBeginner, *buttonIntermediate, *buttonExpert;
     UIActionSheet *actionSheet;
+    //ViewController *thisParentController;
 }
     
 - (IBAction) buttonPlay_click:(id)sender;
@@ -29,5 +30,7 @@
     @property (retain, nonatomic) IBOutlet UIButton *buttonBeginner;
     @property (retain, nonatomic) IBOutlet UIButton *buttonIntermediate;
     @property (retain, nonatomic) IBOutlet UIButton *buttonExpert;
+    @property (retain, nonatomic) UIPopoverController *popoverController;
+    @property (readwrite, nonatomic) ViewController *thisParentViewController;
     
 @end
