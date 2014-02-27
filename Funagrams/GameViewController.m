@@ -81,6 +81,7 @@
     [self loadQuestionResultButtons];
     [self getAnagram];
     [self loadAnagram];
+    //[self getAnagramForMode:[NSNumber numberWithInt:1]];
     
     labelScore.text = [NSString stringWithFormat:@"%d ", scoreBoard.currentGameScore];
     selectedQuestion = -1;
@@ -314,22 +315,35 @@
 
 - (void)getAnagramForMode:(NSNumber*)numModeID
 {
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Games" inManagedObjectContext:context];
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    [fetchRequest setEntity:entity];
+    NSEntityDescription *gamesEntity = [NSEntityDescription entityForName:@"Games" inManagedObjectContext:context];
+    NSFetchRequest *gamesFetchRequest = [[NSFetchRequest alloc] init];
+    [gamesFetchRequest setEntity:gamesEntity];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"modeID = %@",numModeID];
-    [fetchRequest setPredicate:predicate];
+    NSPredicate *gamesPredicate = [NSPredicate predicateWithFormat:@"modeID = %@",numModeID];
+    [gamesFetchRequest setPredicate:gamesPredicate];
     
     NSError *error;
     
-    NSArray *matchingGamesforMode = [context executeFetchRequest:fetchRequest error:&error];
+    NSArray *matchingGamesforMode = [context executeFetchRequest:gamesFetchRequest error:&error];
     
-    NSInteger randomLevel = arc4random()%matchingGamesforMode.count;
+    //NSlog(@"ModeID: %@ - Games for this mode: %@ - Random GameID Selected: %@", numModeID, matchingGamesforMode.count);
+    
+    NSInteger randomGameID = arc4random()%matchingGamesforMode.count;
+    //NSlog([NSString stringWithFormat:@"Random GameID Selected: %ld", (long)randomGameID]);
+    
+    NSEntityDescription *anagramsEntity = [NSEntityDescription entityForName:@"Anagrams" inManagedObjectContext:context];
+    NSFetchRequest *anagramsFetchRequest = [[NSFetchRequest alloc] init];
+    [anagramsFetchRequest setEntity:anagramsEntity];
+    
+    NSPredicate *anagramsPredicate = [NSPredicate predicateWithFormat:@"anagramID = %@",randomGameID];
+    [anagramsFetchRequest setPredicate:anagramsPredicate];
+    
+    NSArray *randomAnagram = [context executeFetchRequest:anagramsFetchRequest error:&error];
+    
     //TO DO
     //Read particular anagram from the games.
     //currentAnagram = [context executeFetchRequest:fetchRequest error:&error];
-    NSlog(@"This is a child object: %@", [[matchingGamesforMode.Anagrams allObjects]objectAtIndex:0]);
+    //NSlog(@"This is a child object: %@", [[matchingGamesforMode.Anagrams allObjects]objectAtIndex:0]);
 }
 
 - (void) loadQuestionResultButtons
