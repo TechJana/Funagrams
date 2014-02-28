@@ -10,8 +10,9 @@
 #import "ScoreBoard.h"
 #import <GameKit/GameKit.h>
 #import "GCHelper.h"
+#import "RNGridMenu.h"
 
-@interface ViewController : UIViewController <GKLocalPlayerListener, UIAlertViewDelegate, GKLeaderboardViewControllerDelegate, GKAchievementViewControllerDelegate>
+@interface ViewController : UIViewController <GKLocalPlayerListener, UIAlertViewDelegate, GKLeaderboardViewControllerDelegate, GKAchievementViewControllerDelegate, RNGridMenuDelegate>
 {
     ScoreBoard *scoreBoard;
     IBOutlet UIButton *buttonPlay;

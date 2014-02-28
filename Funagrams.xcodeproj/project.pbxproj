@@ -25,6 +25,7 @@
 		123EDC8818B31C1E00F2712F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 123EDC8718B31C1E00F2712F /* Localizable.strings */; };
 		123EDC8A18B3212900F2712F /* BgMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 123EDC8918B3212900F2712F /* BgMusic.mp3 */; };
 		129B5B4918BEEF2400C7F956 /* GlobalConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 129B5B4818BEEF2400C7F956 /* GlobalConstants.m */; };
+		129B5B5518C0538700C7F956 /* RNGridMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 129B5B5418C0538700C7F956 /* RNGridMenu.m */; };
 		12AE7D1D188F8E5B00E00848 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AE7D1C188F8E5B00E00848 /* Foundation.framework */; };
 		12AE7D1F188F8E5B00E00848 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AE7D1E188F8E5B00E00848 /* CoreGraphics.framework */; };
 		12AE7D21188F8E5B00E00848 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AE7D20188F8E5B00E00848 /* UIKit.framework */; };
@@ -89,6 +90,8 @@
 		123EDC8918B3212900F2712F /* BgMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BgMusic.mp3; sourceTree = "<group>"; };
 		129B5B4718BEEF2400C7F956 /* GlobalConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalConstants.h; sourceTree = "<group>"; };
 		129B5B4818BEEF2400C7F956 /* GlobalConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalConstants.m; sourceTree = "<group>"; };
+		129B5B5318C0538700C7F956 /* RNGridMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNGridMenu.h; sourceTree = "<group>"; };
+		129B5B5418C0538700C7F956 /* RNGridMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGridMenu.m; sourceTree = "<group>"; };
 		12AE7D19188F8E5B00E00848 /* Funagrams.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Funagrams.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12AE7D1C188F8E5B00E00848 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		12AE7D1E188F8E5B00E00848 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -154,6 +157,8 @@
 		122E8A2318A9CF08004668CC /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				129B5B5318C0538700C7F956 /* RNGridMenu.h */,
+				129B5B5418C0538700C7F956 /* RNGridMenu.m */,
 				122BCF5A18A203BE00AF14E1 /* GCHelper.h */,
 				122BCF5B18A203BE00AF14E1 /* GCHelper.m */,
 				122E8A2418A9CF2F004668CC /* IAPHelper.h */,
@@ -412,6 +417,7 @@
 				122BCF5C18A203BE00AF14E1 /* GCHelper.m in Sources */,
 				122F83F518B99C36007489E3 /* Levels.m in Sources */,
 				122F83FE18B99C87007489E3 /* Scores.m in Sources */,
+				129B5B5518C0538700C7F956 /* RNGridMenu.m in Sources */,
 				122E8A2918A9D10E004668CC /* InAppPurchase.m in Sources */,
 				122F840A18B9A091007489E3 /* Categories.m in Sources */,
 				122F840718B9A091007489E3 /* Anagrams.m in Sources */,

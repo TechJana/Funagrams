@@ -34,6 +34,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    [self setModalPresentationStyle:UIModalPresentationCurrentContext];
+    
     scoreBoard = [[ScoreBoard alloc] init];
     gameScoreBoard = scoreBoard;
     
@@ -99,66 +101,42 @@
     
 - (IBAction) buttonPlay_click:(id)sender
 {
-    int marginHeight=10;
-    UIImage *imageButton = [UIImage imageNamed:@"BeginnerImage"];
+    NSInteger numberOfOptions = 3;
+    NSArray *items = @[
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"BeginnerImage"] title:@"" action:^{
+                           [self buttonBeginner_click:nil];
+                       }],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"IntermediateImage"] title:@"" action:^{
+                           [self buttonIntermediate_click:nil];
+                       }],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"ExpertImage"] title:@"" action:^{
+                           [self buttonExpert_click:nil];
+                       }],
+                       ];
+    
+    RNGridMenu *av = [[RNGridMenu alloc] initWithItems:[items subarrayWithRange:NSMakeRange(0, numberOfOptions)]];
+    av.backgroundColor = [UIColor clearColor];
+    av.highlightColor = [UIColor clearColor];
+    av.singleLineView = YES;
+    av.horizontalSpacing = 20;
+    av.delegate = self;
 
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    {
-        // The device is an iPad running iPhone 3.2 or later.
-        UIViewController *actionSheetView = [self.storyboard instantiateViewControllerWithIdentifier:@"actionSheetViewController"];
-        ViewController *tempViewController = (ViewController *)actionSheetView;
-        tempViewController.thisParentViewController = self;
-        [actionSheetView.view setBackgroundColor:[UIColor clearColor]];
-        [actionSheetView.view setOpaque:NO];
-
-        popoverController = [[UIPopoverController alloc] initWithContentViewController:actionSheetView];
-        [popoverController setPopoverContentSize:CGSizeMake(self.view.frame.size.width, imageButton.size.height*2) animated:YES];
-
-        [popoverController presentPopoverFromRect:CGRectMake(0, self.view.frame.size.height-imageButton.size.height*2, self.view.frame.size.width, imageButton.size.height*2) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionDown animated:YES];
-        
-        //[popoverController presentPopoverFromBarButtonItem:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
-    }
-    else {
-        // The device is an iPhone or iPod touch.
-        actionSheet = [[UIActionSheet alloc] initWithTitle:@"Mode" delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
-        //[actionSheet setAlpha:0.5];
-        
-        buttonBeginner = [UIButton buttonWithType: UIButtonTypeCustom];
-        buttonBeginner.frame = CGRectMake((self.view.frame.size.width-(imageButton.size.width*3))/2, marginHeight/2, imageButton.size.width, imageButton.size.height);
-        buttonBeginner.imageView.contentMode = UIViewContentModeScaleAspectFill;
-        [buttonBeginner setBackgroundImage:imageButton forState: UIControlStateNormal];
-        [buttonBeginner addTarget:self action:@selector(buttonBeginner_click:) forControlEvents:UIControlEventTouchUpInside];
-        [actionSheet addSubview: buttonBeginner];
-        
-        imageButton = [UIImage imageNamed:@"IntermediateImage"];
-        buttonIntermediate = [UIButton buttonWithType: UIButtonTypeCustom];
-        buttonIntermediate.frame = CGRectMake(((self.view.frame.size.width-(imageButton.size.width*3))/2)+imageButton.size.width, marginHeight/2, imageButton.size.width, imageButton.size.height);
-        buttonIntermediate.imageView.contentMode = UIViewContentModeScaleAspectFill;
-        [buttonIntermediate setBackgroundImage:imageButton forState: UIControlStateNormal];
-        [buttonIntermediate addTarget:self action:@selector(buttonIntermediate_click:) forControlEvents:UIControlEventTouchUpInside];
-        [actionSheet addSubview: buttonIntermediate];
-        
-        imageButton = [UIImage imageNamed:@"ExpertImage"];
-        buttonIntermediate = [UIButton buttonWithType: UIButtonTypeCustom];
-        buttonIntermediate.frame = CGRectMake(((self.view.frame.size.width-(imageButton.size.width*3))/2)+imageButton.size.width*2, marginHeight/2, imageButton.size.width, imageButton.size.height);
-        buttonIntermediate.imageView.contentMode = UIViewContentModeScaleAspectFill;
-        [buttonIntermediate setBackgroundImage:imageButton forState: UIControlStateNormal];
-        [buttonIntermediate addTarget:self action:@selector(buttonExpert_click:) forControlEvents:UIControlEventTouchUpInside];
-        [actionSheet addSubview: buttonIntermediate];
-
-        [actionSheet showFromRect:CGRectMake(0, imageButton.size.height+marginHeight, self.view.frame.size.width, actionSheet.frame.size.height+marginHeight) inView:self.view animated:YES];
-        
-        //[actionSheet showFromToolbar:self.view];
-
-    }
+    [av showInViewController:self center:CGPointMake(self.view.bounds.size.width/2.f, self.view.bounds.size.height/2.f)];
 }
+    
+#pragma mark - RNGridMenuDelegate
+    
+- (void)gridMenu:(RNGridMenu *)gridMenu willDismissWithSelectedItem:(RNGridMenuItem *)item atIndex:(NSInteger)itemIndex {
+    NSLog(@"Dismissed with item %d: %@", itemIndex, item.title);
+}
+
     
 - (IBAction) buttonBeginner_click:(id)sender
 {
     GameViewController *myController = [self.storyboard instantiateViewControllerWithIdentifier:@"gameViewController"];
     myController.currentGameMode = kGameModeBeginner;
     
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    /*if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
         ViewController *parentView = (ViewController *)self.thisParentViewController;
         [parentView.popoverController dismissPopoverAnimated:YES];
@@ -168,7 +146,8 @@
     {
         [actionSheet dismissWithClickedButtonIndex:0 animated:YES];
         [self.navigationController pushViewController: myController animated:YES];
-    }
+    }*/
+    [self.navigationController pushViewController: myController animated:YES];
 }
     
 - (IBAction) buttonIntermediate_click:(id)sender

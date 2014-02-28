@@ -29,7 +29,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonPlay_click:" destination="vXZ-lx-hvc" eventType="touchDown" id="dq1-ZC-RAB"/>
+                                    <action selector="buttonPlay_click:" destination="vXZ-lx-hvc" eventType="touchDown" id="bBO-My-DPW"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tAF-Op-adQ">
@@ -79,7 +79,7 @@
                     <navigationItem key="navigationItem" id="UEe-tX-kBG"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
-                        <outlet property="buttonPlay" destination="VtB-GI-wi5" id="IT5-mQ-Ysj"/>
+                        <outlet property="buttonPlay" destination="VtB-GI-wi5" id="k4R-G3-mJq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
