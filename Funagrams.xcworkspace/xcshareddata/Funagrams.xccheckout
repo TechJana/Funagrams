@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>9DBFC780-C2A8-451C-9E9A-E4F7C4619DDB</string>
+	<string>4E4BA426-5599-41CC-BE5E-58FE09031FE5</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Funagrams</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -14,13 +14,13 @@
 		<string>https://github.com/immasara/Funagrams.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Funagrams.xcodeproj/project.xcworkspace</string>
+	<string>Funagrams.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>A9113253-F29E-4198-ADD9-20380AD34F7B</key>
-		<string>../../../../OS X/CoreDatabaseEditor</string>
+		<key>278D081B-6EE0-4EA6-A20C-2CB11489B72E</key>
+		<string>../../../OS X/CoreDatabaseEditor</string>
 		<key>EB446532-16C5-4E3C-A081-42F5F7D1E9A1</key>
-		<string>../..</string>
+		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/immasara/Funagrams.git</string>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>A9113253-F29E-4198-ADD9-20380AD34F7B</string>
+			<string>278D081B-6EE0-4EA6-A20C-2CB11489B72E</string>
 			<key>IDESourceControlWCCName</key>
 			<string>CoreDatabaseEditor</string>
 		</dict>
