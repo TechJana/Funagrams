@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Funagrams/GameViewController.m"
-            timestampString = "415088962.179739"
+            timestampString = "415244597.550228"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "381"
-            endingLineNumber = "381"
+            startingLineNumber = "382"
+            endingLineNumber = "382"
             landmarkName = "-loadQuestionResultButtons"
             landmarkType = "5">
             <Locations>
@@ -91,22 +91,6 @@
             timestampString = "415088962.179739"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
-            landmarkName = "@implementation GameViewController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Funagrams/GameViewController.m"
-            timestampString = "415088962.179739"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
             startingLineNumber = "282"
             endingLineNumber = "282"
             landmarkName = "-doScramble:"
@@ -120,12 +104,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Funagrams/GameViewController.m"
-            timestampString = "415174229.773483"
+            timestampString = "415244597.550228"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "494"
-            endingLineNumber = "494"
+            startingLineNumber = "495"
+            endingLineNumber = "495"
             landmarkName = "-loadAnagram"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Funagrams/GameViewController.m"
+            timestampString = "415244380.930995"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "-buttonQuestions_click:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Funagrams/GameViewController.m"
+            timestampString = "415244520.128026"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "311"
+            endingLineNumber = "311"
+            landmarkName = "-getAnagram"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

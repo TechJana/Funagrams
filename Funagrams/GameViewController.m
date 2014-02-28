@@ -363,6 +363,7 @@
         currentAnagram.hintsProvided = 0;
         currentAnagram.maxHintCount = currentAnagram.question.length * currentAnagram.hintPercentile;
         currentAnagram.levelMaxScore = (int)currentGamesFromModel.maxScore;
+        currentAnagram.userResult = [NSString stringWithFormat:@"%*s", currentAnagram.result.length, ""];
     }
     else
         NSLog(@"No Games available for this mode.");
