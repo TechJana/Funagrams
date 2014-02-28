@@ -80,7 +80,7 @@
 
     [self loadQuestionResultButtons];
     //[self getAnagram];
-    [self getAnagramForMode:[NSNumber numberWithInt:1]];
+    [self getAnagramForMode:[NSNumber numberWithInt:currentGameMode]];
     [self loadAnagram];
     
     
