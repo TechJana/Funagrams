@@ -135,18 +135,6 @@
 {
     GameViewController *myController = [self.storyboard instantiateViewControllerWithIdentifier:@"gameViewController"];
     myController.currentGameMode = kGameModeBeginner;
-    
-    /*if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    {
-        ViewController *parentView = (ViewController *)self.thisParentViewController;
-        [parentView.popoverController dismissPopoverAnimated:YES];
-        [parentView.navigationController pushViewController: myController animated:YES];
-    }
-    else
-    {
-        [actionSheet dismissWithClickedButtonIndex:0 animated:YES];
-        [self.navigationController pushViewController: myController animated:YES];
-    }*/
     [self.navigationController pushViewController: myController animated:YES];
 }
     
@@ -154,36 +142,14 @@
 {
     GameViewController *myController = [self.storyboard instantiateViewControllerWithIdentifier:@"gameViewController"];
     myController.currentGameMode = kGameModeIntermediate;
-    
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    {
-        ViewController *parentView = (ViewController *)self.thisParentViewController;
-        [parentView.popoverController dismissPopoverAnimated:YES];
-        [parentView.navigationController pushViewController: myController animated:YES];
-    }
-    else
-    {
-        [actionSheet dismissWithClickedButtonIndex:0 animated:YES];
-        [self.navigationController pushViewController: myController animated:YES];
-    }
+    [self.navigationController pushViewController: myController animated:YES];
 }
 
 - (IBAction) buttonExpert_click:(id)sender
 {
     GameViewController *myController = [self.storyboard instantiateViewControllerWithIdentifier:@"gameViewController"];
     myController.currentGameMode = kGameModeExpert;
-    
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-    {
-        ViewController *parentView = (ViewController *)self.thisParentViewController;
-        [parentView.popoverController dismissPopoverAnimated:YES];
-        [parentView.navigationController pushViewController: myController animated:YES];
-    }
-    else
-    {
-        [actionSheet dismissWithClickedButtonIndex:0 animated:YES];
-        [self.navigationController pushViewController: myController animated:YES];
-    }
+    [self.navigationController pushViewController: myController animated:YES];
 }
 
 - (void)buyButtonTapped:(id)sender {

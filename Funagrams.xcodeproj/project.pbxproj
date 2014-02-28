@@ -14,7 +14,6 @@
 		122E8A2918A9D10E004668CC /* InAppPurchase.m in Sources */ = {isa = PBXBuildFile; fileRef = 122E8A2818A9D10E004668CC /* InAppPurchase.m */; };
 		122F83F218B99BDF007489E3 /* Modes.m in Sources */ = {isa = PBXBuildFile; fileRef = 122F83F118B99BDF007489E3 /* Modes.m */; };
 		122F83F518B99C36007489E3 /* Levels.m in Sources */ = {isa = PBXBuildFile; fileRef = 122F83F418B99C36007489E3 /* Levels.m */; };
-		122F83FE18B99C87007489E3 /* Scores.m in Sources */ = {isa = PBXBuildFile; fileRef = 122F83FD18B99C87007489E3 /* Scores.m */; };
 		122F840718B9A091007489E3 /* Anagrams.m in Sources */ = {isa = PBXBuildFile; fileRef = 122F840618B9A091007489E3 /* Anagrams.m */; };
 		122F840A18B9A091007489E3 /* Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = 122F840918B9A091007489E3 /* Categories.m */; };
 		122F840D18B9A091007489E3 /* Games.m in Sources */ = {isa = PBXBuildFile; fileRef = 122F840C18B9A091007489E3 /* Games.m */; };
@@ -26,6 +25,7 @@
 		123EDC8A18B3212900F2712F /* BgMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 123EDC8918B3212900F2712F /* BgMusic.mp3 */; };
 		129B5B4918BEEF2400C7F956 /* GlobalConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 129B5B4818BEEF2400C7F956 /* GlobalConstants.m */; };
 		129B5B5518C0538700C7F956 /* RNGridMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 129B5B5418C0538700C7F956 /* RNGridMenu.m */; };
+		129B5B5818C067F100C7F956 /* Scores.m in Sources */ = {isa = PBXBuildFile; fileRef = 129B5B5718C067F100C7F956 /* Scores.m */; };
 		12AE7D1D188F8E5B00E00848 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AE7D1C188F8E5B00E00848 /* Foundation.framework */; };
 		12AE7D1F188F8E5B00E00848 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AE7D1E188F8E5B00E00848 /* CoreGraphics.framework */; };
 		12AE7D21188F8E5B00E00848 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AE7D20188F8E5B00E00848 /* UIKit.framework */; };
@@ -74,8 +74,6 @@
 		122F83F118B99BDF007489E3 /* Modes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Modes.m; sourceTree = "<group>"; };
 		122F83F318B99C36007489E3 /* Levels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Levels.h; sourceTree = "<group>"; };
 		122F83F418B99C36007489E3 /* Levels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Levels.m; sourceTree = "<group>"; };
-		122F83FC18B99C87007489E3 /* Scores.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scores.h; sourceTree = "<group>"; };
-		122F83FD18B99C87007489E3 /* Scores.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scores.m; sourceTree = "<group>"; };
 		122F840518B9A091007489E3 /* Anagrams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Anagrams.h; sourceTree = "<group>"; };
 		122F840618B9A091007489E3 /* Anagrams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Anagrams.m; sourceTree = "<group>"; };
 		122F840818B9A091007489E3 /* Categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Categories.h; sourceTree = "<group>"; };
@@ -92,6 +90,8 @@
 		129B5B4818BEEF2400C7F956 /* GlobalConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalConstants.m; sourceTree = "<group>"; };
 		129B5B5318C0538700C7F956 /* RNGridMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNGridMenu.h; sourceTree = "<group>"; };
 		129B5B5418C0538700C7F956 /* RNGridMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGridMenu.m; sourceTree = "<group>"; };
+		129B5B5618C067F100C7F956 /* Scores.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scores.h; sourceTree = "<group>"; };
+		129B5B5718C067F100C7F956 /* Scores.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scores.m; sourceTree = "<group>"; };
 		12AE7D19188F8E5B00E00848 /* Funagrams.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Funagrams.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12AE7D1C188F8E5B00E00848 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		12AE7D1E188F8E5B00E00848 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -269,14 +269,14 @@
 				12E9875918942BD000FC296B /* ScoreBoard.h */,
 				12E9875A18942BD000FC296B /* ScoreBoard.m */,
 				8AC7741718A88FF8007F226D /* FunagramModel.xcdatamodeld */,
+				129B5B5618C067F100C7F956 /* Scores.h */,
+				129B5B5718C067F100C7F956 /* Scores.m */,
 				122F840B18B9A091007489E3 /* Games.h */,
 				122F840C18B9A091007489E3 /* Games.m */,
 				122F840818B9A091007489E3 /* Categories.h */,
 				122F840918B9A091007489E3 /* Categories.m */,
 				122F840518B9A091007489E3 /* Anagrams.h */,
 				122F840618B9A091007489E3 /* Anagrams.m */,
-				122F83FC18B99C87007489E3 /* Scores.h */,
-				122F83FD18B99C87007489E3 /* Scores.m */,
 				122F83F318B99C36007489E3 /* Levels.h */,
 				122F83F418B99C36007489E3 /* Levels.m */,
 				122F83F018B99BDF007489E3 /* Modes.h */,
@@ -410,13 +410,13 @@
 				12E9875B18942BD000FC296B /* ScoreBoard.m in Sources */,
 				12E9875E1899FACA00FC296B /* Anagram.m in Sources */,
 				8AC7741918A88FF8007F226D /* FunagramModel.xcdatamodeld in Sources */,
+				129B5B5818C067F100C7F956 /* Scores.m in Sources */,
 				122F83F218B99BDF007489E3 /* Modes.m in Sources */,
 				12AE7D2D188F8E5B00E00848 /* AppDelegate.m in Sources */,
 				12AE7D29188F8E5B00E00848 /* main.m in Sources */,
 				122E8A2618A9CF2F004668CC /* IAPHelper.m in Sources */,
 				122BCF5C18A203BE00AF14E1 /* GCHelper.m in Sources */,
 				122F83F518B99C36007489E3 /* Levels.m in Sources */,
-				122F83FE18B99C87007489E3 /* Scores.m in Sources */,
 				129B5B5518C0538700C7F956 /* RNGridMenu.m in Sources */,
 				122E8A2918A9D10E004668CC /* InAppPurchase.m in Sources */,
 				122F840A18B9A091007489E3 /* Categories.m in Sources */,

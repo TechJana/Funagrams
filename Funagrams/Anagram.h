@@ -10,17 +10,7 @@
 
 @interface Anagram : NSObject
 {
-    NSString *_question;
-    NSString *_hint;
-    NSString *_result;
-    NSString *_levelDescription;
-    NSString *_questionRemaining;
-    int _level;
-    float _hintPercentile;
-    int _maxHintCount;
-    int _hintsProvided;
-    NSString *_userResult;
-    int _levelMaxScore;
+
 }
 
 @property NSString *question;

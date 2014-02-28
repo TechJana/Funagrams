@@ -19,11 +19,8 @@
         // initialize here
         historyData = [[NSMutableDictionary alloc] initWithObjectsAndKeys: @"TBD", @"TBD", nil];
         _total = 0;
-        self.total = _total;
         _currentGameLevel = 1;
         _currentGameScore = 0;
-        self.currentGameLevel = _currentGameLevel;
-        self.currentGameScore = _currentGameScore;
     }
     
     return self;

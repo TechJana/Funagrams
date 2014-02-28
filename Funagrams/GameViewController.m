@@ -353,10 +353,10 @@
 //        NSLog(@"This is a child object: %@", [randomAnagram objectAtIndex:0]);
         
         //Assign the attributes of randomAnagram object to the Current Anagram
-        currentAnagram.question = currentGamesFromModel.anagram.questionText;
+        currentAnagram.hint = currentGamesFromModel.anagram.questionText;
+        currentAnagram.question = [currentGamesFromModel.anagram.questionText stringByReplacingOccurrencesOfString:@" " withString:@""];
         currentAnagram.questionRemaining = [currentAnagram.question copy];
         currentAnagram.result = currentGamesFromModel.anagram.answerText;
-        currentAnagram.hint = currentGamesFromModel.anagram.questionText;
         currentAnagram.level = (int)currentGamesFromModel.levelId;
         currentAnagram.levelDescription = currentGamesFromModel.level.levelDescription;
         currentAnagram.hintPercentile = [currentGamesFromModel.mode.hintsPercentile floatValue];

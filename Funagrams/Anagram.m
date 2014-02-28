@@ -10,18 +10,6 @@
 
 @implementation Anagram
 
-@synthesize level;
-@synthesize levelDescription;
-@synthesize question;
-@synthesize questionRemaining;
-@synthesize result;
-@synthesize hint;
-@synthesize hintPercentile;
-@synthesize maxHintCount;
-@synthesize hintsProvided;
-@synthesize userResult;
-@synthesize levelMaxScore;
-
 - (id) init
 {
     self = [super init];
