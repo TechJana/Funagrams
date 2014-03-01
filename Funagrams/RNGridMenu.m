@@ -277,7 +277,17 @@ CGPoint RNCentroidOfTouchesInView(NSSet *touches, UIView *view) {
         _title = [title copy];
         _action = [action copy];
     }
+    
+    return self;
+}
 
+- (instancetype)initWithImageName:(NSString *)image title:(NSString *)title action:(dispatch_block_t)action {
+    if ((self = [super init])) {
+        _imageName = image;
+        _title = [title copy];
+        _action = [action copy];
+    }
+    
     return self;
 }
 
@@ -350,6 +360,7 @@ static RNGridMenu *rn_visibleGridMenu;
         _bounces = YES;
         _singleLineView = NO;
         _horizontalSpacing = 0;
+        _fixedImageSize = YES;
 
         BOOL hasImages = [items filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(RNGridMenuItem *item, NSDictionary *bindings) {
             return item.image != nil;
@@ -501,7 +512,14 @@ static RNGridMenu *rn_visibleGridMenu;
 
     [self.items enumerateObjectsUsingBlock:^(RNGridMenuItem *item, NSUInteger idx, BOOL *stop) {
         RNMenuItemView *itemView = [[RNMenuItemView alloc] init];
-        itemView.imageView.image = item.image;
+        if (item.imageName != nil)
+        {
+            itemView.imageView.image = [UIImage imageNamed:item.imageName];
+        }
+        else
+        {
+            itemView.imageView.image = item.image;
+        }
         itemView.titleLabel.text = item.title;
         itemView.itemIndex = idx;
 
@@ -532,11 +550,28 @@ static RNGridMenu *rn_visibleGridMenu;
     }];
 }
 
+- (CGSize)averageImageSize {
+    int averageWidth = 0,averageHeight = 0;
+    
+    for (int indexCount = 0; indexCount<self.itemViews.count; indexCount++)
+    {
+        RNMenuItemView *itemView = (RNMenuItemView *)[self.itemViews objectAtIndex:indexCount];
+        averageWidth += itemView.imageView.image.size.width;
+        averageHeight += itemView.imageView.image.size.height;
+    }
+    
+    return CGSizeMake(averageWidth/self.itemViews.count, averageHeight/self.itemViews.count);
+}
+
 - (void)layoutAsGrid {
     NSInteger itemCount = self.items.count;
     NSInteger rowCount = [self singleLineView] ? 1 : ceilf(sqrtf(itemCount));
 
     CGFloat height = self.itemSize.height * rowCount;
+    if (!self.fixedImageSize)
+    {
+        self.itemSize = [self averageImageSize];
+    }
     CGFloat width = (self.itemSize.width + [self horizontalSpacing]) * ceilf(itemCount / (CGFloat)rowCount);
     CGFloat itemHeight = floorf(height / (CGFloat)rowCount);
     CGFloat headerOffset = self.headerView.bounds.size.height;

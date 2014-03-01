@@ -119,6 +119,7 @@
     av.highlightColor = [UIColor clearColor];
     av.singleLineView = YES;
     av.horizontalSpacing = 20;
+    av.fixedImageSize = NO;
     av.delegate = self;
 
     [av showInViewController:self center:CGPointMake(self.view.bounds.size.width/2.f, self.view.bounds.size.height/2.f)];

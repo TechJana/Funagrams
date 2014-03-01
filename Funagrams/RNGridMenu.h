@@ -20,6 +20,7 @@ typedef NS_ENUM(NSInteger, RNGridMenuStyle) {
 @interface RNGridMenuItem : NSObject
 
 @property (nonatomic, readonly) UIImage *image;
+@property (nonatomic, readonly) NSString *imageName;
 @property (nonatomic, readonly) NSString *title;
 
 @property (nonatomic, copy) dispatch_block_t action;
@@ -27,6 +28,7 @@ typedef NS_ENUM(NSInteger, RNGridMenuStyle) {
 + (instancetype)emptyItem;
 
 - (instancetype)initWithImage:(UIImage *)image title:(NSString *)title action:(dispatch_block_t)action;
+- (instancetype)initWithImageName:(NSString *)image title:(NSString *)title action:(dispatch_block_t)action;
 - (instancetype)initWithImage:(UIImage *)image title:(NSString *)title;
 - (instancetype)initWithImage:(UIImage *)image;
 - (instancetype)initWithTitle:(NSString *)title;
@@ -115,6 +117,10 @@ typedef NS_ENUM(NSInteger, RNGridMenuStyle) {
 // An optional horizontal spacing between menu items
 // default 0
 @property (nonatomic, assign) int horizontalSpacing;
+
+// Determine whether or not to display all menu items in a predetermined dimension of 100x100, else an average of the actual image size
+// default YES
+@property (nonatomic, assign) BOOL fixedImageSize;
 
 // Initialize the menu with a list of menu items.
 // Note: this changes the view to style RNGridMenuStyleList if no images are supplied

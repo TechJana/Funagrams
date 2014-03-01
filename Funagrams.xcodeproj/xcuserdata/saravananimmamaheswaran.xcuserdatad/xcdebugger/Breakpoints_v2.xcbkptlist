@@ -15,7 +15,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "382"
             endingLineNumber = "382"
-            landmarkName = "-loadQuestionResultButtons"
+            landmarkName = "-getAnagramForModeAndLevel:withArg2:"
             landmarkType = "5">
             <Locations>
                <Location
