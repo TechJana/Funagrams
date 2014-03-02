@@ -96,6 +96,10 @@ typedef NS_ENUM(NSInteger, RNGridMenuStyle) {
 // default center
 @property (nonatomic, assign) NSTextAlignment itemTextAlignment;
 
+// The text vertical alignment of the item titles relative to the image, this would be used only if the textOnImage is true
+// default bottom
+@property (nonatomic, assign) UIControlContentVerticalAlignment itemTextVerticalAlignment;
+
 // The list layout
 // default RNGridMenuStyleGrid
 @property (nonatomic, assign) RNGridMenuStyle menuStyle;
@@ -109,14 +113,26 @@ typedef NS_ENUM(NSInteger, RNGridMenuStyle) {
 // Determine whether or not to bounce in the animation
 // default YES
 @property (nonatomic, assign) BOOL bounces;
-    
+
 // Determine whether or not to display all menu items in a single line
 // default NO
 @property (nonatomic, assign) BOOL singleLineView;
-    
+
+// Determine whether or not to display the text on the image
+// default NO
+@property (nonatomic, assign) BOOL textOnImage;
+
 // An optional horizontal spacing between menu items
 // default 0
 @property (nonatomic, assign) int horizontalSpacing;
+
+// An optional vertical spacing between menu items
+// default 0
+@property (nonatomic, assign) int verticalSpacing;
+
+// An optional number of columns for the menu items, "-1" will make it based on the count of menu items
+// default -1
+@property (nonatomic, assign) int menuColumnsCount;
 
 // Determine whether or not to display all menu items in a predetermined dimension of 100x100, else an average of the actual image size
 // default YES

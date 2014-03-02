@@ -355,12 +355,16 @@ static RNGridMenu *rn_visibleGridMenu;
         _highlightColor = [UIColor colorWithRed:.02f green:.549f blue:.961f alpha:1.f];
         _menuStyle = RNGridMenuStyleGrid;
         _itemTextAlignment = NSTextAlignmentCenter;
+        _itemTextVerticalAlignment = UIControlContentVerticalAlignmentBottom;
         _menuView = [UIView new];
         _backgroundColor = [UIColor colorWithWhite:0 alpha:0.7];
         _bounces = YES;
         _singleLineView = NO;
         _horizontalSpacing = 0;
+        _verticalSpacing = 0;
         _fixedImageSize = YES;
+        _menuColumnsCount = -1;
+        _textOnImage = NO;
 
         BOOL hasImages = [items filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(RNGridMenuItem *item, NSDictionary *bindings) {
             return item.image != nil;
@@ -474,6 +478,11 @@ static RNGridMenu *rn_visibleGridMenu;
     CGRect bounds = self.view.bounds;
     self.blurView.frame = bounds;
 
+    if (!self.fixedImageSize)
+    {
+        self.itemSize = [self averageImageSize];
+    }
+
     [self styleItemViews];
 
     if (self.menuStyle == RNGridMenuStyleGrid) {
@@ -484,7 +493,7 @@ static RNGridMenu *rn_visibleGridMenu;
     }
 
     CGRect headerFrame = self.headerView.frame;
-    headerFrame.size.width = self.menuView.bounds.size.width;
+    //headerFrame.size.width = self.menuView.bounds.size.width;
     headerFrame.origin = CGPointZero;
     self.headerView.frame = headerFrame;
 }
@@ -535,6 +544,12 @@ static RNGridMenu *rn_visibleGridMenu;
         itemView.titleLabel.textColor = self.itemTextColor;
         itemView.titleLabel.textAlignment = self.itemTextAlignment;
         itemView.titleLabel.font = self.itemFont;
+        if (self.textOnImage && self.itemTextVerticalAlignment==UIControlContentVerticalAlignmentCenter) {
+            //[itemView.titleLabel setFrame:CGRectMake(itemView.titleLabel.frame.origin.x, itemView.titleLabel.frame.origin.y-(floorf(CGRectGetHeight(itemView.bounds) * 2/3.f) - (floorf(CGRectGetHeight(itemView.bounds) * 0.1f)) / 2)-(self.itemSize.height-itemView.titleLabel.frame.size.height)/2, itemView.titleLabel.frame.size.width, itemView.titleLabel.frame.size.height)];
+            [itemView.titleLabel setFrame:CGRectMake(itemView.titleLabel.frame.origin.x, itemView.titleLabel.frame.origin.y-(floorf(CGRectGetHeight(itemView.bounds) * 2/3.f) - (floorf(CGRectGetHeight(itemView.bounds) * 0.1f)) / 2)+(self.itemSize.height-itemView.titleLabel.frame.size.height)/2 - itemView.titleLabel.frame.size.height/2, itemView.titleLabel.frame.size.width, itemView.titleLabel.frame.size.height)];
+        }
+        itemView.titleLabel.shadowColor = [UIColor grayColor];
+        itemView.titleLabel.shadowOffset = CGSizeMake(1, 1);
     }];
 }
 
@@ -566,17 +581,22 @@ static RNGridMenu *rn_visibleGridMenu;
 - (void)layoutAsGrid {
     NSInteger itemCount = self.items.count;
     NSInteger rowCount = [self singleLineView] ? 1 : ceilf(sqrtf(itemCount));
+    if (self.menuColumnsCount != -1)
+    {
+        rowCount = itemCount / self.menuColumnsCount;
+    }
 
-    CGFloat height = self.itemSize.height * rowCount;
+    CGFloat height = (self.itemSize.height + [self verticalSpacing]) * rowCount;
     if (!self.fixedImageSize)
     {
         self.itemSize = [self averageImageSize];
     }
     CGFloat width = (self.itemSize.width + [self horizontalSpacing]) * ceilf(itemCount / (CGFloat)rowCount);
-    CGFloat itemHeight = floorf(height / (CGFloat)rowCount);
+    //CGFloat itemHeight = floorf(height / (CGFloat)rowCount);
+    CGFloat itemHeight = self.itemSize.height;
     CGFloat headerOffset = self.headerView.bounds.size.height;
 
-    self.menuView.frame = [self menuFrameWithWidth:width+[self horizontalSpacing]+[self horizontalSpacing] height:height center:self.menuCenter headerOffset:headerOffset];
+    self.menuView.frame = [self menuFrameWithWidth:width-[self horizontalSpacing] height:height-[self verticalSpacing] center:self.menuCenter headerOffset:headerOffset];
 
     for (NSInteger i = 0; i < rowCount; i++) {
         NSInteger rowLength = ceilf(itemCount / (CGFloat)rowCount);
@@ -586,9 +606,10 @@ static RNGridMenu *rn_visibleGridMenu;
             rowLength = itemCount - i * rowLength;
         }
         NSArray *subItems = [self.itemViews subarrayWithRange:NSMakeRange(rowStartIndex, rowLength)];
-        CGFloat itemWidth = floorf(width / (CGFloat)rowLength);
+        //CGFloat itemWidth = floorf(width / (CGFloat)rowLength);
+        CGFloat itemWidth = self.itemSize.width;
         [subItems enumerateObjectsUsingBlock:^(RNMenuItemView *itemView, NSUInteger idx, BOOL *stop) {
-            itemView.frame = CGRectMake(idx * (itemWidth + [self horizontalSpacing]), i * itemHeight + headerOffset, itemWidth, itemHeight);
+            itemView.frame = CGRectMake(idx * (itemWidth + [self horizontalSpacing]), i * (itemHeight + [self horizontalSpacing]) + headerOffset, itemWidth, itemHeight);
         }];
     }
 }
@@ -653,6 +674,8 @@ static RNGridMenu *rn_visibleGridMenu;
     [self.view addSubview:self.blurView];
     [self.view addSubview:self.menuView];
     if (self.headerView) {
+        //self.headerView.center = CGPointMake(self.menuView.frame.size.width/2, self.headerView.center.y);
+        [self.headerView setFrame:CGRectMake((self.menuView.frame.size.width-self.headerView.frame.size.width)/2, self.headerView.frame.origin.y, self.headerView.frame.size.width, self.headerView.frame.size.height)];
         [self.menuView addSubview:self.headerView];
     }
 

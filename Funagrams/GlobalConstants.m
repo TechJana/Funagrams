@@ -11,6 +11,7 @@
 int const kGameModeBeginner = 1;
 int const kGameModeIntermediate = 2;
 int const kGameModeExpert = 3;
+int const kGameLevelLastIncompleteLevel = -1;
 
 @implementation GlobalConstants
 

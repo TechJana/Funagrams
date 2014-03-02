@@ -131,26 +131,79 @@
     NSLog(@"Dismissed with item %d: %@", itemIndex, item.title);
 }
 
+- (void)showLevelPopUp
+{
+    NSInteger numberOfOptions = 18;
+    NSArray *items = @[
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelNoStarImage"] title:@"1" action:^{
+                           [self goToGameLevel:kGameModeBeginner level:1];
+                       }],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"2" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"3" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"4" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"5" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"6" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"7" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"8" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"9" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"10" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"11" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"12" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"13" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"14" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"15" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"16" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"17" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"18" action:nil],
+                       ];
     
-- (IBAction) buttonBeginner_click:(id)sender
+    RNGridMenu *av = [[RNGridMenu alloc] initWithItems:[items subarrayWithRange:NSMakeRange(0, numberOfOptions)]];
+    
+    UIViewController *headerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"levelHeaderViewController"];
+    [headerViewController.view setFrame:CGRectMake(0, 0, 304, 78)];
+    //[headerViewController.view setBackgroundColor:[UIColor clearColor]];
+    av.headerView = headerViewController.view;
+    
+    //av.backgroundColor = [UIColor clearColor];
+    av.highlightColor = [UIColor clearColor];
+    av.horizontalSpacing = 10;
+    av.verticalSpacing = 10;
+    av.fixedImageSize = NO;
+    av.menuColumnsCount = 6;
+    av.itemTextAlignment = NSTextAlignmentCenter;
+    av.textOnImage = YES;
+    av.itemTextVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    av.itemTextColor = [UIColor yellowColor];
+    //av.itemSize = CGSizeMake(39, 38);
+    av.delegate = self;
+    
+    [av showInViewController:self center:CGPointMake(self.view.bounds.size.width/2.f, self.view.bounds.size.height/2.f)];
+}
+
+- (void)goToGameLevel:(int)mode level:(int)level
 {
     GameViewController *myController = [self.storyboard instantiateViewControllerWithIdentifier:@"gameViewController"];
-    myController.currentGameMode = kGameModeBeginner;
+    myController.currentGameMode = mode;
+    myController.currentGameLevel = level;
     [self.navigationController pushViewController: myController animated:YES];
+}
+
+- (IBAction) buttonBeginner_click:(id)sender
+{
+    [self goToGameLevel:kGameModeBeginner level:kGameLevelLastIncompleteLevel];
+    //[self showLevelPopUp];
 }
     
 - (IBAction) buttonIntermediate_click:(id)sender
 {
-    GameViewController *myController = [self.storyboard instantiateViewControllerWithIdentifier:@"gameViewController"];
-    myController.currentGameMode = kGameModeIntermediate;
-    [self.navigationController pushViewController: myController animated:YES];
+    [self goToGameLevel:kGameModeIntermediate level:kGameLevelLastIncompleteLevel];
+    //[self showLevelPopUp];
 }
 
 - (IBAction) buttonExpert_click:(id)sender
 {
-    GameViewController *myController = [self.storyboard instantiateViewControllerWithIdentifier:@"gameViewController"];
-    myController.currentGameMode = kGameModeExpert;
-    [self.navigationController pushViewController: myController animated:YES];
+    [self goToGameLevel:kGameModeExpert level:kGameLevelLastIncompleteLevel];
+    //[self showLevelPopUp];
 }
 
 - (void)buyButtonTapped:(id)sender {

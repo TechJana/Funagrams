@@ -11,6 +11,7 @@
 extern int const kGameModeBeginner;
 extern int const kGameModeIntermediate;
 extern int const kGameModeExpert;
+extern int const kGameLevelLastIncompleteLevel;
 
 @interface GlobalConstants : NSObject
 

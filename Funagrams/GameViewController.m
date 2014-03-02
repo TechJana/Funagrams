@@ -29,6 +29,7 @@
 @synthesize labelLevel;
 @synthesize currentGameMode;
 @synthesize fetchedResultsController = _fetchedResultsController;
+@synthesize currentGameLevel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -81,7 +82,7 @@
     [self loadQuestionResultButtons];
     //[self getAnagram];
     //[self getAnagramForMode:[NSNumber numberWithInt:currentGameMode]];
-    [self getAnagramForModeAndLevel:[NSNumber numberWithInt:currentGameMode] withArg2:[NSNumber numberWithInt:1]];
+    [self getAnagramForModeAndLevel:[NSNumber numberWithInt:currentGameMode] levelId:[NSNumber numberWithInt:currentGameLevel]];
     //[self getAnagramForMode:[NSNumber numberWithInt:currentGameMode] withArg2:[NSNumber numberWithInt:currentGameLevel]];
     [self loadAnagram];
     
@@ -375,12 +376,26 @@
         NSLog(@"No Games available for this mode.");
 }
 
-- (void)getAnagramForModeAndLevel:(NSNumber*)numModeId withArg2:(NSNumber*)numLevelId
+- (int)getLastIncompleteLevel
+{
+    int levelId = -1;
+    
+    
+    
+    return levelId;
+}
+
+- (void)getAnagramForModeAndLevel:(NSNumber*)numModeId levelId:(NSNumber*)numLevelId
 {
     NSEntityDescription *gamesEntity = [NSEntityDescription entityForName:@"Games" inManagedObjectContext:context];
     NSFetchRequest *gamesFetchRequest = [[NSFetchRequest alloc] init];
     [gamesFetchRequest setEntity:gamesEntity];
     
+    int levelId = -1;
+    if ([numLevelId intValue] == -1) {
+        levelId = [self getLastIncompleteLevel];
+    }
+
     NSString *allowedLength = [NSString stringWithFormat:@".{%d,%d}", 0, questionMaxLength];
     
     NSPredicate *gamesPredicate = [NSPredicate predicateWithFormat:@"modeId = %@ AND levelId = %@ AND anagram.questionText MATCHES %@",numModeId, numLevelId, allowedLength];

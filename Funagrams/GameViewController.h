@@ -77,5 +77,6 @@
 @property (retain, nonatomic) IBOutlet UILabel *labelLevel;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (readwrite, nonatomic) int currentGameMode;
+@property (readwrite, nonatomic) int currentGameLevel;
 
 @end
