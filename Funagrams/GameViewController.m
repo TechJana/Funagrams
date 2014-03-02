@@ -379,6 +379,7 @@
 - (int)getLastIncompleteLevelInMode:(NSNumber*)modeId
 {
     int levelId = -1;
+    Games *games;
     
     NSEntityDescription *gamesEntity = [NSEntityDescription entityForName:@"Games" inManagedObjectContext:context];
     NSFetchRequest *gamesFetchRequest = [[NSFetchRequest alloc] init];
@@ -399,15 +400,11 @@
     
     if (matchingGamesforMode.count > 0)
     {
-        
-        NSInteger randomGameId = arc4random()% (matchingGamesforMode.count + 0);
-        currentGamesFromModel = [NSEntityDescription insertNewObjectForEntityForName:@"Games" inManagedObjectContext:context];
-        
-        currentGamesFromModel = (Games*)[matchingGamesforMode objectAtIndex:randomGameId];
-        NSLog(@"Current Game ID : %@", currentGamesFromModel.gameId);
+        games = (Games*)[matchingGamesforMode objectAtIndex:0];
+        NSLog(@"Current Game ID : %@", games.gameId);
         
         //Assign the attributes of randomAnagram object to the Current Anagram
-        levelId = [currentGamesFromModel.levelId intValue];
+        levelId = [games.levelId intValue] + 1;
     }
     else
     {
@@ -417,6 +414,68 @@
         
     return levelId;
 }
+
+- (void)updateScoreForGame:(NSNumber *)gameId
+{
+    NSError *error;
+    Games *games;
+    Scores *scores;
+
+    NSEntityDescription *gamesEntity = [NSEntityDescription entityForName:@"Games" inManagedObjectContext:context];
+    NSFetchRequest *gamesFetchRequest = [[NSFetchRequest alloc] init];
+    [gamesFetchRequest setEntity:gamesEntity];
+    NSPredicate *gamesPredicate = [NSPredicate predicateWithFormat:@"gameId = %@",gameId];
+    [gamesFetchRequest setPredicate:gamesPredicate];
+    [gamesFetchRequest setFetchLimit:1];
+    
+    NSEntityDescription *scoresEntity = [NSEntityDescription entityForName:@"Scores" inManagedObjectContext:context];
+    NSFetchRequest *scoresFetchRequest = [[NSFetchRequest alloc] init];
+    [scoresFetchRequest setEntity:(NSEntityDescription *)scoresEntity];
+    NSSortDescriptor *scoreSortByScoreId = [[NSSortDescriptor alloc] initWithKey:@"scoreId" ascending:NO];
+    [scoresFetchRequest setSortDescriptors:@[scoreSortByScoreId]];
+    [scoresFetchRequest setFetchLimit:1];
+    
+    NSArray *matchingGames = [context executeFetchRequest:gamesFetchRequest error:&error];
+    
+    NSLog(@"GameID: %@ - Game for this gameId: %lu ", gameId,(unsigned long)matchingGames.count);
+    
+    if (matchingGames.count > 0)
+    {
+        games = (Games*)[matchingGames objectAtIndex:0];
+        NSLog(@"Current Game ID : %@", games.gameId);
+        
+        NSArray *matchingScores = [context executeFetchRequest:scoresFetchRequest error:&error];
+        
+        int64_t scoreId=1;
+        if (matchingScores.count > 0)
+        {
+            scores = (Scores*)[matchingScores objectAtIndex:0];
+            NSLog(@"Current Score ID : %@", scores.scoreId);
+            scoreId = [scores.scoreId longLongValue] + 1;
+        }
+
+        scores = [NSEntityDescription
+                  insertNewObjectForEntityForName:@"Scores"
+                  inManagedObjectContext:context];
+        scores.gameId = games.gameId;
+        scores.score = [NSNumber numberWithInt:scoreBoard.currentGameScore];
+        scores.scoreId = [NSNumber numberWithLongLong:scoreId];
+        scores.playedOn = [NSDate date];
+        scores.game = games;
+        
+        games.score = scores;
+        
+        if (![context save:&error])
+        {
+            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+        }
+    }
+    else
+    {
+        NSLog(@"No Game available for this gameId.");
+    }
+}
+
 
 - (void)getAnagramForModeAndLevel:(NSNumber*)numModeId levelId:(NSNumber*)numLevelId
 {
@@ -431,7 +490,7 @@
 
     NSString *allowedLength = [NSString stringWithFormat:@".{%d,%d}", 0, questionMaxLength];
     
-    NSPredicate *gamesPredicate = [NSPredicate predicateWithFormat:@"modeId = %@ AND levelId = %@ AND anagram.questionText MATCHES %@",numModeId, [NSNumber numberWithInt:levelId], allowedLength];
+    NSPredicate *gamesPredicate = [NSPredicate predicateWithFormat:@"modeId = %@ AND levelId = %@ AND anagram.questionText MATCHES %@ AND score = nil",numModeId, [NSNumber numberWithInt:levelId], allowedLength];
     
     [gamesFetchRequest setPredicate:gamesPredicate];
     
@@ -445,7 +504,7 @@
     {
         
         NSInteger randomGameId = arc4random()% (matchingGamesforMode.count + 0);
-        currentGamesFromModel = [NSEntityDescription insertNewObjectForEntityForName:@"Games" inManagedObjectContext:context];
+        //currentGamesFromModel = [NSEntityDescription insertNewObjectForEntityForName:@"Games" inManagedObjectContext:context];
         
         currentGamesFromModel = (Games*)[matchingGamesforMode objectAtIndex:randomGameId];
         NSLog(@"Current Game ID : %@", currentGamesFromModel.gameId);
@@ -462,6 +521,7 @@
         currentAnagram.maxHintCount = currentAnagram.question.length * currentAnagram.hintPercentile;
         currentAnagram.levelMaxScore = (int)currentGamesFromModel.maxScore;
         currentAnagram.userResult = [NSString stringWithFormat:@"%*s", currentAnagram.result.length, ""];
+        currentAnagram.gameId = currentGamesFromModel.gameId;
     }
     else
         NSLog(@"No Games available for this mode.");
@@ -633,7 +693,6 @@
     {
         [self scoreThisGame];
         labelScore.text = [NSString stringWithFormat:@"%d", scoreBoard.currentGameScore];
-        [self reportScore];
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"GameOverTitle", nil)
                                                         message:NSLocalizedString(@"GameOverDescription", nil)
@@ -661,6 +720,9 @@
     int score = 0;
     score = (1.0 - (currentAnagram.hintsProvided / currentAnagram.maxHintCount)) * currentAnagram.levelMaxScore;
     scoreBoard.currentGameScore = score;
+    
+    [self updateScoreForGame:currentAnagram.gameId];
+    [self reportScore];
 }
 
 - (void)fadeOffHint:(id)sender

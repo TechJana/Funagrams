@@ -16,6 +16,7 @@
 #import "Anagrams.h"
 #import "Levels.h"
 #import "Modes.h"
+#import "Scores.h"
 
 @interface GameViewController : UIViewController <ADBannerViewDelegate> /*<UIActionSheetDelegate, GKLeaderboardViewControllerDelegate, GKAchievementViewControllerDelegate, GameCenterManagerDelegate>*/
 {

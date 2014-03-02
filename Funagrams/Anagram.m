@@ -28,6 +28,7 @@
         _hintsProvided = 0;
         _userResult = @"";
         _levelMaxScore = 0;
+        _gameId = [NSNumber numberWithInt:-1];
     }
     
     return self;

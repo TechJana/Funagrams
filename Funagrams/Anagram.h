@@ -24,5 +24,6 @@
 @property int hintsProvided;
 @property NSString *userResult;
 @property int levelMaxScore;
+@property NSNumber *gameId;
 
 @end
