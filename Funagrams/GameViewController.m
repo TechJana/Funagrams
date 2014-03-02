@@ -697,10 +697,10 @@
         labelScore.text = [NSString stringWithFormat:@"%d", scoreBoard.currentGameScore];
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"GameOverTitle", nil)
-                                                        message:[NSString stringWithFormat:@"%@ %d", NSLocalizedString(@"GameOverDescription", nil), scoreBoard.currentGameScore]
+                                                        message:[NSString stringWithFormat:@"%@%d", NSLocalizedString(@"GameOverDescription", nil), scoreBoard.currentGameScore]
                                                        delegate:nil
-                                              cancelButtonTitle:NSLocalizedString(@"GameOverButtonTitle", nil)
-                                              otherButtonTitles:nil];
+                                                    cancelButtonTitle:NSLocalizedString(@"GameOverCancelButtonTitle", nil)
+                                            otherButtonTitles:NSLocalizedString(@"GameOverNextButtonTitle", nil)];
         [alert show];
         [self reportScore];
         
