@@ -385,7 +385,7 @@
     NSFetchRequest *gamesFetchRequest = [[NSFetchRequest alloc] init];
     [gamesFetchRequest setEntity:gamesEntity];
     
-    NSPredicate *gamesPredicate = [NSPredicate predicateWithFormat:@"modeId = %@ AND score = nil",modeId];
+    NSPredicate *gamesPredicate = [NSPredicate predicateWithFormat:@"modeId = %@ AND score = nil", modeId];
     NSSortDescriptor *gamesSortByLevel = [[NSSortDescriptor alloc] initWithKey:@"levelId" ascending:YES];
     
     [gamesFetchRequest setPredicate:gamesPredicate];
@@ -695,10 +695,6 @@
     {
         [self scoreThisGame];
         labelScore.text = [NSString stringWithFormat:@"%d", scoreBoard.currentGameScore];
-<<<<<<< HEAD
-=======
-        NSLog([NSString stringWithFormat:@"%@ %d", NSLocalizedString(@"GameOverDescription", nil), scoreBoard.currentGameScore]);
->>>>>>> FETCH_HEAD
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"GameOverTitle", nil)
                                                         message:[NSString stringWithFormat:@"%@ %d", NSLocalizedString(@"GameOverDescription", nil), scoreBoard.currentGameScore]
