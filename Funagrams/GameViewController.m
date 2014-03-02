@@ -376,12 +376,45 @@
         NSLog(@"No Games available for this mode.");
 }
 
-- (int)getLastIncompleteLevel
+- (int)getLastIncompleteLevelInMode:(NSNumber*)modeId
 {
     int levelId = -1;
     
+    NSEntityDescription *gamesEntity = [NSEntityDescription entityForName:@"Games" inManagedObjectContext:context];
+    NSFetchRequest *gamesFetchRequest = [[NSFetchRequest alloc] init];
+    [gamesFetchRequest setEntity:gamesEntity];
     
+    NSPredicate *gamesPredicate = [NSPredicate predicateWithFormat:@"modeId = %@ AND score = nil",modeId];
+    NSSortDescriptor *gamesSortByLevel = [[NSSortDescriptor alloc] initWithKey:@"levelId" ascending:YES];
     
+    [gamesFetchRequest setPredicate:gamesPredicate];
+    [gamesFetchRequest setSortDescriptors:@[gamesSortByLevel]];
+    [gamesFetchRequest setFetchLimit:1];
+    
+    NSError *error;
+    
+    NSArray *matchingGamesforMode = [context executeFetchRequest:gamesFetchRequest error:&error];
+    
+    NSLog(@"ModeID: %@ - Games for this mode: %lu ", modeId,(unsigned long)matchingGamesforMode.count);
+    
+    if (matchingGamesforMode.count > 0)
+    {
+        
+        NSInteger randomGameId = arc4random()% (matchingGamesforMode.count + 0);
+        currentGamesFromModel = [NSEntityDescription insertNewObjectForEntityForName:@"Games" inManagedObjectContext:context];
+        
+        currentGamesFromModel = (Games*)[matchingGamesforMode objectAtIndex:randomGameId];
+        NSLog(@"Current Game ID : %@", currentGamesFromModel.gameId);
+        
+        //Assign the attributes of randomAnagram object to the Current Anagram
+        levelId = [currentGamesFromModel.levelId intValue];
+    }
+    else
+    {
+        NSLog(@"No Levels available for this mode.");
+        levelId = 1;
+    }
+        
     return levelId;
 }
 
@@ -393,12 +426,12 @@
     
     int levelId = -1;
     if ([numLevelId intValue] == -1) {
-        levelId = [self getLastIncompleteLevel];
+        levelId = [self getLastIncompleteLevelInMode:numModeId];
     }
 
     NSString *allowedLength = [NSString stringWithFormat:@".{%d,%d}", 0, questionMaxLength];
     
-    NSPredicate *gamesPredicate = [NSPredicate predicateWithFormat:@"modeId = %@ AND levelId = %@ AND anagram.questionText MATCHES %@",numModeId, numLevelId, allowedLength];
+    NSPredicate *gamesPredicate = [NSPredicate predicateWithFormat:@"modeId = %@ AND levelId = %@ AND anagram.questionText MATCHES %@",numModeId, [NSNumber numberWithInt:levelId], allowedLength];
     
     [gamesFetchRequest setPredicate:gamesPredicate];
     
@@ -418,7 +451,7 @@
         NSLog(@"Current Game ID : %@", currentGamesFromModel.gameId);
         
         //Assign the attributes of randomAnagram object to the Current Anagram
-        currentAnagram.question = currentGamesFromModel.anagram.questionText;
+        currentAnagram.question = [currentGamesFromModel.anagram.questionText stringByReplacingOccurrencesOfString:@" " withString:@""];
         currentAnagram.questionRemaining = [currentAnagram.question copy];
         currentAnagram.result = currentGamesFromModel.anagram.answerText;
         currentAnagram.hint = currentGamesFromModel.anagram.questionText;
