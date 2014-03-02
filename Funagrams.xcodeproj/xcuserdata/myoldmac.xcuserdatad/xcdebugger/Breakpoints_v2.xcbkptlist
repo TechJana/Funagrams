@@ -63,7 +63,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "654"
             endingLineNumber = "654"
-            landmarkName = "-verifyResult"
+            landmarkName = "-loadAnagram"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

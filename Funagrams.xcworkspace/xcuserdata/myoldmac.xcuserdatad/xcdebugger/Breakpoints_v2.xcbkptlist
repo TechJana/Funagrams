@@ -6,7 +6,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Funagrams/GameViewController.m"
@@ -15,8 +15,38 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "638"
             endingLineNumber = "638"
-            landmarkName = "-verifyResult"
+            landmarkName = "-loadAnagram"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[GameViewController loadAnagram]"
+                  moduleName = "Funagrams"
+                  urlString = "file:///Users/myoldmac/Funagrams/Funagrams/GameViewController.m"
+                  timestampString = "415488135.949599"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "640"
+                  endingLineNumber = "640"
+                  offsetFromSymbolStart = "438">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[GameViewController loadAnagram]"
+                  moduleName = "Funagrams"
+                  urlString = "file:///Users/myoldmac/Funagrams/Funagrams/GameViewController.m"
+                  timestampString = "415488135.990117"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "640"
+                  endingLineNumber = "640"
+                  offsetFromSymbolStart = "879">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -31,14 +61,14 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "640"
             endingLineNumber = "640"
-            landmarkName = "-verifyResult"
+            landmarkName = "-loadAnagram"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Funagrams/GameViewController.m"
@@ -47,7 +77,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "636"
             endingLineNumber = "636"
-            landmarkName = "-verifyResult"
+            landmarkName = "-loadAnagram"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -63,7 +93,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "667"
             endingLineNumber = "667"
-            landmarkName = "-scoreThisGame"
+            landmarkName = "-getQuestionRemaining"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -79,7 +109,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "666"
             endingLineNumber = "666"
-            landmarkName = "-scoreThisGame"
+            landmarkName = "-getQuestionRemaining"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -95,7 +125,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "463"
             endingLineNumber = "463"
-            landmarkName = "-getAnagramForModeAndLevel:levelId:"
+            landmarkName = "-updateScoreForGame:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -111,7 +141,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "464"
             endingLineNumber = "464"
-            landmarkName = "-getAnagramForModeAndLevel:levelId:"
+            landmarkName = "-updateScoreForGame:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -127,7 +157,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "467"
             endingLineNumber = "467"
-            landmarkName = "-getAnagramForModeAndLevel:levelId:"
+            landmarkName = "-updateScoreForGame:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -143,7 +173,167 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "466"
             endingLineNumber = "466"
-            landmarkName = "-getAnagramForModeAndLevel:levelId:"
+            landmarkName = "-updateScoreForGame:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Funagrams/GameViewController.m"
+            timestampString = "415488113.309003"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "698"
+            endingLineNumber = "698"
+            landmarkName = "-verifyResult"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Funagrams/GameViewController.m"
+            timestampString = "415488115.641815"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "700"
+            endingLineNumber = "700"
+            landmarkName = "-verifyResult"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Funagrams/GameViewController.m"
+            timestampString = "415488116.841995"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "699"
+            endingLineNumber = "699"
+            landmarkName = "-verifyResult"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Funagrams/GameViewController.m"
+            timestampString = "415488119.211623"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "705"
+            endingLineNumber = "705"
+            landmarkName = "-verifyResult"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Funagrams/GameViewController.m"
+            timestampString = "415488120.353289"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "704"
+            endingLineNumber = "704"
+            landmarkName = "-verifyResult"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Funagrams/GameViewController.m"
+            timestampString = "415491245.271994"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "843"
+            endingLineNumber = "843"
+            landmarkName = "-alertView:clickedButtonAtIndex:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Funagrams/GameViewController.m"
+            timestampString = "415492315.391974"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "848"
+            endingLineNumber = "848"
+            landmarkName = "-alertView:clickedButtonAtIndex:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Funagrams/GameViewController.m"
+            timestampString = "415494494.178865"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "853"
+            endingLineNumber = "853"
+            landmarkName = "-alertView:clickedButtonAtIndex:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Funagrams/GameViewController.m"
+            timestampString = "415494575.151926"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "845"
+            endingLineNumber = "845"
+            landmarkName = "-alertView:clickedButtonAtIndex:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Funagrams/GameViewController.m"
+            timestampString = "415494576.063907"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "846"
+            endingLineNumber = "846"
+            landmarkName = "-alertView:clickedButtonAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

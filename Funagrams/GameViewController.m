@@ -404,7 +404,7 @@
         NSLog(@"Current Game ID : %@", games.gameId);
         
         //Assign the attributes of randomAnagram object to the Current Anagram
-        levelId = [games.levelId intValue] + 1;
+        levelId = [games.levelId intValue];
     }
     else
     {
@@ -697,10 +697,10 @@
         labelScore.text = [NSString stringWithFormat:@"%d", scoreBoard.currentGameScore];
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"GameOverTitle", nil)
-                                                        message:[NSString stringWithFormat:@"%@%d", NSLocalizedString(@"GameOverDescription", nil), scoreBoard.currentGameScore]
-                                                       delegate:nil
-                                                    cancelButtonTitle:NSLocalizedString(@"GameOverCancelButtonTitle", nil)
-                                            otherButtonTitles:NSLocalizedString(@"GameOverNextButtonTitle", nil)];
+                                        message:[NSString stringWithFormat:@"%@%d", NSLocalizedString(@"GameOverDescription", nil), scoreBoard.currentGameScore]
+                                        delegate:self
+                                    cancelButtonTitle:NSLocalizedString(@"GameOverCancelButtonTitle", nil)
+                                    otherButtonTitles:NSLocalizedString(@"GameOverNextButtonTitle", nil),nil];
         [alert show];
         [self reportScore];
         
@@ -834,6 +834,28 @@
     [UIView setAnimationDuration:1];
     [banner setAlpha:0];
     [UIView commitAnimations];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    
+    if([title isEqualToString:@"Next Level >> "])
+    {
+        NSLog(@"Next Level button was selected.");
+        [self getAnagramForModeAndLevel:[NSNumber numberWithInt:currentGameMode] levelId:[NSNumber numberWithInt:currentGameLevel]];
+    }
+    else if([title isEqualToString:@"<< Play again"])
+    {
+        NSLog(@"Play again button was selected.");
+        currentAnagram.hintsProvided = 0;
+        currentAnagram.questionRemaining = [currentAnagram.question copy];
+        currentAnagram.userResult = [NSString stringWithFormat:@"%*s", currentAnagram.result.length, ""];
+        //[buttonQuestions objectAtIndex:selectedQuestion]
+        //[buttonResults objectAtIndex:selectedQuestion]
+        [self loadQuestionResultButtons];
+        [self loadAnagram];
+    }
 }
 
 #pragma mark GameCenter View Controllers
