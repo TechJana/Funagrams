@@ -514,12 +514,14 @@
         currentAnagram.questionRemaining = [currentAnagram.question copy];
         currentAnagram.result = currentGamesFromModel.anagram.answerText;
         currentAnagram.hint = currentGamesFromModel.anagram.questionText;
-        currentAnagram.level = (int)currentGamesFromModel.levelId;
+        currentAnagram.level = [currentGamesFromModel.levelId intValue];
+        NSLog(@"currentGamesFromModel.levelId:%@ - %d",currentGamesFromModel.levelId, currentAnagram.level);
         currentAnagram.levelDescription = currentGamesFromModel.level.levelDescription;
         currentAnagram.hintPercentile = [currentGamesFromModel.mode.hintsPercentile floatValue];
         currentAnagram.hintsProvided = 0;
         currentAnagram.maxHintCount = currentAnagram.question.length * currentAnagram.hintPercentile;
-        currentAnagram.levelMaxScore = (int)currentGamesFromModel.maxScore;
+        currentAnagram.levelMaxScore = [currentGamesFromModel.maxScore intValue];
+        NSLog(@"currentGamesFromModel.levelId:%@ - %d",currentGamesFromModel.maxScore, currentAnagram.levelMaxScore);
         currentAnagram.userResult = [NSString stringWithFormat:@"%*s", currentAnagram.result.length, ""];
         currentAnagram.gameId = currentGamesFromModel.gameId;
     }
@@ -693,13 +695,18 @@
     {
         [self scoreThisGame];
         labelScore.text = [NSString stringWithFormat:@"%d", scoreBoard.currentGameScore];
+<<<<<<< HEAD
+=======
+        NSLog([NSString stringWithFormat:@"%@ %d", NSLocalizedString(@"GameOverDescription", nil), scoreBoard.currentGameScore]);
+>>>>>>> FETCH_HEAD
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"GameOverTitle", nil)
-                                                        message:NSLocalizedString(@"GameOverDescription", nil)
+                                                        message:[NSString stringWithFormat:@"%@ %d", NSLocalizedString(@"GameOverDescription", nil), scoreBoard.currentGameScore]
                                                        delegate:nil
                                               cancelButtonTitle:NSLocalizedString(@"GameOverButtonTitle", nil)
                                               otherButtonTitles:nil];
         [alert show];
+        [self reportScore];
         
         return TRUE;
     }
@@ -718,7 +725,8 @@
 {
     // score = (1 - hintsProvided/maxHintCount) * levelMaxScore
     int score = 0;
-    score = (1.0 - (currentAnagram.hintsProvided / currentAnagram.maxHintCount)) * currentAnagram.levelMaxScore;
+    score = currentAnagram.levelMaxScore +
+        ((1.0 - (currentAnagram.hintsProvided / currentAnagram.maxHintCount)) * currentAnagram.levelMaxScore);
     scoreBoard.currentGameScore = score;
     
     [self updateScoreForGame:currentAnagram.gameId];
