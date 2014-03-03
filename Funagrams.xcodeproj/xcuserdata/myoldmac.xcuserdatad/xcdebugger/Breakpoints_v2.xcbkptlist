@@ -15,8 +15,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "219"
             endingLineNumber = "219"
-            landmarkName = "@implementation GameViewController"
-            landmarkType = "3">
+            landmarkName = "-buttonSubmit_click:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -63,7 +63,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "654"
             endingLineNumber = "654"
-            landmarkName = "-loadAnagram"
+            landmarkName = "-loadQuestionRemaining"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -95,8 +95,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "319"
             endingLineNumber = "319"
-            landmarkName = "@implementation GameViewController"
-            landmarkType = "3">
+            landmarkName = "-getAnagram"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -159,7 +159,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "380"
             endingLineNumber = "380"
-            landmarkName = "-getLastIncompleteLevelInMode:"
+            landmarkName = "-getAnagramForMode:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

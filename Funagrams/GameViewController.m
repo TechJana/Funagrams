@@ -876,13 +876,14 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    currentAnagram.hintsProvided = 0;
+    currentAnagram.questionRemaining = [currentAnagram.question copy];
+    currentAnagram.userResult = [NSString stringWithFormat:@"%*s", currentAnagram.result.length, ""];
     
     if([title isEqualToString:NSLocalizedString(@"GameOverNextButtonTitle", nil)])
     {
         NSLog(@"Next Level button was selected.");
-        currentAnagram.hintsProvided = 0;
-        currentAnagram.questionRemaining = [currentAnagram.question copy];
-        currentAnagram.userResult = [NSString stringWithFormat:@"%*s", currentAnagram.result.length, ""];
+        
         for (int indexCount=0; indexCount<buttonQuestions.count; indexCount++) {
             UIButton *thisButton = [buttonQuestions objectAtIndex:indexCount];
             [thisButton setTitle:@" " forState:UIControlStateNormal];
@@ -907,9 +908,7 @@
     else if([title isEqualToString:NSLocalizedString(@"GameOverCancelButtonTitle", nil)])
     {
         NSLog(@"Play again button was selected.");
-        currentAnagram.hintsProvided = 0;
-        currentAnagram.questionRemaining = [currentAnagram.question copy];
-        currentAnagram.userResult = [NSString stringWithFormat:@"%*s", currentAnagram.result.length, ""];
+        
         for (int indexCount=0; indexCount<buttonQuestions.count; indexCount++) {
             UIButton *thisButton = [buttonQuestions objectAtIndex:indexCount];
             [thisButton setTitle:@" " forState:UIControlStateNormal];
@@ -920,9 +919,9 @@
         }
         labelScore.text = @"0";
         buttonHint.enabled = TRUE;
-        buttonQuestions = nil;
-        buttonResults = nil;
-        [self loadQuestionResultButtons];
+        //buttonQuestions = nil;
+        //buttonResults = nil;
+        //[self loadQuestionResultButtons];
         [self loadAnagram];
     }
 }
