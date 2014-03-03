@@ -407,7 +407,6 @@
             [levelIds insertObject:games.levelId atIndex:levelIds.count];
         }
         
-<<<<<<< HEAD
         gamesEntity = [NSEntityDescription entityForName:@"Games" inManagedObjectContext:context];
         gamesFetchRequest = [[NSFetchRequest alloc] init];
         [gamesFetchRequest setEntity:gamesEntity];
@@ -436,10 +435,8 @@
             NSLog(@"No Levels available for this mode.");
             levelId = 1;
         }
-=======
         //Assign the attributes of randomAnagram object to the Current Anagram
         levelId = [games.levelId intValue];
->>>>>>> FETCH_HEAD
     }
     else
     {
