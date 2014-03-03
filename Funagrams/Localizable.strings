@@ -5,9 +5,10 @@
   Created by Saravanan ImmaMaheswaran on 2/17/14.
   Copyright (c) 2014 Pluggables. All rights reserved.
 */
-"GameOverTitle" = "SOLVED! You Must be SMART!";
+"GameOverTitle" = "Level Complete!";
 "GameOverDescription" = "You Score is ";
-"GameOverButtonTitle" = "Next Anagram >> ";
+"GameOverCancelButtonTitle" = "<< Play again";
+"GameOverNextButtonTitle" = "Next Level >> ";
 //"BackgroundMusicFileName" = "Vivaldi - Spring from Four Seasons";
 "BackgroundMusicFileName" = "BgMusic";
 "BackgroundMusicFileType" = "mp3";

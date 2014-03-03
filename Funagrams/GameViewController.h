@@ -18,7 +18,7 @@
 #import "Modes.h"
 #import "Scores.h"
 
-@interface GameViewController : UIViewController <ADBannerViewDelegate> /*<UIActionSheetDelegate, GKLeaderboardViewControllerDelegate, GKAchievementViewControllerDelegate, GameCenterManagerDelegate>*/
+@interface GameViewController : UIViewController <ADBannerViewDelegate, UIAlertViewDelegate> /*<UIActionSheetDelegate, GKLeaderboardViewControllerDelegate, GKAchievementViewControllerDelegate, GameCenterManagerDelegate>*/
 {
     IBOutlet UILabel *labelScore;
     IBOutlet UIButton *buttonHint;
