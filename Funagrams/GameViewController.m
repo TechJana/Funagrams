@@ -906,8 +906,8 @@
         currentAnagram.hintsProvided = 0;
         currentAnagram.questionRemaining = [currentAnagram.question copy];
         currentAnagram.userResult = [NSString stringWithFormat:@"%*s", currentAnagram.result.length, ""];
-        //[buttonQuestions objectAtIndex:selectedQuestion]
-        //[buttonResults objectAtIndex:selectedQuestion]
+        buttonQuestions = nil;
+        buttonResults = nil;
         [self loadQuestionResultButtons];
         [self loadAnagram];
     }
