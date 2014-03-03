@@ -7,10 +7,7 @@
 //
 
 #import "GCHelper.h"
-//#import "Constants.h"
-
-NSString* const kLeaderBoardIdentifier = @"com.pluggables.funagrams.leaderBoard.HighScore";
-NSString* const kAchievementLevel1 = @"com.pluggables.funagrams.achievement.Level1";
+#import "GlobalConstants.h"
 
 @interface GCHelper ()
 
@@ -133,7 +130,7 @@ static GCHelper *_sharedHelper = nil;
     if (gameCenterController != nil) {
         gameCenterController.gameCenterDelegate = self;
         gameCenterController.viewState = GKGameCenterViewControllerStateLeaderboards;
-        gameCenterController.leaderboardIdentifier = kLeaderBoardIdentifier;
+        gameCenterController.leaderboardIdentifier = kLeaderBoardHighScore;
         
         [viewController presentViewController: gameCenterController animated: YES completion:nil];
     }

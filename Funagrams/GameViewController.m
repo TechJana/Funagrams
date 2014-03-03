@@ -8,6 +8,7 @@
 
 #import "GameViewController.h"
 #import "AppDelegate.h"
+#import "GlobalConstants.h"
 
 @interface GameViewController ()
 {
@@ -87,7 +88,7 @@
     [self loadAnagram];
     
     
-    labelScore.text = [NSString stringWithFormat:@"%d ", scoreBoard.currentGameScore];
+    labelScore.text = @"0";
     selectedQuestion = -1;
     selectedResult = -1;
 }
@@ -392,7 +393,6 @@
     NSPredicate *gamesPredicate = [NSPredicate predicateWithFormat:@"modeId = %@ AND score != nil", modeId];
 
     [gamesFetchRequest setPredicate:gamesPredicate];
-    //[gamesFetchRequest setFetchLimit:1];
     [gamesFetchRequest setReturnsDistinctResults:YES];
     [gamesFetchRequest setPropertiesToFetch:@[@"levelId"]];
     
@@ -443,29 +443,6 @@
         NSLog(@"No Levels available for this mode.");
         levelId = 1;
     }
-    
-    /*
-    NSExpression *amountKeyPath = [NSExpression expressionForKeyPath:@"amount"];
-    NSExpression *sumAmountExpression = [NSExpression expressionForFunction:@"sum:" arguments:@[amountKeyPath]];
-    
-    // Create the expression description for that expression.
-    NSExpressionDescription *description = [[NSExpressionDescription alloc] init];
-    [description setName:@"sum"];
-    [description setExpression:sumAmountExpression];
-    [description setExpressionResultType:NSDecimalAttributeType];
-    
-    // Create the sum amount fetch request,
-    self.sumAmountFetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Transaction"];
-    self.sumAmountFetchRequest.resultType = NSDictionaryResultType;
-    self.sumAmountFetchRequest.predicate = [NSPredicate predicateWithFormat:@"date >= %@ AND date <= %@", self.startDate, self.endDate];
-    self.sumAmountFetchRequest.propertiesToFetch = @[@"person.name", description];
-    self.sumAmountFetchRequest.propertiesToGroupBy = @[@"person.name"];
-     
-     SELECT  t1.ZPERSONID, total( t0.ZAMOUNT)
-     FROM ZTRANSACTION t0
-     LEFT OUTER JOIN ZPERSON t1 ON t0.ZPERSON = t1.Z_PK
-     WHERE ( t0.ZDATE >= ? AND  t0.ZDATE <= ?) GROUP BY  t1.ZPERSONID
-    */
     
     return levelId;
 }
@@ -541,6 +518,9 @@
     int levelId = -1;
     if ([numLevelId intValue] == -1) {
         levelId = [self getLastIncompleteLevelInMode:numModeId];
+    }
+    else{
+        levelId = [numLevelId intValue];
     }
 
     NSString *allowedLength = [NSString stringWithFormat:@".{%d,%d}", 0, questionMaxLength];
@@ -769,7 +749,7 @@
 
 - (void)reportScore
 {
-    [[GCHelper defaultHelper] reportScore:scoreBoard.currentGameScore forLeaderboardID:kLeaderBoardIdentifier];
+    [[GCHelper defaultHelper] reportScore:scoreBoard.currentGameScore forLeaderboardID:(NSString *)[kLeaderBoardLevels objectAtIndex:currentAnagram.level]];
 }
 
 - (void)scoreThisGame
@@ -895,20 +875,49 @@
 {
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     
-    if([title isEqualToString:@"Next Level >> "])
+    if([title isEqualToString:NSLocalizedString(@"GameOverNextButtonTitle", nil)])
     {
         NSLog(@"Next Level button was selected.");
-        [self getAnagramForModeAndLevel:[NSNumber numberWithInt:currentGameMode] levelId:[NSNumber numberWithInt:currentGameLevel]];
+        currentAnagram.hintsProvided = 0;
+        currentAnagram.questionRemaining = [currentAnagram.question copy];
+        currentAnagram.userResult = [NSString stringWithFormat:@"%*s", currentAnagram.result.length, ""];
+        for (int indexCount=0; indexCount<buttonQuestions.count; indexCount++) {
+            UIButton *thisButton = [buttonQuestions objectAtIndex:indexCount];
+            [thisButton setTitle:@" " forState:UIControlStateNormal];
+        }
+        for (int indexCount=0; indexCount<buttonResults.count; indexCount++) {
+            UIButton *thisButton = [buttonResults objectAtIndex:indexCount];
+            [thisButton setTitle:@" " forState:UIControlStateNormal];
+        }
+        [self getAnagramForModeAndLevel:[NSNumber numberWithInt:currentGameMode] levelId:[NSNumber numberWithInt:currentAnagram.level+1]];
+        for (int indexCount=0; indexCount<buttonQuestions.count; indexCount++) {
+            UIButton *thisButton = [buttonQuestions objectAtIndex:indexCount];
+            thisButton.hidden = NO;
+        }
+        for (int indexCount=0; indexCount<buttonResults.count; indexCount++) {
+            UIButton *thisButton = [buttonResults objectAtIndex:indexCount];
+            thisButton.hidden = NO;
+        }
+        labelScore.text = @"0";
+        buttonHint.enabled = TRUE;
+        [self loadAnagram];
     }
-    else if([title isEqualToString:@"<< Play again"])
+    else if([title isEqualToString:NSLocalizedString(@"GameOverCancelButtonTitle", nil)])
     {
         NSLog(@"Play again button was selected.");
         currentAnagram.hintsProvided = 0;
         currentAnagram.questionRemaining = [currentAnagram.question copy];
         currentAnagram.userResult = [NSString stringWithFormat:@"%*s", currentAnagram.result.length, ""];
-        //[buttonQuestions objectAtIndex:selectedQuestion]
-        //[buttonResults objectAtIndex:selectedQuestion]
-        [self loadQuestionResultButtons];
+        for (int indexCount=0; indexCount<buttonQuestions.count; indexCount++) {
+            UIButton *thisButton = [buttonQuestions objectAtIndex:indexCount];
+            [thisButton setTitle:@" " forState:UIControlStateNormal];
+        }
+        for (int indexCount=0; indexCount<buttonResults.count; indexCount++) {
+            UIButton *thisButton = [buttonResults objectAtIndex:indexCount];
+            [thisButton setTitle:@" " forState:UIControlStateNormal];
+        }
+        labelScore.text = @"0";
+        buttonHint.enabled = TRUE;
         [self loadAnagram];
     }
 }

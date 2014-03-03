@@ -14,6 +14,7 @@
 #import "Games.h"
 #import "Scores.h"
 #import "Categories.h"
+#import "GlobalConstants.h"
 
 @implementation AppDelegate
 
@@ -24,6 +25,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    if (kLeaderBoardLevels == nil) {
+        kLeaderBoardLevels = [[NSMutableArray alloc] initWithObjects:@"", kLeaderBoardLevel01, kLeaderBoardLevel02, kLeaderBoardLevel03, kLeaderBoardLevel04, kLeaderBoardLevel05, kLeaderBoardLevel06, kLeaderBoardLevel07, kLeaderBoardLevel08, kLeaderBoardLevel09, kLeaderBoardLevel10, kLeaderBoardLevel11, kLeaderBoardLevel12, kLeaderBoardLevel13, kLeaderBoardLevel14, kLeaderBoardLevel15, kLeaderBoardLevel16, kLeaderBoardLevel17, kLeaderBoardLevel18, kLeaderBoardLevel19, kLeaderBoardLevel20, nil];
+    }
+    
     [InAppPurchase sharedInstance];
     [self playBackgroundMusic];
     
