@@ -373,26 +373,28 @@
         currentAnagram.userResult = [NSString stringWithFormat:@"%*s", currentAnagram.result.length, ""];
     }
     else
+    {
         NSLog(@"No Games available for this mode.");
+    }
 }
 
 - (int)getLastIncompleteLevelInMode:(NSNumber*)modeId
 {
     int levelId = -1;
     Games *games;
+    NSError *error;
+    NSMutableArray *levelIds = [[NSMutableArray alloc] init];
     
     NSEntityDescription *gamesEntity = [NSEntityDescription entityForName:@"Games" inManagedObjectContext:context];
     NSFetchRequest *gamesFetchRequest = [[NSFetchRequest alloc] init];
     [gamesFetchRequest setEntity:gamesEntity];
     
-    NSPredicate *gamesPredicate = [NSPredicate predicateWithFormat:@"modeId = %@ AND score = nil", modeId];
-    NSSortDescriptor *gamesSortByLevel = [[NSSortDescriptor alloc] initWithKey:@"levelId" ascending:YES];
-    
+    NSPredicate *gamesPredicate = [NSPredicate predicateWithFormat:@"modeId = %@ AND score != nil", modeId];
+
     [gamesFetchRequest setPredicate:gamesPredicate];
-    [gamesFetchRequest setSortDescriptors:@[gamesSortByLevel]];
-    [gamesFetchRequest setFetchLimit:1];
-    
-    NSError *error;
+    //[gamesFetchRequest setFetchLimit:1];
+    [gamesFetchRequest setReturnsDistinctResults:YES];
+    [gamesFetchRequest setPropertiesToFetch:@[@"levelId"]];
     
     NSArray *matchingGamesforMode = [context executeFetchRequest:gamesFetchRequest error:&error];
     
@@ -400,18 +402,69 @@
     
     if (matchingGamesforMode.count > 0)
     {
-        games = (Games*)[matchingGamesforMode objectAtIndex:0];
-        NSLog(@"Current Game ID : %@", games.gameId);
+        for (int indexCount=0; indexCount<matchingGamesforMode.count; indexCount++) {
+            games = (Games *)[matchingGamesforMode objectAtIndex:indexCount];
+            [levelIds insertObject:games.levelId atIndex:levelIds.count];
+        }
         
-        //Assign the attributes of randomAnagram object to the Current Anagram
-        levelId = [games.levelId intValue] + 1;
+        gamesEntity = [NSEntityDescription entityForName:@"Games" inManagedObjectContext:context];
+        gamesFetchRequest = [[NSFetchRequest alloc] init];
+        [gamesFetchRequest setEntity:gamesEntity];
+        
+        gamesPredicate = [NSPredicate predicateWithFormat:@"modeId = %@ AND score = nil AND NOT levelId IN %@", modeId, levelIds];
+        NSSortDescriptor *gamesSortByLevel = [[NSSortDescriptor alloc] initWithKey:@"levelId" ascending:YES];
+        
+        [gamesFetchRequest setPredicate:gamesPredicate];
+        [gamesFetchRequest setSortDescriptors:@[gamesSortByLevel]];
+        [gamesFetchRequest setFetchLimit:1];
+        
+        matchingGamesforMode = [context executeFetchRequest:gamesFetchRequest error:&error];
+        
+        NSLog(@"ModeID: %@ - Games for this mode: %lu ", modeId,(unsigned long)matchingGamesforMode.count);
+        
+        if (matchingGamesforMode.count > 0)
+        {
+            games = (Games*)[matchingGamesforMode objectAtIndex:0];
+            NSLog(@"Current Game ID : %@", games.gameId);
+            
+            //Assign the attributes of randomAnagram object to the Current Anagram
+            levelId = [games.levelId intValue];
+        }
+        else
+        {
+            NSLog(@"No Levels available for this mode.");
+            levelId = 1;
+        }
     }
     else
     {
         NSLog(@"No Levels available for this mode.");
         levelId = 1;
     }
-        
+    
+    /*
+    NSExpression *amountKeyPath = [NSExpression expressionForKeyPath:@"amount"];
+    NSExpression *sumAmountExpression = [NSExpression expressionForFunction:@"sum:" arguments:@[amountKeyPath]];
+    
+    // Create the expression description for that expression.
+    NSExpressionDescription *description = [[NSExpressionDescription alloc] init];
+    [description setName:@"sum"];
+    [description setExpression:sumAmountExpression];
+    [description setExpressionResultType:NSDecimalAttributeType];
+    
+    // Create the sum amount fetch request,
+    self.sumAmountFetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Transaction"];
+    self.sumAmountFetchRequest.resultType = NSDictionaryResultType;
+    self.sumAmountFetchRequest.predicate = [NSPredicate predicateWithFormat:@"date >= %@ AND date <= %@", self.startDate, self.endDate];
+    self.sumAmountFetchRequest.propertiesToFetch = @[@"person.name", description];
+    self.sumAmountFetchRequest.propertiesToGroupBy = @[@"person.name"];
+     
+     SELECT  t1.ZPERSONID, total( t0.ZAMOUNT)
+     FROM ZTRANSACTION t0
+     LEFT OUTER JOIN ZPERSON t1 ON t0.ZPERSON = t1.Z_PK
+     WHERE ( t0.ZDATE >= ? AND  t0.ZDATE <= ?) GROUP BY  t1.ZPERSONID
+    */
+    
     return levelId;
 }
 
