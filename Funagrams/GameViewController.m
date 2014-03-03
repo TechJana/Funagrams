@@ -908,6 +908,7 @@
         currentAnagram.hintsProvided = 0;
         currentAnagram.questionRemaining = [currentAnagram.question copy];
         currentAnagram.userResult = [NSString stringWithFormat:@"%*s", currentAnagram.result.length, ""];
+<<<<<<< HEAD
         for (int indexCount=0; indexCount<buttonQuestions.count; indexCount++) {
             UIButton *thisButton = [buttonQuestions objectAtIndex:indexCount];
             [thisButton setTitle:@" " forState:UIControlStateNormal];
@@ -918,6 +919,11 @@
         }
         labelScore.text = @"0";
         buttonHint.enabled = TRUE;
+=======
+        buttonQuestions = nil;
+        buttonResults = nil;
+        [self loadQuestionResultButtons];
+>>>>>>> FETCH_HEAD
         [self loadAnagram];
     }
 }
