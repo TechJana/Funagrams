@@ -38,19 +38,24 @@ static NSManagedObjectContext *managedObjectContext()
     @autoreleasepool {
         context = [[NSManagedObjectContext alloc] init];
         
-        NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:managedObjectModel()];
-        [context setPersistentStoreCoordinator:coordinator];
-        
-        NSString *STORE_TYPE = NSSQLiteStoreType;
-        
+        NSError *error;
         NSString *path = [[NSProcessInfo processInfo] arguments][0];
         path = [path stringByDeletingLastPathComponent];
         path = [path stringByAppendingPathComponent:@"Funagrams"];
         NSURL *url = [NSURL fileURLWithPath:[path stringByAppendingPathExtension:@"sqlite"]];
         NSLog(@"File path:'%@'", url);
         
-        NSError *error;
-        NSPersistentStore *newStore = [coordinator addPersistentStoreWithType:STORE_TYPE configuration:nil URL:url options:nil error:&error];
+        NSMutableDictionary *pragmaOptions = [NSMutableDictionary dictionary];
+        [pragmaOptions setObject:@"DELETE" forKey:@"journal_mode"];
+        
+        NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption, [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, pragmaOptions, NSSQLitePragmasOption, nil];
+        
+        NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:managedObjectModel()];
+        [context setPersistentStoreCoordinator:coordinator];
+        
+        NSString *STORE_TYPE = NSSQLiteStoreType;
+        
+        NSPersistentStore *newStore = [coordinator addPersistentStoreWithType:STORE_TYPE configuration:nil URL:url options:options error:&error];
         
         if (newStore == nil) {
             NSLog(@"Store Configuration Failure %@", ([error localizedDescription] != nil) ? [error localizedDescription] : @"Unknown Error");
@@ -65,7 +70,7 @@ int main(int argc, const char * argv[])
     @autoreleasepool {
         // Create the managed object context
         NSManagedObjectContext *context = managedObjectContext();
-        
+
         // Custom code here...
         // Save the managed object context
         NSError *error = nil;

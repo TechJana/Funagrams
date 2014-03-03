@@ -196,7 +196,7 @@
         if (![[NSFileManager defaultManager] copyItemAtURL:preloadURL toURL:[targetUrl URLByAppendingPathExtension:@"sqlite"] error:&err]) {
             NSLog(@"Oops, could copy preloaded data");
         }
-        
+        /*
         preloadURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Funagrams" ofType:@"sqlite-shm"]];
         err = nil;
         if (![[NSFileManager defaultManager] copyItemAtURL:preloadURL toURL:[targetUrl URLByAppendingPathExtension:@"sqlite-shm"] error:&err]) {
@@ -207,15 +207,18 @@
         err = nil;
         if (![[NSFileManager defaultManager] copyItemAtURL:preloadURL toURL:[targetUrl URLByAppendingPathExtension:@"sqlite-wal"] error:&err]) {
             NSLog(@"Oops, could copy preloaded sqlite-wal file");
-        }
+        }*/
     }
     
     NSError *error = nil;
+    NSMutableDictionary *pragmaOptions = [NSMutableDictionary dictionary];
+    [pragmaOptions setObject:@"DELETE" forKey:@"journal_mode"];
     NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
     						 [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
-    						 [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+    						 [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, pragmaOptions, NSSQLitePragmasOption, nil];
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc]
                                    initWithManagedObjectModel:[self managedObjectModel]];
+    
     if(![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
                                                   configuration:nil URL:storeUrl options:options error:&error]) {
         /*Error for store creation should be handled in here*/

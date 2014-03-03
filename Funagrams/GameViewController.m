@@ -525,7 +525,7 @@
 
     NSString *allowedLength = [NSString stringWithFormat:@".{%d,%d}", 0, questionMaxLength];
     
-    NSPredicate *gamesPredicate = [NSPredicate predicateWithFormat:@"modeId = %@ AND levelId = %@ AND anagram.questionText MATCHES %@ AND score = nil",numModeId, [NSNumber numberWithInt:levelId], allowedLength];
+    NSPredicate *gamesPredicate = [NSPredicate predicateWithFormat:@"modeId = %@ AND levelId = %@ AND anagram.questionText MATCHES %@ AND score = nil AND anagram.answerText MATCHES %@ AND score = nil",numModeId, [NSNumber numberWithInt:levelId], allowedLength, allowedLength];
     
     [gamesFetchRequest setPredicate:gamesPredicate];
     
@@ -796,7 +796,7 @@
     UIButton *buttonResult, *buttonQuestion;
     NSMutableArray *indexArray = [[NSMutableArray alloc] init];
     
-    // identify a random character which is not selected right by user
+    // identify a random character which is not selected correctly by user
     for (indexButton=0; indexButton<currentAnagram.result.length; indexButton++)
     {
         buttonResult = (UIButton *)[buttonResults objectAtIndex:indexButton];
@@ -847,6 +847,8 @@
         {
             buttonHint.enabled = FALSE;
         }
+        
+        [self verifyResult];
     }
     else
     {
