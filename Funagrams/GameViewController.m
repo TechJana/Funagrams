@@ -227,8 +227,21 @@
     
     //Load the scrambled letters as Buttons
     [self loadQuestionRemaining];
-}
     
+    CABasicAnimation *animation =
+    [CABasicAnimation animationWithKeyPath:@"position"];
+    [animation setDuration:0.03];
+    [animation setRepeatCount:4];
+    [animation setAutoreverses:YES];
+    [animation setFromValue:[NSValue valueWithCGPoint:
+                             CGPointMake([buttonScramble center].x - 15.0f, [buttonScramble center].y)]];
+    [animation setToValue:[NSValue valueWithCGPoint:
+                           CGPointMake([buttonScramble center].x + 15.0f, [buttonScramble center].y)]];
+    [[buttonScramble layer] addAnimation:animation forKey:@"position"];
+}
+
+
+
 - (NSFetchedResultsController *)fetchedResultsController {
     
     if (_fetchedResultsController != nil) {
