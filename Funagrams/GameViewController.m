@@ -849,6 +849,7 @@
     // only if there is pending invalid result character, suggest answer
     if (indexArray.count > 0)
     {
+        BOOL foundInQuestion = NO;
         NSNumber *tempValue = (NSNumber *)[indexArray objectAtIndex:(arc4random() % (indexArray.count + 0))];
         hintButtonChar = [tempValue intValue];
         
@@ -860,7 +861,21 @@
             if (![buttonQuestion.titleLabel.text  isEqual: @""] && buttonQuestion.titleLabel.text != nil) {
                 if ([buttonQuestion.titleLabel.text isEqualToString:newResult]) {   // set the question as the current content of result button
                     [buttonQuestion setTitle:((UIButton *)[buttonResults objectAtIndex:hintButtonChar]).titleLabel.text forState:UIControlStateNormal];
+                    foundInQuestion = YES;
                     break;
+                }
+            }
+        }
+
+        // check if the character required for hint is found in question
+        if (!foundInQuestion) {
+            for (indexButton=0; indexButton<buttonResults.count; indexButton++) {
+                buttonResult = (UIButton *)[buttonResults objectAtIndex:indexButton];
+                if (![buttonResult.titleLabel.text  isEqual: @""] && buttonResult.titleLabel.text != nil) {
+                    if ([buttonResult.titleLabel.text isEqualToString:newResult]) {   // set the question as the current content of result button
+                        [buttonResult setTitle:((UIButton *)[buttonResults objectAtIndex:hintButtonChar]).titleLabel.text forState:UIControlStateNormal];
+                        break;
+                    }
                 }
             }
         }
