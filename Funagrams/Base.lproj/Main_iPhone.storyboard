@@ -112,24 +112,24 @@
                                 <color key="shadowColor" red="0.84598395469999998" green="0.85570790819999998" blue="0.85570790819999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <size key="shadowOffset" width="2" height="2"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIk-Li-SUb">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIk-Li-SUb">
                                 <rect key="frame" x="230" y="240" width="108" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="CancelImage">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="vXZ-lx-hvc" kind="push" id="l1c-nj-Hjm"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XOa-wv-BQq">
-                                <rect key="frame" x="20" y="239" width="113" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="ScrambleImage">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonScramble_click:" destination="NfE-KG-Vgi" eventType="touchUpInside" id="w5r-Gx-ap8"/>
+                                    <action selector="buttonScramble_click:" destination="NfE-KG-Vgi" eventType="touchDown" id="RiU-jc-3MN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XOa-wv-BQq">
+                                <rect key="frame" x="20" y="239" width="108" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="CancelImage">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="vXZ-lx-hvc" kind="push" id="hWD-pS-Liv"/>
                                 </connections>
                             </button>
                             <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mSu-29-RHp">
@@ -182,24 +182,33 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="still not yet there" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3I-Y6-Wjr">
+                                <rect key="frame" x="386" y="216" width="162" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="16"/>
+                                <color key="textColor" red="0.9803922176361084" green="0.015686275437474251" blue="0.27843138575553894" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="mSu-29-RHp" secondAttribute="trailing" constant="20" id="NCF-fs-TOV"/>
                             <constraint firstItem="XOa-wv-BQq" firstAttribute="leading" secondItem="guw-iY-4XT" secondAttribute="leading" constant="20" id="Rog-AB-2Ez"/>
                             <constraint firstAttribute="centerX" secondItem="zIk-Li-SUb" secondAttribute="centerX" id="Vai-v0-7Gg"/>
+                            <constraint firstAttribute="trailing" secondItem="i3I-Y6-Wjr" secondAttribute="trailing" constant="20" id="qIf-rK-SvV"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="mrS-kD-DHV"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
-                        <outlet property="buttonCancel" destination="zIk-Li-SUb" id="Pty-h8-qqg"/>
+                        <outlet property="buttonCancel" destination="XOa-wv-BQq" id="aaA-5y-acs"/>
                         <outlet property="buttonHint" destination="mSu-29-RHp" id="Jwj-sZ-z7F"/>
                         <outlet property="buttonSampleQuestion" destination="39M-3k-jzj" id="40O-3u-N8e"/>
                         <outlet property="buttonSampleResult" destination="BzW-Jz-efx" id="Seo-vn-mfB"/>
-                        <outlet property="buttonScramble" destination="XOa-wv-BQq" id="gon-Gq-3Ki"/>
+                        <outlet property="buttonScramble" destination="zIk-Li-SUb" id="B5r-h7-1zd"/>
                         <outlet property="labelHintValue" destination="Gjb-NR-Aw8" id="sq8-71-Ren"/>
+                        <outlet property="labelInvalidAnswer" destination="i3I-Y6-Wjr" id="N5u-1I-yjd"/>
                         <outlet property="labelLevel" destination="gdg-0F-NoM" id="kbE-eG-MMp"/>
                         <outlet property="labelScore" destination="ODo-bT-5rm" id="c0D-Gu-A5W"/>
                     </connections>
@@ -275,6 +284,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="l1c-nj-Hjm"/>
+        <segue reference="hWD-pS-Liv"/>
     </inferredMetricsTieBreakers>
 </document>

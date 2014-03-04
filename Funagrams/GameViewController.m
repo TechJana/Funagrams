@@ -28,6 +28,7 @@
 @synthesize buttonSampleQuestion;
 @synthesize buttonSampleResult;
 @synthesize labelLevel;
+@synthesize labelInvalidAnswer;
 @synthesize currentGameMode;
 @synthesize fetchedResultsController = _fetchedResultsController;
 @synthesize currentGameLevel;
@@ -72,6 +73,7 @@
     questionMaxLength = 0;  // set max. length to 0
     hintButtonChar = -1;    // set invalid position
     self.fetchedResultsController = nil;
+    labelInvalidAnswer.hidden = YES;    // hide invalid answer in the start
     
     NSError *error;
 	if (![[self fetchedResultsController] performFetch:&error]) {
@@ -116,6 +118,11 @@
         UIButton *buttonThis = (UIButton *)sender;
         if (selectedResult >= 0)
         {
+            // hide the Invalid Answer label if the user attempted to change a value
+            if (!labelInvalidAnswer.hidden) {
+                labelInvalidAnswer.hidden = YES;
+            }
+            
             // if the result button was selected then set the current selected question as the selected result
             UIButton *buttonResult = (UIButton *)[buttonResults objectAtIndex:selectedResult];
             NSString *resultText = buttonResult.titleLabel.text;
@@ -169,6 +176,11 @@
         UIButton *buttonThis = (UIButton *)sender;
         if (selectedQuestion >= 0)
         {
+            // hide the Invalid Answer label if the user attempted to change a value
+            if (!labelInvalidAnswer.hidden) {
+                labelInvalidAnswer.hidden = YES;
+            }
+            
             // if the question button was selected then set the current selected result as the selected question
             UIButton *buttonQuestion = (UIButton *)[buttonQuestions objectAtIndex:selectedQuestion];
             NSString *resultText = buttonQuestion.titleLabel.text;
@@ -756,6 +768,19 @@
     }
     else
     {
+        // if there is no character in the result, then it doesn't help the user to look for more hint
+        if ([currentAnagram.userResult stringByReplacingOccurrencesOfString:@" " withString:@""].length == 0) {
+            buttonHint.enabled = TRUE;
+            currentAnagram.hintsProvided = 0;
+        }
+        else {
+            [self getQuestionRemaining];
+            // if there is no character in the question, then let the user know they haven't found the answer yet
+            if ([currentAnagram.questionRemaining stringByReplacingOccurrencesOfString:@" " withString:@""].length == 0) {
+                labelInvalidAnswer.hidden = NO;
+            }
+        }
+        
         return FALSE;
     }
 }

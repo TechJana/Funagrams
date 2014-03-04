@@ -30,6 +30,7 @@
     IBOutlet UIButton *buttonSampleQuestion;
     IBOutlet UIButton *buttonSampleResult;
     IBOutlet UILabel *labelLevel;
+    IBOutlet UILabel *labelInvalidAnswer;
     
     ScoreBoard *scoreBoard;
     Anagram *currentAnagram;
@@ -76,6 +77,7 @@
 @property (retain, nonatomic) IBOutlet UIButton *buttonSampleQuestion;
 @property (retain, nonatomic) IBOutlet UIButton *buttonSampleResult;
 @property (retain, nonatomic) IBOutlet UILabel *labelLevel;
+@property (retain, nonatomic) IBOutlet UILabel *labelInvalidAnswer;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (readwrite, nonatomic) int currentGameMode;
 @property (readwrite, nonatomic) int currentGameLevel;
