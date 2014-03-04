@@ -79,7 +79,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "821"
             endingLineNumber = "821"
-            landmarkName = "-showHint"
+            landmarkName = "-scoreThisGame"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
