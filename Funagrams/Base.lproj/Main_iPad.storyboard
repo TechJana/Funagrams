@@ -165,23 +165,23 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8VF-Sa-3CN">
-                                <rect key="frame" x="40" y="539" width="215" height="68"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="ScrambleImage">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonScramble_click:" destination="Hcv-SH-tyx" eventType="touchDown" id="u48-b2-ImI"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Iu-c7-tLf">
-                                <rect key="frame" x="405" y="538" width="214" height="69"/>
+                                <rect key="frame" x="40" y="539" width="214" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="CancelImage">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="push" id="y50-mv-32F"/>
+                                    <segue destination="BYZ-38-t0r" kind="push" id="rjq-L2-gHu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Iu-c7-tLf">
+                                <rect key="frame" x="405" y="538" width="214" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="ScrambleImage">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonScramble_click:" destination="Hcv-SH-tyx" eventType="touchDown" id="3GA-KM-s8k"/>
                                 </connections>
                             </button>
                             <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1xQ-5Y-Xf9">
@@ -191,11 +191,19 @@
                                     <outlet property="delegate" destination="Hcv-SH-tyx" id="Bux-rv-bfZ"/>
                                 </connections>
                             </adBannerView>
+<<<<<<< HEAD
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;&lt;IncorrectResult>>" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSW-e2-Hbp">
                                 <rect key="frame" x="30" y="351" width="651" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.89083729619999996" green="0.1448862504" blue="0.085917036629999999" alpha="1" colorSpace="calibratedRGB"/>
+=======
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="still not yet there" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOR-0v-8ud">
+                                <rect key="frame" x="732" y="466" width="252" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="25"/>
+                                <color key="textColor" red="0.98039221759999995" green="0.015686275440000001" blue="0.27843138579999999" alpha="1" colorSpace="deviceRGB"/>
+>>>>>>> FETCH_HEAD
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -203,6 +211,7 @@
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="8Iu-c7-tLf" secondAttribute="centerX" id="6bd-Bz-Vv6"/>
                             <constraint firstItem="Ksn-8a-7Fp" firstAttribute="leading" secondItem="VM6-6e-I6D" secondAttribute="leading" constant="30" id="RO5-6n-RcA"/>
+                            <constraint firstAttribute="trailing" secondItem="cOR-0v-8ud" secondAttribute="trailing" constant="40" id="bc8-ir-yFd"/>
                             <constraint firstAttribute="trailing" secondItem="zYj-9G-cEO" secondAttribute="trailing" constant="40" id="fV5-Yg-Zm6"/>
                             <constraint firstAttribute="trailing" secondItem="LUH-3B-CjQ" secondAttribute="trailing" constant="50" id="jVx-gt-DiA"/>
                             <constraint firstItem="8VF-Sa-3CN" firstAttribute="leading" secondItem="VM6-6e-I6D" secondAttribute="leading" constant="40" id="opu-Vg-9k8"/>
@@ -212,13 +221,17 @@
                     <navigationItem key="navigationItem" id="uDh-Fq-rHH"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
-                        <outlet property="buttonCancel" destination="8Iu-c7-tLf" id="NRp-pc-tzb"/>
+                        <outlet property="buttonCancel" destination="8VF-Sa-3CN" id="5lr-4x-X2e"/>
                         <outlet property="buttonHint" destination="zYj-9G-cEO" id="Rel-Pr-cb5"/>
                         <outlet property="buttonSampleQuestion" destination="BUz-TS-odf" id="XE4-1f-ZJp"/>
                         <outlet property="buttonSampleResult" destination="T3P-PU-bNT" id="XEE-ey-0By"/>
-                        <outlet property="buttonScramble" destination="8VF-Sa-3CN" id="SIQ-Ec-KKh"/>
+                        <outlet property="buttonScramble" destination="8Iu-c7-tLf" id="IYb-2S-DPO"/>
                         <outlet property="labelHintValue" destination="Ksn-8a-7Fp" id="KoV-R3-FF6"/>
+<<<<<<< HEAD
                         <outlet property="labelIncorrectResult" destination="zSW-e2-Hbp" id="70a-qn-DxI"/>
+=======
+                        <outlet property="labelInvalidAnswer" destination="cOR-0v-8ud" id="wyR-Rm-etg"/>
+>>>>>>> FETCH_HEAD
                         <outlet property="labelLevel" destination="iYX-M7-uJG" id="OIu-Je-17y"/>
                         <outlet property="labelScore" destination="LUH-3B-CjQ" id="RV8-Ax-GMS"/>
                     </connections>
@@ -263,6 +276,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="y50-mv-32F"/>
+        <segue reference="rjq-L2-gHu"/>
     </inferredMetricsTieBreakers>
 </document>
