@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="Pk3-kr-Gsw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="Pk3-kr-Gsw">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
@@ -191,6 +191,13 @@
                                     <outlet property="delegate" destination="Hcv-SH-tyx" id="Bux-rv-bfZ"/>
                                 </connections>
                             </adBannerView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;&lt;IncorrectResult>>" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSW-e2-Hbp">
+                                <rect key="frame" x="30" y="351" width="651" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.89083729619999996" green="0.1448862504" blue="0.085917036629999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -211,6 +218,7 @@
                         <outlet property="buttonSampleResult" destination="T3P-PU-bNT" id="XEE-ey-0By"/>
                         <outlet property="buttonScramble" destination="8VF-Sa-3CN" id="SIQ-Ec-KKh"/>
                         <outlet property="labelHintValue" destination="Ksn-8a-7Fp" id="KoV-R3-FF6"/>
+                        <outlet property="labelIncorrectResult" destination="zSW-e2-Hbp" id="70a-qn-DxI"/>
                         <outlet property="labelLevel" destination="iYX-M7-uJG" id="OIu-Je-17y"/>
                         <outlet property="labelScore" destination="LUH-3B-CjQ" id="RV8-Ax-GMS"/>
                     </connections>

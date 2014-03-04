@@ -9,6 +9,7 @@
 "GameOverDescription" = "You Score is ";
 "GameOverCancelButtonTitle" = "<< Play again";
 "GameOverNextButtonTitle" = "Next Level >> ";
+"IncorrectAnswerText" = "Incorrect! Move letters back and try again!";
 //"BackgroundMusicFileName" = "Vivaldi - Spring from Four Seasons";
 "BackgroundMusicFileName" = "BgMusic";
 "BackgroundMusicFileType" = "mp3";

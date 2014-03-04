@@ -28,6 +28,7 @@
 @synthesize buttonSampleQuestion;
 @synthesize buttonSampleResult;
 @synthesize labelLevel;
+@synthesize labelIncorrectResult;
 @synthesize currentGameMode;
 @synthesize fetchedResultsController = _fetchedResultsController;
 @synthesize currentGameLevel;
@@ -125,6 +126,8 @@
             [buttonThis setTitle:resultText forState:UIControlStateNormal];
             [buttonResult setNeedsDisplay];
             
+            labelIncorrectResult.hidden = YES;
+            
             [self verifyResult];
         }
         else
@@ -151,7 +154,6 @@
         {
             // reset the selection
             [(UIButton *)[buttonResults objectAtIndex:selectedResult] setBackgroundColor:nil];
-            
             selectedResult = -1;
         }
     }
@@ -178,7 +180,10 @@
             [buttonThis setTitle:resultText forState:UIControlStateNormal];
             [buttonThis setNeedsDisplay];
             
+            labelIncorrectResult.hidden = YES;
+            
             [self verifyResult];
+            
         }
         else
         {
@@ -739,23 +744,41 @@
     resultAnswer = [resultAnswer stringByReplacingOccurrencesOfString:@" " withString:@""];
     resultAnswer = [resultAnswer uppercaseString];
     
-    if ([resultAnswer isEqualToString:resultValue])
+    if (resultAnswer.length ==  resultValue.length)
     {
-        [self scoreThisGame];
-        labelScore.text = [NSString stringWithFormat:@"%d", scoreBoard.currentGameScore];
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"GameOverTitle", nil)
-                                        message:[NSString stringWithFormat:@"%@%d", NSLocalizedString(@"GameOverDescription", nil), scoreBoard.currentGameScore]
-                                        delegate:self
-                                    cancelButtonTitle:NSLocalizedString(@"GameOverCancelButtonTitle", nil)
-                                    otherButtonTitles:NSLocalizedString(@"GameOverNextButtonTitle", nil),nil];
-        [alert show];
-        [self reportScore];
-        
-        return TRUE;
+        if ([resultAnswer isEqualToString:resultValue])
+        {
+            [self scoreThisGame];
+            labelScore.text = [NSString stringWithFormat:@"%d", scoreBoard.currentGameScore];
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"GameOverTitle", nil)
+                                            message:[NSString stringWithFormat:@"%@%d", NSLocalizedString(@"GameOverDescription", nil), scoreBoard.currentGameScore]
+                                            delegate:self
+                                        cancelButtonTitle:NSLocalizedString(@"GameOverCancelButtonTitle", nil)
+                                        otherButtonTitles:NSLocalizedString(@"GameOverNextButtonTitle", nil),nil];
+            [alert show];
+            [self reportScore];
+            
+            return TRUE;
+        }
+        else
+        {
+            labelIncorrectResult.text = NSLocalizedString(@"IncorrectAnswerText", nil);
+            labelIncorrectResult.hidden = NO;
+            CABasicAnimation *animation =
+            [CABasicAnimation animationWithKeyPath:@"position"];
+            [animation setDuration:0.05];
+            [animation setRepeatCount:4];
+            [animation setAutoreverses:YES];
+            [animation setFromValue:[NSValue valueWithCGPoint:
+                                     CGPointMake([labelIncorrectResult center].x, [labelIncorrectResult center].y- 5.0f)]];
+            [animation setToValue:[NSValue valueWithCGPoint:
+                                   CGPointMake([labelIncorrectResult center].x , [labelIncorrectResult center].y+ 5.0f)]];
+            [[labelIncorrectResult layer] addAnimation:animation forKey:@"position"];
+            return FALSE;
+        }
     }
-    else
-    {
+    else{
         return FALSE;
     }
 }
