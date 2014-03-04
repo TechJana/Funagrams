@@ -191,25 +191,17 @@
                                     <outlet property="delegate" destination="Hcv-SH-tyx" id="Bux-rv-bfZ"/>
                                 </connections>
                             </adBannerView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;&lt;IncorrectResult>>" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSW-e2-Hbp">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSW-e2-Hbp">
                                 <rect key="frame" x="30" y="351" width="651" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.89083729619999996" green="0.1448862504" blue="0.085917036629999999" alpha="1" colorSpace="calibratedRGB"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="still not yet there" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOR-0v-8ud">
-                                <rect key="frame" x="732" y="466" width="252" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="italicSystem" pointSize="25"/>
-                                <color key="textColor" red="0.98039221759999995" green="0.015686275440000001" blue="0.27843138579999999" alpha="1" colorSpace="deviceRGB"/>
-                                <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="8Iu-c7-tLf" secondAttribute="centerX" id="6bd-Bz-Vv6"/>
                             <constraint firstItem="Ksn-8a-7Fp" firstAttribute="leading" secondItem="VM6-6e-I6D" secondAttribute="leading" constant="30" id="RO5-6n-RcA"/>
-                            <constraint firstAttribute="trailing" secondItem="cOR-0v-8ud" secondAttribute="trailing" constant="40" id="bc8-ir-yFd"/>
                             <constraint firstAttribute="trailing" secondItem="zYj-9G-cEO" secondAttribute="trailing" constant="40" id="fV5-Yg-Zm6"/>
                             <constraint firstAttribute="trailing" secondItem="LUH-3B-CjQ" secondAttribute="trailing" constant="50" id="jVx-gt-DiA"/>
                             <constraint firstItem="8VF-Sa-3CN" firstAttribute="leading" secondItem="VM6-6e-I6D" secondAttribute="leading" constant="40" id="opu-Vg-9k8"/>
@@ -226,7 +218,6 @@
                         <outlet property="buttonScramble" destination="8Iu-c7-tLf" id="IYb-2S-DPO"/>
                         <outlet property="labelHintValue" destination="Ksn-8a-7Fp" id="KoV-R3-FF6"/>
                         <outlet property="labelIncorrectResult" destination="zSW-e2-Hbp" id="70a-qn-DxI"/>
-                        <outlet property="labelInvalidAnswer" destination="cOR-0v-8ud" id="wyR-Rm-etg"/>
                         <outlet property="labelLevel" destination="iYX-M7-uJG" id="OIu-Je-17y"/>
                         <outlet property="labelScore" destination="LUH-3B-CjQ" id="RV8-Ax-GMS"/>
                     </connections>

@@ -195,20 +195,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.89083729619565222" green="0.14488625042737505" blue="0.085917036627937718" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="still not yet there" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3I-Y6-Wjr">
-                                <rect key="frame" x="386" y="216" width="162" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="italicSystem" pointSize="16"/>
-                                <color key="textColor" red="0.9803922176361084" green="0.015686275437474251" blue="0.27843138575553894" alpha="1" colorSpace="deviceRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="mSu-29-RHp" secondAttribute="trailing" constant="20" id="NCF-fs-TOV"/>
                             <constraint firstItem="XOa-wv-BQq" firstAttribute="leading" secondItem="guw-iY-4XT" secondAttribute="leading" constant="20" id="Rog-AB-2Ez"/>
                             <constraint firstAttribute="centerX" secondItem="zIk-Li-SUb" secondAttribute="centerX" id="Vai-v0-7Gg"/>
-                            <constraint firstAttribute="trailing" secondItem="i3I-Y6-Wjr" secondAttribute="trailing" constant="20" id="qIf-rK-SvV"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
@@ -222,7 +214,6 @@
                         <outlet property="buttonScramble" destination="zIk-Li-SUb" id="B5r-h7-1zd"/>
                         <outlet property="labelHintValue" destination="Gjb-NR-Aw8" id="sq8-71-Ren"/>
                         <outlet property="labelIncorrectResult" destination="EeL-Mj-WN4" id="Jod-CC-vbK"/>
-                        <outlet property="labelInvalidAnswer" destination="i3I-Y6-Wjr" id="N5u-1I-yjd"/>
                         <outlet property="labelLevel" destination="gdg-0F-NoM" id="kbE-eG-MMp"/>
                         <outlet property="labelScore" destination="ODo-bT-5rm" id="c0D-Gu-A5W"/>
                     </connections>
