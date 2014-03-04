@@ -790,9 +790,6 @@
             return FALSE;
         }
     }
-<<<<<<< HEAD
-    else{
-=======
     else
     {
         // if there is no character in the result, then it doesn't help the user to look for more hint
@@ -807,8 +804,6 @@
                 labelInvalidAnswer.hidden = NO;
             }
         }
-        
->>>>>>> FETCH_HEAD
         return FALSE;
     }
 }
