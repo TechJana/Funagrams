@@ -1,0 +1,172 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>funagrams | Home</title>
+	<link href='css/style.css' rel='stylesheet' type='text/css' />
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/move-top.js"></script>
+	<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){		
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+			});
+		});
+	</script>
+<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("#myform").validate({
+			debug: false,
+			rules: {
+				name: {
+					required: true
+				},
+				email: {
+					required: true,
+					email: true
+				}
+			},
+			messages: {
+				name: "*",
+				email: "*",
+			},
+			submitHandler: function(form) {
+				// do other stuff for a valid form
+				$.post('process.asp', $("#myform").serialize(), function(data) {
+					$('#results').html(data);
+				});
+			}
+		});
+	});
+	</script>
+</head>
+<body>
+<!---start-wrap---->
+	<!---start-header---->
+	<div class="header">
+	<div class="wrap">
+		<div class="logo">
+			<a href="index.html">funagrams</a>
+		</div>
+		<div class="top-nav">
+			<ul>
+				<li class="active"><a href="#home" class="scroll">works</a></li>
+				<li><a href="#features" class="scroll">features</a></li>
+				<li><a href="#about" class="scroll">credits</a></li>
+				<li><a href="#contact" class="scroll">contact</a></li>
+				<li><a href="#privacy" class="scroll">privacy</a></li>
+			</ul>
+		</div>
+		<div class="clear"> </div>
+	</div>
+	<!---//End-header---->
+	</div>
+	<!---start-image-banner---->
+	<div class="img-banner" id="home">
+		<div class="img-banner-info">
+			<h1><span>funagrams</span></h1>
+			<h2>classic tile game</h2>
+			<p>Pick the right alphabets to solve the anagram. Tickles your grey matter.  This game helps improve your vocabulary and might make you a spell bee.  Have FUN!!!</p>
+			<div class="clear"> </div>
+			<div class="info-btns">
+				<ul>
+					<li><a href="https://itunes.apple.com/us/app/funagrams/id817237014?ls=1&mt=8" target=“_blank”> </a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="img-banner-pic">
+		</div>
+		<div class="clear"> </div>
+	</div>
+
+	<!---//End-image-banner---->
+	<!---start-top-grids----->
+	<div class="top-grids" id="features">
+	<div class="wrap">
+		<div class="top-grid">
+			<a class="icon1"><span> </span> </a>
+			<h3>Scramble</h3>
+			<p>is the word tough to crack?  don&#39;t worry we have got you covered without losing a point.  use scramble to give you flash of the answer by scrambling the remaining alphabets.</p>
+			
+		</div>
+		<div class="top-grid">
+			<a class="icon2"><span> </span> </a>
+			<h3>Hint</h3>
+			<p>scramble didn&#39;t help so much?  you can trade-off your points with an insider.  yes, hint can tell you the right position for the alphabet.  you can use limited times based on mode.</p>
+			
+		</div>
+		<div class="top-grid">
+			<a class="icon3"><span> </span> </a>
+			<h3>Mode</h3>
+			<p>gradually sharpen your skill. if you think Beginner is a piece of cake you should try Intermediate, like wise to Expert next.  each level is not the same every time you play.</p>
+			
+		</div>
+		<div class="clear"> </div>
+	</div>
+	</div>
+	<!---//End-top-grids----->
+	<!---start-mid-grids----->
+	<div class="mid-grids" id="about">
+		<div class="mid-grid-top">
+		<div class="wrap">
+			<div class="mid-grid-top-pic">
+			</div>
+			<div class="mid-grid-top-info">
+				<h3>thanks to various websites which enabled to complete this app quick</h3>
+				<p><u>anagrams</u><br>
+<a class="btn" href="" target="_blank">word press</a><br>
+
+<br>
+<u>references</u><br><a class="btn" href="http://www.raywenderlich.com/934/core-data-tutorial-for-ios-getting-started" target="_blank">Ray Wenderlich Tutorials</a><br>
+<a class="btn" href="https://github.com/rnystrom/RNGridMenu" target="_blank">Ryan Nystrom GridMenu</a><br>
+<a class="btn" href="http://www1.in.tum.de/lehrstuhl_1/people/98-teaching/tutorials/513-sgd-ws13-tutorial-game-center" target="_blank">Alvin Stanescu Tutorial</a><br>
+
+<br>
+<u>website</u><br>
+<a class="btn" href="http://w3layouts.com/mobile-cloud-app-based-mobile-website-template" target="_blank">W3layouts</a><br>
+
+</p>
+			</div>
+			<div class="clear"> </div>
+		</div>
+		</div>
+		<div class="mid-grid-new" id="privacy">
+		</div>
+		<div class="mid-grids-bottom" id="contact">
+			<div class="wrap">
+				<h3>contact us</h3>
+				<form name="myform" id="myform" method="post" action="">
+					<input type="text" id="name" name="name" value="Name :" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name :';}">
+						<input type="text" id="email" name="email" value="Email :" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email :';}">
+						<textarea rows="8" name="messageText" cols="70" onfocus="if(this.value == 'Message :') this.value='';" onblur="if(this.value == '') this.value='Message :';" >Message :</textarea>
+<br>
+<input type="submit" value="Send" /><div id="results"></div>
+				</form>
+<br><h3>stay with us</h3>
+<p>you can also email us at <a href="mailto:info@funagrams.com" class="btn">info@funagrams.com</a></p>
+			</div>
+			<div class="social">
+			<ul>
+				<li><a class="ftwiter" href="https://twitter.com/FunagramsApp" target="_blank"> </a></li>
+			</ul>
+			</div>
+		</div>
+	<!---//End-mid-grids----->
+
+		</div>
+		</div>
+	</div>
+	<!---//End-footer----->
+<!---//End-wrap---->
+</body>
+</html>
