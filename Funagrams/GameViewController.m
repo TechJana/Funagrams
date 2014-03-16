@@ -9,6 +9,7 @@
 #import "GameViewController.h"
 #import "AppDelegate.h"
 #import "GlobalConstants.h"
+#import "ImageLabelView.h"
 
 @interface GameViewController ()
 {
@@ -621,6 +622,12 @@
         // Reset the value of the button to empty string to load the required question
         [buttonIndex setTitle:@" " forState:UIControlStateNormal];
         [buttonIndex addTarget:self action:@selector(buttonQuestions_click:) forControlEvents:UIControlEventTouchUpInside];
+        //[buttonIndex addTarget:self action:@selector(buttonQuestions_moving:) forControlEvents:UIControlEventTouchDragInside];
+        // note: replace "ImageUtils" with the class where you pasted the method above
+        UIImage *img = [ImageLabelView drawText:@"A"
+                                    inImage:[UIImage imageNamed:@"LevelLockImage"]
+                                    atPoint:CGPointMake(0, 0)];
+        [buttonIndex setBackgroundImage:img forState:UIControlStateNormal];
         
         [self setButtonBorder:buttonIndex];
         
@@ -1013,6 +1020,170 @@
 {
 	[self dismissViewControllerAnimated: YES completion:nil];
 	//[viewController release];
+}
+
+#pragma mark Button Drag
+
+#define GROW_ANIMATION_DURATION_SECONDS 0.15    // Determines how fast a piece size grows when it is moved.
+#define SHRINK_ANIMATION_DURATION_SECONDS 0.15  // Determines how fast a piece size shrinks when a piece stops moving.
+
+#pragma mark - Touch handling
+
+/**
+ Handles the start of a touch.
+ */
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    NSUInteger numTaps = [[touches anyObject] tapCount];
+    
+    //self.touchPhaseText.text = NSLocalizedString(@"Phase: Touches began", @"Phase label text for touches began");
+    //self.touchInfoText.text = @"";
+    if (numTaps >= 2) {
+        NSString *infoFormatString = NSLocalizedString(@"%d taps", @"Format string for info text for number of taps");
+        //self.touchInfoText.text = [NSString stringWithFormat:infoFormatString, numTaps];
+    }
+    else {
+        //self.touchTrackingText.text = @"";
+    }
+    // Enumerate through all the touch objects.
+    NSUInteger touchCount = 0;
+    for (UITouch *touch in touches) {
+        // Send to the dispatch method, which will make sure the appropriate subview is acted upon.
+        [self dispatchFirstTouchAtPoint:[touch locationInView:self.view] forEvent:nil];
+        touchCount++;
+    }
+}
+
+/**
+ Checks to see which view, or views, the point is in and then calls a method to perform the opening animation, which  makes the piece slightly larger, as if it is being picked up by the user.
+ */
+-(void)dispatchFirstTouchAtPoint:(CGPoint)touchPoint forEvent:(UIEvent *)event
+{
+    for (int indexCount=0; indexCount<buttonQuestions.count; indexCount++) {
+        UIButton *thisButton = (UIButton *)[buttonQuestions objectAtIndex:indexCount];
+        if (CGRectContainsPoint(self.testImage.frame, touchPoint)) {
+            [self animateFirstTouchAtPoint:touchPoint forView:self.testImage];
+            break;
+        }
+    }
+}
+
+/**
+ Handles the continuation of a touch.
+ */
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    NSUInteger touchCount = 0;
+    //self.touchPhaseText.text = NSLocalizedString(@"Phase: Touches moved", @"Phase label text for touches moved");
+    // Enumerates through all touch objects
+    for (UITouch *touch in touches) {
+        // Send to the dispatch method, which will make sure the appropriate subview is acted upon
+        [self dispatchTouchEvent:[touch view] toPosition:[touch locationInView:self.view]];
+        touchCount++;
+    }
+    
+    // When multiple touches, report the number of touches.
+    if (touchCount > 1) {
+        NSString *trackingFormatString = NSLocalizedString(@"Tracking %d touches", @"Format string for tracking text for number of touches being tracked");
+        //self.touchTrackingText.text = [NSString stringWithFormat:trackingFormatString, touchCount];
+    }
+    else {
+        //self.touchTrackingText.text = NSLocalizedString(@"Tracking 1 touch", @"String for tracking text for 1 touch being tracked");
+    }
+}
+
+/**
+ Checks to see which view, or views, the point is in and then sets the center of each moved view to the new postion.
+ If views are directly on top of each other, they move together.
+ */
+-(void)dispatchTouchEvent:(UIView *)theView toPosition:(CGPoint)position
+{
+    // Check to see which view, or views,  the point is in and then move to that position.
+    for (int indexCount=0; indexCount<buttonQuestions.count; indexCount++) {
+        UIButton *thisButton = (UIButton *)[buttonQuestions objectAtIndex:indexCount];
+        if (CGRectContainsPoint([self.testImage frame], position)) {
+            self.testImage.center = position;
+            break;
+        }
+    }
+}
+
+/**
+ Handles the end of a touch event.
+ */
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    //self.touchPhaseText.text = NSLocalizedString(@"Phase: Touches ended", @"Phase label text for touches ended");
+    // Enumerates through all touch object
+    for (UITouch *touch in touches) {
+        // Sends to the dispatch method, which will make sure the appropriate subview is acted upon
+        [self dispatchTouchEndEvent:[touch view] toPosition:[touch locationInView:self.view]];
+    }
+}
+
+/**
+ Checks to see which view, or views,  the point is in and then calls a method to perform the closing animation, which is to return the piece to its original size, as if it is being put down by the user.
+ */
+-(void)dispatchTouchEndEvent:(UIView *)theView toPosition:(CGPoint)position
+{
+    // Check to see which view, or views, the point is in and then animate to that position.
+    for (int indexCount=0; indexCount<buttonQuestions.count; indexCount++) {
+        UIButton *thisButton = (UIButton *)[buttonQuestions objectAtIndex:indexCount];
+        if (CGRectContainsPoint([self.testImage frame], position)) {
+            //[self animateView:self.testImage toPosition: position];
+            break;
+        }
+    }
+    
+    // If one piece obscures another, display a message so the user can move the pieces apart.
+    /*
+    if (CGPointEqualToPoint(self.firstPieceView.center, self.secondPieceView.center) ||
+        CGPointEqualToPoint(self.firstPieceView.center, self.thirdPieceView.center) ||
+        CGPointEqualToPoint(self.secondPieceView.center, self.thirdPieceView.center)) {
+        
+        self.touchInstructionsText.text = NSLocalizedString(@"Double tap the background to move the pieces apart.", @"Instructions text string.");
+        piecesOnTop = YES;
+    } else {
+        piecesOnTop = NO;
+    }
+     */
+}
+
+-(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    //self.touchPhaseText.text = NSLocalizedString(@"Phase: Touches cancelled", @"Phase label text for touches cancelled");
+    // Enumerates through all touch objects.
+    for (UITouch *touch in touches) {
+        // Sends to the dispatch method, which will make sure the appropriate subview is acted upon.
+        [self dispatchTouchEndEvent:[touch view] toPosition:[touch locationInView:self.view]];
+    }
+}
+
+#pragma mark - Animating subviews
+/**
+ Scales up a view slightly which makes the piece slightly larger, as if it is being picked up by the user.
+ */
+-(void)animateFirstTouchAtPoint:(CGPoint)touchPoint forView:(UIImageView *)theView
+{
+    // Pulse the view by scaling up, then move the view to under the finger.
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:GROW_ANIMATION_DURATION_SECONDS];
+    theView.transform = CGAffineTransformMakeScale(1.2, 1.2);
+    [UIView commitAnimations];
+}
+
+/**
+ Scales down the view and moves it to the new position.
+ */
+-(void)animateView:(UIView *)theView toPosition:(CGPoint)thePosition
+{
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:SHRINK_ANIMATION_DURATION_SECONDS];
+    // Set the center to the final postion.
+    theView.center = thePosition;
+    // Set the transform back to the identity, thus undoing the previous scaling effect.
+    theView.transform = CGAffineTransformIdentity;
+    [UIView commitAnimations];
 }
 
 @end

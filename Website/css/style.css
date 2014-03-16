@@ -395,6 +395,12 @@ body{
 .ftwiter:hover{
 	background:url(../images/footer-social-icons.png) no-repeat 0px 0px;
 }
+.fface{
+	background: url(../images/footer-social-icons.png) no-repeat -70px -56px;
+}
+.fface:hover{
+	background: url(../images/footer-social-icons.png) no-repeat -70px 0px;
+}
 
 /*---End-mid-grids-bottom-----*/
 /*---start-footer----*/

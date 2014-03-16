@@ -51,6 +51,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</script>
 </head>
 <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <!---start-wrap---->
 	<!---start-header---->
 	<div class="header">
@@ -85,6 +93,41 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
 		<div class="img-banner-pic">
 		</div>
+<script lang="text/javascript">/*
+*  How to load a feed via the Feeds API.
+*/
+
+google.load("feeds", "1");
+
+// Our callback function, for when a feed is loaded.
+function feedLoaded(result) {
+  if (!result.error) {
+    // Grab the container we will put the results into
+    var container = document.getElementById("content");
+    container.innerHTML = '';
+
+    // Loop through the feeds, putting the titles onto the page.
+    // Check out the result object for a list of properties returned in each entry.
+    // http://code.google.com/apis/ajaxfeeds/documentation/reference.html#JSON
+    for (var i = 1; i < result.feed.entries.length; i++) {
+      var entry = result.feed.entries[i];
+      var div = document.createElement("div");
+      div.innerHTML = entry.content;
+      container.appendChild(div);
+    }
+  }
+}
+
+function OnLoad() {
+  // Create a feed instance that will grab Digg's feed.
+  var feed = new google.feeds.Feed("https://itunes.apple.com/us/rss/customerreviews/id=817237014/sortBy=mostRecent/xml");
+
+  // Calling load sends the request off.  It requires a callback function.
+  feed.load(feedLoaded);
+}
+
+google.setOnLoadCallback(OnLoad);​
+</script>
 		<div class="clear"> </div>
 	</div>
 
@@ -121,7 +164,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="mid-grid-top-pic">
 			</div>
 			<div class="mid-grid-top-info">
-				<h3>thanks to various websites which enabled to complete this app quick</h3>
+				<h3>Thanks to various websites which enabled to complete this app quick</h3>
 				<p><u>anagrams</u><br>
 <a class="btn" href="http://wordsmith.org/anagram/index.html" target="_blank">Wordsmith</a><br>
 
@@ -143,6 +186,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
 		<div class="mid-grids-bottom" id="contact">
 			<div class="wrap">
+				<h3>developed by</h3>
+				<center><b>Janagaraj Ragupathy</b><br>
+				<a href="https://twitter.com/JanaRagupathy" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @JanaRagupathy</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+</center>
+<h3>&amp;</h3>
+				<center>saravanan (immasara)</center>
+				<br>
+				<br>
 				<h3>contact us</h3>
 				<form name="myform" id="myform" method="post" action="">
 					<input type="text" id="name" name="name" value="Name :" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name :';}">
@@ -157,6 +211,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="social">
 			<ul>
 				<li><a class="ftwiter" href="https://twitter.com/FunagramsApp" target="_blank"> </a></li>
+				<li><a class="fface" href="https://www.facebook.com/Funagrams" target="_blank"> </a></li>
 			</ul>
 			</div>
 		</div>

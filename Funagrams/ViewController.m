@@ -22,13 +22,14 @@
 
 @implementation ViewController
 
-    @synthesize gameScoreBoard;
-    @synthesize buttonPlay;
-    @synthesize buttonBeginner;
-    @synthesize buttonIntermediate;
-    @synthesize buttonExpert;
-    @synthesize popoverController;
-    @synthesize thisParentViewController;
+@synthesize gameScoreBoard;
+@synthesize buttonPlay;
+@synthesize buttonMusic;
+@synthesize buttonBeginner;
+@synthesize buttonIntermediate;
+@synthesize buttonExpert;
+@synthesize popoverController;
+@synthesize thisParentViewController;
 
 - (void)viewDidLoad
 {
@@ -41,6 +42,7 @@
     
 #if TEST_MODE_DEF
     scoreBoard.currentGameScore = 10;
+    [self buttonMusic_click:nil];
 #endif
     
     // Game center
@@ -96,6 +98,20 @@
             //accessoryType = UITableViewCellAccessoryNone;
             //accessoryView = buyButton;
         }
+    }
+}
+
+- (IBAction) buttonMusic_click:(id)sender
+{
+    if (((AppDelegate*)[[UIApplication sharedApplication] delegate]).isMusicPlaying)
+    {
+        [((AppDelegate*)[[UIApplication sharedApplication] delegate]) stopBackgroundMusic];
+        [buttonMusic setImage:[UIImage imageNamed:@"MusicOffImage"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [((AppDelegate*)[[UIApplication sharedApplication] delegate]) playBackgroundMusic];
+        [buttonMusic setImage:[UIImage imageNamed:@"MusicOnImage"] forState:UIControlStateNormal];
     }
 }
     

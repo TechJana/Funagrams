@@ -15,7 +15,7 @@
 @interface ViewController : UIViewController <GKLocalPlayerListener, UIAlertViewDelegate, GKLeaderboardViewControllerDelegate, GKAchievementViewControllerDelegate, RNGridMenuDelegate>
 {
     ScoreBoard *scoreBoard;
-    IBOutlet UIButton *buttonPlay;
+    IBOutlet UIButton *buttonPlay, *buttonMusic;
     IBOutlet UIButton *buttonBeginner, *buttonIntermediate, *buttonExpert;
     UIActionSheet *actionSheet;
     //ViewController *thisParentController;
@@ -26,12 +26,13 @@
 - (IBAction) buttonIntermediate_click:(id)sender;
 - (IBAction) buttonExpert_click:(id)sender;
 
-    @property (nonatomic, retain) ScoreBoard *gameScoreBoard;
-    @property (retain, nonatomic) IBOutlet UIButton *buttonPlay;
-    @property (retain, nonatomic) IBOutlet UIButton *buttonBeginner;
-    @property (retain, nonatomic) IBOutlet UIButton *buttonIntermediate;
-    @property (retain, nonatomic) IBOutlet UIButton *buttonExpert;
-    @property (retain, nonatomic) UIPopoverController *popoverController;
-    @property (readwrite, nonatomic) ViewController *thisParentViewController;
+@property (nonatomic, retain) ScoreBoard *gameScoreBoard;
+@property (retain, nonatomic) IBOutlet UIButton *buttonPlay;
+@property (retain, nonatomic) IBOutlet UIButton *buttonMusic;
+@property (retain, nonatomic) IBOutlet UIButton *buttonBeginner;
+@property (retain, nonatomic) IBOutlet UIButton *buttonIntermediate;
+@property (retain, nonatomic) IBOutlet UIButton *buttonExpert;
+@property (retain, nonatomic) UIPopoverController *popoverController;
+@property (readwrite, nonatomic) ViewController *thisParentViewController;
     
 @end

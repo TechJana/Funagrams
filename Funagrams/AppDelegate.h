@@ -16,11 +16,16 @@
     AVAudioPlayer *player;
 }
 
+- (void)playBackgroundMusic;
+- (void)stopBackgroundMusic;
+
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UINavigationController *navController;
 
+@property (readwrite, nonatomic) BOOL isMusicPlaying;
+
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator ;
+@property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 @end

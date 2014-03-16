@@ -58,7 +58,7 @@
 - (IBAction) buttonQuestions_click:(id)sender;
 - (IBAction) buttonResults_click:(id)sender;
 - (IBAction) buttonSubmit_click:(id)sender;
-- (IBAction)buttonScramble_click:(id)sender;
+- (IBAction) buttonScramble_click:(id)sender;
 
 - (void) loadHint;
 - (void) loadAnagram;
@@ -86,5 +86,6 @@
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (readwrite, nonatomic) int currentGameMode;
 @property (readwrite, nonatomic) int currentGameLevel;
+@property (nonatomic, strong) IBOutlet UIImageView *testImage;
 
 @end

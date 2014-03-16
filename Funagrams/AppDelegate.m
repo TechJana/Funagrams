@@ -154,6 +154,13 @@
     //player.volume = 100;
     
     [player play];
+    _isMusicPlaying = YES;
+}
+
+- (void)stopBackgroundMusic
+{
+    [player stop];
+    _isMusicPlaying = NO;
 }
 
 

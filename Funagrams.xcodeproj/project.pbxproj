@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12222D7318D2D29E00A26C62 /* ImageLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12222D7218D2D29E00A26C62 /* ImageLabelView.m */; };
 		122B41DB18B95D9A00DE4CF3 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 122B41D918B95D9A00DE4CF3 /* iTunesArtwork */; };
 		122B41DC18B95D9A00DE4CF3 /* iTunesArtwork@2x in Resources */ = {isa = PBXBuildFile; fileRef = 122B41DA18B95D9A00DE4CF3 /* iTunesArtwork@2x */; };
 		122BCF5C18A203BE00AF14E1 /* GCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 122BCF5B18A203BE00AF14E1 /* GCHelper.m */; };
@@ -60,6 +61,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		12222D7118D2D29E00A26C62 /* ImageLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageLabelView.h; sourceTree = "<group>"; };
+		12222D7218D2D29E00A26C62 /* ImageLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageLabelView.m; sourceTree = "<group>"; };
 		122B41D918B95D9A00DE4CF3 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		122B41DA18B95D9A00DE4CF3 /* iTunesArtwork@2x */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iTunesArtwork@2x"; sourceTree = "<group>"; };
 		122BCF5A18A203BE00AF14E1 /* GCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCHelper.h; sourceTree = "<group>"; };
@@ -161,6 +164,8 @@
 				122E8A2518A9CF2F004668CC /* IAPHelper.m */,
 				129B5B4718BEEF2400C7F956 /* GlobalConstants.h */,
 				129B5B4818BEEF2400C7F956 /* GlobalConstants.m */,
+				12222D7118D2D29E00A26C62 /* ImageLabelView.h */,
+				12222D7218D2D29E00A26C62 /* ImageLabelView.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -398,6 +403,7 @@
 			files = (
 				12E98758189360C400FC296B /* GameViewController.m in Sources */,
 				129B5B4918BEEF2400C7F956 /* GlobalConstants.m in Sources */,
+				12222D7318D2D29E00A26C62 /* ImageLabelView.m in Sources */,
 				12AE7D36188F8E5B00E00848 /* ViewController.m in Sources */,
 				12E9875B18942BD000FC296B /* ScoreBoard.m in Sources */,
 				12E9875E1899FACA00FC296B /* Anagram.m in Sources */,

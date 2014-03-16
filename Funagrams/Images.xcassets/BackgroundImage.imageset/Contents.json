@@ -3,12 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "BackgroundGradient-1.png"
+      "filename" : "app_bg.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "BackgroundGradient.png"
+      "filename" : "app_bg-1.png"
     }
   ],
   "info" : {
