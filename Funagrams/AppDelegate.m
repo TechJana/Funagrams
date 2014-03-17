@@ -15,6 +15,7 @@
 #import "Scores.h"
 #import "Categories.h"
 #import "GlobalConstants.h"
+#import "ViewController.h"
 
 @implementation AppDelegate
 
@@ -140,6 +141,10 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    UIViewController* root = _window.rootViewController;
+    UINavigationController* navController = (UINavigationController*)root;
+    ViewController * mycontroller = (ViewController *)[[navController viewControllers] objectAtIndex:0];
+    [mycontroller reloadInputViews];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

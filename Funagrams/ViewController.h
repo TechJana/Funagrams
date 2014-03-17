@@ -19,13 +19,13 @@
     IBOutlet UIButton *buttonPlay, *buttonMusic, *buttonGameMode;
     IBOutlet UIButton *buttonBeginner, *buttonIntermediate, *buttonExpert;
     UIActionSheet *actionSheet;
-    //ViewController *thisParentController;
 }
     
 - (IBAction) buttonPlay_click:(id)sender;
 - (IBAction) buttonBeginner_click:(id)sender;
 - (IBAction) buttonIntermediate_click:(id)sender;
 - (IBAction) buttonExpert_click:(id)sender;
+- (void) reloadInputViews;
 
 @property (nonatomic, retain) ScoreBoard *gameScoreBoard;
 @property (retain, nonatomic) IBOutlet UIButton *buttonPlay;

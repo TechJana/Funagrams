@@ -22,7 +22,7 @@
 			<key>Key</key>
 			<string>settingsGameMode</string>
 			<key>DefaultValue</key>
-			<string>Beginner</string>
+			<string>1</string>
 			<key>Titles</key>
 			<array>
 				<string>Beginner</string>

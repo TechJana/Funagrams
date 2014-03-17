@@ -7,7 +7,7 @@
     {
       "idiom" : "iphone",
       "scale" : "2x",
-      "filename" : "MusicOff_iPhone_2x.png"
+      "filename" : "Settings_iPhone_2x.png"
     },
     {
       "idiom" : "iphone",
@@ -20,8 +20,7 @@
     },
     {
       "idiom" : "ipad",
-      "scale" : "2x",
-      "filename" : "MusicOff_2x.png"
+      "scale" : "2x"
     }
   ],
   "info" : {

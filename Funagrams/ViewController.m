@@ -36,10 +36,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self setModalPresentationStyle:UIModalPresentationCurrentContext];
-    
-    NSNumber *settingsGameMode = (NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:kSettingsGameMode];
-    
-    [self buttonGameModeSelection_click:[settingsGameMode intValue]];
+
+    [self reloadInputViews];
     
     scoreBoard = [[ScoreBoard alloc] init];
     gameScoreBoard = scoreBoard;
@@ -104,12 +102,32 @@
     }
 }
 
+- (void) reloadInputViews
+{
+    // get the selection from Settings
+    NSNumber *settingsGameMode = (NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:kSettingsGameMode];
+    [self buttonGameModeSelection_click:[settingsGameMode intValue]];
+    
+    BOOL playMusic = (BOOL)[[NSUserDefaults standardUserDefaults] valueForKey:kSettingsMusic];
+    if (playMusic)
+    {
+        [((AppDelegate*)[[UIApplication sharedApplication] delegate]) playBackgroundMusic];
+        [buttonMusic setImage:[UIImage imageNamed:@"MusicOnImage"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [((AppDelegate*)[[UIApplication sharedApplication] delegate]) stopBackgroundMusic];
+        [buttonMusic setImage:[UIImage imageNamed:@"MusicOffImage"] forState:UIControlStateNormal];
+    }
+    
+}
 
 - (IBAction) buttonGameModeSelection_click:(int)selectedMode
 {
     UIImage *modeImage = nil;
     
     _gameMode = selectedMode;
+    // set the selection in Settings
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:selectedMode] forKey:kSettingsGameMode];
     
     switch (_gameMode) {

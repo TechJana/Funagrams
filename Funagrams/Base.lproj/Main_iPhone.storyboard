@@ -21,15 +21,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VtB-GI-wi5">
-                                <rect key="frame" x="218" y="140" width="132" height="39"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VtB-GI-wi5">
+                                <rect key="frame" x="176" y="140" width="216" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" image="PlayImage">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonPlay_click:" destination="vXZ-lx-hvc" eventType="touchDown" id="bBO-My-DPW"/>
+                                    <action selector="buttonPlay_click:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="9hL-eb-rbg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tAF-Op-adQ">
@@ -40,7 +40,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="showLeaderboard:" destination="vXZ-lx-hvc" eventType="touchDown" id="KkY-2L-1hl"/>
+                                    <action selector="showLeaderboard:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="j76-ay-ojy"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sGq-wK-7Qi">
@@ -51,32 +51,39 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="showAchievement:" destination="vXZ-lx-hvc" eventType="touchDown" id="snG-5A-SKp"/>
+                                    <action selector="showAchievement:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="a7T-mp-Fyo"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="LogoImage" translatesAutoresizingMaskIntoConstraints="NO" id="yfy-7q-KbN">
                                 <rect key="frame" x="90" y="31" width="389" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CbM-9z-P4a">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CbM-9z-P4a">
                                 <rect key="frame" x="20" y="20" width="46" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="MusicOnImage">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonMusic_click:" destination="vXZ-lx-hvc" eventType="touchDown" id="C9y-9P-8sS"/>
+                                    <action selector="buttonMusic_click:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="JsK-tR-Sby"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ayi-OU-DSF">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ayi-OU-DSF">
                                 <rect key="frame" x="502" y="20" width="46" height="51"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="GameModeBeginnerImage">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonGameMode_click:" destination="vXZ-lx-hvc" eventType="touchDown" id="qCP-Mr-8QH"/>
+                                    <action selector="buttonGameMode_click:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="lgn-f8-liQ"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jbh-34-sEk">
+                                <rect key="frame" x="242" y="215" width="85" height="85"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="SettingsImage">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -84,11 +91,14 @@
                             <constraint firstAttribute="trailing" secondItem="sGq-wK-7Qi" secondAttribute="trailing" constant="30" id="62I-xM-Wwm"/>
                             <constraint firstItem="tAF-Op-adQ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="30" id="86f-5I-Heh"/>
                             <constraint firstItem="SSR-7z-rg2" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="9h7-Wb-TOz"/>
+                            <constraint firstItem="CbM-9z-P4a" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="Mic-L0-hcx"/>
                             <constraint firstAttribute="centerX" secondItem="yfy-7q-KbN" secondAttribute="centerX" id="ONf-tp-Xfu"/>
                             <constraint firstAttribute="centerX" secondItem="VtB-GI-wi5" secondAttribute="centerX" id="PtP-Jl-sPF"/>
                             <constraint firstItem="SSR-7z-rg2" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="SyV-2O-gGT"/>
+                            <constraint firstAttribute="trailing" secondItem="Ayi-OU-DSF" secondAttribute="trailing" constant="20" id="XML-gR-Upm"/>
                             <constraint firstAttribute="trailing" secondItem="SSR-7z-rg2" secondAttribute="trailing" id="XR9-uW-zNf"/>
                             <constraint firstAttribute="bottom" secondItem="SSR-7z-rg2" secondAttribute="bottom" id="ftL-fQ-cfM"/>
+                            <constraint firstAttribute="centerX" secondItem="jbh-34-sEk" secondAttribute="centerX" id="jN6-Y2-U7N"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
@@ -312,9 +322,10 @@
         <image name="LevelLockImage" width="52" height="51"/>
         <image name="LogoImage" width="299" height="40"/>
         <image name="MusicOnImage" width="46" height="51"/>
-        <image name="PlayImage" width="135" height="59"/>
+        <image name="PlayImage" width="216" height="60"/>
         <image name="ScoresheetImage" width="75" height="98"/>
         <image name="ScrambleImage" width="76" height="24"/>
+        <image name="SettingsImage" width="85" height="85"/>
         <image name="TrophyImage" width="76" height="98"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
