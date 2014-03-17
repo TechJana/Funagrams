@@ -30,7 +30,10 @@
     }
     
     [InAppPurchase sharedInstance];
-    [self playBackgroundMusic];
+    BOOL playMusic = (BOOL)[[NSUserDefaults standardUserDefaults] valueForKey:kSettingsMusic];
+    if (playMusic) {
+        [self playBackgroundMusic];
+    }
     
     // Core Data Model
     NSManagedObjectContext *context = [self managedObjectContext];

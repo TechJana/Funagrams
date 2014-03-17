@@ -8,9 +8,8 @@
 
 #import "GlobalConstants.h"
 
-int const kGameModeBeginner = 1;
-int const kGameModeIntermediate = 2;
-int const kGameModeExpert = 3;
+NSString* const kSettingsMusic = @"settingsMusic";
+NSString* const kSettingsGameMode = @"settingsGameMode";
 int const kGameLevelLastIncompleteLevel = -1;
 
 NSString* const kLeaderBoardHighScore = @"com.pluggables.funagrams.leaderBoard.HighScore";

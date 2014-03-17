@@ -258,15 +258,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BackImage" width="374" height="119"/>
-        <image name="BackgroundImage" width="170" height="340"/>
-        <image name="HintImage" width="374" height="119"/>
-        <image name="LogoImage" width="783" height="101"/>
-        <image name="MusicOnImage" width="85" height="91"/>
+        <image name="BackImage" width="99" height="33"/>
+        <image name="BackgroundImage" width="129" height="260"/>
+        <image name="HintImage" width="99" height="33"/>
+        <image name="LogoImage" width="394" height="57"/>
+        <image name="MusicOnImage" width="62" height="81"/>
         <image name="PlayImage" width="329" height="146"/>
-        <image name="ScoresheetImage" width="154" height="143"/>
-        <image name="ScrambleImage" width="374" height="119"/>
-        <image name="TrophyImage" width="116" height="141"/>
+        <image name="ScoresheetImage" width="92" height="119"/>
+        <image name="ScrambleImage" width="77" height="33"/>
+        <image name="TrophyImage" width="90" height="119"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>

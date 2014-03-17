@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		122182D318D67E2A000093E3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 122182D218D67E2A000093E3 /* Settings.bundle */; };
 		12222D7318D2D29E00A26C62 /* ImageLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12222D7218D2D29E00A26C62 /* ImageLabelView.m */; };
 		122B41DB18B95D9A00DE4CF3 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 122B41D918B95D9A00DE4CF3 /* iTunesArtwork */; };
 		122B41DC18B95D9A00DE4CF3 /* iTunesArtwork@2x in Resources */ = {isa = PBXBuildFile; fileRef = 122B41DA18B95D9A00DE4CF3 /* iTunesArtwork@2x */; };
@@ -61,6 +62,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		122182D218D67E2A000093E3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		12222D7118D2D29E00A26C62 /* ImageLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageLabelView.h; sourceTree = "<group>"; };
 		12222D7218D2D29E00A26C62 /* ImageLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageLabelView.m; sourceTree = "<group>"; };
 		122B41D918B95D9A00DE4CF3 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				12AE7D35188F8E5B00E00848 /* ViewController.m */,
 				12AE7D37188F8E5B00E00848 /* Images.xcassets */,
 				12AE7D23188F8E5B00E00848 /* Supporting Files */,
+				122182D218D67E2A000093E3 /* Settings.bundle */,
 			);
 			path = Funagrams;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 			files = (
 				123EDC8818B31C1E00F2712F /* Localizable.strings in Resources */,
 				12AE7D33188F8E5B00E00848 /* Main_iPad.storyboard in Resources */,
+				122182D318D67E2A000093E3 /* Settings.bundle in Resources */,
 				122B41DB18B95D9A00DE4CF3 /* iTunesArtwork in Resources */,
 				12AE7D38188F8E5B00E00848 /* Images.xcassets in Resources */,
 				122B41DC18B95D9A00DE4CF3 /* iTunesArtwork@2x in Resources */,

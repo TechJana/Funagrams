@@ -11,11 +11,12 @@
 #import <GameKit/GameKit.h>
 #import "GCHelper.h"
 #import "RNGridMenu.h"
+#import "GlobalConstants.h"
 
 @interface ViewController : UIViewController <GKLocalPlayerListener, UIAlertViewDelegate, GKLeaderboardViewControllerDelegate, GKAchievementViewControllerDelegate, RNGridMenuDelegate>
 {
     ScoreBoard *scoreBoard;
-    IBOutlet UIButton *buttonPlay, *buttonMusic;
+    IBOutlet UIButton *buttonPlay, *buttonMusic, *buttonGameMode;
     IBOutlet UIButton *buttonBeginner, *buttonIntermediate, *buttonExpert;
     UIActionSheet *actionSheet;
     //ViewController *thisParentController;
@@ -29,10 +30,12 @@
 @property (nonatomic, retain) ScoreBoard *gameScoreBoard;
 @property (retain, nonatomic) IBOutlet UIButton *buttonPlay;
 @property (retain, nonatomic) IBOutlet UIButton *buttonMusic;
+@property (retain, nonatomic) IBOutlet UIButton *buttonGameMode;
 @property (retain, nonatomic) IBOutlet UIButton *buttonBeginner;
 @property (retain, nonatomic) IBOutlet UIButton *buttonIntermediate;
 @property (retain, nonatomic) IBOutlet UIButton *buttonExpert;
 @property (retain, nonatomic) UIPopoverController *popoverController;
 @property (readwrite, nonatomic) ViewController *thisParentViewController;
+@property (readwrite, nonatomic) eGameMode gameMode;
     
 @end

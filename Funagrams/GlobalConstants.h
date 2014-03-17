@@ -8,9 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-extern int const kGameModeBeginner;
-extern int const kGameModeIntermediate;
-extern int const kGameModeExpert;
+typedef enum{
+    kGameModeBeginner = 1,
+    kGameModeIntermediate = 2,
+    kGameModeExpert = 3
+}eGameMode;
+
+extern NSString* const kSettingsMusic;
+extern NSString* const kSettingsGameMode;
 extern int const kGameLevelLastIncompleteLevel;
 
 //game leader

@@ -11,7 +11,6 @@
 #import "InAppPurchase.h"
 #import <StoreKit/StoreKit.h>
 #import "GameViewController.h"
-#import "GlobalConstants.h"
 
 @interface ViewController () {
     NSArray *_products;
@@ -25,6 +24,7 @@
 @synthesize gameScoreBoard;
 @synthesize buttonPlay;
 @synthesize buttonMusic;
+@synthesize buttonGameMode;
 @synthesize buttonBeginner;
 @synthesize buttonIntermediate;
 @synthesize buttonExpert;
@@ -37,12 +37,15 @@
 	// Do any additional setup after loading the view, typically from a nib.
     [self setModalPresentationStyle:UIModalPresentationCurrentContext];
     
+    NSNumber *settingsGameMode = (NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:kSettingsGameMode];
+    
+    [self buttonGameModeSelection_click:[settingsGameMode intValue]];
+    
     scoreBoard = [[ScoreBoard alloc] init];
     gameScoreBoard = scoreBoard;
     
 #if TEST_MODE_DEF
     scoreBoard.currentGameScore = 10;
-    [self buttonMusic_click:nil];
 #endif
     
     // Game center
@@ -101,6 +104,57 @@
     }
 }
 
+
+- (IBAction) buttonGameModeSelection_click:(int)selectedMode
+{
+    UIImage *modeImage = nil;
+    
+    _gameMode = selectedMode;
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:selectedMode] forKey:kSettingsGameMode];
+    
+    switch (_gameMode) {
+        case kGameModeBeginner:
+            modeImage = [UIImage imageNamed:@"GameModeBeginnerImage"];
+            break;
+            
+        case kGameModeIntermediate:
+            modeImage = [UIImage imageNamed:@"GameModeIntermediateImage"];
+            break;
+            
+        case kGameModeExpert:
+            modeImage = [UIImage imageNamed:@"GameModeExpertImage"];
+            break;
+    }
+    
+    [buttonGameMode setImage:modeImage forState:UIControlStateNormal];
+}
+    
+- (IBAction) buttonGameMode_click:(id)sender
+{
+    NSInteger numberOfOptions = 3;
+    NSArray *items = @[
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"BeginnerImage"] title:@"" action:^{
+                           [self buttonGameModeSelection_click:kGameModeBeginner];
+                       }],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"IntermediateImage"] title:@"" action:^{
+                           [self buttonGameModeSelection_click:kGameModeIntermediate];
+                       }],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"ExpertImage"] title:@"" action:^{
+                           [self buttonGameModeSelection_click:kGameModeExpert];
+                       }],
+                       ];
+    
+    RNGridMenu *av = [[RNGridMenu alloc] initWithItems:[items subarrayWithRange:NSMakeRange(0, numberOfOptions)]];
+    av.backgroundColor = [UIColor clearColor];
+    av.highlightColor = [UIColor clearColor];
+    av.singleLineView = YES;
+    av.horizontalSpacing = 20;
+    av.fixedImageSize = NO;
+    av.delegate = self;
+    
+    [av showInViewController:self center:CGPointMake(self.view.bounds.size.width/2.f, self.view.bounds.size.height/2.f)];
+}
+
 - (IBAction) buttonMusic_click:(id)sender
 {
     if (((AppDelegate*)[[UIApplication sharedApplication] delegate]).isMusicPlaying)
@@ -113,34 +167,15 @@
         [((AppDelegate*)[[UIApplication sharedApplication] delegate]) playBackgroundMusic];
         [buttonMusic setImage:[UIImage imageNamed:@"MusicOnImage"] forState:UIControlStateNormal];
     }
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:(((AppDelegate*)[[UIApplication sharedApplication] delegate]).isMusicPlaying)] forKey:kSettingsMusic];
 }
     
 - (IBAction) buttonPlay_click:(id)sender
 {
-    NSInteger numberOfOptions = 3;
-    NSArray *items = @[
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"BeginnerImage"] title:@"" action:^{
-                           [self buttonBeginner_click:nil];
-                       }],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"IntermediateImage"] title:@"" action:^{
-                           [self buttonIntermediate_click:nil];
-                       }],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"ExpertImage"] title:@"" action:^{
-                           [self buttonExpert_click:nil];
-                       }],
-                       ];
-    
-    RNGridMenu *av = [[RNGridMenu alloc] initWithItems:[items subarrayWithRange:NSMakeRange(0, numberOfOptions)]];
-    av.backgroundColor = [UIColor clearColor];
-    av.highlightColor = [UIColor clearColor];
-    av.singleLineView = YES;
-    av.horizontalSpacing = 20;
-    av.fixedImageSize = NO;
-    av.delegate = self;
-
-    [av showInViewController:self center:CGPointMake(self.view.bounds.size.width/2.f, self.view.bounds.size.height/2.f)];
+    [self goToGameLevel:_gameMode level:kGameLevelLastIncompleteLevel];
+    //[self showLevelPopUp];
 }
-    
+
 #pragma mark - RNGridMenuDelegate
     
 - (void)gridMenu:(RNGridMenu *)gridMenu willDismissWithSelectedItem:(RNGridMenuItem *)item atIndex:(NSInteger)itemIndex {
@@ -202,24 +237,6 @@
     myController.currentGameMode = mode;
     myController.currentGameLevel = level;
     [self.navigationController pushViewController: myController animated:YES];
-}
-
-- (IBAction) buttonBeginner_click:(id)sender
-{
-    [self goToGameLevel:kGameModeBeginner level:kGameLevelLastIncompleteLevel];
-    //[self showLevelPopUp];
-}
-    
-- (IBAction) buttonIntermediate_click:(id)sender
-{
-    [self goToGameLevel:kGameModeIntermediate level:kGameLevelLastIncompleteLevel];
-    //[self showLevelPopUp];
-}
-
-- (IBAction) buttonExpert_click:(id)sender
-{
-    [self goToGameLevel:kGameModeExpert level:kGameLevelLastIncompleteLevel];
-    //[self showLevelPopUp];
 }
 
 - (void)buyButtonTapped:(id)sender {
