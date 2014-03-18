@@ -7,7 +7,7 @@
     {
       "idiom" : "iphone",
       "scale" : "2x",
-      "filename" : "BackButton_1x.png"
+      "filename" : "BackButton_iPhone_2x.png"
     },
     {
       "idiom" : "iphone",
@@ -16,12 +16,13 @@
     },
     {
       "idiom" : "ipad",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "BackButton_iPad_1x.png"
     },
     {
       "idiom" : "ipad",
       "scale" : "2x",
-      "filename" : "BackButton_2x.png"
+      "filename" : "BackButton_iPad_2x.png"
     }
   ],
   "info" : {

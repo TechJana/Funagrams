@@ -16,11 +16,13 @@
     },
     {
       "idiom" : "ipad",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "ModeBeginner_iPad_1x.png"
     },
     {
       "idiom" : "ipad",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "ModeBeginner_iPad_2x.png"
     }
   ],
   "info" : {

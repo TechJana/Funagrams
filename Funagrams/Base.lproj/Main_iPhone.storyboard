@@ -78,13 +78,6 @@
                                     <action selector="buttonGameMode_click:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="lgn-f8-liQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jbh-34-sEk">
-                                <rect key="frame" x="242" y="215" width="85" height="85"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="SettingsImage">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -98,7 +91,6 @@
                             <constraint firstAttribute="trailing" secondItem="Ayi-OU-DSF" secondAttribute="trailing" constant="20" id="XML-gR-Upm"/>
                             <constraint firstAttribute="trailing" secondItem="SSR-7z-rg2" secondAttribute="trailing" id="XR9-uW-zNf"/>
                             <constraint firstAttribute="bottom" secondItem="SSR-7z-rg2" secondAttribute="bottom" id="ftL-fQ-cfM"/>
-                            <constraint firstAttribute="centerX" secondItem="jbh-34-sEk" secondAttribute="centerX" id="jN6-Y2-U7N"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
@@ -188,8 +180,8 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gjb-NR-Aw8">
                                 <rect key="frame" x="20" y="62" width="528" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
-                                <color key="textColor" red="0.33932125800000001" green="0.33932125800000001" blue="0.33932125800000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.9960784912109375" blue="0.9960784912109375" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BzW-Jz-efx">
@@ -232,7 +224,7 @@
                                 <color key="textColor" red="0.89083729619565222" green="0.14488625042737505" blue="0.085917036627937718" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LevelLockImage" translatesAutoresizingMaskIntoConstraints="NO" id="riq-g3-sQE">
-                                <rect key="frame" x="309" y="112" width="105" height="61"/>
+                                <rect key="frame" x="470" y="109" width="71" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -315,17 +307,16 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BackImage" width="76" height="24"/>
+        <image name="BackImage" width="74" height="24"/>
         <image name="BackgroundImage" width="129" height="260"/>
         <image name="GameModeBeginnerImage" width="46" height="51"/>
-        <image name="HintImage" width="75" height="24"/>
+        <image name="HintImage" width="74" height="24"/>
         <image name="LevelLockImage" width="52" height="51"/>
-        <image name="LogoImage" width="299" height="40"/>
+        <image name="LogoImage" width="456" height="61"/>
         <image name="MusicOnImage" width="46" height="51"/>
         <image name="PlayImage" width="216" height="60"/>
         <image name="ScoresheetImage" width="75" height="98"/>
-        <image name="ScrambleImage" width="76" height="24"/>
-        <image name="SettingsImage" width="85" height="85"/>
+        <image name="ScrambleImage" width="74" height="24"/>
         <image name="TrophyImage" width="76" height="98"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

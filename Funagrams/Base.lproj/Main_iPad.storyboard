@@ -32,11 +32,11 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="LogoImage" translatesAutoresizingMaskIntoConstraints="NO" id="zIZ-Ym-ryL">
-                                <rect key="frame" x="300" y="71" width="425" height="116"/>
+                                <rect key="frame" x="131" y="66" width="754" height="116"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6TM-jT-haW">
-                                <rect key="frame" x="60" y="645" width="90" height="81"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6TM-jT-haW">
+                                <rect key="frame" x="60" y="589" width="92" height="119"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" image="ScoresheetImage">
@@ -46,8 +46,8 @@
                                     <action selector="showLeaderboard:" destination="BYZ-38-t0r" eventType="touchDown" id="wqE-C4-o2b"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yOX-pz-kHA">
-                                <rect key="frame" x="885" y="645" width="70" height="81"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yOX-pz-kHA">
+                                <rect key="frame" x="874" y="589" width="90" height="119"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <state key="normal" image="TrophyImage">
@@ -57,20 +57,32 @@
                                     <action selector="showAchievement:" destination="BYZ-38-t0r" eventType="touchDown" id="bVl-jP-MXm"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zcv-oj-wOs">
-                                <rect key="frame" x="20" y="20" width="110" height="115"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zcv-oj-wOs">
+                                <rect key="frame" x="302" y="589" width="93" height="119"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="MusicOnImage">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonMusic_click:" destination="BYZ-38-t0r" eventType="touchDown" id="4pu-6y-U3Y"/>
+                                    <action selector="buttonMusic_click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iA1-ih-x4X"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4o-oJ-fEx">
+                                <rect key="frame" x="618" y="589" width="101" height="119"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="GameModeBeginnerImage">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonGameMode_click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hQx-TB-t1z"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="T0u-Nz-Rzi" secondAttribute="centerX" id="GVf-5L-cto"/>
+                            <constraint firstAttribute="bottom" secondItem="Zcv-oj-wOs" secondAttribute="bottom" constant="60" id="MBN-TL-qX2"/>
+                            <constraint firstAttribute="bottom" secondItem="o4o-oJ-fEx" secondAttribute="bottom" constant="60" id="PRg-4a-4Cl"/>
                             <constraint firstAttribute="trailing" secondItem="yOX-pz-kHA" secondAttribute="trailing" constant="60" id="YgI-wG-HXr"/>
                             <constraint firstAttribute="centerX" secondItem="zIZ-Ym-ryL" secondAttribute="centerX" id="hDR-9V-5Mj"/>
                             <constraint firstAttribute="bottom" secondItem="6TM-jT-haW" secondAttribute="bottom" constant="60" id="qNa-8r-DHY"/>
@@ -82,6 +94,7 @@
                     <navigationItem key="navigationItem" id="YA1-7H-KIY"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
+                        <outlet property="buttonGameMode" destination="o4o-oJ-fEx" id="TwB-Vb-ad1"/>
                         <outlet property="buttonMusic" destination="Zcv-oj-wOs" id="VEj-3E-mUA"/>
                         <outlet property="buttonPlay" destination="T0u-Nz-Rzi" id="zkb-SF-75p"/>
                     </connections>
@@ -109,8 +122,8 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="&lt;&lt; Hint Value >>" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ksn-8a-7Fp">
                                 <rect key="frame" x="30" y="169" width="984" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="italicSystem" pointSize="25"/>
-                                <color key="textColor" red="0.33932125800000001" green="0.33932125800000001" blue="0.33932125800000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <color key="textColor" red="1" green="0.9960784912109375" blue="0.9960784912109375" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3P-PU-bNT">
@@ -175,8 +188,8 @@
                                     <action selector="buttonHint_click:" destination="Hcv-SH-tyx" eventType="touchDown" id="FvC-TW-QM7"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8VF-Sa-3CN">
-                                <rect key="frame" x="40" y="539" width="214" height="69"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8VF-Sa-3CN">
+                                <rect key="frame" x="40" y="539" width="194" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="BackImage">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -258,14 +271,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BackImage" width="99" height="33"/>
+        <image name="BackImage" width="194" height="61"/>
         <image name="BackgroundImage" width="129" height="260"/>
-        <image name="HintImage" width="99" height="33"/>
-        <image name="LogoImage" width="394" height="57"/>
-        <image name="MusicOnImage" width="62" height="81"/>
-        <image name="PlayImage" width="329" height="146"/>
+        <image name="GameModeBeginnerImage" width="101" height="119"/>
+        <image name="HintImage" width="194" height="61"/>
+        <image name="LogoImage" width="665" height="88"/>
+        <image name="MusicOnImage" width="93" height="119"/>
+        <image name="PlayImage" width="535" height="142"/>
         <image name="ScoresheetImage" width="92" height="119"/>
-        <image name="ScrambleImage" width="77" height="33"/>
+        <image name="ScrambleImage" width="194" height="61"/>
         <image name="TrophyImage" width="90" height="119"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

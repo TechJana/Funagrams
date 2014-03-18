@@ -2,12 +2,13 @@
   "images" : [
     {
       "idiom" : "iphone",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "Logo_iPhone_1x.png"
     },
     {
       "idiom" : "iphone",
       "scale" : "2x",
-      "filename" : "Logo_iPhone_1x.png"
+      "filename" : "Logo_iPhone_2x.png"
     },
     {
       "idiom" : "iphone",
@@ -16,7 +17,8 @@
     },
     {
       "idiom" : "ipad",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "Logo_iPad_1x.png"
     },
     {
       "idiom" : "ipad",

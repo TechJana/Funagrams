@@ -7,7 +7,7 @@
     {
       "idiom" : "iphone",
       "scale" : "2x",
-      "filename" : "ScrambleButton_1x.png"
+      "filename" : "ScrambleButton_iPhone_2x.png"
     },
     {
       "idiom" : "iphone",
@@ -16,12 +16,13 @@
     },
     {
       "idiom" : "ipad",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "ScrambleButton_iPad_1x.png"
     },
     {
       "idiom" : "ipad",
       "scale" : "2x",
-      "filename" : "ScrambleButton_2x.png"
+      "filename" : "ScrambleButton_iPad_2x.png"
     }
   ],
   "info" : {

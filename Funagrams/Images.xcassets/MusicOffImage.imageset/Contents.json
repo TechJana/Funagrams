@@ -16,12 +16,13 @@
     },
     {
       "idiom" : "ipad",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "MusicOn_iPad_1x-35.png"
     },
     {
       "idiom" : "ipad",
       "scale" : "2x",
-      "filename" : "MusicOff_2x.png"
+      "filename" : "MusicOff_iPad_2x.png"
     }
   ],
   "info" : {
