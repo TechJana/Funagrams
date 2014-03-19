@@ -599,7 +599,7 @@
 - (void) loadQuestionResultButtons
 {
     UIButton *buttonIndex;
-    int indexButton=0, buttonCount=0, buttonSpacingWidth=4;
+    int indexButton=0, buttonCount=0, buttonSpacingWidth=0;
     CGRect screenRect = [[UIScreen mainScreen] bounds];
 
     buttonQuestions = [[NSMutableArray alloc] init];
@@ -624,8 +624,8 @@
         [buttonIndex addTarget:self action:@selector(buttonQuestions_click:) forControlEvents:UIControlEventTouchUpInside];
         //[buttonIndex addTarget:self action:@selector(buttonQuestions_moving:) forControlEvents:UIControlEventTouchDragInside];
         // note: replace "ImageUtils" with the class where you pasted the method above
-        UIImage *img = [ImageLabelView drawText:@"A"
-                                    inImage:[UIImage imageNamed:@"LevelLockImage"]
+        UIImage *img = [ImageLabelView drawText:@""
+                                    inImage:[UIImage imageNamed:@"TileImage"]
                                     atPoint:CGPointMake(0, 0)];
         [buttonIndex setBackgroundImage:img forState:UIControlStateNormal];
         
@@ -651,6 +651,11 @@
         // Reset the value of the button to box character to initiate play mode
         [buttonIndex setTitle:@" " forState:UIControlStateNormal];
         [buttonIndex addTarget:self action:@selector(buttonResults_click:) forControlEvents:UIControlEventTouchUpInside];
+        // note: replace "ImageUtils" with the class where you pasted the method above
+        UIImage *img = [ImageLabelView drawText:@""
+                                        inImage:[UIImage imageNamed:@"TileHolderImage"]
+                                        atPoint:CGPointMake(0, 0)];
+        [buttonIndex setBackgroundImage:img forState:UIControlStateNormal];
         
         [self setButtonBorder:buttonIndex];
         
@@ -667,12 +672,12 @@
 - (void) setButtonBorder:(UIButton *)buttonThis
 {
     // set the border
-    buttonThis.layer.cornerRadius = 10;
-    buttonThis.layer.borderWidth = 1;
-    buttonThis.layer.borderColor = [UIColor blueColor].CGColor;
+    //buttonThis.layer.cornerRadius = 10;
+    //buttonThis.layer.borderWidth = 1;
+    //buttonThis.layer.borderColor = [UIColor blueColor].CGColor;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
-        [buttonThis.titleLabel setFont:[UIFont systemFontOfSize:40]];
+        [buttonThis.titleLabel setFont:[UIFont systemFontOfSize:45]];
     }
     else
     {
