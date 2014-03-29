@@ -68,6 +68,11 @@
     }
 }
 
+- (void)rateGame
+{
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=817237014"]];
+}
+
 - (void)getInAppProducts
 {
     _products = nil;

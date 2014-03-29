@@ -26,6 +26,7 @@
 		129B5B4918BEEF2400C7F956 /* GlobalConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 129B5B4818BEEF2400C7F956 /* GlobalConstants.m */; };
 		129B5B5518C0538700C7F956 /* RNGridMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 129B5B5418C0538700C7F956 /* RNGridMenu.m */; };
 		129B5B5818C067F100C7F956 /* Scores.m in Sources */ = {isa = PBXBuildFile; fileRef = 129B5B5718C067F100C7F956 /* Scores.m */; };
+		12A7F6B418E76E4500CC7FAA /* AHAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A7F6B318E76E4500CC7FAA /* AHAlertView.m */; };
 		12AE7D1D188F8E5B00E00848 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AE7D1C188F8E5B00E00848 /* Foundation.framework */; };
 		12AE7D1F188F8E5B00E00848 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AE7D1E188F8E5B00E00848 /* CoreGraphics.framework */; };
 		12AE7D21188F8E5B00E00848 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AE7D20188F8E5B00E00848 /* UIKit.framework */; };
@@ -93,6 +94,8 @@
 		129B5B5418C0538700C7F956 /* RNGridMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGridMenu.m; sourceTree = "<group>"; };
 		129B5B5618C067F100C7F956 /* Scores.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scores.h; sourceTree = "<group>"; };
 		129B5B5718C067F100C7F956 /* Scores.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scores.m; sourceTree = "<group>"; };
+		12A7F6B218E76E4500CC7FAA /* AHAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHAlertView.h; sourceTree = "<group>"; };
+		12A7F6B318E76E4500CC7FAA /* AHAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHAlertView.m; sourceTree = "<group>"; };
 		12AE7D19188F8E5B00E00848 /* Funagrams.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Funagrams.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12AE7D1C188F8E5B00E00848 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		12AE7D1E188F8E5B00E00848 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -158,6 +161,8 @@
 		122E8A2318A9CF08004668CC /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				12A7F6B218E76E4500CC7FAA /* AHAlertView.h */,
+				12A7F6B318E76E4500CC7FAA /* AHAlertView.m */,
 				129B5B5318C0538700C7F956 /* RNGridMenu.h */,
 				129B5B5418C0538700C7F956 /* RNGridMenu.m */,
 				122BCF5A18A203BE00AF14E1 /* GCHelper.h */,
@@ -405,6 +410,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12A7F6B418E76E4500CC7FAA /* AHAlertView.m in Sources */,
 				12E98758189360C400FC296B /* GameViewController.m in Sources */,
 				129B5B4918BEEF2400C7F956 /* GlobalConstants.m in Sources */,
 				12222D7318D2D29E00A26C62 /* ImageLabelView.m in Sources */,

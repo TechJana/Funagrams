@@ -78,6 +78,13 @@
                                     <action selector="buttonGameMode_click:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="lgn-f8-liQ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sae-Vd-e0b">
+                                <rect key="frame" x="250" y="233" width="69" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="FavoriteImage">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -90,6 +97,7 @@
                             <constraint firstItem="SSR-7z-rg2" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="SyV-2O-gGT"/>
                             <constraint firstAttribute="trailing" secondItem="Ayi-OU-DSF" secondAttribute="trailing" constant="20" id="XML-gR-Upm"/>
                             <constraint firstAttribute="trailing" secondItem="SSR-7z-rg2" secondAttribute="trailing" id="XR9-uW-zNf"/>
+                            <constraint firstAttribute="centerX" secondItem="sae-Vd-e0b" secondAttribute="centerX" id="cEZ-z9-Nh0"/>
                             <constraint firstAttribute="bottom" secondItem="SSR-7z-rg2" secondAttribute="bottom" id="ftL-fQ-cfM"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -122,7 +130,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;&lt; score >>" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODo-bT-5rm">
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;&lt; score >>" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ODo-bT-5rm">
                                 <rect key="frame" x="268" y="27" width="280" height="27"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -134,11 +142,10 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;&lt; level >>" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdg-0F-NoM">
                                 <rect key="frame" x="20" y="27" width="228" height="27"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="0.94901960780000005" green="0.14180239750000001" blue="0.37976926020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="0.84598395469999998" green="0.85570790819999998" blue="0.85570790819999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <size key="shadowOffset" width="2" height="2"/>
+                                <size key="shadowOffset" width="1" height="1"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIk-Li-SUb">
                                 <rect key="frame" x="230" y="240" width="108" height="34"/>
@@ -147,7 +154,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonScramble_click:" destination="NfE-KG-Vgi" eventType="touchDown" id="RiU-jc-3MN"/>
+                                    <action selector="buttonScramble_click:" destination="NfE-KG-Vgi" eventType="touchUpInside" id="89h-G8-BvJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XOa-wv-BQq">
@@ -178,18 +185,18 @@
                                 </connections>
                             </adBannerView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gjb-NR-Aw8">
-                                <rect key="frame" x="20" y="62" width="528" height="20"/>
+                                <rect key="frame" x="20" y="69" width="528" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.9960784912109375" blue="0.9960784912109375" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BzW-Jz-efx">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BzW-Jz-efx">
                                 <rect key="frame" x="20" y="163" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="4dw-8G-0k1"/>
-                                    <constraint firstAttribute="width" constant="35" id="LIv-Th-D9K"/>
+                                    <constraint firstAttribute="height" constant="40" id="4dw-8G-0k1"/>
+                                    <constraint firstAttribute="width" constant="40" id="LIv-Th-D9K"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="_">
@@ -197,12 +204,12 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39M-3k-jzj">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39M-3k-jzj">
                                 <rect key="frame" x="20" y="103" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="1Tu-pn-AOa"/>
-                                    <constraint firstAttribute="width" constant="35" id="qU2-Gp-EzE"/>
+                                    <constraint firstAttribute="height" constant="40" id="1Tu-pn-AOa"/>
+                                    <constraint firstAttribute="width" constant="40" id="qU2-Gp-EzE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="-">
@@ -223,7 +230,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.89083729619565222" green="0.14488625042737505" blue="0.085917036627937718" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LevelLockImage" translatesAutoresizingMaskIntoConstraints="NO" id="riq-g3-sQE">
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="TileImage" translatesAutoresizingMaskIntoConstraints="NO" id="riq-g3-sQE">
                                 <rect key="frame" x="470" y="109" width="71" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -307,16 +314,17 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BackImage" width="74" height="24"/>
-        <image name="BackgroundImage" width="129" height="260"/>
+        <image name="BackImage" width="171" height="54"/>
+        <image name="BackgroundImage" width="773" height="260"/>
+        <image name="FavoriteImage" width="69" height="62"/>
         <image name="GameModeBeginnerImage" width="46" height="51"/>
-        <image name="HintImage" width="74" height="24"/>
-        <image name="LevelLockImage" width="52" height="51"/>
+        <image name="HintImage" width="171" height="54"/>
         <image name="LogoImage" width="456" height="61"/>
         <image name="MusicOnImage" width="46" height="51"/>
         <image name="PlayImage" width="216" height="60"/>
         <image name="ScoresheetImage" width="75" height="98"/>
-        <image name="ScrambleImage" width="74" height="24"/>
+        <image name="ScrambleImage" width="171" height="54"/>
+        <image name="TileImage" width="59" height="58"/>
         <image name="TrophyImage" width="76" height="98"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

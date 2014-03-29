@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "GlobalConstants.h"
 #import "ImageLabelView.h"
+#import "AHAlertView.h"
 
 @interface GameViewController ()
 {
@@ -628,6 +629,7 @@
                                     inImage:[UIImage imageNamed:@"TileImage"]
                                     atPoint:CGPointMake(0, 0)];
         [buttonIndex setBackgroundImage:img forState:UIControlStateNormal];
+        buttonIndex.hidden = NO;
         
         [self setButtonBorder:buttonIndex];
         
@@ -656,6 +658,7 @@
                                         inImage:[UIImage imageNamed:@"TileHolderImage"]
                                         atPoint:CGPointMake(0, 0)];
         [buttonIndex setBackgroundImage:img forState:UIControlStateNormal];
+        buttonIndex.hidden = NO;
         
         [self setButtonBorder:buttonIndex];
         
@@ -681,7 +684,7 @@
     }
     else
     {
-        [buttonThis.titleLabel setFont:[UIFont systemFontOfSize:27]];
+        [buttonThis.titleLabel setFont:[UIFont systemFontOfSize:30]];
     }
 }
 
@@ -700,13 +703,14 @@
 - (void)loadAnagram
 {
     //@"▢"
-    int indexButton;
+    int indexButton, questionButtonCount, resultButtonCount;
 
     if (currentAnagram.question.length <= questionMaxLength)
     {
         [self loadQuestionRemaining];
         
         // make any additional button invisible
+        questionButtonCount = currentAnagram.questionRemaining.length;
         for (indexButton=currentAnagram.questionRemaining.length; indexButton<buttonQuestions.count; indexButton++)
         {
             UIButton *buttonIndex = [buttonQuestions objectAtIndex:indexButton];
@@ -721,12 +725,16 @@
                 buttonIndex.hidden = true;
             }
         }
+        resultButtonCount = indexButton;
+        
         // make any additional button invisible
         for ( ; indexButton<buttonResults.count; indexButton++)
         {
             UIButton *buttonIndex = [buttonResults objectAtIndex:indexButton];
             buttonIndex.hidden = true;
         }
+        
+        [self centerQuestionResultButtons:questionButtonCount resultCount:resultButtonCount];
     }
     else
     {
@@ -735,6 +743,41 @@
     
     labelHintValue.text = currentAnagram.hint;  // load hint
     labelLevel.text = currentAnagram.levelDescription;  // load level description
+}
+
+// center the button controls for the device screen dimension
+- (void) centerQuestionResultButtons:(int)questionCount resultCount:(int)resultCount
+{
+    UIButton *buttonQuestionFirst, *buttonQuestionLast, *buttonResultFirst, *buttonResultLast;
+    int questionOffsetX, resultOffsetX;
+    //CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = [[[[UIApplication sharedApplication] keyWindow] rootViewController].view convertRect:[[UIScreen mainScreen] bounds] fromView:nil].size;
+    
+    buttonQuestionFirst = [buttonQuestions objectAtIndex:0];
+    buttonQuestionLast = [buttonQuestions objectAtIndex:questionCount];
+    //questionOffsetX = (screenRect.size.width - ( (buttonQuestionLast.frame.origin.x + buttonQuestionLast.frame.size.width) - buttonQuestionFirst.frame.origin.x )) / 2;
+    questionOffsetX = (screenSize.width - ( (buttonQuestionLast.frame.origin.x + buttonQuestionLast.frame.size.width) - buttonQuestionFirst.frame.origin.x )) / 2;
+    questionOffsetX -= buttonQuestionFirst.frame.origin.x;
+    
+    buttonResultFirst = [buttonResults objectAtIndex:0];
+    buttonResultLast = [buttonResults objectAtIndex:resultCount];
+    //resultOffsetX = (screenRect.size.width - ( (buttonResultLast.frame.origin.x + buttonResultLast.frame.size.width) - buttonResultFirst.frame.origin.x )) / 2;
+    resultOffsetX = (screenSize.width - ( (buttonResultLast.frame.origin.x + buttonResultLast.frame.size.width) - buttonResultFirst.frame.origin.x )) / 2;
+    resultOffsetX -= buttonResultFirst.frame.origin.x;
+    
+    // position the button on x axis with respective offset
+    for(int indexButton=0; indexButton<questionCount; indexButton++)
+    {
+        UIButton *buttonIndex = [buttonQuestions objectAtIndex:indexButton];
+        [buttonIndex setFrame:CGRectMake(buttonIndex.frame.origin.x+questionOffsetX, buttonIndex.frame.origin.y, buttonIndex.frame.size.width, buttonIndex.frame.size.height)];
+    }
+    
+    // position the button on x axis with respective offset
+    for(int indexButton=0; indexButton<resultCount; indexButton++)
+    {
+        UIButton *buttonIndex = [buttonResults objectAtIndex:indexButton];
+        [buttonIndex setFrame:CGRectMake(buttonIndex.frame.origin.x+resultOffsetX, buttonIndex.frame.origin.y, buttonIndex.frame.size.width, buttonIndex.frame.size.height)];
+    }
 }
 
 - (void)getQuestionRemaining
@@ -768,6 +811,7 @@
     resultAnswer = [resultAnswer stringByReplacingOccurrencesOfString:@" " withString:@""];
     resultAnswer = [resultAnswer uppercaseString];
     
+
     if (resultAnswer.length ==  resultValue.length)
     {
         if ([resultAnswer isEqualToString:resultValue])
@@ -775,11 +819,25 @@
             [self scoreThisGame];
             labelScore.text = [NSString stringWithFormat:@"%d", scoreBoard.currentGameScore];
             
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"GameOverTitle", nil)
-                                            message:[NSString stringWithFormat:@"%@%d", NSLocalizedString(@"GameOverDescription", nil), scoreBoard.currentGameScore]
-                                            delegate:self
-                                        cancelButtonTitle:NSLocalizedString(@"GameOverCancelButtonTitle", nil)
-                                        otherButtonTitles:NSLocalizedString(@"GameOverNextButtonTitle", nil),nil];
+            AHAlertView *alert = [[AHAlertView alloc] initWithTitle:NSLocalizedString(@"GameOverTitle", nil)
+                                                            message:[NSString stringWithFormat:@"%@%d", NSLocalizedString(@"GameOverDescription", nil), scoreBoard.currentGameScore]];
+            [alert setBackgroundImage:[UIImage imageNamed:@"AlertBackgroundImage"]];
+            [alert setCancelButtonBackgroundImage:[UIImage imageNamed:@"ButtonImage"] forState:UIControlStateNormal];
+            [alert setButtonBackgroundImage:[UIImage imageNamed:@"ButtonImage"] forState:UIControlStateNormal];
+            [alert setCancelButtonTitle:NSLocalizedString(@"GameOverCancelButtonTitle", nil) block:^{[self playAgainCurrentLevel];}];
+            [alert addButtonWithTitle:NSLocalizedString(@"GameOverNextButtonTitle", nil) block:^{[self playNextLevel];}];
+            [alert setContentInsets:UIEdgeInsetsMake(12, 18, 12, 18)];
+            [alert setButtonTitleTextAttributes:[AHAlertView textAttributesWithFont:[UIFont boldSystemFontOfSize:12]
+                                                                    foregroundColor:[UIColor colorWithRed:43.0/255.0 green:30.0/255.0 blue:14.0/255.0 alpha:1.0]
+                                                                        shadowColor:[UIColor grayColor]
+                                                                       shadowOffset:CGSizeMake(0, -1)]];
+            alert.dismissalStyle = AHAlertViewDismissalStyleZoomDown;
+            // border radius
+            [alert.layer setCornerRadius:15.0f];
+            alert.layer.masksToBounds = YES;
+            // border
+            [alert.layer setBorderColor:[UIColor colorWithRed:28.0/255.0 green:41.0/255.0 blue:85.0/255.0 alpha:1.0].CGColor];
+            [alert.layer setBorderWidth:1.0f];
             [alert show];
             [self reportScore];
             
@@ -961,6 +1019,55 @@
     [UIView commitAnimations];
 }
 
+- (void)playAgainCurrentLevel
+{
+    NSLog(@"Play again button was selected.");
+    
+    for (int indexCount=0; indexCount<buttonQuestions.count; indexCount++) {
+        UIButton *thisButton = [buttonQuestions objectAtIndex:indexCount];
+        //[thisButton setTitle:@" " forState:UIControlStateNormal];
+        //thisButton.hidden = NO;
+        [thisButton removeFromSuperview];
+    }
+    for (int indexCount=0; indexCount<buttonResults.count; indexCount++) {
+        UIButton *thisButton = [buttonResults objectAtIndex:indexCount];
+        //[thisButton setTitle:@" " forState:UIControlStateNormal];
+        //thisButton.hidden = NO;
+        [thisButton removeFromSuperview];
+    }
+    labelScore.text = @"0";
+    buttonHint.enabled = TRUE;
+    buttonQuestions = nil;
+    buttonResults = nil;
+    [self loadQuestionResultButtons];
+    [self loadAnagram];
+}
+
+- (void)playNextLevel
+{
+    NSLog(@"Next Level button was selected.");
+    
+    [self getAnagramForModeAndLevel:[NSNumber numberWithInt:currentGameMode] levelId:[NSNumber numberWithInt:currentAnagram.level+1]];
+    for (int indexCount=0; indexCount<buttonQuestions.count; indexCount++) {
+        UIButton *thisButton = [buttonQuestions objectAtIndex:indexCount];
+        //[thisButton setTitle:@" " forState:UIControlStateNormal];
+        //thisButton.hidden = NO;
+        [thisButton removeFromSuperview];
+    }
+    for (int indexCount=0; indexCount<buttonResults.count; indexCount++) {
+        UIButton *thisButton = [buttonResults objectAtIndex:indexCount];
+        //[thisButton setTitle:@" " forState:UIControlStateNormal];
+        //thisButton.hidden = NO;
+        [thisButton removeFromSuperview];
+    }
+    labelScore.text = @"0";
+    buttonHint.enabled = TRUE;
+    buttonQuestions = nil;
+    buttonResults = nil;
+    [self loadQuestionResultButtons];
+    [self loadAnagram];
+}
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
@@ -970,47 +1077,11 @@
     
     if([title isEqualToString:NSLocalizedString(@"GameOverNextButtonTitle", nil)])
     {
-        NSLog(@"Next Level button was selected.");
-        
-        for (int indexCount=0; indexCount<buttonQuestions.count; indexCount++) {
-            UIButton *thisButton = [buttonQuestions objectAtIndex:indexCount];
-            [thisButton setTitle:@" " forState:UIControlStateNormal];
-        }
-        for (int indexCount=0; indexCount<buttonResults.count; indexCount++) {
-            UIButton *thisButton = [buttonResults objectAtIndex:indexCount];
-            [thisButton setTitle:@" " forState:UIControlStateNormal];
-        }
-        [self getAnagramForModeAndLevel:[NSNumber numberWithInt:currentGameMode] levelId:[NSNumber numberWithInt:currentAnagram.level+1]];
-        for (int indexCount=0; indexCount<buttonQuestions.count; indexCount++) {
-            UIButton *thisButton = [buttonQuestions objectAtIndex:indexCount];
-            thisButton.hidden = NO;
-        }
-        for (int indexCount=0; indexCount<buttonResults.count; indexCount++) {
-            UIButton *thisButton = [buttonResults objectAtIndex:indexCount];
-            thisButton.hidden = NO;
-        }
-        labelScore.text = @"0";
-        buttonHint.enabled = TRUE;
-        [self loadAnagram];
+        [self playNextLevel];
     }
     else if([title isEqualToString:NSLocalizedString(@"GameOverCancelButtonTitle", nil)])
     {
-        NSLog(@"Play again button was selected.");
-        
-        for (int indexCount=0; indexCount<buttonQuestions.count; indexCount++) {
-            UIButton *thisButton = [buttonQuestions objectAtIndex:indexCount];
-            [thisButton setTitle:@" " forState:UIControlStateNormal];
-        }
-        for (int indexCount=0; indexCount<buttonResults.count; indexCount++) {
-            UIButton *thisButton = [buttonResults objectAtIndex:indexCount];
-            [thisButton setTitle:@" " forState:UIControlStateNormal];
-        }
-        labelScore.text = @"0";
-        buttonHint.enabled = TRUE;
-        //buttonQuestions = nil;
-        //buttonResults = nil;
-        //[self loadQuestionResultButtons];
-        [self loadAnagram];
+        [self playAgainCurrentLevel];
     }
 }
 
@@ -1042,13 +1113,16 @@
     NSUInteger numTaps = [[touches anyObject] tapCount];
     
     //self.touchPhaseText.text = NSLocalizedString(@"Phase: Touches began", @"Phase label text for touches began");
+    NSLog(NSLocalizedString(@"Phase: Touches began", @"Phase label text for touches began"));
     //self.touchInfoText.text = @"";
     if (numTaps >= 2) {
         NSString *infoFormatString = NSLocalizedString(@"%d taps", @"Format string for info text for number of taps");
         //self.touchInfoText.text = [NSString stringWithFormat:infoFormatString, numTaps];
+        NSLog([NSString stringWithFormat:infoFormatString, numTaps]);
     }
     else {
         //self.touchTrackingText.text = @"";
+        NSLog(@"");
     }
     // Enumerate through all the touch objects.
     NSUInteger touchCount = 0;
@@ -1065,7 +1139,6 @@
 -(void)dispatchFirstTouchAtPoint:(CGPoint)touchPoint forEvent:(UIEvent *)event
 {
     for (int indexCount=0; indexCount<buttonQuestions.count; indexCount++) {
-        UIButton *thisButton = (UIButton *)[buttonQuestions objectAtIndex:indexCount];
         if (CGRectContainsPoint(self.testImage.frame, touchPoint)) {
             [self animateFirstTouchAtPoint:touchPoint forView:self.testImage];
             break;
@@ -1080,6 +1153,7 @@
 {
     NSUInteger touchCount = 0;
     //self.touchPhaseText.text = NSLocalizedString(@"Phase: Touches moved", @"Phase label text for touches moved");
+    NSLog(NSLocalizedString(@"Phase: Touches moved", @"Phase label text for touches moved"));
     // Enumerates through all touch objects
     for (UITouch *touch in touches) {
         // Send to the dispatch method, which will make sure the appropriate subview is acted upon
@@ -1091,9 +1165,11 @@
     if (touchCount > 1) {
         NSString *trackingFormatString = NSLocalizedString(@"Tracking %d touches", @"Format string for tracking text for number of touches being tracked");
         //self.touchTrackingText.text = [NSString stringWithFormat:trackingFormatString, touchCount];
+        NSLog([NSString stringWithFormat:trackingFormatString, touchCount]);
     }
     else {
         //self.touchTrackingText.text = NSLocalizedString(@"Tracking 1 touch", @"String for tracking text for 1 touch being tracked");
+        NSLog(NSLocalizedString(@"Tracking 1 touch", @"String for tracking text for 1 touch being tracked"));
     }
 }
 
@@ -1105,9 +1181,9 @@
 {
     // Check to see which view, or views,  the point is in and then move to that position.
     for (int indexCount=0; indexCount<buttonQuestions.count; indexCount++) {
-        UIButton *thisButton = (UIButton *)[buttonQuestions objectAtIndex:indexCount];
         if (CGRectContainsPoint([self.testImage frame], position)) {
             self.testImage.center = position;
+            NSLog([NSString stringWithFormat:@"Current Position: %f, %f", position.x, position.y]);
             break;
         }
     }
@@ -1119,11 +1195,13 @@
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     //self.touchPhaseText.text = NSLocalizedString(@"Phase: Touches ended", @"Phase label text for touches ended");
+    NSLog(NSLocalizedString(@"Phase: Touches ended", @"Phase label text for touches ended"));
     // Enumerates through all touch object
     for (UITouch *touch in touches) {
         // Sends to the dispatch method, which will make sure the appropriate subview is acted upon
         [self dispatchTouchEndEvent:[touch view] toPosition:[touch locationInView:self.view]];
-    }
+        NSLog([NSString stringWithFormat:@"End Position: %f, %f", self.testImage.frame.origin.x, self.testImage.frame.origin.y]);
+   }
 }
 
 /**
@@ -1133,10 +1211,11 @@
 {
     // Check to see which view, or views, the point is in and then animate to that position.
     for (int indexCount=0; indexCount<buttonQuestions.count; indexCount++) {
-        UIButton *thisButton = (UIButton *)[buttonQuestions objectAtIndex:indexCount];
         if (CGRectContainsPoint([self.testImage frame], position)) {
-            //[self animateView:self.testImage toPosition: position];
-            break;
+            [self animateView:self.testImage toPosition: position];
+            NSLog([NSString stringWithFormat:@"End Position: %f, %f", position.x, position.y]);
+            NSLog([NSString stringWithFormat:@"End Position: %f, %f", self.testImage.frame.origin.x, self.testImage.frame.origin.y]);
+           break;
         }
     }
     
@@ -1157,6 +1236,7 @@
 -(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
 {
     //self.touchPhaseText.text = NSLocalizedString(@"Phase: Touches cancelled", @"Phase label text for touches cancelled");
+    NSLog(NSLocalizedString(@"Phase: Touches cancelled", @"Phase label text for touches cancelled"));
     // Enumerates through all touch objects.
     for (UITouch *touch in touches) {
         // Sends to the dispatch method, which will make sure the appropriate subview is acted upon.
@@ -1185,10 +1265,15 @@
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:SHRINK_ANIMATION_DURATION_SECONDS];
     // Set the center to the final postion.
+    NSLog([NSString stringWithFormat:@"End Position: %f, %f", theView.center.x, theView.center.y]);
     theView.center = thePosition;
+    NSLog([NSString stringWithFormat:@"End Position: %f, %f", theView.center.x, theView.center.y]);
     // Set the transform back to the identity, thus undoing the previous scaling effect.
     theView.transform = CGAffineTransformIdentity;
+    NSLog([NSString stringWithFormat:@"End Position: %f, %f", theView.center.x, theView.center.y]);
     [UIView commitAnimations];
+    NSLog([NSString stringWithFormat:@"End Position: %f, %f", theView.center.x, theView.center.y]);
+    NSLog([NSString stringWithFormat:@"End Position: %f, %f", self.testImage.frame.origin.x, self.testImage.frame.origin.y]);
 }
 
 @end

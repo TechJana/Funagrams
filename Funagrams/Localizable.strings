@@ -7,8 +7,8 @@
 */
 "GameOverTitle" = "Level Complete!";
 "GameOverDescription" = "You Score is ";
-"GameOverCancelButtonTitle" = "<< Play again";
-"GameOverNextButtonTitle" = "Next Level >> ";
+"GameOverCancelButtonTitle" = "play again";
+"GameOverNextButtonTitle" = "next Level";
 "IncorrectAnswerText" = "Incorrect! Move letters back and try again!";
 //"BackgroundMusicFileName" = "Vivaldi - Spring from Four Seasons";
 "BackgroundMusicFileName" = "BgMusic";
