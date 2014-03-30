@@ -615,6 +615,7 @@
                                         inImage:[UIImage imageNamed:@"TileImage"]
                                         atPoint:CGPointMake(0, 0)];
         [imageIndex setImage:img];
+        imageIndex.contentMode = UIViewContentModeScaleToFill;
         imageIndex.accessibilityLabel = @"";
         imageIndex.hidden = NO;
         
@@ -641,6 +642,7 @@
                                         inImage:[UIImage imageNamed:@"TileHolderImage"]
                                         atPoint:CGPointMake(0, 0)];
         [imageIndex setImage:img];
+        imageIndex.contentMode = UIViewContentModeScaleToFill;
         imageIndex.accessibilityLabel = @"";
         imageIndex.hidden = NO;
         
@@ -681,7 +683,9 @@
         UIImage *img = [ImageLabelView drawText:[currentAnagram.questionRemaining substringWithRange:NSMakeRange(indexImage, 1)]
                                         inImage:[UIImage imageNamed:@"TileImage"]
                                         atPoint:CGPointMake(0, 0)];
+        imageIndex.accessibilityLabel = [currentAnagram.questionRemaining substringWithRange:NSMakeRange(indexImage, 1)];
         [imageIndex setImage:img];
+        imageIndex.contentMode = UIViewContentModeScaleToFill;
     }
 }
 
