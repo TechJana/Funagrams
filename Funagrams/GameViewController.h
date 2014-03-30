@@ -31,7 +31,6 @@
     IBOutlet UIButton *buttonSampleResult;
     IBOutlet UILabel *labelLevel;
     IBOutlet UILabel *labelInvalidAnswer;
-    IBOutlet UIImageView *testImage;
     IBOutlet UIImageView *imageSampleQuestion;
     IBOutlet UIImageView *imageSampleResult;
     
@@ -50,6 +49,8 @@
     NSMutableArray *buttonResults;
     NSMutableArray *imageQuestions;
     NSMutableArray *imageResults;
+    int selectedQuestionImageIndex;
+    CGPoint selectedQuestionImageOriginalPosition;
     
     int selectedQuestion;
     int selectedResult;
@@ -91,7 +92,6 @@
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (readwrite, nonatomic) int currentGameMode;
 @property (readwrite, nonatomic) int currentGameLevel;
-@property (nonatomic, strong) IBOutlet UIImageView *testImage;
 @property (nonatomic, strong) IBOutlet UIImageView *imageSampleQuestion;
 @property (nonatomic, strong) IBOutlet UIImageView *imageSampleResult;
 

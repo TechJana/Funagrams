@@ -32,19 +32,24 @@
              inImage:(UIImage*)  image
              atPoint:(CGPoint)   point
 {
-    if (CGPointEqualToPoint(CGPointMake(-1, -1), point)) {
-        point = CGPointMake(image.size.width/2, image.size.height/2);
+    UIFont *font = [UIFont boldSystemFontOfSize:30];
+
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        font = [UIFont boldSystemFontOfSize:40];
     }
-    
-    UIFont *font = [UIFont boldSystemFontOfSize:50];
+
     UIGraphicsBeginImageContext(image.size);
     [image drawInRect:CGRectMake(0,0,image.size.width,image.size.height)];
+    if (CGPointEqualToPoint(CGPointMake(-1, -1), point)) {
+        CGSize textSize;
+        textSize = [text sizeWithFont:font];
+        point = CGPointMake((image.size.width-textSize.width)/2, (image.size.height-textSize.height)/2);
+    }
     CGRect rect = CGRectMake(point.x, point.y, image.size.width, image.size.height);
+    [[UIColor blackColor] set];
+    [text drawInRect:CGRectIntegral(CGRectMake(rect.origin.x+1, rect.origin.y+1, rect.size.width, rect.size.height)) withFont:font];
     [[UIColor whiteColor] set];
-    NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-    //[style setAlignment:NSCenterTextAlignment];
-    NSDictionary *attr = [NSDictionary dictionaryWithObject:style forKey:NSParagraphStyleAttributeName];
-    [text drawInRect:CGRectIntegral(rect) withAttributes:attr];
+    [text drawInRect:CGRectIntegral(rect) withFont:font];
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     

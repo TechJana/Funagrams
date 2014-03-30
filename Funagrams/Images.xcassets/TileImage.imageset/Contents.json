@@ -2,7 +2,8 @@
   "images" : [
     {
       "idiom" : "iphone",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "Tile_iPhone_1x.png"
     },
     {
       "idiom" : "iphone",
@@ -16,7 +17,8 @@
     },
     {
       "idiom" : "ipad",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "Tile_iPad_1x.png"
     },
     {
       "idiom" : "ipad",

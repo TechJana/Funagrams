@@ -130,6 +130,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1032" height="768"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ViZ-f5-Rml">
+                                <rect key="frame" x="20" y="279" width="55" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="&lt;&lt; Hint Value >>" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ksn-8a-7Fp">
                                 <rect key="frame" x="30" y="187" width="984" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -138,7 +142,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3P-PU-bNT">
-                                <rect key="frame" x="20" y="416" width="55" height="55"/>
+                                <rect key="frame" x="564" y="124" width="55" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="Sgi-rW-BV0"/>
@@ -158,7 +162,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BUz-TS-odf">
-                                <rect key="frame" x="20" y="279" width="55" height="55"/>
+                                <rect key="frame" x="510" y="124" width="55" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="6Lj-kw-JFH"/>
@@ -231,6 +235,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.89083729619999996" green="0.1448862504" blue="0.085917036629999999" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6yZ-OW-o9P">
+                                <rect key="frame" x="20" y="420" width="55" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -250,6 +258,8 @@
                         <outlet property="buttonSampleQuestion" destination="BUz-TS-odf" id="XE4-1f-ZJp"/>
                         <outlet property="buttonSampleResult" destination="T3P-PU-bNT" id="XEE-ey-0By"/>
                         <outlet property="buttonScramble" destination="8Iu-c7-tLf" id="IYb-2S-DPO"/>
+                        <outlet property="imageSampleQuestion" destination="ViZ-f5-Rml" id="mZH-Mz-43h"/>
+                        <outlet property="imageSampleResult" destination="6yZ-OW-o9P" id="ejA-Wu-UHn"/>
                         <outlet property="labelHintValue" destination="Ksn-8a-7Fp" id="KoV-R3-FF6"/>
                         <outlet property="labelIncorrectResult" destination="zSW-e2-Hbp" id="70a-qn-DxI"/>
                         <outlet property="labelLevel" destination="iYX-M7-uJG" id="OIu-Je-17y"/>
