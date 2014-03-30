@@ -11,6 +11,7 @@
 #import "InAppPurchase.h"
 #import <StoreKit/StoreKit.h>
 #import "GameViewController.h"
+#import "AHAlertView.h"
 
 @interface ViewController () {
     NSArray *_products;
@@ -68,9 +69,29 @@
     }
 }
 
-- (void)rateGame
+- (IBAction) buttonFavorite_click:(id)sender
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=817237014"]];
+    AHAlertView *alert = [[AHAlertView alloc] initWithTitle:NSLocalizedString(@"FavoriteTitle", nil)
+                                                    message:NSLocalizedString(@"FavoriteDescription", nil)];
+    [alert setBackgroundImage:[UIImage imageNamed:@"AlertBackgroundImage"]];
+    [alert setCancelButtonBackgroundImage:[[UIImage imageNamed:@"ButtonImage"] resizableImageWithCapInsets:UIEdgeInsetsMake(40, 45, 40, 45)] forState:UIControlStateNormal];
+    [alert setButtonBackgroundImage:[[UIImage imageNamed:@"ButtonImage"] resizableImageWithCapInsets:UIEdgeInsetsMake(40, 45, 40, 45)] forState:UIControlStateNormal];
+    [alert setCancelButtonTitle:NSLocalizedString(@"FavoriteCancelButtonTitle", nil) block:^{}];
+    [alert addButtonWithTitle:NSLocalizedString(@"FavoriteRateButtonTitle", nil) block:^{[[UIApplication sharedApplication] openURL:[NSURL URLWithString:NSLocalizedString(@"iTunesReviewUrl", nil)]];}];
+    //[alert setContentInsets:UIEdgeInsetsMake(12, 18, 12, 18)];
+    
+    [alert setButtonTitleTextAttributes:[AHAlertView textAttributesWithFont:[UIFont boldSystemFontOfSize:16]
+                                                            foregroundColor:[UIColor colorWithRed:43.0/255.0 green:30.0/255.0 blue:14.0/255.0 alpha:1.0]
+                                                                shadowColor:[UIColor grayColor]
+                                                               shadowOffset:CGSizeMake(0, -1)]];
+    alert.dismissalStyle = AHAlertViewDismissalStyleZoomDown;
+    // border radius
+    [alert.layer setCornerRadius:15.0f];
+    alert.layer.masksToBounds = YES;
+    // border
+    [alert.layer setBorderColor:[UIColor colorWithRed:28.0/255.0 green:41.0/255.0 blue:85.0/255.0 alpha:1.0].CGColor];
+    [alert.layer setBorderWidth:1.0f];
+    [alert show];
 }
 
 - (void)getInAppProducts

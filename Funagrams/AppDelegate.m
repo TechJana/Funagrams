@@ -16,6 +16,7 @@
 #import "Categories.h"
 #import "GlobalConstants.h"
 #import "ViewController.h"
+#import "AHAlertView.h"
 
 @implementation AppDelegate
 
@@ -136,6 +137,41 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    AHAlertView *alert = [AHAlertView alloc];
+    NSUserDefaults *userDefaults=[NSUserDefaults standardUserDefaults];
+    int usageCount=[[userDefaults objectForKey:@"usageCount"]intValue];
+    NSLog(@"Usage Count: %d",usageCount);
+    switch (usageCount)
+    {
+        case 5:
+        case 10:
+        case 20:
+        case 35:
+            alert = [alert initWithTitle:NSLocalizedString(@"FavoriteTitle", nil)
+                                                            message:NSLocalizedString(@"FavoriteDescription", nil)];
+            [alert setBackgroundImage:[UIImage imageNamed:@"AlertBackgroundImage"]];
+            [alert setCancelButtonBackgroundImage:[[UIImage imageNamed:@"ButtonImage"] resizableImageWithCapInsets:UIEdgeInsetsMake(40, 45, 40, 45)] forState:UIControlStateNormal];
+            [alert setButtonBackgroundImage:[[UIImage imageNamed:@"ButtonImage"] resizableImageWithCapInsets:UIEdgeInsetsMake(40, 45, 40, 45)] forState:UIControlStateNormal];
+            [alert setCancelButtonTitle:NSLocalizedString(@"FavoriteCancelButtonTitle", nil) block:^{}];
+            [alert addButtonWithTitle:NSLocalizedString(@"FavoriteRateButtonTitle", nil) block:^{[[UIApplication sharedApplication] openURL:[NSURL URLWithString:NSLocalizedString(@"iTunesReviewUrl", nil)]];}];
+            [alert addButtonWithTitle:NSLocalizedString(@"FavoriteRemindMeButtonTitle", nil) block:^{}];
+            //[alert setContentInsets:UIEdgeInsetsMake(12, 18, 12, 18)];
+            
+            [alert setButtonTitleTextAttributes:[AHAlertView textAttributesWithFont:[UIFont boldSystemFontOfSize:16]
+                                                                    foregroundColor:[UIColor colorWithRed:43.0/255.0 green:30.0/255.0 blue:14.0/255.0 alpha:1.0]
+                                                                        shadowColor:[UIColor grayColor]
+                                                                       shadowOffset:CGSizeMake(0, -1)]];
+            alert.dismissalStyle = AHAlertViewDismissalStyleZoomDown;
+            // border radius
+            [alert.layer setCornerRadius:15.0f];
+            alert.layer.masksToBounds = YES;
+            // border
+            [alert.layer setBorderColor:[UIColor colorWithRed:28.0/255.0 green:41.0/255.0 blue:85.0/255.0 alpha:1.0].CGColor];
+            [alert.layer setBorderWidth:1.0f];
+            [alert show];
+            break;
+    }
+    [userDefaults setInteger:usageCount+1 forKey:@"usageCount"];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

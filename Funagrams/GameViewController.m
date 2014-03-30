@@ -35,6 +35,9 @@
 @synthesize currentGameMode;
 @synthesize fetchedResultsController = _fetchedResultsController;
 @synthesize currentGameLevel;
+@synthesize testImage;
+@synthesize imageSampleQuestion;
+@synthesize imageSampleResult;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -85,7 +88,7 @@
 		exit(-1);  // Fail
 	}
 
-    [self loadQuestionResultButtons];
+    [self loadQuestionResultImages];
     //[self getAnagram];
     //[self getAnagramForMode:[NSNumber numberWithInt:currentGameMode]];
     [self getAnagramForModeAndLevel:[NSNumber numberWithInt:currentGameMode] levelId:[NSNumber numberWithInt:currentGameLevel]];
@@ -379,19 +382,6 @@
         currentGamesFromModel = (Games*)[matchingGamesforMode objectAtIndex:randomGameId];
         NSLog(@"Current Game ID : %@", currentGamesFromModel.gameId);
        
-//        NSEntityDescription *anagramsEntity = [NSEntityDescription entityForName:@"Anagrams" inManagedObjectContext:context];
-//        NSFetchRequest *anagramsFetchRequest = [[NSFetchRequest alloc] init];
-//        [anagramsFetchRequest setEntity:anagramsEntity];
-//
-//        NSPredicate *anagramsPredicate = [NSPredicate predicateWithFormat:@"ANY anagramId == %@",[NSNumber numberWithInt:randomGameId]];
-//        
-//        //NSPredicate *anagramsPredicate = [NSPredicate predicateWithFormat:@"questionText = 'ELVIS'"];
-//        [anagramsFetchRequest setPredicate:anagramsPredicate];
-//        //NSError *error;
-//        NSArray *randomAnagram = [context executeFetchRequest:anagramsFetchRequest error:&error];
-//        //currentAnagram = [context executeFetchRequest:fetchRequest error:&error];
-//        NSLog(@"This is a child object: %@", [randomAnagram objectAtIndex:0]);
-        
         //Assign the attributes of randomAnagram object to the Current Anagram
         currentAnagram.hint = currentGamesFromModel.anagram.questionText;
         currentAnagram.question = [currentGamesFromModel.anagram.questionText stringByReplacingOccurrencesOfString:@" " withString:@""];
@@ -596,80 +586,72 @@
         NSLog(@"No Games available for this mode.");
 }
 
-
-- (void) loadQuestionResultButtons
+- (void) loadQuestionResultImages
 {
-    UIButton *buttonIndex;
-    int indexButton=0, buttonCount=0, buttonSpacingWidth=0;
+    UIImageView *imageIndex;
+    int indexImage=0, imageCount=0, imageSpacingWidth=0;
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-
-    buttonQuestions = [[NSMutableArray alloc] init];
+    
+    imageQuestions = [[NSMutableArray alloc] init];
     buttonResults = [[NSMutableArray alloc] init];
-
-    buttonCount=( screenRect.size.height - (2 * buttonSampleQuestion.frame.origin.x) ) / (buttonSampleQuestion.frame.size.width + buttonSpacingWidth);
-    questionMaxLength = buttonCount;
+    
+    imageCount=( screenRect.size.height - (2 * imageSampleQuestion.frame.origin.x) ) / (imageSampleQuestion.frame.size.width + imageSpacingWidth);
+    questionMaxLength = imageCount;
     
     // CREATE QUESTION BUTTONS
     // Archive the button to unarchive a copy every time
-    NSData *archivedData = [NSKeyedArchiver archivedDataWithRootObject: buttonSampleQuestion];
+    NSData *archivedData = [NSKeyedArchiver archivedDataWithRootObject: imageSampleQuestion];
     
-    for (indexButton=0; indexButton<buttonCount; indexButton++) {
+    for (indexImage=0; indexImage<imageCount; indexImage++) {
         // Unarchive a copy of the Archived button
-        buttonIndex = [NSKeyedUnarchiver unarchiveObjectWithData: archivedData];
+        imageIndex = [NSKeyedUnarchiver unarchiveObjectWithData: archivedData];
         
         // Moving X position with the required spacing
-        buttonIndex.frame = CGRectMake(buttonIndex.frame.origin.x + ( indexButton * (buttonIndex.frame.size.width + buttonSpacingWidth) ), buttonIndex.frame.origin.y, buttonIndex.frame.size.width, buttonIndex.frame.size.height);
+        imageIndex.frame = CGRectMake(imageIndex.frame.origin.x + ( indexImage * (imageIndex.frame.size.width + imageSpacingWidth) ), imageIndex.frame.origin.y, imageIndex.frame.size.width, imageIndex.frame.size.height);
         
         // Reset the value of the button to empty string to load the required question
-        [buttonIndex setTitle:@" " forState:UIControlStateNormal];
-        [buttonIndex addTarget:self action:@selector(buttonQuestions_click:) forControlEvents:UIControlEventTouchUpInside];
-        //[buttonIndex addTarget:self action:@selector(buttonQuestions_moving:) forControlEvents:UIControlEventTouchDragInside];
         // note: replace "ImageUtils" with the class where you pasted the method above
         UIImage *img = [ImageLabelView drawText:@""
-                                    inImage:[UIImage imageNamed:@"TileImage"]
-                                    atPoint:CGPointMake(0, 0)];
-        [buttonIndex setBackgroundImage:img forState:UIControlStateNormal];
-        buttonIndex.hidden = NO;
+                                        inImage:[UIImage imageNamed:@"TileImage"]
+                                        atPoint:CGPointMake(0, 0)];
+        [imageIndex setImage:img];
+        imageIndex.accessibilityLabel = @"";
+        imageIndex.hidden = NO;
         
-        [self setButtonBorder:buttonIndex];
-        
-        [self.view addSubview:buttonIndex];
+        [self.view addSubview:imageIndex];
         
         // Add the new button to the array for future use
-        [buttonQuestions insertObject:buttonIndex atIndex:buttonQuestions.count];
+        [imageQuestions insertObject:imageIndex atIndex:imageQuestions.count];
     }
-
+    
     // CREATE ANSWER BUTTONS
     // Archive the button to unarchive a copy every time
-    archivedData = [NSKeyedArchiver archivedDataWithRootObject: buttonSampleResult];
+    archivedData = [NSKeyedArchiver archivedDataWithRootObject: imageSampleResult];
     
-    for (indexButton=0; indexButton<buttonCount; indexButton++) {
+    for (indexImage=0; indexImage<imageCount; indexImage++) {
         // Unarchive a copy of the Archived button
-        buttonIndex = [NSKeyedUnarchiver unarchiveObjectWithData: archivedData];
+        imageIndex = [NSKeyedUnarchiver unarchiveObjectWithData: archivedData];
         
         // Moving X position with the required spacing
-        buttonIndex.frame = CGRectMake(buttonIndex.frame.origin.x + ( indexButton * (buttonIndex.frame.size.width + buttonSpacingWidth) ), buttonIndex.frame.origin.y, buttonIndex.frame.size.width, buttonIndex.frame.size.height);
+        imageIndex.frame = CGRectMake(imageIndex.frame.origin.x + ( indexImage * (imageIndex.frame.size.width + imageSpacingWidth) ), imageIndex.frame.origin.y, imageIndex.frame.size.width, imageIndex.frame.size.height);
         
-        // Reset the value of the button to box character to initiate play mode
-        [buttonIndex setTitle:@" " forState:UIControlStateNormal];
-        [buttonIndex addTarget:self action:@selector(buttonResults_click:) forControlEvents:UIControlEventTouchUpInside];
+        // Reset the value of the button to empty string to load the required question
         // note: replace "ImageUtils" with the class where you pasted the method above
         UIImage *img = [ImageLabelView drawText:@""
                                         inImage:[UIImage imageNamed:@"TileHolderImage"]
                                         atPoint:CGPointMake(0, 0)];
-        [buttonIndex setBackgroundImage:img forState:UIControlStateNormal];
-        buttonIndex.hidden = NO;
+        [imageIndex setImage:img];
+        imageIndex.accessibilityLabel = @"";
+        imageIndex.hidden = NO;
         
-        [self setButtonBorder:buttonIndex];
-        
-        [self.view addSubview:buttonIndex];
+        [self.view addSubview:imageIndex];
         
         // Add the new button to the array for future use
-        [buttonResults insertObject:buttonIndex atIndex:buttonResults.count];
+        [imageResults insertObject:imageIndex atIndex:imageResults.count];
     }
     
-    buttonSampleQuestion.hidden = true;
-    buttonSampleResult.hidden = true;
+    imageSampleQuestion.hidden = true;
+    imageSampleResult.hidden = true;
 }
 
 - (void) setButtonBorder:(UIButton *)buttonThis
@@ -691,50 +673,53 @@
 - (void)loadQuestionRemaining
 {
     //@"▢"
-    int indexButton;
+    int indexImage;
     
     // load question
-    for (indexButton=0; (indexButton<buttonQuestions.count && indexButton<currentAnagram.questionRemaining.length); indexButton++) {
-        UIButton *buttonIndex = [buttonQuestions objectAtIndex:indexButton];
-        [buttonIndex setTitle:[currentAnagram.questionRemaining substringWithRange:NSMakeRange(indexButton, 1)] forState:UIControlStateNormal];
+    for (indexImage=0; (indexImage<imageQuestions.count && indexImage<currentAnagram.questionRemaining.length); indexImage++) {
+        UIImageView *imageIndex = [buttonQuestions objectAtIndex:indexImage];
+        UIImage *img = [ImageLabelView drawText:[currentAnagram.questionRemaining substringWithRange:NSMakeRange(indexImage, 1)]
+                                        inImage:[UIImage imageNamed:@"TileImage"]
+                                        atPoint:CGPointMake(0, 0)];
+        [imageIndex setImage:img];
     }
 }
 
 - (void)loadAnagram
 {
     //@"▢"
-    int indexButton, questionButtonCount, resultButtonCount;
+    int indexImage, questionImageCount, resultImageCount;
 
     if (currentAnagram.question.length <= questionMaxLength)
     {
         [self loadQuestionRemaining];
         
-        // make any additional button invisible
-        questionButtonCount = currentAnagram.questionRemaining.length;
-        for (indexButton=currentAnagram.questionRemaining.length; indexButton<buttonQuestions.count; indexButton++)
+        // make any additional image invisible
+        questionImageCount = currentAnagram.questionRemaining.length;
+        for (indexImage=currentAnagram.questionRemaining.length; indexImage<imageQuestions.count; indexImage++)
         {
-            UIButton *buttonIndex = [buttonQuestions objectAtIndex:indexButton];
-            buttonIndex.hidden = true;
+            UIImageView *imageIndex = [imageQuestions objectAtIndex:indexImage];
+            imageIndex.hidden = true;
         }
         
         // load answer positioning
-        for (indexButton=0; (indexButton<buttonResults.count && indexButton<currentAnagram.result.length); indexButton++) {
-            if ([currentAnagram.result characterAtIndex:indexButton] == ' ')
+        for (indexImage=0; (indexImage<imageResults.count && indexImage<currentAnagram.result.length); indexImage++) {
+            if ([currentAnagram.result characterAtIndex:indexImage] == ' ')
             {
-                UIButton *buttonIndex = [buttonResults objectAtIndex:indexButton];
-                buttonIndex.hidden = true;
+                UIImageView *imageIndex = [imageResults objectAtIndex:indexImage];
+                imageIndex.hidden = true;
             }
         }
-        resultButtonCount = indexButton;
+        resultImageCount = indexImage;
         
-        // make any additional button invisible
-        for ( ; indexButton<buttonResults.count; indexButton++)
+        // make any additional image invisible
+        for ( ; indexImage<imageResults.count; indexImage++)
         {
-            UIButton *buttonIndex = [buttonResults objectAtIndex:indexButton];
-            buttonIndex.hidden = true;
+            UIImageView *imageIndex = [imageResults objectAtIndex:indexImage];
+            imageIndex.hidden = true;
         }
         
-        [self centerQuestionResultButtons:questionButtonCount resultCount:resultButtonCount];
+        [self centerQuestionResultImages:questionImageCount resultCount:resultImageCount];
     }
     else
     {
@@ -746,37 +731,37 @@
 }
 
 // center the button controls for the device screen dimension
-- (void) centerQuestionResultButtons:(int)questionCount resultCount:(int)resultCount
+- (void) centerQuestionResultImages:(int)questionCount resultCount:(int)resultCount
 {
-    UIButton *buttonQuestionFirst, *buttonQuestionLast, *buttonResultFirst, *buttonResultLast;
+    UIImageView *imageQuestionFirst, *imageQuestionLast, *imageResultFirst, *imageResultLast;
     int questionOffsetX, resultOffsetX;
     //CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGSize screenSize = [[[[UIApplication sharedApplication] keyWindow] rootViewController].view convertRect:[[UIScreen mainScreen] bounds] fromView:nil].size;
     
-    buttonQuestionFirst = [buttonQuestions objectAtIndex:0];
-    buttonQuestionLast = [buttonQuestions objectAtIndex:questionCount];
-    //questionOffsetX = (screenRect.size.width - ( (buttonQuestionLast.frame.origin.x + buttonQuestionLast.frame.size.width) - buttonQuestionFirst.frame.origin.x )) / 2;
-    questionOffsetX = (screenSize.width - ( (buttonQuestionLast.frame.origin.x + buttonQuestionLast.frame.size.width) - buttonQuestionFirst.frame.origin.x )) / 2;
-    questionOffsetX -= buttonQuestionFirst.frame.origin.x;
+    imageQuestionFirst = [imageQuestions objectAtIndex:0];
+    imageQuestionLast = [imageQuestions objectAtIndex:questionCount];
+    //questionOffsetX = (screenRect.size.width - ( (imageQuestionLast.frame.origin.x + imageQuestionLast.frame.size.width) - imageQuestionFirst.frame.origin.x )) / 2;
+    questionOffsetX = (screenSize.width - ( (imageQuestionLast.frame.origin.x + imageQuestionLast.frame.size.width) - imageQuestionFirst.frame.origin.x )) / 2;
+    questionOffsetX -= imageQuestionFirst.frame.origin.x;
     
-    buttonResultFirst = [buttonResults objectAtIndex:0];
-    buttonResultLast = [buttonResults objectAtIndex:resultCount];
-    //resultOffsetX = (screenRect.size.width - ( (buttonResultLast.frame.origin.x + buttonResultLast.frame.size.width) - buttonResultFirst.frame.origin.x )) / 2;
-    resultOffsetX = (screenSize.width - ( (buttonResultLast.frame.origin.x + buttonResultLast.frame.size.width) - buttonResultFirst.frame.origin.x )) / 2;
-    resultOffsetX -= buttonResultFirst.frame.origin.x;
+    imageResultFirst = [imageResults objectAtIndex:0];
+    imageResultLast = [imageResults objectAtIndex:resultCount];
+    //resultOffsetX = (screenRect.size.width - ( (imageResultLast.frame.origin.x + imageResultLast.frame.size.width) - imageResultFirst.frame.origin.x )) / 2;
+    resultOffsetX = (screenSize.width - ( (imageResultLast.frame.origin.x + imageResultLast.frame.size.width) - imageResultFirst.frame.origin.x )) / 2;
+    resultOffsetX -= imageResultFirst.frame.origin.x;
     
     // position the button on x axis with respective offset
-    for(int indexButton=0; indexButton<questionCount; indexButton++)
+    for(int indexImage=0; indexImage<questionCount; indexImage++)
     {
-        UIButton *buttonIndex = [buttonQuestions objectAtIndex:indexButton];
-        [buttonIndex setFrame:CGRectMake(buttonIndex.frame.origin.x+questionOffsetX, buttonIndex.frame.origin.y, buttonIndex.frame.size.width, buttonIndex.frame.size.height)];
+        UIImageView *imageIndex = [buttonQuestions objectAtIndex:indexImage];
+        [imageIndex setFrame:CGRectMake(imageIndex.frame.origin.x+questionOffsetX, imageIndex.frame.origin.y, imageIndex.frame.size.width, imageIndex.frame.size.height)];
     }
     
     // position the button on x axis with respective offset
-    for(int indexButton=0; indexButton<resultCount; indexButton++)
+    for(int indexImage=0; indexImage<resultCount; indexImage++)
     {
-        UIButton *buttonIndex = [buttonResults objectAtIndex:indexButton];
-        [buttonIndex setFrame:CGRectMake(buttonIndex.frame.origin.x+resultOffsetX, buttonIndex.frame.origin.y, buttonIndex.frame.size.width, buttonIndex.frame.size.height)];
+        UIImageView *imageIndex = [imageResults objectAtIndex:indexImage];
+        [imageIndex setFrame:CGRectMake(imageIndex.frame.origin.x+resultOffsetX, imageIndex.frame.origin.y, imageIndex.frame.size.width, imageIndex.frame.size.height)];
     }
 }
 
@@ -827,7 +812,7 @@
             [alert setCancelButtonTitle:NSLocalizedString(@"GameOverCancelButtonTitle", nil) block:^{[self playAgainCurrentLevel];}];
             [alert addButtonWithTitle:NSLocalizedString(@"GameOverNextButtonTitle", nil) block:^{[self playNextLevel];}];
             [alert setContentInsets:UIEdgeInsetsMake(12, 18, 12, 18)];
-            [alert setButtonTitleTextAttributes:[AHAlertView textAttributesWithFont:[UIFont boldSystemFontOfSize:12]
+            [alert setButtonTitleTextAttributes:[AHAlertView textAttributesWithFont:[UIFont boldSystemFontOfSize:16]
                                                                     foregroundColor:[UIColor colorWithRed:43.0/255.0 green:30.0/255.0 blue:14.0/255.0 alpha:1.0]
                                                                         shadowColor:[UIColor grayColor]
                                                                        shadowOffset:CGSizeMake(0, -1)]];
@@ -1039,7 +1024,7 @@
     buttonHint.enabled = TRUE;
     buttonQuestions = nil;
     buttonResults = nil;
-    [self loadQuestionResultButtons];
+    [self loadQuestionResultImages];
     [self loadAnagram];
 }
 
@@ -1064,7 +1049,7 @@
     buttonHint.enabled = TRUE;
     buttonQuestions = nil;
     buttonResults = nil;
-    [self loadQuestionResultButtons];
+    [self loadQuestionResultImages];
     [self loadAnagram];
 }
 
@@ -1140,7 +1125,8 @@
 {
     for (int indexCount=0; indexCount<buttonQuestions.count; indexCount++) {
         if (CGRectContainsPoint(self.testImage.frame, touchPoint)) {
-            [self animateFirstTouchAtPoint:touchPoint forView:self.testImage];
+            //[self animateFirstTouchAtPoint:touchPoint forView:self.testImage];
+            NSLog(NSLocalizedString(@"Tracking 1 touch -- 1", @"String for tracking text for 1 touch being tracked"));
             break;
         }
     }
@@ -1200,7 +1186,7 @@
     for (UITouch *touch in touches) {
         // Sends to the dispatch method, which will make sure the appropriate subview is acted upon
         [self dispatchTouchEndEvent:[touch view] toPosition:[touch locationInView:self.view]];
-        NSLog([NSString stringWithFormat:@"End Position: %f, %f", self.testImage.frame.origin.x, self.testImage.frame.origin.y]);
+        NSLog([NSString stringWithFormat:@"End Position03: %f, %f", self.testImage.frame.origin.x+self.testImage.frame.size.width/2, self.testImage.frame.origin.y+self.testImage.frame.size.height/2]);
    }
 }
 
@@ -1212,9 +1198,9 @@
     // Check to see which view, or views, the point is in and then animate to that position.
     for (int indexCount=0; indexCount<buttonQuestions.count; indexCount++) {
         if (CGRectContainsPoint([self.testImage frame], position)) {
-            [self animateView:self.testImage toPosition: position];
-            NSLog([NSString stringWithFormat:@"End Position: %f, %f", position.x, position.y]);
-            NSLog([NSString stringWithFormat:@"End Position: %f, %f", self.testImage.frame.origin.x, self.testImage.frame.origin.y]);
+            //[self animateView:self.testImage toPosition: position];
+            NSLog([NSString stringWithFormat:@"End Position01: %f, %f", position.x, position.y]);
+            NSLog([NSString stringWithFormat:@"End Position02: %f, %f", self.testImage.frame.origin.x+self.testImage.frame.size.width/2, self.testImage.frame.origin.y+self.testImage.frame.size.height/2]);
            break;
         }
     }
@@ -1262,18 +1248,18 @@
  */
 -(void)animateView:(UIView *)theView toPosition:(CGPoint)thePosition
 {
-    [UIView beginAnimations:nil context:NULL];
+    [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:SHRINK_ANIMATION_DURATION_SECONDS];
     // Set the center to the final postion.
-    NSLog([NSString stringWithFormat:@"End Position: %f, %f", theView.center.x, theView.center.y]);
     theView.center = thePosition;
-    NSLog([NSString stringWithFormat:@"End Position: %f, %f", theView.center.x, theView.center.y]);
+    NSLog([NSString stringWithFormat:@"End Position1: %f, %f", theView.center.x, theView.center.y]);
+    NSLog([NSString stringWithFormat:@"End Position2: %f, %f", theView.center.x, theView.center.y]);
     // Set the transform back to the identity, thus undoing the previous scaling effect.
     theView.transform = CGAffineTransformIdentity;
-    NSLog([NSString stringWithFormat:@"End Position: %f, %f", theView.center.x, theView.center.y]);
+    NSLog([NSString stringWithFormat:@"End Position3: %f, %f", theView.center.x, theView.center.y]);
     [UIView commitAnimations];
-    NSLog([NSString stringWithFormat:@"End Position: %f, %f", theView.center.x, theView.center.y]);
-    NSLog([NSString stringWithFormat:@"End Position: %f, %f", self.testImage.frame.origin.x, self.testImage.frame.origin.y]);
+    NSLog([NSString stringWithFormat:@"End Position4: %f, %f", theView.center.x, theView.center.y]);
+    NSLog([NSString stringWithFormat:@"End Position5: %f, %f", self.testImage.frame.origin.x+self.testImage.frame.size.width/2, self.testImage.frame.origin.y+self.testImage.frame.size.height/2]);
 }
 
 @end

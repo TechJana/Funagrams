@@ -18,7 +18,7 @@
 #import "Modes.h"
 #import "Scores.h"
 
-@interface GameViewController : UIViewController <ADBannerViewDelegate, UIAlertViewDelegate> /*<UIActionSheetDelegate, GKLeaderboardViewControllerDelegate, GKAchievementViewControllerDelegate, GameCenterManagerDelegate>*/
+@interface GameViewController : UIViewController <ADBannerViewDelegate> /*<UIAlertViewDelegate, UIActionSheetDelegate, GKLeaderboardViewControllerDelegate, GKAchievementViewControllerDelegate, GameCenterManagerDelegate>*/
 {
     IBOutlet UILabel *labelScore;
     IBOutlet UIButton *buttonHint;
@@ -31,6 +31,9 @@
     IBOutlet UIButton *buttonSampleResult;
     IBOutlet UILabel *labelLevel;
     IBOutlet UILabel *labelInvalidAnswer;
+    IBOutlet UIImageView *testImage;
+    IBOutlet UIImageView *imageSampleQuestion;
+    IBOutlet UIImageView *imageSampleResult;
     
     IBOutlet UILabel *labelIncorrectResult;
     
@@ -45,6 +48,8 @@
     
     NSMutableArray *buttonQuestions;
     NSMutableArray *buttonResults;
+    NSMutableArray *imageQuestions;
+    NSMutableArray *imageResults;
     
     int selectedQuestion;
     int selectedResult;
@@ -87,5 +92,7 @@
 @property (readwrite, nonatomic) int currentGameMode;
 @property (readwrite, nonatomic) int currentGameLevel;
 @property (nonatomic, strong) IBOutlet UIImageView *testImage;
+@property (nonatomic, strong) IBOutlet UIImageView *imageSampleQuestion;
+@property (nonatomic, strong) IBOutlet UIImageView *imageSampleResult;
 
 @end
