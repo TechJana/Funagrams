@@ -39,11 +39,11 @@
                                 <rect key="frame" x="60" y="589" width="92" height="119"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" image="ScoresheetImage">
+                                <state key="normal" image="BuyImage">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="showLeaderboard:" destination="BYZ-38-t0r" eventType="touchDown" id="wqE-C4-o2b"/>
+                                    <action selector="buttonBuy_click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rc5-vL-961"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yOX-pz-kHA">
@@ -293,13 +293,13 @@
     <resources>
         <image name="BackImage" width="194" height="61"/>
         <image name="BackgroundImage" width="773" height="260"/>
+        <image name="BuyImage" width="92" height="119"/>
         <image name="FavoriteImage" width="97" height="80"/>
         <image name="GameModeBeginnerImage" width="101" height="119"/>
         <image name="HintImage" width="194" height="61"/>
         <image name="LogoImage" width="665" height="88"/>
         <image name="MusicOnImage" width="93" height="119"/>
         <image name="PlayImage" width="535" height="142"/>
-        <image name="ScoresheetImage" width="92" height="119"/>
         <image name="ScrambleImage" width="194" height="61"/>
         <image name="TrophyImage" width="92" height="119"/>
     </resources>

@@ -21,3 +21,6 @@
 "FavoriteCancelButtonTitle" = "no, thanks";
 "FavoriteRateButtonTitle" = "now";
 "FavoriteRemindMeButtonTitle" = "later";
+"GameModeBeginner" = "Beginner";
+"GameModeIntermediate" = "Intermediate";
+"GameModeExpert" = "Expert";

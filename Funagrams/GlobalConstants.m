@@ -8,10 +8,12 @@
 
 #import "GlobalConstants.h"
 
+// Settings Bundle
 NSString* const kSettingsMusic = @"settingsMusic";
 NSString* const kSettingsGameMode = @"settingsGameMode";
 int const kGameLevelLastIncompleteLevel = -1;
 
+// Game Center
 NSString* const kLeaderBoardHighScore = @"com.pluggables.funagrams.leaderBoard.HighScore";
 NSString* const kLeaderBoardLevel01 = @"com.pluggables.funagrams.leaderBoard.Level01";
 NSString* const kLeaderBoardLevel02 = @"com.pluggables.funagrams.leaderBoard.Level02";
@@ -34,6 +36,10 @@ NSString* const kLeaderBoardLevel18 = @"com.pluggables.funagrams.leaderBoard.Lev
 NSString* const kLeaderBoardLevel19 = @"com.pluggables.funagrams.leaderBoard.Level19";
 NSString* const kLeaderBoardLevel20 = @"com.pluggables.funagrams.leaderBoard.Level20";
 NSMutableArray* kLeaderBoardLevels = nil;
+
+// In-App Purchase
+NSString* const kInAppNoAds = @"com.pluggables.inapp.funagrams.noAdvertisements";
+NSString* const kInAppSciencePack = @"com.pluggables.inapp.funagrams.sciencePack";
 
 @implementation GlobalConstants
 

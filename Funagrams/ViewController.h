@@ -22,9 +22,7 @@
 }
     
 - (IBAction) buttonPlay_click:(id)sender;
-- (IBAction) buttonBeginner_click:(id)sender;
-- (IBAction) buttonIntermediate_click:(id)sender;
-- (IBAction) buttonExpert_click:(id)sender;
+- (IBAction) buttonBuy_click:(id)sender;
 - (void) reloadInputViews;
 
 @property (nonatomic, retain) ScoreBoard *gameScoreBoard;
@@ -37,5 +35,6 @@
 @property (retain, nonatomic) UIPopoverController *popoverController;
 @property (readwrite, nonatomic) ViewController *thisParentViewController;
 @property (readwrite, nonatomic) eGameMode gameMode;
+@property (retain, nonatomic) NSArray *inAppProdcuts;
     
 @end

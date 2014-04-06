@@ -351,6 +351,7 @@ static RNGridMenu *rn_visibleGridMenu;
         _blurLevel = kRNGridMenuDefaultBlur;
         _animationDuration = kRNGridMenuDefaultDuration;
         _itemTextColor = [UIColor whiteColor];
+        _itemTextShadowColor = [UIColor clearColor];
         _itemFont = [UIFont boldSystemFontOfSize:14.f];
         _highlightColor = [UIColor colorWithRed:.02f green:.549f blue:.961f alpha:1.f];
         _menuStyle = RNGridMenuStyleGrid;
@@ -365,6 +366,7 @@ static RNGridMenu *rn_visibleGridMenu;
         _fixedImageSize = YES;
         _menuColumnsCount = -1;
         _textOnImage = NO;
+        _doNotDismissIfNoAction = NO;
 
         BOOL hasImages = [items filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(RNGridMenuItem *item, NSDictionary *bindings) {
             return item.image != nil;
@@ -419,6 +421,7 @@ static RNGridMenu *rn_visibleGridMenu;
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     id<RNGridMenuDelegate> delegate = self.delegate;
+    BOOL doNotDismiss = NO;
 
     if (self.selectedItemView != nil) {
         RNGridMenuItem *item = self.items[self.selectedItemView.itemIndex];
@@ -432,13 +435,20 @@ static RNGridMenu *rn_visibleGridMenu;
         if (item.action != nil) {
             item.action();
         }
+        else if (self.doNotDismissIfNoAction)
+        {
+            doNotDismiss = YES;
+        }
     } else {
         if ([delegate respondsToSelector:@selector(gridMenuWillDismiss:)]) {
             [delegate gridMenuWillDismiss:self];
         }
     }
 
-    [self dismissAnimated:YES];
+    if (!doNotDismiss)
+    {
+        [self dismissAnimated:YES];
+    }
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -493,8 +503,7 @@ static RNGridMenu *rn_visibleGridMenu;
     }
 
     CGRect headerFrame = self.headerView.frame;
-    //headerFrame.size.width = self.menuView.bounds.size.width;
-    headerFrame.origin = CGPointZero;
+    headerFrame.origin = CGPointMake((self.menuView.frame.size.width-headerFrame.size.width)/2, 0);
     self.headerView.frame = headerFrame;
 }
 
@@ -544,12 +553,12 @@ static RNGridMenu *rn_visibleGridMenu;
         itemView.titleLabel.textColor = self.itemTextColor;
         itemView.titleLabel.textAlignment = self.itemTextAlignment;
         itemView.titleLabel.font = self.itemFont;
+        itemView.titleLabel.shadowColor = self.itemTextShadowColor;
+        itemView.titleLabel.shadowOffset = CGSizeMake(2, 2);
         if (self.textOnImage && self.itemTextVerticalAlignment==UIControlContentVerticalAlignmentCenter) {
             //[itemView.titleLabel setFrame:CGRectMake(itemView.titleLabel.frame.origin.x, itemView.titleLabel.frame.origin.y-(floorf(CGRectGetHeight(itemView.bounds) * 2/3.f) - (floorf(CGRectGetHeight(itemView.bounds) * 0.1f)) / 2)-(self.itemSize.height-itemView.titleLabel.frame.size.height)/2, itemView.titleLabel.frame.size.width, itemView.titleLabel.frame.size.height)];
             [itemView.titleLabel setFrame:CGRectMake(itemView.titleLabel.frame.origin.x, itemView.titleLabel.frame.origin.y-(floorf(CGRectGetHeight(itemView.bounds) * 2/3.f) - (floorf(CGRectGetHeight(itemView.bounds) * 0.1f)) / 2)+(self.itemSize.height-itemView.titleLabel.frame.size.height)/2 - itemView.titleLabel.frame.size.height/2, itemView.titleLabel.frame.size.width, itemView.titleLabel.frame.size.height)];
         }
-        itemView.titleLabel.shadowColor = [UIColor grayColor];
-        itemView.titleLabel.shadowOffset = CGSizeMake(1, 1);
     }];
 }
 
@@ -609,7 +618,7 @@ static RNGridMenu *rn_visibleGridMenu;
         //CGFloat itemWidth = floorf(width / (CGFloat)rowLength);
         CGFloat itemWidth = self.itemSize.width;
         [subItems enumerateObjectsUsingBlock:^(RNMenuItemView *itemView, NSUInteger idx, BOOL *stop) {
-            itemView.frame = CGRectMake(idx * (itemWidth + [self horizontalSpacing]), i * (itemHeight + [self horizontalSpacing]) + headerOffset, itemWidth, itemHeight);
+            itemView.frame = CGRectMake(idx * (itemWidth + [self horizontalSpacing]), i * (itemHeight + [self verticalSpacing]) + headerOffset, itemWidth, itemHeight);
         }];
     }
 }
@@ -675,7 +684,7 @@ static RNGridMenu *rn_visibleGridMenu;
     [self.view addSubview:self.menuView];
     if (self.headerView) {
         //self.headerView.center = CGPointMake(self.menuView.frame.size.width/2, self.headerView.center.y);
-        [self.headerView setFrame:CGRectMake((self.menuView.frame.size.width-self.headerView.frame.size.width)/2, self.headerView.frame.origin.y, self.headerView.frame.size.width, self.headerView.frame.size.height)];
+        //[self.headerView setFrame:CGRectMake((self.menuView.frame.size.width-self.headerView.frame.size.width)/2, self.headerView.frame.origin.y, self.headerView.frame.size.width, self.headerView.frame.size.height)];
         [self.menuView addSubview:self.headerView];
     }
 

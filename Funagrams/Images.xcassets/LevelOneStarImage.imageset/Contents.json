@@ -2,7 +2,8 @@
   "images" : [
     {
       "idiom" : "iphone",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "LevelOneStar_iPhone_1x.png"
     },
     {
       "idiom" : "iphone",
@@ -21,7 +22,7 @@
     {
       "idiom" : "ipad",
       "scale" : "2x",
-      "filename" : "LevelOneStar_iPad_2x.png"
+      "filename" : "LevelOneStar_iPad_2x-1.png"
     }
   ],
   "info" : {

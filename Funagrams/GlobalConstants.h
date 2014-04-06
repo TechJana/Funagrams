@@ -14,11 +14,12 @@ typedef enum{
     kGameModeExpert = 3
 }eGameMode;
 
+// Settings Bundle
 extern NSString* const kSettingsMusic;
 extern NSString* const kSettingsGameMode;
 extern int const kGameLevelLastIncompleteLevel;
 
-//game leader
+// Game Center
 extern NSString* const kLeaderBoardHighScore;
 extern NSString* const kLeaderBoardLevel01;
 extern NSString* const kLeaderBoardLevel02;
@@ -41,6 +42,10 @@ extern NSString* const kLeaderBoardLevel18;
 extern NSString* const kLeaderBoardLevel19;
 extern NSString* const kLeaderBoardLevel20;
 extern NSMutableArray* kLeaderBoardLevels;
+
+// In-App Purchase
+extern NSString* const kInAppNoAds;
+extern NSString* const kInAppSciencePack;
 
 @interface GlobalConstants : NSObject
 

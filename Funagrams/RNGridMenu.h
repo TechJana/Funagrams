@@ -88,6 +88,10 @@ typedef NS_ENUM(NSInteger, RNGridMenuStyle) {
 // default white
 @property (nonatomic, strong) UIColor *itemTextColor;
 
+// The text shadow color for list items
+// default clearColor
+@property (nonatomic, strong) UIColor *itemTextShadowColor;
+
 // The font used for list items
 // default bold size 14
 @property (nonatomic, strong) UIFont *itemFont;
@@ -109,6 +113,10 @@ typedef NS_ENUM(NSInteger, RNGridMenuStyle) {
 
 // An optional block that gets executed before the gridMenu gets dismissed
 @property (nonatomic, copy) dispatch_block_t dismissAction;
+
+// Determine whether or not to bounce in the animation
+// default NO
+@property (nonatomic, assign) BOOL doNotDismissIfNoAction;
 
 // Determine whether or not to bounce in the animation
 // default YES

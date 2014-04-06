@@ -12,9 +12,9 @@
 #import <StoreKit/StoreKit.h>
 #import "GameViewController.h"
 #import "AHAlertView.h"
+#import "LevelHeaderViewController.h"
 
 @interface ViewController () {
-    NSArray *_products;
     NSNumberFormatter * _priceFormatter;
 }
 
@@ -94,40 +94,6 @@
     [alert show];
 }
 
-- (void)getInAppProducts
-{
-    _products = nil;
-    [[InAppPurchase sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
-        if (success) {
-            _products = products;
-        }
-    }];
-}
-
-- (void)showInAppProducts
-{
-    // loop through all products and display
-    for (int indexCount=0; indexCount<_products.count; indexCount++) {
-        SKProduct *product = (SKProduct *) _products[indexCount];
-        //textLabel.text = product.localizedTitle;
-        [_priceFormatter setLocale:product.priceLocale];
-        //detailTextLabel.text = [_priceFormatter stringFromNumber:product.price];
-        
-        if ([[InAppPurchase sharedInstance] productPurchased:product.productIdentifier]) {
-            //accessoryType = UITableViewCellAccessoryCheckmark;
-            //accessoryView = nil;
-        } else {
-            UIButton *buyButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-            buyButton.frame = CGRectMake(0, 0, 72, 37);
-            [buyButton setTitle:@"Buy" forState:UIControlStateNormal];
-            buyButton.tag = indexCount;
-            [buyButton addTarget:self action:@selector(buyButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-            //accessoryType = UITableViewCellAccessoryNone;
-            //accessoryView = buyButton;
-        }
-    }
-}
-
 - (void) reloadInputViews
 {
     // get the selection from Settings
@@ -172,7 +138,7 @@
     
     [buttonGameMode setImage:modeImage forState:UIControlStateNormal];
 }
-    
+
 - (IBAction) buttonGameMode_click:(id)sender
 {
     NSInteger numberOfOptions = 3;
@@ -213,18 +179,19 @@
     }
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:(((AppDelegate*)[[UIApplication sharedApplication] delegate]).isMusicPlaying)] forKey:kSettingsMusic];
 }
-    
+
 - (IBAction) buttonPlay_click:(id)sender
 {
-    [self goToGameLevel:_gameMode level:kGameLevelLastIncompleteLevel];
-    //[self showLevelPopUp];
+    //[self goToGameLevel:_gameMode level:kGameLevelLastIncompleteLevel];
+    [self showLevelPopUp];
 }
 
-#pragma mark - RNGridMenuDelegate
-    
-- (void)gridMenu:(RNGridMenu *)gridMenu willDismissWithSelectedItem:(RNGridMenuItem *)item atIndex:(NSInteger)itemIndex {
-    NSLog(@"Dismissed with item %d: %@", itemIndex, item.title);
+- (IBAction) buttonBuy_click:(id)sender
+{
+    [self getInAppProducts];
+    [self showInAppProducts];
 }
+
 
 - (void)showLevelPopUp
 {
@@ -233,46 +200,69 @@
                        [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelNoStarImage"] title:@"1" action:^{
                            [self goToGameLevel:kGameModeBeginner level:1];
                        }],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"2" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"3" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"4" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelOneStarImage"] title:@"2" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelTwoStarImage"] title:@"3" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelThreeStarImage"] title:@"4" action:nil],
                        [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"5" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"6" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"7" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"8" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"9" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"10" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"11" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"12" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"13" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"14" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"15" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"16" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"17" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"18" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelThreeStarImage"] title:@"6" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelThreeStarImage"] title:@"7" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelThreeStarImage"] title:@"8" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelThreeStarImage"] title:@"9" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelThreeStarImage"] title:@"10" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelThreeStarImage"] title:@"11" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelThreeStarImage"] title:@"12" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelThreeStarImage"] title:@"13" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelThreeStarImage"] title:@"14" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelThreeStarImage"] title:@"15" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelThreeStarImage"] title:@"16" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelThreeStarImage"] title:@"17" action:nil],
+                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelThreeStarImage"] title:@"18" action:nil],
                        ];
     
     RNGridMenu *av = [[RNGridMenu alloc] initWithItems:[items subarrayWithRange:NSMakeRange(0, numberOfOptions)]];
     
-    UIViewController *headerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"levelHeaderViewController"];
-    [headerViewController.view setFrame:CGRectMake(0, 0, 304, 78)];
-    //[headerViewController.view setBackgroundColor:[UIColor clearColor]];
+    LevelHeaderViewController *headerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"levelHeaderViewController"];
+    [headerViewController.view setFrame:CGRectMake(0, 0, 275, 60)];
+    [headerViewController.view setBackgroundColor:[UIColor clearColor]];
+    switch (_gameMode)
+    {
+        case kGameModeBeginner:
+            headerViewController.labelLevel.text = NSLocalizedString(@"GameModeBeginner", nil);
+            break;
+            
+        case kGameModeIntermediate:
+            headerViewController.labelLevel.text = NSLocalizedString(@"GameModeIntermediate", nil);
+            break;
+            
+        case kGameModeExpert:
+            headerViewController.labelLevel.text = NSLocalizedString(@"GameModeExpert", nil);
+            break;
+    }
     av.headerView = headerViewController.view;
     
-    //av.backgroundColor = [UIColor clearColor];
+    av.backgroundColor = [UIColor clearColor];
     av.highlightColor = [UIColor clearColor];
-    av.horizontalSpacing = 10;
-    av.verticalSpacing = 10;
+    av.horizontalSpacing = -40;
+    av.verticalSpacing = -40;
     av.fixedImageSize = NO;
     av.menuColumnsCount = 6;
     av.itemTextAlignment = NSTextAlignmentCenter;
     av.textOnImage = YES;
     av.itemTextVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     av.itemTextColor = [UIColor yellowColor];
+    av.itemTextShadowColor = [UIColor blackColor];
+    av.itemFont = [UIFont systemFontOfSize:30.0];
+    av.doNotDismissIfNoAction = YES;
     //av.itemSize = CGSizeMake(39, 38);
     av.delegate = self;
     
     [av showInViewController:self center:CGPointMake(self.view.bounds.size.width/2.f, self.view.bounds.size.height/2.f)];
+}
+
+#pragma mark - RNGridMenuDelegate
+
+- (void)gridMenu:(RNGridMenu *)gridMenu willDismissWithSelectedItem:(RNGridMenuItem *)item atIndex:(NSInteger)itemIndex {
+    NSLog(@"Dismissed with item %d: %@", itemIndex, item.title);
 }
 
 - (void)goToGameLevel:(int)mode level:(int)level
@@ -283,14 +273,60 @@
     [self.navigationController pushViewController: myController animated:YES];
 }
 
-- (void)buyButtonTapped:(id)sender {
+#pragma mark - InApp
+- (void)getInAppProducts
+{
+    _inAppProdcuts = nil;
+    [[InAppPurchase sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
+        if (success) {
+            _inAppProdcuts = products;
+        }
+    }];
+}
+
+- (void)showInAppProducts
+{
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+
+    // loop through all products and display
+    for (int indexCount=0; indexCount<_inAppProdcuts.count; indexCount++) {
+        SKProduct *product = (SKProduct *) _inAppProdcuts[indexCount];
+        [_priceFormatter setLocale:product.priceLocale];
+        NSString *formattedPrice = [_priceFormatter stringFromNumber:product.price];
+        NSString *imageName = [NSString stringWithFormat:@"%@Image", product.productIdentifier];
+        RNGridMenuItem *menuItem;
+
+        if ([[InAppPurchase sharedInstance] productPurchased:product.productIdentifier])
+        {
+            formattedPrice = [_priceFormatter stringFromNumber:[NSNumber numberWithFloat:0.00]];
+            menuItem = [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:imageName] title:[NSString stringWithFormat:@"%@ (%@)", product.localizedTitle, formattedPrice] action:nil];
+        } else
+        {
+            menuItem = [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:imageName] title:[NSString stringWithFormat:@"%@ (%@)", product.localizedTitle, formattedPrice] action:^{
+                [self buyProductAtIndex:indexCount];
+            }];
+        }
+        [items addObject:menuItem];
+    }
+    NSInteger numberOfOptions = items.count;
     
-    UIButton *buyButton = (UIButton *)sender;
-    SKProduct *product = _products[buyButton.tag];
+    RNGridMenu *inAppMenu = [[RNGridMenu alloc] initWithItems:[items subarrayWithRange:NSMakeRange(0, numberOfOptions)]];
+    inAppMenu.backgroundColor = [UIColor clearColor];
+    inAppMenu.highlightColor = [UIColor clearColor];
+    inAppMenu.singleLineView = YES;
+    inAppMenu.horizontalSpacing = 20;
+    inAppMenu.fixedImageSize = NO;
+    inAppMenu.delegate = self;
+    
+    [inAppMenu showInViewController:self center:CGPointMake(self.view.bounds.size.width/2.f, self.view.bounds.size.height/2.f)];
+}
+
+- (void)buyProductAtIndex:(int)sender
+{
+    SKProduct *product = _inAppProdcuts[sender];
     
     NSLog(@"Buying %@...", product.productIdentifier);
     [[InAppPurchase sharedInstance] buyProduct:product];
-    
 }
 
 - (void)restoreTapped:(id)sender {
@@ -308,7 +344,7 @@
 - (void)productPurchased:(NSNotification *)notification {
     
     NSString * productIdentifier = notification.object;
-    [_products enumerateObjectsUsingBlock:^(SKProduct * product, NSUInteger idx, BOOL *stop) {
+    [_inAppProdcuts enumerateObjectsUsingBlock:^(SKProduct * product, NSUInteger idx, BOOL *stop) {
         if ([product.productIdentifier isEqualToString:productIdentifier]) {
             //[self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:idx inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
             *stop = YES;

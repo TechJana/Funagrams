@@ -36,11 +36,11 @@
                                 <rect key="frame" x="30" y="202" width="75" height="98"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" image="ScoresheetImage">
+                                <state key="normal" image="BuyImage">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="showLeaderboard:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="j76-ay-ojy"/>
+                                    <action selector="buttonBuy_click:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="VbD-Ah-bhE"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sGq-wK-7Qi">
@@ -268,10 +268,10 @@
             </objects>
             <point key="canvasLocation" x="1475" y="71"/>
         </scene>
-        <!--View Controller-->
+        <!--Level Header View Controller-->
         <scene sceneID="st0-XS-U2p">
             <objects>
-                <viewController storyboardIdentifier="levelHeaderViewController" id="7oO-x8-DwG" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="levelHeaderViewController" id="7oO-x8-DwG" customClass="LevelHeaderViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y8P-1X-NsC"/>
                         <viewControllerLayoutGuide type="bottom" id="YAT-9p-Ljf"/>
@@ -281,12 +281,12 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="INTERMEDIATE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PU0-KL-gPD">
-                                <rect key="frame" x="20" y="20" width="264" height="38"/>
+                                <rect key="frame" x="5" y="5" width="265" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="33"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="30"/>
+                                <color key="textColor" red="1" green="1" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <color key="shadowColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <size key="shadowOffset" width="1" height="1"/>
                             </label>
                         </subviews>
@@ -294,6 +294,9 @@
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="labelLevel" destination="PU0-KL-gPD" id="AI0-BE-iby"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u78-UQ-lEC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -322,13 +325,13 @@
     <resources>
         <image name="BackImage" width="171" height="54"/>
         <image name="BackgroundImage" width="773" height="260"/>
+        <image name="BuyImage" width="75" height="98"/>
         <image name="FavoriteImage" width="76" height="64"/>
         <image name="GameModeBeginnerImage" width="46" height="51"/>
         <image name="HintImage" width="171" height="54"/>
         <image name="LogoImage" width="456" height="61"/>
         <image name="MusicOnImage" width="46" height="51"/>
         <image name="PlayImage" width="216" height="60"/>
-        <image name="ScoresheetImage" width="75" height="98"/>
         <image name="ScrambleImage" width="171" height="54"/>
         <image name="TrophyImage" width="76" height="98"/>
     </resources>

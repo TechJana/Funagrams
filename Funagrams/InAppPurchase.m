@@ -7,6 +7,7 @@
 //
 
 #import "InAppPurchase.h"
+#import "GlobalConstants.h"
 
 @implementation InAppPurchase
 
@@ -15,7 +16,8 @@
     static InAppPurchase * sharedInstance;
     dispatch_once(&once, ^{
         NSSet * productIdentifiers = [NSSet setWithObjects:
-                                      @"com.pluggables.inapp.funagrams.sciencePack",
+                                      kInAppNoAds,
+                                      kInAppSciencePack,
                                       nil];
         sharedInstance = [[self alloc] initWithProductIdentifiers:productIdentifiers];
     });

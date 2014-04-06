@@ -3,12 +3,12 @@
     {
       "idiom" : "iphone",
       "scale" : "1x",
-      "filename" : "LevelNoStar_iPhone_1x.png"
+      "filename" : "Buy_iPhone_1x.png"
     },
     {
       "idiom" : "iphone",
       "scale" : "2x",
-      "filename" : "LevelNoStar_iPhone_2x.png"
+      "filename" : "Buy_iPhone_2x.png"
     },
     {
       "idiom" : "iphone",
@@ -17,12 +17,13 @@
     },
     {
       "idiom" : "ipad",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "Buy_iPad_1x.png"
     },
     {
       "idiom" : "ipad",
       "scale" : "2x",
-      "filename" : "LevelNoStar_iPad_2x-1.png"
+      "filename" : "Buy_iPad_2x.png"
     }
   ],
   "info" : {
