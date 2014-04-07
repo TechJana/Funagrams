@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		122182D318D67E2A000093E3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 122182D218D67E2A000093E3 /* Settings.bundle */; };
 		12222D7318D2D29E00A26C62 /* ImageLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12222D7218D2D29E00A26C62 /* ImageLabelView.m */; };
+		1222FD8518F1EC5D00FF64A1 /* MarketPlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1222FD8418F1EC5D00FF64A1 /* MarketPlaceViewController.m */; };
+		1222FD8818F21D4E00FF64A1 /* ProductTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1222FD8718F21D4E00FF64A1 /* ProductTableViewCell.m */; };
 		122B41DB18B95D9A00DE4CF3 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 122B41D918B95D9A00DE4CF3 /* iTunesArtwork */; };
 		122B41DC18B95D9A00DE4CF3 /* iTunesArtwork@2x in Resources */ = {isa = PBXBuildFile; fileRef = 122B41DA18B95D9A00DE4CF3 /* iTunesArtwork@2x */; };
 		122BCF5C18A203BE00AF14E1 /* GCHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 122BCF5B18A203BE00AF14E1 /* GCHelper.m */; };
@@ -67,6 +69,10 @@
 		122182D218D67E2A000093E3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		12222D7118D2D29E00A26C62 /* ImageLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageLabelView.h; sourceTree = "<group>"; };
 		12222D7218D2D29E00A26C62 /* ImageLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageLabelView.m; sourceTree = "<group>"; };
+		1222FD8318F1EC5D00FF64A1 /* MarketPlaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketPlaceViewController.h; sourceTree = "<group>"; };
+		1222FD8418F1EC5D00FF64A1 /* MarketPlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketPlaceViewController.m; sourceTree = "<group>"; };
+		1222FD8618F21D4E00FF64A1 /* ProductTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductTableViewCell.h; sourceTree = "<group>"; };
+		1222FD8718F21D4E00FF64A1 /* ProductTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductTableViewCell.m; sourceTree = "<group>"; };
 		122B41D918B95D9A00DE4CF3 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		122B41DA18B95D9A00DE4CF3 /* iTunesArtwork@2x */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iTunesArtwork@2x"; sourceTree = "<group>"; };
 		122BCF5A18A203BE00AF14E1 /* GCHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCHelper.h; sourceTree = "<group>"; };
@@ -226,12 +232,16 @@
 				12E98757189360C400FC296B /* GameViewController.m */,
 				122E8A2718A9D10E004668CC /* InAppPurchase.h */,
 				122E8A2818A9D10E004668CC /* InAppPurchase.m */,
-				12AE7D2E188F8E5B00E00848 /* Main_iPhone.storyboard */,
-				12AE7D31188F8E5B00E00848 /* Main_iPad.storyboard */,
-				12AE7D34188F8E5B00E00848 /* ViewController.h */,
-				12AE7D35188F8E5B00E00848 /* ViewController.m */,
 				12A7F6BA18F08D8000CC7FAA /* LevelHeaderViewController.h */,
 				12A7F6BB18F08D8000CC7FAA /* LevelHeaderViewController.m */,
+				12AE7D2E188F8E5B00E00848 /* Main_iPhone.storyboard */,
+				12AE7D31188F8E5B00E00848 /* Main_iPad.storyboard */,
+				1222FD8318F1EC5D00FF64A1 /* MarketPlaceViewController.h */,
+				1222FD8418F1EC5D00FF64A1 /* MarketPlaceViewController.m */,
+				1222FD8618F21D4E00FF64A1 /* ProductTableViewCell.h */,
+				1222FD8718F21D4E00FF64A1 /* ProductTableViewCell.m */,
+				12AE7D34188F8E5B00E00848 /* ViewController.h */,
+				12AE7D35188F8E5B00E00848 /* ViewController.m */,
 				12AE7D37188F8E5B00E00848 /* Images.xcassets */,
 				12AE7D23188F8E5B00E00848 /* Supporting Files */,
 				122182D218D67E2A000093E3 /* Settings.bundle */,
@@ -428,6 +438,7 @@
 				12AE7D2D188F8E5B00E00848 /* AppDelegate.m in Sources */,
 				12A7F6BC18F08D8000CC7FAA /* LevelHeaderViewController.m in Sources */,
 				12AE7D29188F8E5B00E00848 /* main.m in Sources */,
+				1222FD8818F21D4E00FF64A1 /* ProductTableViewCell.m in Sources */,
 				122E8A2618A9CF2F004668CC /* IAPHelper.m in Sources */,
 				122BCF5C18A203BE00AF14E1 /* GCHelper.m in Sources */,
 				122F83F518B99C36007489E3 /* Levels.m in Sources */,
@@ -435,6 +446,7 @@
 				122E8A2918A9D10E004668CC /* InAppPurchase.m in Sources */,
 				122F840A18B9A091007489E3 /* Categories.m in Sources */,
 				122F840718B9A091007489E3 /* Anagrams.m in Sources */,
+				1222FD8518F1EC5D00FF64A1 /* MarketPlaceViewController.m in Sources */,
 				122F840D18B9A091007489E3 /* Games.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

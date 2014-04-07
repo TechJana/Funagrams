@@ -36,5 +36,8 @@
 @property (readwrite, nonatomic) ViewController *thisParentViewController;
 @property (readwrite, nonatomic) eGameMode gameMode;
 @property (retain, nonatomic) NSArray *inAppProdcuts;
-    
+@property (readwrite, nonatomic) BOOL inAppFetchCompleted;
+@property (readwrite, nonatomic) BOOL inAppProductPurchaseComplete;
+@property (readwrite, nonatomic) int inAppPurchasedProductIndex;
+
 @end

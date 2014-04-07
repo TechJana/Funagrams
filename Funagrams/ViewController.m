@@ -57,7 +57,9 @@
     [_priceFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
     [_priceFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Restore" style:UIBarButtonItemStyleBordered target:self action:@selector(restoreTapped:)];
-    
+    _inAppFetchCompleted = NO;
+    [self getInAppProducts];
+   
     // Show something once when the application lauch after installation
     if (![@"1" isEqualToString:[[NSUserDefaults standardUserDefaults]
                                 objectForKey:@"Avalue"]]) {
@@ -270,7 +272,7 @@
     GameViewController *myController = [self.storyboard instantiateViewControllerWithIdentifier:@"gameViewController"];
     myController.currentGameMode = mode;
     myController.currentGameLevel = level;
-    [self.navigationController pushViewController: myController animated:YES];
+    [self.navigationController pushViewController:myController animated:YES];
 }
 
 #pragma mark - InApp
@@ -281,6 +283,7 @@
         if (success) {
             _inAppProdcuts = products;
         }
+        _inAppFetchCompleted = YES;
     }];
 }
 
@@ -347,8 +350,10 @@
     [_inAppProdcuts enumerateObjectsUsingBlock:^(SKProduct * product, NSUInteger idx, BOOL *stop) {
         if ([product.productIdentifier isEqualToString:productIdentifier]) {
             //[self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:idx inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+            _inAppPurchasedProductIndex = (int)idx;
             *stop = YES;
         }
+        _inAppProductPurchaseComplete = YES;
     }];
     
 }
