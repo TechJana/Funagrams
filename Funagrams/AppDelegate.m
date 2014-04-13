@@ -191,7 +191,7 @@
 
 - (void)playBackgroundMusic
 {
-    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:NSLocalizedString(@"BackgroundMusicFileName", nil) ofType:NSLocalizedString(@"BackgroundMusicFileType", nil)];
+    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:NSLocalizedString(@"MusicBackgroundFileName", nil) ofType:NSLocalizedString(@"AudioFileTypeMP3", nil)];
     NSURL *soundFileURL = [NSURL fileURLWithPath:soundFilePath];
     player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundFileURL error:nil];
     player.numberOfLoops = -1; //infinite
@@ -205,6 +205,16 @@
 {
     [player stop];
     _isMusicPlaying = NO;
+}
+
+- (void)playSoundFile:(NSString*)fileNameWithoutExtension
+{
+    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:fileNameWithoutExtension ofType:NSLocalizedString(@"AudioFileTypeMP3", nil)];
+    NSURL *soundFileURL = [NSURL fileURLWithPath:soundFilePath];
+    soundPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundFileURL error:nil];
+    soundPlayer.numberOfLoops = 0; //play once
+    
+    [soundPlayer play];
 }
 
 

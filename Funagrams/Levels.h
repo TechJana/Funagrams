@@ -2,7 +2,7 @@
 //  Levels.h
 //  Funagrams
 //
-//  Created by Saravanan ImmaMaheswaran on 2/22/14.
+//  Created by Saravanan ImmaMaheswaran on 4/12/14.
 //  Copyright (c) 2014 Pluggables. All rights reserved.
 //
 
@@ -13,8 +13,16 @@
 
 @interface Levels : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * levelId;
 @property (nonatomic, retain) NSString * levelDescription;
-@property (nonatomic, retain) Games *games;
+@property (nonatomic, retain) NSNumber * levelId;
+@property (nonatomic, retain) NSSet *games;
+@end
+
+@interface Levels (CoreDataGeneratedAccessors)
+
+- (void)addGamesObject:(Games *)value;
+- (void)removeGamesObject:(Games *)value;
+- (void)addGames:(NSSet *)values;
+- (void)removeGames:(NSSet *)values;
 
 @end

@@ -243,6 +243,9 @@
 {
     [self getQuestionRemaining];
     
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    [appDelegate playSoundFile:NSLocalizedString(@"SoundScrambleTileFileName", nil)];
+
     //Scramble the letters in the Question
     currentAnagram.questionRemaining = [self doScramble:currentAnagram.questionRemaining];
     
@@ -258,7 +261,7 @@
                              CGPointMake([buttonScramble center].x - 15.0f, [buttonScramble center].y)]];
     [animation setToValue:[NSValue valueWithCGPoint:
                            CGPointMake([buttonScramble center].x + 15.0f, [buttonScramble center].y)]];
-    [[buttonScramble layer] addAnimation:animation forKey:@"position"];
+    //[[buttonScramble layer] addAnimation:animation forKey:@"position"];
 }
 
 
@@ -360,7 +363,7 @@
     
     NSString *allowedLength = [NSString stringWithFormat:@".{%d,%d}", 0, questionMaxLength];
     
-    NSPredicate *gamesPredicate = [NSPredicate predicateWithFormat:@"modeId = %@ AND anagram.questionText MATCHES %@",numModeId,allowedLength];
+    NSPredicate *gamesPredicate = [NSPredicate predicateWithFormat:@"mode.modeId = %@ AND anagram.questionText MATCHES %@",numModeId,allowedLength];
     //NSPredicate *gamesPredicate = [NSPredicate predicateWithFormat:@"modeId = %@",numModeId];
 
     [gamesFetchRequest setPredicate:gamesPredicate];
@@ -386,7 +389,7 @@
         currentAnagram.question = [currentGamesFromModel.anagram.questionText stringByReplacingOccurrencesOfString:@" " withString:@""];
         currentAnagram.questionRemaining = [currentAnagram.question copy];
         currentAnagram.result = currentGamesFromModel.anagram.answerText;
-        currentAnagram.level = (int)currentGamesFromModel.levelId;
+        currentAnagram.level = (int)currentGamesFromModel.level.levelId;
         currentAnagram.levelDescription = currentGamesFromModel.level.levelDescription;
         currentAnagram.hintPercentile = [currentGamesFromModel.mode.hintsPercentile floatValue];
         currentAnagram.hintsProvided = 0;
@@ -411,7 +414,7 @@
     NSFetchRequest *gamesFetchRequest = [[NSFetchRequest alloc] init];
     [gamesFetchRequest setEntity:gamesEntity];
     
-    NSPredicate *gamesPredicate = [NSPredicate predicateWithFormat:@"modeId = %@ AND score != nil", modeId];
+    NSPredicate *gamesPredicate = [NSPredicate predicateWithFormat:@"mode.modeId = %@ AND score != nil", modeId];
 
     [gamesFetchRequest setPredicate:gamesPredicate];
     [gamesFetchRequest setReturnsDistinctResults:YES];
@@ -425,14 +428,14 @@
     {
         for (int indexCount=0; indexCount<matchingGamesforMode.count; indexCount++) {
             games = (Games *)[matchingGamesforMode objectAtIndex:indexCount];
-            [levelIds insertObject:games.levelId atIndex:levelIds.count];
+            [levelIds insertObject:games.level.levelId atIndex:levelIds.count];
         }
         
         gamesEntity = [NSEntityDescription entityForName:@"Games" inManagedObjectContext:context];
         gamesFetchRequest = [[NSFetchRequest alloc] init];
         [gamesFetchRequest setEntity:gamesEntity];
         
-        gamesPredicate = [NSPredicate predicateWithFormat:@"modeId = %@ AND score = nil AND NOT levelId IN %@", modeId, levelIds];
+        gamesPredicate = [NSPredicate predicateWithFormat:@"mode.modeId = %@ AND score = nil AND NOT level.levelId IN %@", modeId, levelIds];
         NSSortDescriptor *gamesSortByLevel = [[NSSortDescriptor alloc] initWithKey:@"levelId" ascending:YES];
         
         [gamesFetchRequest setPredicate:gamesPredicate];
@@ -449,7 +452,7 @@
             NSLog(@"Current Game ID : %@", games.gameId);
             
             //Assign the attributes of randomAnagram object to the Current Anagram
-            levelId = [games.levelId intValue];
+            levelId = [games.level.levelId intValue];
         }
         else
         {
@@ -457,7 +460,7 @@
             levelId = 1;
         }
         //Assign the attributes of randomAnagram object to the Current Anagram
-        levelId = [games.levelId intValue];
+        levelId = [games.level.levelId intValue];
     }
     else
     {
@@ -546,7 +549,7 @@
 
     NSString *allowedLength = [NSString stringWithFormat:@".{%d,%d}", 0, questionMaxLength];
     
-    NSPredicate *gamesPredicate = [NSPredicate predicateWithFormat:@"modeId = %@ AND levelId = %@ AND anagram.questionText MATCHES %@ AND score = nil AND anagram.answerText MATCHES %@ AND score = nil",numModeId, [NSNumber numberWithInt:levelId], allowedLength, allowedLength];
+    NSPredicate *gamesPredicate = [NSPredicate predicateWithFormat:@"(SUBQUERY(mode, $mode, $mode.modeId == %@).@count) > 0 AND (SUBQUERY(level, $level, $level.levelId == %@).@count) > 0 AND (SUBQUERY(anagram, $anagram, $anagram.questionText MATCHES %@ AND $anagram.answerText MATCHES %@).@count) > 0 AND score.@count=0", numModeId, [NSNumber numberWithInt:levelId], allowedLength, allowedLength];
     
     [gamesFetchRequest setPredicate:gamesPredicate];
     
@@ -570,8 +573,8 @@
         currentAnagram.questionRemaining = [currentAnagram.question copy];
         currentAnagram.result = currentGamesFromModel.anagram.answerText;
         currentAnagram.hint = currentGamesFromModel.anagram.questionText;
-        currentAnagram.level = [currentGamesFromModel.levelId intValue];
-        NSLog(@"currentGamesFromModel.levelId:%@ - %d",currentGamesFromModel.levelId, currentAnagram.level);
+        currentAnagram.level = [currentGamesFromModel.level.levelId intValue];
+        NSLog(@"currentGamesFromModel.levelId:%@ - %d",currentGamesFromModel.level.levelId, currentAnagram.level);
         currentAnagram.levelDescription = currentGamesFromModel.level.levelDescription;
         currentAnagram.hintPercentile = [currentGamesFromModel.mode.hintsPercentile floatValue];
         currentAnagram.hintsProvided = 0;
@@ -1119,6 +1122,8 @@
             selectedQuestionImageIndex = indexCount;
             selectedQuestionImageOriginalPosition = CGPointMake(imageIndex.frame.origin.x, imageIndex.frame.origin.y);
             NSLog([NSString stringWithFormat:@"Selected Image index: %d", selectedQuestionImageIndex]);
+            AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+            [appDelegate playSoundFile:NSLocalizedString(@"SoundPickTileFileName", nil)];
             break;
         }
     }
@@ -1190,7 +1195,8 @@
         //[self animateView:imageIndex toPosition: position];
         NSLog([NSString stringWithFormat:@"End index %d pos, back to original", selectedQuestionImageIndex]);
     }
-    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    [appDelegate playSoundFile:NSLocalizedString(@"SoundPlaceTileFileName", nil)];
 }
 
 -(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event

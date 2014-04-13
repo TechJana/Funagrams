@@ -2,7 +2,7 @@
 //  Modes.h
 //  Funagrams
 //
-//  Created by Saravanan ImmaMaheswaran on 2/22/14.
+//  Created by Saravanan ImmaMaheswaran on 4/12/14.
 //  Copyright (c) 2014 Pluggables. All rights reserved.
 //
 
@@ -13,9 +13,17 @@
 
 @interface Modes : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * modeId;
-@property (nonatomic, retain) NSString * modeDescription;
 @property (nonatomic, retain) NSNumber * hintsPercentile;
-@property (nonatomic, retain) Games *games;
+@property (nonatomic, retain) NSString * modeDescription;
+@property (nonatomic, retain) NSNumber * modeId;
+@property (nonatomic, retain) NSSet *games;
+@end
+
+@interface Modes (CoreDataGeneratedAccessors)
+
+- (void)addGamesObject:(Games *)value;
+- (void)removeGamesObject:(Games *)value;
+- (void)addGames:(NSSet *)values;
+- (void)removeGames:(NSSet *)values;
 
 @end

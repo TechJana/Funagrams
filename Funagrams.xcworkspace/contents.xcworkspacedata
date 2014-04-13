@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:noAdvertisements/noAdvertisements.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "container:Funagrams.xcodeproj">
    </FileRef>
    <FileRef

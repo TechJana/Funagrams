@@ -80,13 +80,119 @@ int main(int argc, const char * argv[])
         }
 
         NSError* err = nil;
+        int indexAnagram;
         NSString* dataPath = [[NSBundle mainBundle] pathForResource:@"AnagramsData" ofType:@"json"];
         NSArray* AnagramsData = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:dataPath]
                                                                 options:kNilOptions
                                                                   error:&err];
         NSLog(@"Imported Banks: %@", AnagramsData);
         
-        [AnagramsData enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSMutableDictionary *dataModes = [[NSMutableDictionary alloc] init];
+        NSMutableDictionary *dataLevels = [[NSMutableDictionary alloc] init];
+        NSMutableDictionary *dataCategories = [[NSMutableDictionary alloc] init];
+        BOOL modeExists, levelExists, categoryExists;
+        Modes *modes;
+        Levels *levels;
+        Categories *categories;
+        Anagrams *anagrams;
+        Games *games;
+        
+        for (indexAnagram=0; indexAnagram<AnagramsData.count; indexAnagram++)
+        {
+            id obj = [AnagramsData objectAtIndex:indexAnagram];
+            
+            // Modes
+            if ([dataModes objectForKey:[obj objectForKey:@"modesModeId"]] != nil) {
+                modes = (Modes *)[dataModes objectForKey:[obj objectForKey:@"modesModeId"]];
+                modeExists = TRUE;
+            }
+            else {
+                modes = [NSEntityDescription
+                         insertNewObjectForEntityForName:@"Modes"
+                         inManagedObjectContext:context];
+                modeExists = FALSE;
+            }
+            
+            // Levels
+            if ([dataLevels objectForKey:[obj objectForKey:@"levelsLevelId"]] != nil) {
+                levels = (Levels *)[dataLevels objectForKey:[obj objectForKey:@"levelsLevelId"]];
+                levelExists = TRUE;
+            }
+            else {
+                levels = [NSEntityDescription
+                          insertNewObjectForEntityForName:@"Levels"
+                          inManagedObjectContext:context];
+                levelExists = FALSE;
+            }
+            
+            // Categories
+            if ([dataCategories objectForKey:[obj objectForKey:@"categoriesCategoryId"]] != nil) {
+                categories = (Categories *)[dataCategories objectForKey:[obj objectForKey:@"categoriesCategoryId"]];
+                categoryExists = TRUE;
+            }
+            else {
+                categories = [NSEntityDescription
+                              insertNewObjectForEntityForName:@"Categories"
+                              inManagedObjectContext:context];
+                categoryExists = FALSE;
+            }
+            anagrams = [NSEntityDescription
+                                  insertNewObjectForEntityForName:@"Anagrams"
+                                  inManagedObjectContext:context];
+            games = [NSEntityDescription
+                            insertNewObjectForEntityForName:@"Games"
+                            inManagedObjectContext:context];
+            
+            modes.modeId = [obj objectForKey:@"modesModeId"];
+            modes.modeDescription = [obj objectForKey:@"modesModeDescription"];
+            modes.hintsPercentile = [obj objectForKey:@"modesHintsPercentile"];
+            
+            levels.levelId = [obj objectForKey:@"levelsLevelId"];
+            levels.levelDescription = [obj objectForKey:@"levelsLevelDescription"];
+            
+            categories.categoryId = [obj objectForKey:@"categoriesCategoryId"];
+            categories.categoryDescription = [obj objectForKey:@"categoriesCategoryDescription"];
+            
+            anagrams.anagramId = [obj objectForKey:@"anagramsAnagramId"];
+            anagrams.questionText = [obj objectForKey:@"anagramsQuestionText"];
+            anagrams.answerText = [obj objectForKey:@"anagramsAnswerText"];
+            
+            games.gameId = [obj objectForKey:@"gamesGameId"];
+            //games.modeId = [obj objectForKey:@"gamesModeId"];
+            //games.levelId = [obj objectForKey:@"gamesLevelId"];
+            //games.anagramId = [obj objectForKey:@"anagramsAnagramsId"];
+            games.maxScore = [obj objectForKey:@"anagramsMaxScore"];
+            
+            [modes addGamesObject:games];
+            [levels addGamesObject:games];
+            anagrams.games = games;
+            [anagrams addCategoriesObject:categories];
+            [categories addAnagramsObject:anagrams];
+            
+            games.mode = modes;
+            games.level = levels;
+            games.anagram = anagrams;
+            games.score = nil;
+
+            if (!modeExists) {
+                [dataModes setObject:modes forKey:[obj objectForKey:@"modesModeId"]];
+            }
+            
+            if (!levelExists) {
+                [dataLevels setObject:levels forKey:[obj objectForKey:@"levelsLevelId"]];
+            }
+            
+            if (!categoryExists) {
+                [dataCategories setObject:categories forKey:[obj objectForKey:@"categoriesCategoryId"]];
+            }
+            
+            NSError *error;
+            if (![context save:&error]) {
+                NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+            }
+        }
+        
+        /*[AnagramsData enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             Modes *modes = [NSEntityDescription
                             insertNewObjectForEntityForName:@"Modes"
                             inManagedObjectContext:context];
@@ -137,7 +243,7 @@ int main(int argc, const char * argv[])
             if (![context save:&error]) {
                 NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
             }
-        }];
+        }];*/
         
         // Test listing all FailedBankInfos from the store
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];

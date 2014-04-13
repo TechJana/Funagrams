@@ -2,7 +2,7 @@
 //  Categories.m
 //  Funagrams
 //
-//  Created by Saravanan ImmaMaheswaran on 2/22/14.
+//  Created by Saravanan ImmaMaheswaran on 4/12/14.
 //  Copyright (c) 2014 Pluggables. All rights reserved.
 //
 
@@ -12,8 +12,8 @@
 
 @implementation Categories
 
-@dynamic categoryId;
 @dynamic categoryDescription;
+@dynamic categoryId;
 @dynamic anagrams;
 
 @end

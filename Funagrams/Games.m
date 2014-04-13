@@ -2,7 +2,7 @@
 //  Games.m
 //  Funagrams
 //
-//  Created by Saravanan ImmaMaheswaran on 2/22/14.
+//  Created by Saravanan ImmaMaheswaran on 4/12/14.
 //  Copyright (c) 2014 Pluggables. All rights reserved.
 //
 
@@ -15,9 +15,6 @@
 
 @implementation Games
 
-@dynamic anagramId;
-@dynamic levelId;
-@dynamic modeId;
 @dynamic gameId;
 @dynamic maxScore;
 @dynamic anagram;

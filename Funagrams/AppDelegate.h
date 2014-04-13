@@ -13,11 +13,12 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 {
-    AVAudioPlayer *player;
+    AVAudioPlayer *player, *soundPlayer;
 }
 
 - (void)playBackgroundMusic;
 - (void)stopBackgroundMusic;
+- (void)playSoundFile:(NSString*)fileNameWithoutExtension;
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UINavigationController *navController;

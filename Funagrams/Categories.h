@@ -2,7 +2,7 @@
 //  Categories.h
 //  Funagrams
 //
-//  Created by Saravanan ImmaMaheswaran on 2/22/14.
+//  Created by Saravanan ImmaMaheswaran on 4/12/14.
 //  Copyright (c) 2014 Pluggables. All rights reserved.
 //
 
@@ -13,8 +13,8 @@
 
 @interface Categories : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * categoryId;
 @property (nonatomic, retain) NSString * categoryDescription;
+@property (nonatomic, retain) NSNumber * categoryId;
 @property (nonatomic, retain) NSSet *anagrams;
 @end
 

@@ -2,7 +2,7 @@
 //  Anagrams.h
 //  Funagrams
 //
-//  Created by Saravanan ImmaMaheswaran on 2/22/14.
+//  Created by Saravanan ImmaMaheswaran on 4/12/14.
 //  Copyright (c) 2014 Pluggables. All rights reserved.
 //
 
@@ -13,11 +13,11 @@
 
 @interface Anagrams : NSManagedObject
 
-@property (nonatomic, retain) NSString * answerText;
 @property (nonatomic, retain) NSNumber * anagramId;
+@property (nonatomic, retain) NSString * answerText;
 @property (nonatomic, retain) NSString * questionText;
-@property (nonatomic, retain) Games *games;
 @property (nonatomic, retain) NSSet *categories;
+@property (nonatomic, retain) Games *games;
 @end
 
 @interface Anagrams (CoreDataGeneratedAccessors)

@@ -9,6 +9,7 @@
 // 1
 #import "IAPHelper.h"
 #import <StoreKit/StoreKit.h>
+#import "VerificationController.h"
 
 NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurchasedNotification";
 
@@ -92,17 +93,30 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
     };
 }
 
+- (void)validateReceiptForTransaction:(SKPaymentTransaction *)transaction {
+    VerificationController * verifier = [VerificationController sharedInstance];
+    [verifier verifyPurchase:transaction completionHandler:^(BOOL success) {
+        if (success) {
+            NSLog(@"Successfully verified receipt!");
+            [self provideContentForProductIdentifier:transaction.payment.productIdentifier];
+        } else {
+            NSLog(@"Failed to validate receipt.");
+            [[SKPaymentQueue defaultQueue] finishTransaction: transaction];
+        }
+    }];
+}
+
 - (void)completeTransaction:(SKPaymentTransaction *)transaction {
     NSLog(@"completeTransaction...");
     
-    [self provideContentForProductIdentifier:transaction.payment.productIdentifier];
+    [self validateReceiptForTransaction:transaction];
     [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
 }
 
 - (void)restoreTransaction:(SKPaymentTransaction *)transaction {
     NSLog(@"restoreTransaction...");
     
-    [self provideContentForProductIdentifier:transaction.originalTransaction.payment.productIdentifier];
+    [self validateReceiptForTransaction:transaction];
     [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
 }
 

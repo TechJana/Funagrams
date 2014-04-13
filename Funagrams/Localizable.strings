@@ -10,9 +10,12 @@
 "GameOverCancelButtonTitle" = "play again";
 "GameOverNextButtonTitle" = "next Level";
 "IncorrectAnswerText" = "Incorrect! Move letters back and try again!";
-//"BackgroundMusicFileName" = "Vivaldi - Spring from Four Seasons";
-"BackgroundMusicFileName" = "BgMusic";
-"BackgroundMusicFileType" = "mp3";
+//"MusicBackgroundFileName" = "Vivaldi - Spring from Four Seasons";
+"MusicBackgroundFileName" = "BgMusic";
+"SoundPickTileFileName" = "tile_pick_up_from_board";
+"SoundPlaceTileFileName" = "tile_put_on_board";
+"SoundScrambleTileFileName" = "tiles_movement_on_plastic_rack";
+"AudioFileTypeMP3" = "mp3";
 "Error 10001" = "Error 10001: Anagram's length is more than '%d' for this device";
 //"iTunesReviewUrl" = "itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=817237014";
 "iTunesReviewUrl" = "itms-apps://itunes.apple.com/app/id817237014";

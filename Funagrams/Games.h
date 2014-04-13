@@ -2,7 +2,7 @@
 //  Games.h
 //  Funagrams
 //
-//  Created by Saravanan ImmaMaheswaran on 2/22/14.
+//  Created by Saravanan ImmaMaheswaran on 4/12/14.
 //  Copyright (c) 2014 Pluggables. All rights reserved.
 //
 
@@ -13,14 +13,19 @@
 
 @interface Games : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * anagramId;
-@property (nonatomic, retain) NSNumber * levelId;
-@property (nonatomic, retain) NSNumber * modeId;
 @property (nonatomic, retain) NSNumber * gameId;
 @property (nonatomic, retain) NSNumber * maxScore;
 @property (nonatomic, retain) Anagrams *anagram;
 @property (nonatomic, retain) Levels *level;
 @property (nonatomic, retain) Modes *mode;
-@property (nonatomic, retain) Scores *score;
+@property (nonatomic, retain) NSSet *score;
+@end
+
+@interface Games (CoreDataGeneratedAccessors)
+
+- (void)addScoreObject:(Scores *)value;
+- (void)removeScoreObject:(Scores *)value;
+- (void)addScore:(NSSet *)values;
+- (void)removeScore:(NSSet *)values;
 
 @end
