@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:sciencePack/sciencePack.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:noAdvertisements/noAdvertisements.xcodeproj">
    </FileRef>
    <FileRef

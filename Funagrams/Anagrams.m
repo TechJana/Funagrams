@@ -13,10 +13,10 @@
 
 @implementation Anagrams
 
-@dynamic anagramId;
-@dynamic answerText;
-@dynamic questionText;
-@dynamic categories;
-@dynamic games;
+@synthesize anagramId;
+@synthesize answerText;
+@synthesize questionText;
+@synthesize categories;
+@synthesize games;
 
 @end

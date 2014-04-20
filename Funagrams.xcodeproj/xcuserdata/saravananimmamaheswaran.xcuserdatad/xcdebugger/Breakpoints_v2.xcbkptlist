@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Funagrams/GameViewController.m"
-            timestampString = "419040477.376762"
+            timestampString = "419658140.858059"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "303"
-            endingLineNumber = "303"
+            startingLineNumber = "289"
+            endingLineNumber = "289"
             landmarkName = "-doScramble:"
             landmarkType = "5">
          </BreakpointContent>

@@ -15,11 +15,11 @@
 
 @implementation Games
 
-@dynamic gameId;
-@dynamic maxScore;
-@dynamic anagram;
-@dynamic level;
-@dynamic mode;
-@dynamic score;
+@synthesize gameId;
+@synthesize maxScore;
+@synthesize anagram;
+@synthesize level;
+@synthesize mode;
+@synthesize score;
 
 @end

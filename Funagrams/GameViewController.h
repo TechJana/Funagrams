@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ViewController.h"
-#import "Anagram.h"
+#import "ExtendedAnagram.h"
 #import <QuartzCore/QuartzCore.h>
 #import <iAd/iAd.h>
 #import "GCHelper.h"
@@ -37,7 +37,7 @@
     IBOutlet UILabel *labelIncorrectResult;
     
     ScoreBoard *scoreBoard;
-    Anagram *currentAnagram;
+    ExtendedAnagram *currentAnagram;
     Games *currentGamesFromModel;
     //Anagrams *currentAnagramsFromModel;
     //Levels *currentLevelsFromModel;
@@ -47,8 +47,10 @@
     
     NSMutableArray *buttonQuestions;
     NSMutableArray *buttonResults;
-    NSMutableArray *imageQuestions;
-    NSMutableArray *imageResults;
+    NSMutableDictionary *imageQuestions;
+    NSMutableDictionary *imageResults;
+    NSMutableArray *imageHolderQuestions, *imageHolderResults;
+    NSMutableArray *tiles;
     int selectedQuestionImageIndex;
     CGPoint selectedQuestionImageOriginalPosition;
     
@@ -58,6 +60,8 @@
     int questionMaxLength;
     
     int hintButtonChar;
+    
+    int imageSpacingWidth;
 }
 
 - (IBAction) buttonHint_click:(id)sender;

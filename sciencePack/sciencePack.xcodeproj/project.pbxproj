@@ -7,39 +7,39 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		1222FD9018F3B94400FF64A1 /* noAdvertisements */ = {isa = PBXFileReference; explicitFileType = folder; includeInIndex = 0; path = noAdvertisements; sourceTree = BUILT_PRODUCTS_DIR; };
-		1222FD9418F3B94400FF64A1 /* ContentInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ContentInfo.plist; sourceTree = "<group>"; };
+		122BD04018FA37B800D673A3 /* sciencePack */ = {isa = PBXFileReference; explicitFileType = folder; includeInIndex = 0; path = sciencePack; sourceTree = BUILT_PRODUCTS_DIR; };
+		122BD04418FA37B800D673A3 /* ContentInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ContentInfo.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
-		1222FD8918F3B94400FF64A1 = {
+		122BD03918FA37B800D673A3 = {
 			isa = PBXGroup;
 			children = (
-				1222FD9218F3B94400FF64A1 /* noAdvertisements */,
-				1222FD9118F3B94400FF64A1 /* Products */,
+				122BD04218FA37B800D673A3 /* sciencePack */,
+				122BD04118FA37B800D673A3 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		1222FD9118F3B94400FF64A1 /* Products */ = {
+		122BD04118FA37B800D673A3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1222FD9018F3B94400FF64A1 /* noAdvertisements */,
+				122BD04018FA37B800D673A3 /* sciencePack */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1222FD9218F3B94400FF64A1 /* noAdvertisements */ = {
+		122BD04218FA37B800D673A3 /* sciencePack */ = {
 			isa = PBXGroup;
 			children = (
-				1222FD9318F3B94400FF64A1 /* Supporting Files */,
+				122BD04318FA37B800D673A3 /* Supporting Files */,
 			);
-			path = noAdvertisements;
+			path = sciencePack;
 			sourceTree = "<group>";
 		};
-		1222FD9318F3B94400FF64A1 /* Supporting Files */ = {
+		122BD04318FA37B800D673A3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				1222FD9418F3B94400FF64A1 /* ContentInfo.plist */,
+				122BD04418FA37B800D673A3 /* ContentInfo.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -47,49 +47,49 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1222FD8F18F3B94400FF64A1 /* noAdvertisements */ = {
+		122BD03F18FA37B800D673A3 /* sciencePack */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1222FD9718F3B94400FF64A1 /* Build configuration list for PBXNativeTarget "noAdvertisements" */;
+			buildConfigurationList = 122BD04718FA37B800D673A3 /* Build configuration list for PBXNativeTarget "sciencePack" */;
 			buildPhases = (
-				1222FD8E18F3B94400FF64A1 /* Resources */,
+				122BD03E18FA37B800D673A3 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = noAdvertisements;
-			productName = noAdvertisements;
-			productReference = 1222FD9018F3B94400FF64A1 /* noAdvertisements */;
+			name = sciencePack;
+			productName = sciencePack;
+			productReference = 122BD04018FA37B800D673A3 /* sciencePack */;
 			productType = "com.apple.product-type.in-app-purchase-content";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		1222FD8A18F3B94400FF64A1 /* Project object */ = {
+		122BD03A18FA37B800D673A3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Pluggables;
 			};
-			buildConfigurationList = 1222FD8D18F3B94400FF64A1 /* Build configuration list for PBXProject "noAdvertisements" */;
+			buildConfigurationList = 122BD03D18FA37B800D673A3 /* Build configuration list for PBXProject "sciencePack" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 1222FD8918F3B94400FF64A1;
-			productRefGroup = 1222FD9118F3B94400FF64A1 /* Products */;
+			mainGroup = 122BD03918FA37B800D673A3;
+			productRefGroup = 122BD04118FA37B800D673A3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1222FD8F18F3B94400FF64A1 /* noAdvertisements */,
+				122BD03F18FA37B800D673A3 /* sciencePack */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		1222FD8E18F3B94400FF64A1 /* Resources */ = {
+		122BD03E18FA37B800D673A3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -99,7 +99,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		1222FD9518F3B94400FF64A1 /* Debug */ = {
+		122BD04518FA37B800D673A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -133,7 +133,7 @@
 			};
 			name = Debug;
 		};
-		1222FD9618F3B94400FF64A1 /* Release */ = {
+		122BD04618FA37B800D673A3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -161,28 +161,24 @@
 			};
 			name = Release;
 		};
-		1222FD9818F3B94400FF64A1 /* Debug */ = {
+		122BD04818FA37B800D673A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = noAdvertisements/ContentInfo.plist;
+				INFOPLIST_FILE = sciencePack/ContentInfo.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/InAppPurchaseContent";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Debug;
 		};
-		1222FD9918F3B94400FF64A1 /* Release */ = {
+		122BD04918FA37B800D673A3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = noAdvertisements/ContentInfo.plist;
+				INFOPLIST_FILE = sciencePack/ContentInfo.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/InAppPurchaseContent";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
-				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				WRAPPER_EXTENSION = "";
 			};
 			name = Release;
@@ -190,25 +186,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1222FD8D18F3B94400FF64A1 /* Build configuration list for PBXProject "noAdvertisements" */ = {
+		122BD03D18FA37B800D673A3 /* Build configuration list for PBXProject "sciencePack" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1222FD9518F3B94400FF64A1 /* Debug */,
-				1222FD9618F3B94400FF64A1 /* Release */,
+				122BD04518FA37B800D673A3 /* Debug */,
+				122BD04618FA37B800D673A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1222FD9718F3B94400FF64A1 /* Build configuration list for PBXNativeTarget "noAdvertisements" */ = {
+		122BD04718FA37B800D673A3 /* Build configuration list for PBXNativeTarget "sciencePack" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1222FD9818F3B94400FF64A1 /* Debug */,
-				1222FD9918F3B94400FF64A1 /* Release */,
+				122BD04818FA37B800D673A3 /* Debug */,
+				122BD04918FA37B800D673A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 1222FD8A18F3B94400FF64A1 /* Project object */;
+	rootObject = 122BD03A18FA37B800D673A3 /* Project object */;
 }
