@@ -64,13 +64,13 @@ static NSManagedObjectContext *managedObjectContext()
     return context;
 }
 
-int main(int argc, const char * argv[])
+static void saveDataToDatabase()
 {
-
+    
     @autoreleasepool {
         // Create the managed object context
         NSManagedObjectContext *context = managedObjectContext();
-
+        
         // Custom code here...
         // Save the managed object context
         NSError *error = nil;
@@ -78,14 +78,14 @@ int main(int argc, const char * argv[])
             NSLog(@"Error while saving %@", ([error localizedDescription] != nil) ? [error localizedDescription] : @"Unknown Error");
             exit(1);
         }
-
+        
         NSError* err = nil;
         int indexAnagram;
         NSString* dataPath = [[NSBundle mainBundle] pathForResource:@"AnagramsData" ofType:@"json"];
         NSArray* AnagramsData = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:dataPath]
                                                                 options:kNilOptions
                                                                   error:&err];
-        NSLog(@"Imported Banks: %@", AnagramsData);
+        NSLog(@"Imported Anagrams: %@", AnagramsData);
         
         NSMutableDictionary *dataModes = [[NSMutableDictionary alloc] init];
         NSMutableDictionary *dataLevels = [[NSMutableDictionary alloc] init];
@@ -137,11 +137,11 @@ int main(int argc, const char * argv[])
                 categoryExists = FALSE;
             }
             anagrams = [NSEntityDescription
-                                  insertNewObjectForEntityForName:@"Anagrams"
-                                  inManagedObjectContext:context];
+                        insertNewObjectForEntityForName:@"Anagrams"
+                        inManagedObjectContext:context];
             games = [NSEntityDescription
-                            insertNewObjectForEntityForName:@"Games"
-                            inManagedObjectContext:context];
+                     insertNewObjectForEntityForName:@"Games"
+                     inManagedObjectContext:context];
             
             modes.modeId = [obj objectForKey:@"modesModeId"];
             modes.modeDescription = [obj objectForKey:@"modesModeDescription"];
@@ -158,9 +158,6 @@ int main(int argc, const char * argv[])
             anagrams.answerText = [obj objectForKey:@"anagramsAnswerText"];
             
             games.gameId = [obj objectForKey:@"gamesGameId"];
-            //games.modeId = [obj objectForKey:@"gamesModeId"];
-            //games.levelId = [obj objectForKey:@"gamesLevelId"];
-            //games.anagramId = [obj objectForKey:@"anagramsAnagramsId"];
             games.maxScore = [obj objectForKey:@"anagramsMaxScore"];
             
             [modes addGamesObject:games];
@@ -173,7 +170,7 @@ int main(int argc, const char * argv[])
             games.level = levels;
             games.anagram = anagrams;
             games.score = nil;
-
+            
             if (!modeExists) {
                 [dataModes setObject:modes forKey:[obj objectForKey:@"modesModeId"]];
             }
@@ -192,59 +189,6 @@ int main(int argc, const char * argv[])
             }
         }
         
-        /*[AnagramsData enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            Modes *modes = [NSEntityDescription
-                            insertNewObjectForEntityForName:@"Modes"
-                            inManagedObjectContext:context];
-            Levels *levels = [NSEntityDescription
-                              insertNewObjectForEntityForName:@"Levels"
-                              inManagedObjectContext:context];
-            Categories *categories = [NSEntityDescription
-                                      insertNewObjectForEntityForName:@"Categories"
-                                      inManagedObjectContext:context];
-            Anagrams *anagrams = [NSEntityDescription
-                                  insertNewObjectForEntityForName:@"Anagrams"
-                                  inManagedObjectContext:context];
-            Games *games = [NSEntityDescription
-                            insertNewObjectForEntityForName:@"Games"
-                            inManagedObjectContext:context];
-            
-            modes.modeId = [obj objectForKey:@"modesModeId"];
-            modes.modeDescription = [obj objectForKey:@"modesModeDescription"];
-            modes.hintsPercentile = [obj objectForKey:@"modesHintsPercentile"];
-            
-            levels.levelId = [obj objectForKey:@"levelsLevelId"];
-            levels.levelDescription = [obj objectForKey:@"levelsLevelDescription"];
-            
-            categories.categoryId = [obj objectForKey:@"categoriesCategoryId"];
-            categories.categoryDescription = [obj objectForKey:@"categoriesCategoryDescription"];
-            
-            anagrams.anagramId = [obj objectForKey:@"anagramsAnagramId"];
-            anagrams.questionText = [obj objectForKey:@"anagramsQuestionText"];
-            anagrams.answerText = [obj objectForKey:@"anagramsAnswerText"];
-            
-            games.gameId = [obj objectForKey:@"gamesGameId"];
-            games.modeId = [obj objectForKey:@"gamesModeId"];
-            games.levelId = [obj objectForKey:@"gamesLevelId"];
-            games.anagramId = [obj objectForKey:@"anagramsAnagramsId"];
-            games.maxScore = [obj objectForKey:@"anagramsMaxScore"];
-            
-            modes.games = games;
-            levels.games = games;
-            anagrams.games = games;
-            [anagrams addCategoriesObject:categories];
-            
-            games.mode = modes;
-            games.level = levels;
-            games.anagram = anagrams;
-            games.score = nil;
-
-            NSError *error;
-            if (![context save:&error]) {
-                NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-            }
-        }];*/
-        
         // Test listing all FailedBankInfos from the store
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"Games"
@@ -255,6 +199,58 @@ int main(int argc, const char * argv[])
             NSLog(@"Name: %@", game);
         }
     }
+}
+
+static void readDataFromDatabase()
+{
+    
+    @autoreleasepool {
+        // Create the managed object context
+        NSManagedObjectContext *context = managedObjectContext();
+        
+        // Custom code here...
+        // Save the managed object context
+        NSError *error = nil;
+        if (![context save:&error]) {
+            NSLog(@"Error while saving %@", ([error localizedDescription] != nil) ? [error localizedDescription] : @"Unknown Error");
+            exit(1);
+        }
+        
+        NSEntityDescription *gamesEntity = [NSEntityDescription entityForName:@"Games" inManagedObjectContext:context];
+        NSFetchRequest *gamesFetchRequest = [[NSFetchRequest alloc] init];
+        [gamesFetchRequest setEntity:gamesEntity];
+        
+        NSArray *matchingGames = [context executeFetchRequest:gamesFetchRequest error:&error];
+        
+        NSLog(@"Games count: %lu ", (unsigned long)matchingGames.count);
+        
+        for (int index=0; index<matchingGames.count; index++)
+        {
+            NSInteger randomGameId = arc4random()% (matchingGames.count + 0);
+            //currentGamesFromModel = [NSEntityDescription insertNewObjectForEntityForName:@"Games" inManagedObjectContext:context];
+            
+            Games *currentGames = (Games*)[matchingGames objectAtIndex:randomGameId];
+            //NSLog(@"Current Game ID : %@", currentGames.gameId);
+            NSArray *categoryArray = [currentGames.anagram.categories allObjects];
+            Categories *category;
+            if (categoryArray.count > 0)
+            {
+                category = (Categories *)[categoryArray objectAtIndex:0];
+                NSLog(@"gameId-%@, modeId-%@, levelId-%@, categoryId-%@, anagramId-%@, question-%@, answer-%@", currentGames.gameId, currentGames.mode.modeId, currentGames.level.levelId, category.categoryId, currentGames.anagram.anagramId, currentGames.anagram.questionText, currentGames.anagram.answerText);
+            }
+            else
+            {
+                NSLog(@"gameId-%@, modeId-%@, levelId-%@, anagramId-%@, question-%@, answer-%@", currentGames.gameId, currentGames.mode.modeId, currentGames.level.levelId, currentGames.anagram.anagramId, currentGames.anagram.questionText, currentGames.anagram.answerText);
+            }
+        }
+    }
+}
+
+int main(int argc, const char * argv[])
+{
+    readDataFromDatabase();
+    //saveDataToDatabase();
+    
     return 0;
 }
 

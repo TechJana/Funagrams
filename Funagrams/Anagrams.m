@@ -2,7 +2,7 @@
 //  Anagrams.m
 //  Funagrams
 //
-//  Created by Saravanan ImmaMaheswaran on 4/12/14.
+//  Created by Saravanan ImmaMaheswaran on 4/20/14.
 //  Copyright (c) 2014 Pluggables. All rights reserved.
 //
 
@@ -13,10 +13,10 @@
 
 @implementation Anagrams
 
-@synthesize anagramId;
-@synthesize answerText;
-@synthesize questionText;
-@synthesize categories;
-@synthesize games;
+@dynamic anagramId;
+@dynamic answerText;
+@dynamic questionText;
+@dynamic categories;
+@dynamic games;
 
 @end
