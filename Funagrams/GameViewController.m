@@ -226,36 +226,13 @@
 
 - (IBAction)buttonScramble_click:(id)sender
 {
-    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-    [appDelegate playSoundFile:NSLocalizedString(@"SoundScrambleTileFileName", nil)];
+    if ([currentAnagram.questionRemaining stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length > 0) {
+        AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+        [appDelegate playSoundFile:NSLocalizedString(@"SoundScrambleTileFileName", nil)];
+    }
 
     //Scramble the letters in the Question
     currentAnagram.questionRemaining = [self doScramble:currentAnagram.questionRemaining];
-    /*
-    NSString *tempQuestion = [currentAnagram.questionRemaining copy];
-    
-    
-    CGSize screenSize = [rootView convertRect:[[UIScreen mainScreen] bounds] fromView:nil].size;
-    CGPoint orgin;
-    
-    orgin = CGPointMake((screenSize.width - ( currentAnagram.questionText.length * (imageSampleResult.frame.size.width + imageSpacingWidth) ) - imageSpacingWidth) / 2, 0);
-
-    //Load the scrambled letters on screen
-    for (int index=0; index<tempQuestion.length; index++)
-    {
-        NSString *thisChar = [NSString stringWithFormat:@"%c", [tempQuestion characterAtIndex:index]];
-
-        for (int indexTile=0; indexTile<tiles.count; indexTile++)
-        {
-            Tile *thisTile = [tiles objectAtIndex:indexTile];
-            if ([thisChar isEqual:thisTile.text])
-            {
-                thisTile.index = index;
-                // Moving X position with the required spacing
-                [thisTile.image setFrame:CGRectMake(orgin.x + ( index * (thisTile.image.frame.size.width + imageSpacingWidth) ), thisTile.image.frame.origin.y, thisTile.image.frame.size.width, thisTile.image.frame.size.height)];
-            }
-        }
-    }*/
 }
 
 
@@ -791,18 +768,6 @@
             AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
             [appDelegate playSoundFile:NSLocalizedString(@"SoundOhNoFileName", nil)];
             
-            labelIncorrectResult.text = NSLocalizedString(@"IncorrectAnswerText", nil);
-            labelIncorrectResult.hidden = NO;
-            CABasicAnimation *animation =
-            [CABasicAnimation animationWithKeyPath:@"position"];
-            [animation setDuration:0.05];
-            [animation setRepeatCount:4];
-            [animation setAutoreverses:YES];
-            [animation setFromValue:[NSValue valueWithCGPoint:
-                                     CGPointMake([labelIncorrectResult center].x, [labelIncorrectResult center].y- 5.0f)]];
-            [animation setToValue:[NSValue valueWithCGPoint:
-                                   CGPointMake([labelIncorrectResult center].x , [labelIncorrectResult center].y+ 5.0f)]];
-            //[[labelIncorrectResult layer] addAnimation:animation forKey:@"position"];
             return FALSE;
         }
     }
