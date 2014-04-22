@@ -22,5 +22,6 @@
 - (id) init;
 - (void) highlightTile;
 - (void) renderTile;
++ (NSMutableArray *) getTilesFor:(BOOL)isQuestion fromTilesArray:(NSMutableArray *)tiles;
 
 @end

@@ -71,4 +71,20 @@
     }
 }
 
++ (NSMutableArray *) getTilesFor:(BOOL)isQuestion fromTilesArray:(NSMutableArray *)tiles
+{
+    NSMutableArray *newTiles = [[NSMutableArray alloc] init];
+    
+    for (int index=0; index<tiles.count; index++)
+    {
+        Tile *thisTile = [tiles objectAtIndex:index];
+        if (thisTile.isQuestion == isQuestion)
+        {
+            [newTiles addObject:thisTile];
+        }
+    }
+    
+    return newTiles;
+}
+
 @end

@@ -66,6 +66,7 @@
     self.fetchedResultsController = nil;
     labelInvalidAnswer.hidden = YES;    // hide invalid answer in the start
     imageSpacingWidth = 0;  // spacing between tiles
+    rootView = [[[UIApplication sharedApplication] keyWindow] rootViewController].view;
     
     NSError *error;
 	if (![[self fetchedResultsController] performFetch:&error]) {
@@ -221,33 +222,40 @@
 {
     BOOL result;
     result = [self verifyResult];
-    
-    
 }
 
 - (IBAction)buttonScramble_click:(id)sender
 {
-    [self getQuestionRemaining];
-    
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     [appDelegate playSoundFile:NSLocalizedString(@"SoundScrambleTileFileName", nil)];
 
     //Scramble the letters in the Question
     currentAnagram.questionRemaining = [self doScramble:currentAnagram.questionRemaining];
+    /*
+    NSString *tempQuestion = [currentAnagram.questionRemaining copy];
     
-    //Load the scrambled letters as Buttons
-    [self loadQuestionRemaining];
     
-    CABasicAnimation *animation =
-    [CABasicAnimation animationWithKeyPath:@"position"];
-    [animation setDuration:0.03];
-    [animation setRepeatCount:4];
-    [animation setAutoreverses:YES];
-    [animation setFromValue:[NSValue valueWithCGPoint:
-                             CGPointMake([buttonScramble center].x - 15.0f, [buttonScramble center].y)]];
-    [animation setToValue:[NSValue valueWithCGPoint:
-                           CGPointMake([buttonScramble center].x + 15.0f, [buttonScramble center].y)]];
-    //[[buttonScramble layer] addAnimation:animation forKey:@"position"];
+    CGSize screenSize = [rootView convertRect:[[UIScreen mainScreen] bounds] fromView:nil].size;
+    CGPoint orgin;
+    
+    orgin = CGPointMake((screenSize.width - ( currentAnagram.questionText.length * (imageSampleResult.frame.size.width + imageSpacingWidth) ) - imageSpacingWidth) / 2, 0);
+
+    //Load the scrambled letters on screen
+    for (int index=0; index<tempQuestion.length; index++)
+    {
+        NSString *thisChar = [NSString stringWithFormat:@"%c", [tempQuestion characterAtIndex:index]];
+
+        for (int indexTile=0; indexTile<tiles.count; indexTile++)
+        {
+            Tile *thisTile = [tiles objectAtIndex:indexTile];
+            if ([thisChar isEqual:thisTile.text])
+            {
+                thisTile.index = index;
+                // Moving X position with the required spacing
+                [thisTile.image setFrame:CGRectMake(orgin.x + ( index * (thisTile.image.frame.size.width + imageSpacingWidth) ), thisTile.image.frame.origin.y, thisTile.image.frame.size.width, thisTile.image.frame.size.height)];
+            }
+        }
+    }*/
 }
 
 
@@ -284,6 +292,12 @@
 
 - (NSString*) doScramble:(NSString*)scrambledWord{
     NSString * result = @"";
+    NSMutableArray *questionTiles = [Tile getTilesFor:YES fromTilesArray:tiles];    //get all Question tiles
+    CGSize screenSize = [rootView convertRect:[[UIScreen mainScreen] bounds] fromView:nil].size;
+    CGPoint orgin;
+
+    orgin = CGPointMake((screenSize.width - ( currentAnagram.questionText.length * (imageSampleResult.frame.size.width + imageSpacingWidth) ) - imageSpacingWidth) / 2, 0);
+
     scrambledWord = [scrambledWord stringByReplacingOccurrencesOfString:@" " withString:@""];
     //scrambledWord = [scrambledWord uppercaseString];
     int length = [scrambledWord length];
@@ -299,11 +313,23 @@
     
     for(int i = length - 1; i >= 0; i--){
         int j = arc4random() % (i + 1);
-        //NSLog(@"%d %d", i, j);
-        //swap at positions i and j
-        NSString * str_i = [letters objectAtIndex:i];
-        [letters replaceObjectAtIndex:i withObject:[letters objectAtIndex:j]];
-        [letters replaceObjectAtIndex:j withObject:str_i];
+
+        if (i != j)
+        {
+            //swap at positions i and j
+            NSString * str_i = [letters objectAtIndex:i];
+            [letters replaceObjectAtIndex:i withObject:[letters objectAtIndex:j]];
+            [letters replaceObjectAtIndex:j withObject:str_i];
+            
+            // swap tile index & location
+            Tile *iTile = [questionTiles objectAtIndex:i];
+            Tile *jTile = [questionTiles objectAtIndex:j];
+            int tempIndex = iTile.index;
+            iTile.index = jTile.index;
+            jTile.index = tempIndex;
+            [iTile.image setFrame:CGRectMake(orgin.x + ( iTile.index * (iTile.image.frame.size.width + imageSpacingWidth) ), iTile.image.frame.origin.y, iTile.image.frame.size.width, iTile.image.frame.size.height)];
+            [jTile.image setFrame:CGRectMake(orgin.x + ( jTile.index * (jTile.image.frame.size.width + imageSpacingWidth) ), jTile.image.frame.origin.y, jTile.image.frame.size.width, jTile.image.frame.size.height)];
+        }
     }
     NSLog(@"NEW SHUFFLED LETTERS %@", letters);
     
@@ -471,9 +497,6 @@
         scores = [NSEntityDescription
                   insertNewObjectForEntityForName:@"Scores"
                   inManagedObjectContext:context];
-        //scores.gameId = games.gameId;
-        //scores.game = [[Games alloc] init];
-        scores.game = [games copy];
         scores.score = [NSNumber numberWithInt:scoreBoard.currentGameScore];
         scores.scoreId = [NSNumber numberWithLongLong:scoreId];
         scores.playedOn = [NSDate date];
@@ -482,7 +505,10 @@
         if (games.score == nil) {
             games.score = [[NSSet alloc] init];
         }
-        [games.score setValue:scores forKey:[NSString stringWithFormat:@"%d", games.score.count+1]];
+        NSMutableSet *scoreSet = [NSMutableSet setWithSet:games.score];
+        [scoreSet addObject:scores];
+        games.score = [NSSet setWithArray:[scoreSet allObjects]];
+        //[games.score setValue:scores forKey:[NSString stringWithFormat:@"%d", games.score.count+1]];
         
         if (![context save:&error])
         {
@@ -558,7 +584,7 @@
 {
     UIImageView *imageIndex;
     int indexImage=0;
-    CGSize screenSize = [[[[UIApplication sharedApplication] keyWindow] rootViewController].view convertRect:[[UIScreen mainScreen] bounds] fromView:nil].size;
+    CGSize screenSize = [rootView convertRect:[[UIScreen mainScreen] bounds] fromView:nil].size;
     CGPoint orgin;
     
     imageHolderQuestions = [[NSMutableArray alloc] init];
@@ -614,75 +640,6 @@
     
     imageSampleQuestion.hidden = YES;
     imageSampleResult.hidden = YES;
-}
-
-- (void) loadQuestionResultImages
-{
-    UIImageView *imageIndex;
-    int indexImage=0, imageCount=0;
-    
-    imageQuestions = [[NSMutableDictionary alloc] init];
-    imageResults = [[NSMutableDictionary alloc] init];
-    
-    imageCount = questionMaxLength;
-    
-    // CREATE QUESTION HOLDER IMAGES
-    // Archive the button to unarchive a copy every time
-    NSData *archivedData = [NSKeyedArchiver archivedDataWithRootObject: imageSampleResult];
-    
-    for (indexImage=0; indexImage<currentAnagram.answerText.length; indexImage++) {
-        // Unarchive a copy of the Archived button
-        imageIndex = [NSKeyedUnarchiver unarchiveObjectWithData: archivedData];
-        
-        // Moving X position with the required spacing
-        imageIndex.frame = CGRectMake(imageIndex.frame.origin.x + ( indexImage * (imageIndex.frame.size.width + imageSpacingWidth) ), imageIndex.frame.origin.y, imageIndex.frame.size.width, imageIndex.frame.size.height);
-        
-        // Reset the value of the button to empty string to load the required question
-        // note: replace "ImageUtils" with the class where you pasted the method above
-        UIImage *img = [ImageLabelView drawText:@""
-                                        inImage:[UIImage imageNamed:@"TileHolderImage"]
-                                        atPoint:CGPointMake(-1, -1)];
-        [imageIndex setImage:img];
-        imageIndex.accessibilityLabel = @"";
-        imageIndex.hidden = NO;
-        
-        [self.view addSubview:imageIndex];
-        
-        // Add the new button to the array for future use
-        [imageResults setValue:imageIndex forKey:[NSString stringWithFormat:@"%d", imageQuestions.count+1]];
-    }
-
-    // CREATE ANSWER HOLDER IMAGES
-    // Archive the button to unarchive a copy every time
-    archivedData = [NSKeyedArchiver archivedDataWithRootObject: imageSampleQuestion];
-    NSString *tileText = nil;
-    
-    for (indexImage=0; indexImage<currentAnagram.questionText.length; indexImage++) {
-        // Unarchive a copy of the Archived button
-        imageIndex = [NSKeyedUnarchiver unarchiveObjectWithData: archivedData];
-        
-        // Moving X position with the required spacing
-        imageIndex.frame = CGRectMake(imageIndex.frame.origin.x + ( indexImage * (imageIndex.frame.size.width + imageSpacingWidth) ), imageIndex.frame.origin.y, imageIndex.frame.size.width, imageIndex.frame.size.height);
-        
-        tileText = [NSString stringWithFormat:@"%c", [currentAnagram.questionText characterAtIndex:indexImage]];
-        
-        // Reset the value of the button to empty string to load the required question
-        // note: replace "ImageUtils" with the class where you pasted the method above
-        UIImage *img = [ImageLabelView drawText:tileText
-                                        inImage:[UIImage imageNamed:@"TileImage"]
-                                        atPoint:CGPointMake(-1, -1)];
-        [imageIndex setImage:img];
-        imageIndex.accessibilityLabel = @"";
-        imageIndex.hidden = NO;
-        
-        [self.view addSubview:imageIndex];
-        
-        // Add the new button to the array for future use
-        [imageQuestions setValue:imageIndex forKey:tileText];
-    }
-    
-    imageSampleQuestion.hidden = true;
-    imageSampleResult.hidden = true;
 }
 
 - (void) setButtonBorder:(UIButton *)buttonThis
@@ -758,21 +715,26 @@
     labelLevel.text = currentAnagram.levelDescription;  // load level description
 }
 
-- (void)getQuestionRemaining
+- (void) tileMovedToIndexIn:(int)index inQuestion:(BOOL)isToQuestion fromIndex:(int)fromIndex fromQuestion:(BOOL)isFromQuestion fromTileIndex:(int)tileIndex
 {
-    int indexButton;
-    NSString *questionValue=@"";
-    UIButton *buttonThis;
+    Tile *thisTile = (Tile *)[tiles objectAtIndex:tileIndex];
+
+    thisTile.index = index;
     
-    // concatenate the values in result button
-    for (indexButton=0; indexButton<buttonQuestions.count; indexButton++) {
-        buttonThis = (UIButton *)[buttonQuestions objectAtIndex:indexButton];
-        if (![buttonThis.titleLabel.text  isEqual: @""] && buttonThis.titleLabel.text != nil) {
-            questionValue = [questionValue stringByAppendingString:buttonThis.titleLabel.text];
-        }
+    if (isToQuestion)
+    {
+        // write code to move this alphabet to Question Remaining phrase
+        thisTile.isQuestion = YES;
+        currentAnagram.questionRemaining = [currentAnagram.questionRemaining stringByReplacingCharactersInRange:NSMakeRange(index, 1) withString:thisTile.text];
+        currentAnagram.userResult = [currentAnagram.userResult stringByReplacingCharactersInRange:NSMakeRange(fromIndex, 1) withString:@" "];
     }
-    
-    currentAnagram.questionRemaining = questionValue;
+    else
+    {
+        // write code to move this alphabet to User Answer phrase
+        thisTile.isQuestion = NO;
+        currentAnagram.userResult = [currentAnagram.userResult stringByReplacingCharactersInRange:NSMakeRange(index, 1) withString:thisTile.text];
+        currentAnagram.questionRemaining = [currentAnagram.questionRemaining stringByReplacingCharactersInRange:NSMakeRange(fromIndex, 1) withString:@" "];
+    }
 }
 
 - (BOOL)verifyResult
@@ -852,7 +814,7 @@
             currentAnagram.hintsProvided = 0;
         }
         else {
-            [self getQuestionRemaining];
+            //[self getQuestionRemaining];
             // if there is no character in the question, then let the user know they haven't found the answer yet
             if ([currentAnagram.questionRemaining stringByReplacingOccurrencesOfString:@" " withString:@""].length == 0) {
                 labelInvalidAnswer.hidden = NO;
@@ -1007,23 +969,27 @@
 {
     NSLog(@"Play again button was selected.");
     
-    for (int indexCount=0; indexCount<buttonQuestions.count; indexCount++) {
-        UIButton *thisButton = [buttonQuestions objectAtIndex:indexCount];
-        //[thisButton setTitle:@" " forState:UIControlStateNormal];
-        //thisButton.hidden = NO;
-        [thisButton removeFromSuperview];
+    for (int indexCount=0; indexCount<imageHolderQuestions.count; indexCount++) {
+        UIImageView *thisHolderImage = [imageHolderQuestions objectAtIndex:indexCount];
+        [thisHolderImage removeFromSuperview];
     }
-    for (int indexCount=0; indexCount<buttonResults.count; indexCount++) {
-        UIButton *thisButton = [buttonResults objectAtIndex:indexCount];
-        //[thisButton setTitle:@" " forState:UIControlStateNormal];
-        //thisButton.hidden = NO;
-        [thisButton removeFromSuperview];
+    for (int indexCount=0; indexCount<imageHolderResults.count; indexCount++) {
+        UIImageView *thisHolderImage = [imageHolderResults objectAtIndex:indexCount];
+        [thisHolderImage removeFromSuperview];
+    }
+    for (int indexCount=0; indexCount<tiles.count; indexCount++) {
+        Tile *thisTile = [tiles objectAtIndex:indexCount];
+        [thisTile.image removeFromSuperview];
     }
     labelScore.text = @"0";
     buttonHint.enabled = TRUE;
     buttonQuestions = nil;
     buttonResults = nil;
-    [self loadQuestionResultImages];
+    currentAnagram.questionRemaining = [currentAnagram.questionText copy];
+    currentAnagram.userResult = [NSString stringWithFormat:@"%*s", currentAnagram.answerText.length, ""];
+    currentAnagram.hintsProvided = 0;
+    currentAnagram.maxHintCount = currentAnagram.questionText.length * [currentAnagram.hintsPercentile floatValue];
+    [self loadQuestionResultHolderImages];
     [self loadAnagram];
 }
 
@@ -1032,23 +998,24 @@
     NSLog(@"Next Level button was selected.");
     
     [self getAnagramForModeAndLevel:[NSNumber numberWithInt:currentGameMode] levelId:[NSNumber numberWithInt:[currentAnagram.levelId intValue]+1]];
-    for (int indexCount=0; indexCount<buttonQuestions.count; indexCount++) {
-        UIButton *thisButton = [buttonQuestions objectAtIndex:indexCount];
-        //[thisButton setTitle:@" " forState:UIControlStateNormal];
-        //thisButton.hidden = NO;
-        [thisButton removeFromSuperview];
+    
+    for (int indexCount=0; indexCount<imageHolderQuestions.count; indexCount++) {
+        UIImageView *thisHolderImage = [imageHolderQuestions objectAtIndex:indexCount];
+        [thisHolderImage removeFromSuperview];
     }
-    for (int indexCount=0; indexCount<buttonResults.count; indexCount++) {
-        UIButton *thisButton = [buttonResults objectAtIndex:indexCount];
-        //[thisButton setTitle:@" " forState:UIControlStateNormal];
-        //thisButton.hidden = NO;
-        [thisButton removeFromSuperview];
+    for (int indexCount=0; indexCount<imageHolderResults.count; indexCount++) {
+        UIImageView *thisHolderImage = [imageHolderResults objectAtIndex:indexCount];
+        [thisHolderImage removeFromSuperview];
+    }
+    for (int indexCount=0; indexCount<tiles.count; indexCount++) {
+        Tile *thisTile = [tiles objectAtIndex:indexCount];
+        [thisTile.image removeFromSuperview];
     }
     labelScore.text = @"0";
     buttonHint.enabled = TRUE;
     buttonQuestions = nil;
     buttonResults = nil;
-    [self loadQuestionResultImages];
+    [self loadQuestionResultHolderImages];
     [self loadAnagram];
 }
 
@@ -1115,10 +1082,10 @@
         Tile *tileIndex = [tiles objectAtIndex:indexCount];
         UIImageView *imageIndex = tileIndex.image;
         if (CGRectContainsPoint(imageIndex.frame, touchPoint)) {
-            //[self animateFirstTouchAtPoint:touchPoint forView:imageIndex];
             [self.view bringSubviewToFront:imageIndex];
             selectedQuestionImageIndex = indexCount;
             selectedQuestionImageOriginalPosition = CGPointMake(imageIndex.frame.origin.x, imageIndex.frame.origin.y);
+            [self animateFirstTouchAtPoint:touchPoint forView:imageIndex];
             NSLog([NSString stringWithFormat:@"Selected Image index: %d", selectedQuestionImageIndex]);
             AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
             [appDelegate playSoundFile:NSLocalizedString(@"SoundPickTileFileName", nil)];
@@ -1188,15 +1155,19 @@
         if (CGRectContainsPoint(imageResult.frame, position)) {
             if (![self isTileOnTopOfAnother:position]) {
                 Tile *tileIndex = [tiles objectAtIndex:selectedQuestionImageIndex];
+                [self tileMovedToIndexIn:indexCount inQuestion:NO fromIndex:tileIndex.index fromQuestion:tileIndex.isQuestion fromTileIndex:selectedQuestionImageIndex];
                 UIImageView *imageIndex = tileIndex.image;
-                imageIndex.center = imageResult.center;
                 selectedQuestionImageIndex = -1;
                 selectedQuestionImageOriginalPosition = CGPointMake(0, 0);
-                //[self animateView:imageIndex toPosition: position];
+                [self animateView:imageIndex toPosition: position];
+                imageIndex.center = imageResult.center;
                 NSLog([NSString stringWithFormat:@"End index %d pos in result %d", selectedQuestionImageIndex, indexCount]);
                 
                 AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
                 [appDelegate playSoundFile:NSLocalizedString(@"SoundPlaceTileFileName", nil)];
+                
+                BOOL result;
+                result = [self verifyResult];
             }
             break;
         }
@@ -1209,15 +1180,19 @@
             if (CGRectContainsPoint(imageResult.frame, position)) {
                 if (![self isTileOnTopOfAnother:position]) {
                     Tile *tileIndex = [tiles objectAtIndex:selectedQuestionImageIndex];
+                    [self tileMovedToIndexIn:indexCount inQuestion:YES fromIndex:tileIndex.index fromQuestion:tileIndex.isQuestion fromTileIndex:selectedQuestionImageIndex];
                     UIImageView *imageIndex = tileIndex.image;
-                    imageIndex.center = imageResult.center;
                     selectedQuestionImageIndex = -1;
                     selectedQuestionImageOriginalPosition = CGPointMake(0, 0);
-                    //[self animateView:imageIndex toPosition: position];
+                    [self animateView:imageIndex toPosition: position];
+                    imageIndex.center = imageResult.center;
                     NSLog([NSString stringWithFormat:@"End index %d pos in result %d", selectedQuestionImageIndex, indexCount]);
                     
                     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
                     [appDelegate playSoundFile:NSLocalizedString(@"SoundPlaceTileFileName", nil)];
+                    
+                    BOOL result;
+                    result = [self verifyResult];
                 }
                 break;
             }
@@ -1227,14 +1202,17 @@
     if (selectedQuestionImageIndex != -1) {
         Tile *tileIndex = [tiles objectAtIndex:selectedQuestionImageIndex];
         UIImageView *imageIndex = tileIndex.image;
-        [imageIndex setFrame:CGRectMake(selectedQuestionImageOriginalPosition.x, selectedQuestionImageOriginalPosition.y, imageIndex.frame.size.width, imageIndex.frame.size.height)];
         selectedQuestionImageIndex = -1;
+        [self animateView:imageIndex toPosition: position];
+        [imageIndex setFrame:CGRectMake(selectedQuestionImageOriginalPosition.x, selectedQuestionImageOriginalPosition.y, imageIndex.frame.size.width, imageIndex.frame.size.height)];
         selectedQuestionImageOriginalPosition = CGPointMake(0, 0);
-        //[self animateView:imageIndex toPosition: position];
         NSLog([NSString stringWithFormat:@"End index %d pos, back to original", selectedQuestionImageIndex]);
         
         AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
         [appDelegate playSoundFile:NSLocalizedString(@"SoundPlaceTileFileName", nil)];
+        
+        BOOL result;
+        result = [self verifyResult];
     }
 }
 

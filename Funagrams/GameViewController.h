@@ -62,6 +62,8 @@
     int hintButtonChar;
     
     int imageSpacingWidth;
+    
+    UIView *rootView;
 }
 
 - (IBAction) buttonHint_click:(id)sender;
