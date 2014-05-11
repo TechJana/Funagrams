@@ -2,7 +2,7 @@
 //  Games.h
 //  Funagrams
 //
-//  Created by Saravanan ImmaMaheswaran on 4/20/14.
+//  Created by Saravanan ImmaMaheswaran on 5/10/14.
 //  Copyright (c) 2014 Pluggables. All rights reserved.
 //
 
@@ -15,6 +15,7 @@
 
 @property (nonatomic, retain) NSNumber * gameId;
 @property (nonatomic, retain) NSNumber * maxScore;
+@property (nonatomic, retain) NSNumber * highScore;
 @property (nonatomic, retain) Anagrams *anagram;
 @property (nonatomic, retain) Levels *level;
 @property (nonatomic, retain) Modes *mode;

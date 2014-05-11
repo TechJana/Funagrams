@@ -13,9 +13,12 @@
 #import "GameViewController.h"
 #import "AHAlertView.h"
 #import "LevelHeaderViewController.h"
+#import "Levels.h"
 
-@interface ViewController () {
+@interface ViewController ()
+{
     NSNumberFormatter * _priceFormatter;
+    NSManagedObjectContext *context;
 }
 
 @end
@@ -35,6 +38,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	// Do any additional setup after loading the view.
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    context = [appDelegate managedObjectContext];
+
 	// Do any additional setup after loading the view, typically from a nib.
     [self setModalPresentationStyle:UIModalPresentationCurrentContext];
 
@@ -194,33 +201,123 @@
     [self showInAppProducts];
 }
 
+- (NSMutableArray *)getLevelsFromMode:(NSNumber*)numModeId
+{
+    NSMutableArray *menus = [[NSMutableArray alloc] init];
+    NSEntityDescription *levelsEntity = [NSEntityDescription entityForName:@"Levels" inManagedObjectContext:context];
+    NSFetchRequest *levelsFetchRequest = [[NSFetchRequest alloc] init];
+    [levelsFetchRequest setEntity:levelsEntity];
+
+    //NSPredicate *levelsPredicate = [NSPredicate predicateWithFormat:@"ANY games.mode.modeId == %@", numModeId];
+    NSPredicate *levelsPredicate = [NSPredicate predicateWithFormat:@"SUBQUERY(games, $games, ANY $games.mode.modeId == %@).@count > 0", numModeId];
+    [levelsFetchRequest setPredicate:levelsPredicate];
+    
+    NSError *error;
+    
+    NSArray *matchingLevelsforMode = [context executeFetchRequest:levelsFetchRequest error:&error];
+    
+    NSLog(@"ModeID: %@ - Levels for this mode: %lu ", numModeId,(unsigned long)matchingLevelsforMode.count);
+    
+    RNGridMenuItem *thisMenuItem = nil;
+    UIImage *thisImage = nil;
+    BOOL previousLevelLocked = YES;
+    int previousLevelLockedCount = 0;
+    NSSortDescriptor *sortHighScore = [NSSortDescriptor sortDescriptorWithKey:@"highScore" ascending:NO];
+    for (int index=0; index<matchingLevelsforMode.count; index++)
+    {
+        Levels *thisLevel = (Levels*)[matchingLevelsforMode objectAtIndex:index];
+        NSLog(@"Current Level ID : %@", thisLevel.levelId);
+        BOOL canEnableLevel = NO;
+        NSMutableArray *thisGames = nil, *thisScores = nil;
+        Games *thisGame = nil;
+        thisGames = [[thisLevel.games allObjects] mutableCopy];
+        if (thisGames.count > 0) {
+            //thisGame = [thisGames objectAtIndex:0];
+            NSMutableOrderedSet *gamesSet = [NSMutableOrderedSet orderedSetWithSet:thisLevel.games];
+            [gamesSet sortUsingDescriptors:@[sortHighScore]];
+            thisGame = (Games *)[gamesSet objectAtIndex:0];
+            thisScores = [[thisGame.score allObjects] mutableCopy];
+        }
+        
+        if (thisScores != nil  &&  thisScores.count > 0)
+        {
+            canEnableLevel = YES;
+            Scores *thisScore = [thisScores objectAtIndex:0];
+            float percentile = [thisScore.score intValue]/[thisGame.maxScore intValue];
+            if (percentile < 0.33)
+            {
+                thisImage = [UIImage imageNamed:@"LevelNoStarImage"];
+            }
+            else if (percentile < 0.66)
+            {
+                thisImage = [UIImage imageNamed:@"LevelOneStarImage"];
+            }
+            else if (percentile < 0.99)
+            {
+                thisImage = [UIImage imageNamed:@"LevelTwoStarImage"];
+            }
+            else
+            {
+                thisImage = [UIImage imageNamed:@"LevelThreeStarImage"];
+            }
+            previousLevelLocked = NO;
+            canEnableLevel = YES;
+        }
+        else
+        {
+            if (previousLevelLocked  &&  index>0)
+            {
+                thisImage = [UIImage imageNamed:@"LevelLockImage"];
+            }
+            else
+            {
+                thisImage = [UIImage imageNamed:@"LevelNoStarImage"];
+                previousLevelLocked = NO;
+                canEnableLevel = YES;
+                previousLevelLockedCount++;
+            }
+        }
+        
+        if (previousLevelLockedCount > 1)
+        {
+            previousLevelLocked = YES;
+        }
+
+        if (canEnableLevel)
+        {
+            thisMenuItem = [[RNGridMenuItem alloc] initWithImage:thisImage title:[NSString stringWithFormat:@"%d", [thisLevel.levelId intValue]] action:^{
+                [self goToGameLevel:_gameMode level:[thisLevel.levelId intValue]];
+            }];
+        }
+        else
+        {
+            thisMenuItem = [[RNGridMenuItem alloc] initWithImage:thisImage title:[NSString stringWithFormat:@"%d", [thisLevel.levelId intValue]] action:nil];
+        }
+
+        [menus addObject:thisMenuItem];
+    }
+    
+    return menus;
+}
 
 - (void)showLevelPopUp
 {
-    NSInteger numberOfOptions = 18;
-    NSArray *items = @[
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelNoStarImage"] title:@"1" action:^{
-                           [self goToGameLevel:kGameModeBeginner level:1];
-                       }],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelOneStarImage"] title:@"2" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelTwoStarImage"] title:@"3" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelThreeStarImage"] title:@"4" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelLockImage"] title:@"5" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelThreeStarImage"] title:@"6" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelThreeStarImage"] title:@"7" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelThreeStarImage"] title:@"8" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelThreeStarImage"] title:@"9" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelThreeStarImage"] title:@"10" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelThreeStarImage"] title:@"11" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelThreeStarImage"] title:@"12" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelThreeStarImage"] title:@"13" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelThreeStarImage"] title:@"14" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelThreeStarImage"] title:@"15" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelThreeStarImage"] title:@"16" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelThreeStarImage"] title:@"17" action:nil],
-                       [[RNGridMenuItem alloc] initWithImage:[UIImage imageNamed:@"LevelThreeStarImage"] title:@"18" action:nil],
-                       ];
+    NSArray *items = [[NSArray alloc] initWithArray:[self getLevelsFromMode:[NSNumber numberWithInt:_gameMode]]];
     
+    // exit if we didn't find any level data
+    if (items.count == 0)
+        return;
+    
+    NSInteger numberOfOptions=items.count;
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad  &&  numberOfOptions > 32)
+    {
+        numberOfOptions = 32;
+    }
+    else if(UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad  &&  numberOfOptions > 18)
+    {
+        numberOfOptions = 18;
+    }
+
     RNGridMenu *av = [[RNGridMenu alloc] initWithItems:[items subarrayWithRange:NSMakeRange(0, numberOfOptions)]];
     
     LevelHeaderViewController *headerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"levelHeaderViewController"];
@@ -248,11 +345,15 @@
     av.verticalSpacing = -40;
     av.fixedImageSize = NO;
     av.menuColumnsCount = 6;
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+        av.menuColumnsCount = 8;
+    }
     av.itemTextAlignment = NSTextAlignmentCenter;
     av.textOnImage = YES;
     av.itemTextVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     av.itemTextColor = [UIColor yellowColor];
-    av.itemTextShadowColor = [UIColor blackColor];
+    av.itemTextShadowColor = [UIColor colorWithRed:100.0/255.0 green:100.0/255.0 blue:100.0/255.0 alpha:0.8];
     av.itemFont = [UIFont systemFontOfSize:30.0];
     av.doNotDismissIfNoAction = YES;
     //av.itemSize = CGSizeMake(39, 38);

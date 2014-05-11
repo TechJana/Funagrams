@@ -477,6 +477,7 @@
         scores.score = [NSNumber numberWithInt:scoreBoard.currentGameScore];
         scores.scoreId = [NSNumber numberWithLongLong:scoreId];
         scores.playedOn = [NSDate date];
+        scores.starsScored = [NSNumber numberWithFloat:[scores.score intValue]/[games.maxScore intValue]];
         scores.game = games;
         
         if (games.score == nil) {
@@ -484,6 +485,10 @@
         }
         NSMutableSet *scoreSet = [NSMutableSet setWithSet:games.score];
         [scoreSet addObject:scores];
+        if (games.highScore < scores.score)
+        {
+            games.highScore = scores.score;
+        }
         games.score = [NSSet setWithArray:[scoreSet allObjects]];
         //[games.score setValue:scores forKey:[NSString stringWithFormat:@"%d", games.score.count+1]];
         
@@ -1216,7 +1221,8 @@
     // Pulse the view by scaling up, then move the view to under the finger.
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:GROW_ANIMATION_DURATION_SECONDS];
-    theView.transform = CGAffineTransformMakeScale(1.2, 1.2);
+    theView.transform = CGAffineTransformMakeScale(1.4, 1.4);
+    theView.layer.shadowOpacity = 0.8;
     [UIView commitAnimations];
 }
 
@@ -1231,6 +1237,7 @@
     theView.center = thePosition;
     // Set the transform back to the identity, thus undoing the previous scaling effect.
     theView.transform = CGAffineTransformIdentity;
+    theView.layer.shadowOpacity = 0.0;
     [UIView commitAnimations];
     NSLog([NSString stringWithFormat:@"End Position4: %f, %f", theView.center.x, theView.center.y]);
 }

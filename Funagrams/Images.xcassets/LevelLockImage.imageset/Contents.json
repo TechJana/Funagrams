@@ -17,7 +17,8 @@
     },
     {
       "idiom" : "ipad",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "LevelLock_iPad_1x.png"
     },
     {
       "idiom" : "ipad",

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12173D59191F350B000F169B /* Scores.m in Sources */ = {isa = PBXBuildFile; fileRef = 12173D58191F350B000F169B /* Scores.m */; };
+		12173D5C191F350B000F169B /* Games.m in Sources */ = {isa = PBXBuildFile; fileRef = 12173D5B191F350B000F169B /* Games.m */; };
 		122182D318D67E2A000093E3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 122182D218D67E2A000093E3 /* Settings.bundle */; };
 		12222D7318D2D29E00A26C62 /* ImageLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12222D7218D2D29E00A26C62 /* ImageLabelView.m */; };
 		1222FD8518F1EC5D00FF64A1 /* MarketPlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1222FD8418F1EC5D00FF64A1 /* MarketPlaceViewController.m */; };
@@ -25,12 +27,10 @@
 		123EDC8418AF3D2C00F2712F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 123EDC8318AF3D2C00F2712F /* AudioToolbox.framework */; };
 		123EDC8818B31C1E00F2712F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 123EDC8718B31C1E00F2712F /* Localizable.strings */; };
 		123EDC8A18B3212900F2712F /* BgMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 123EDC8918B3212900F2712F /* BgMusic.mp3 */; };
-		127006721904C5CD00566FBF /* Games.m in Sources */ = {isa = PBXBuildFile; fileRef = 127006711904C5CD00566FBF /* Games.m */; };
 		127006751904C5CE00566FBF /* Levels.m in Sources */ = {isa = PBXBuildFile; fileRef = 127006741904C5CE00566FBF /* Levels.m */; };
 		127006781904C5CE00566FBF /* Anagrams.m in Sources */ = {isa = PBXBuildFile; fileRef = 127006771904C5CE00566FBF /* Anagrams.m */; };
 		1270067B1904C5CE00566FBF /* Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = 1270067A1904C5CE00566FBF /* Categories.m */; };
 		1270067E1904C5CE00566FBF /* Modes.m in Sources */ = {isa = PBXBuildFile; fileRef = 1270067D1904C5CE00566FBF /* Modes.m */; };
-		127006811904C5CE00566FBF /* Scores.m in Sources */ = {isa = PBXBuildFile; fileRef = 127006801904C5CE00566FBF /* Scores.m */; };
 		129B5B4918BEEF2400C7F956 /* GlobalConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 129B5B4818BEEF2400C7F956 /* GlobalConstants.m */; };
 		129B5B5518C0538700C7F956 /* RNGridMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 129B5B5418C0538700C7F956 /* RNGridMenu.m */; };
 		12A7F6B418E76E4500CC7FAA /* AHAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 12A7F6B318E76E4500CC7FAA /* AHAlertView.m */; };
@@ -74,6 +74,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		12173D57191F350B000F169B /* Scores.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scores.h; sourceTree = "<group>"; };
+		12173D58191F350B000F169B /* Scores.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scores.m; sourceTree = "<group>"; };
+		12173D5A191F350B000F169B /* Games.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Games.h; sourceTree = "<group>"; };
+		12173D5B191F350B000F169B /* Games.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Games.m; sourceTree = "<group>"; };
 		122182D218D67E2A000093E3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		12222D7118D2D29E00A26C62 /* ImageLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageLabelView.h; sourceTree = "<group>"; };
 		12222D7218D2D29E00A26C62 /* ImageLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageLabelView.m; sourceTree = "<group>"; };
@@ -100,8 +104,6 @@
 		123EDC8318AF3D2C00F2712F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		123EDC8718B31C1E00F2712F /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		123EDC8918B3212900F2712F /* BgMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BgMusic.mp3; sourceTree = "<group>"; };
-		127006701904C5CD00566FBF /* Games.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Games.h; sourceTree = "<group>"; };
-		127006711904C5CD00566FBF /* Games.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Games.m; sourceTree = "<group>"; };
 		127006731904C5CE00566FBF /* Levels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Levels.h; sourceTree = "<group>"; };
 		127006741904C5CE00566FBF /* Levels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Levels.m; sourceTree = "<group>"; };
 		127006761904C5CE00566FBF /* Anagrams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Anagrams.h; sourceTree = "<group>"; };
@@ -110,8 +112,6 @@
 		1270067A1904C5CE00566FBF /* Categories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Categories.m; sourceTree = "<group>"; };
 		1270067C1904C5CE00566FBF /* Modes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Modes.h; sourceTree = "<group>"; };
 		1270067D1904C5CE00566FBF /* Modes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Modes.m; sourceTree = "<group>"; };
-		1270067F1904C5CE00566FBF /* Scores.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scores.h; sourceTree = "<group>"; };
-		127006801904C5CE00566FBF /* Scores.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Scores.m; sourceTree = "<group>"; };
 		129B5B4718BEEF2400C7F956 /* GlobalConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalConstants.h; sourceTree = "<group>"; };
 		129B5B4818BEEF2400C7F956 /* GlobalConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalConstants.m; sourceTree = "<group>"; };
 		129B5B5318C0538700C7F956 /* RNGridMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNGridMenu.h; sourceTree = "<group>"; };
@@ -321,8 +321,10 @@
 				12DB2CC919035F480063D490 /* Tile.h */,
 				12DB2CCA19035F480063D490 /* Tile.m */,
 				8AC7741718A88FF8007F226D /* FunagramModel.xcdatamodeld */,
-				1270067F1904C5CE00566FBF /* Scores.h */,
-				127006801904C5CE00566FBF /* Scores.m */,
+				12173D5A191F350B000F169B /* Games.h */,
+				12173D5B191F350B000F169B /* Games.m */,
+				12173D57191F350B000F169B /* Scores.h */,
+				12173D58191F350B000F169B /* Scores.m */,
 				1270067C1904C5CE00566FBF /* Modes.h */,
 				1270067D1904C5CE00566FBF /* Modes.m */,
 				127006791904C5CE00566FBF /* Categories.h */,
@@ -331,8 +333,6 @@
 				127006771904C5CE00566FBF /* Anagrams.m */,
 				127006731904C5CE00566FBF /* Levels.h */,
 				127006741904C5CE00566FBF /* Levels.m */,
-				127006701904C5CD00566FBF /* Games.h */,
-				127006711904C5CD00566FBF /* Games.m */,
 			);
 			name = DataStructure;
 			sourceTree = "<group>";
@@ -460,7 +460,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				127006811904C5CE00566FBF /* Scores.m in Sources */,
+				12173D59191F350B000F169B /* Scores.m in Sources */,
 				1270067E1904C5CE00566FBF /* Modes.m in Sources */,
 				12A7F6B418E76E4500CC7FAA /* AHAlertView.m in Sources */,
 				12E98758189360C400FC296B /* GameViewController.m in Sources */,
@@ -469,8 +469,8 @@
 				129B5B4918BEEF2400C7F956 /* GlobalConstants.m in Sources */,
 				12222D7318D2D29E00A26C62 /* ImageLabelView.m in Sources */,
 				12AE7D36188F8E5B00E00848 /* ViewController.m in Sources */,
+				12173D5C191F350B000F169B /* Games.m in Sources */,
 				12E9875B18942BD000FC296B /* ScoreBoard.m in Sources */,
-				127006721904C5CD00566FBF /* Games.m in Sources */,
 				12E9875E1899FACA00FC296B /* ExtendedAnagram.m in Sources */,
 				8AC7741918A88FF8007F226D /* FunagramModel.xcdatamodeld in Sources */,
 				12AE7D2D188F8E5B00E00848 /* AppDelegate.m in Sources */,
@@ -645,7 +645,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Funagrams/Funagrams-Prefix.pch";
 				INFOPLIST_FILE = "Funagrams/Funagrams-Info.plist";

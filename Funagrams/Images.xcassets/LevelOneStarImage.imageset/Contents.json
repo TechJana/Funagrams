@@ -17,12 +17,13 @@
     },
     {
       "idiom" : "ipad",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "LevelOneStar_iPad_1x.png"
     },
     {
       "idiom" : "ipad",
       "scale" : "2x",
-      "filename" : "LevelOneStar_iPad_2x-1.png"
+      "filename" : "LevelOneStar_iPad_2x.png"
     }
   ],
   "info" : {
