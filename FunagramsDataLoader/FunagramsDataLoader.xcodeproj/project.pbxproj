@@ -1,0 +1,346 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DC7A9A711E9A6BC100448A21 /* FunagramModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC7A9A6F1E9A6BC000448A21 /* FunagramModel.xcdatamodeld */; };
+		DC7A9A731E9A817400448A21 /* AnagramsData.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = DC7A9A721E9A7FD200448A21 /* AnagramsData.json */; };
+		DC853EC31E99E32900FAC0E6 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC853EC21E99E32900FAC0E6 /* main.swift */; };
+		DC853ECA1E99E39B00FAC0E6 /* CoreDataMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC853EC91E99E39B00FAC0E6 /* CoreDataMO.swift */; };
+		DC853EDA1E99E44200FAC0E6 /* Anagrams+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC853ECC1E99E44200FAC0E6 /* Anagrams+CoreDataClass.swift */; };
+		DC853EDB1E99E44200FAC0E6 /* Anagrams+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC853ECD1E99E44200FAC0E6 /* Anagrams+CoreDataProperties.swift */; };
+		DC853EDC1E99E44200FAC0E6 /* Categories+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC853ECE1E99E44200FAC0E6 /* Categories+CoreDataClass.swift */; };
+		DC853EDD1E99E44200FAC0E6 /* Categories+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC853ECF1E99E44200FAC0E6 /* Categories+CoreDataProperties.swift */; };
+		DC853EDE1E99E44200FAC0E6 /* Games+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC853ED01E99E44200FAC0E6 /* Games+CoreDataClass.swift */; };
+		DC853EDF1E99E44200FAC0E6 /* Games+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC853ED11E99E44200FAC0E6 /* Games+CoreDataProperties.swift */; };
+		DC853EE01E99E44200FAC0E6 /* Levels+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC853ED21E99E44200FAC0E6 /* Levels+CoreDataClass.swift */; };
+		DC853EE11E99E44200FAC0E6 /* Levels+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC853ED31E99E44200FAC0E6 /* Levels+CoreDataProperties.swift */; };
+		DC853EE21E99E44200FAC0E6 /* Modes+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC853ED41E99E44200FAC0E6 /* Modes+CoreDataClass.swift */; };
+		DC853EE31E99E44200FAC0E6 /* Modes+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC853ED51E99E44200FAC0E6 /* Modes+CoreDataProperties.swift */; };
+		DC853EE41E99E44200FAC0E6 /* Scores+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC853ED61E99E44200FAC0E6 /* Scores+CoreDataClass.swift */; };
+		DC853EE51E99E44200FAC0E6 /* Scores+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC853ED71E99E44200FAC0E6 /* Scores+CoreDataProperties.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DC853EBD1E99E32900FAC0E6 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				DC7A9A731E9A817400448A21 /* AnagramsData.json in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		DC7A9A701E9A6BC100448A21 /* FunagramModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FunagramModel.xcdatamodel; sourceTree = "<group>"; };
+		DC7A9A721E9A7FD200448A21 /* AnagramsData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = AnagramsData.json; path = FunagramsDataLoader/AnagramsData.json; sourceTree = "<group>"; };
+		DC853EBF1E99E32900FAC0E6 /* FunagramsDataLoader */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = FunagramsDataLoader; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC853EC21E99E32900FAC0E6 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		DC853EC91E99E39B00FAC0E6 /* CoreDataMO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataMO.swift; sourceTree = "<group>"; };
+		DC853ECC1E99E44200FAC0E6 /* Anagrams+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Anagrams+CoreDataClass.swift"; path = "../Funagrams/FunagramsKit/Anagrams+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DC853ECD1E99E44200FAC0E6 /* Anagrams+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Anagrams+CoreDataProperties.swift"; path = "../Funagrams/FunagramsKit/Anagrams+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DC853ECE1E99E44200FAC0E6 /* Categories+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Categories+CoreDataClass.swift"; path = "../Funagrams/FunagramsKit/Categories+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DC853ECF1E99E44200FAC0E6 /* Categories+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Categories+CoreDataProperties.swift"; path = "../Funagrams/FunagramsKit/Categories+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DC853ED01E99E44200FAC0E6 /* Games+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Games+CoreDataClass.swift"; path = "../Funagrams/FunagramsKit/Games+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DC853ED11E99E44200FAC0E6 /* Games+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Games+CoreDataProperties.swift"; path = "../Funagrams/FunagramsKit/Games+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DC853ED21E99E44200FAC0E6 /* Levels+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Levels+CoreDataClass.swift"; path = "../Funagrams/FunagramsKit/Levels+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DC853ED31E99E44200FAC0E6 /* Levels+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Levels+CoreDataProperties.swift"; path = "../Funagrams/FunagramsKit/Levels+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DC853ED41E99E44200FAC0E6 /* Modes+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Modes+CoreDataClass.swift"; path = "../Funagrams/FunagramsKit/Modes+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DC853ED51E99E44200FAC0E6 /* Modes+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Modes+CoreDataProperties.swift"; path = "../Funagrams/FunagramsKit/Modes+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DC853ED61E99E44200FAC0E6 /* Scores+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Scores+CoreDataClass.swift"; path = "../Funagrams/FunagramsKit/Scores+CoreDataClass.swift"; sourceTree = "<group>"; };
+		DC853ED71E99E44200FAC0E6 /* Scores+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Scores+CoreDataProperties.swift"; path = "../Funagrams/FunagramsKit/Scores+CoreDataProperties.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DC853EBC1E99E32900FAC0E6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DC853EB61E99E32900FAC0E6 = {
+			isa = PBXGroup;
+			children = (
+				DC853ECB1E99E40600FAC0E6 /* Data */,
+				DC853EC11E99E32900FAC0E6 /* FunagramsDataLoader */,
+				DC853EC01E99E32900FAC0E6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DC853EC01E99E32900FAC0E6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DC853EBF1E99E32900FAC0E6 /* FunagramsDataLoader */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DC853EC11E99E32900FAC0E6 /* FunagramsDataLoader */ = {
+			isa = PBXGroup;
+			children = (
+				DC853EC21E99E32900FAC0E6 /* main.swift */,
+				DC853EC91E99E39B00FAC0E6 /* CoreDataMO.swift */,
+			);
+			path = FunagramsDataLoader;
+			sourceTree = "<group>";
+		};
+		DC853ECB1E99E40600FAC0E6 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				DC7A9A721E9A7FD200448A21 /* AnagramsData.json */,
+				DC7A9A6F1E9A6BC000448A21 /* FunagramModel.xcdatamodeld */,
+				DC853ECC1E99E44200FAC0E6 /* Anagrams+CoreDataClass.swift */,
+				DC853ECD1E99E44200FAC0E6 /* Anagrams+CoreDataProperties.swift */,
+				DC853ECE1E99E44200FAC0E6 /* Categories+CoreDataClass.swift */,
+				DC853ECF1E99E44200FAC0E6 /* Categories+CoreDataProperties.swift */,
+				DC853ED01E99E44200FAC0E6 /* Games+CoreDataClass.swift */,
+				DC853ED11E99E44200FAC0E6 /* Games+CoreDataProperties.swift */,
+				DC853ED21E99E44200FAC0E6 /* Levels+CoreDataClass.swift */,
+				DC853ED31E99E44200FAC0E6 /* Levels+CoreDataProperties.swift */,
+				DC853ED41E99E44200FAC0E6 /* Modes+CoreDataClass.swift */,
+				DC853ED51E99E44200FAC0E6 /* Modes+CoreDataProperties.swift */,
+				DC853ED61E99E44200FAC0E6 /* Scores+CoreDataClass.swift */,
+				DC853ED71E99E44200FAC0E6 /* Scores+CoreDataProperties.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DC853EBE1E99E32900FAC0E6 /* FunagramsDataLoader */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DC853EC61E99E32900FAC0E6 /* Build configuration list for PBXNativeTarget "FunagramsDataLoader" */;
+			buildPhases = (
+				DC853EBB1E99E32900FAC0E6 /* Sources */,
+				DC853EBC1E99E32900FAC0E6 /* Frameworks */,
+				DC853EBD1E99E32900FAC0E6 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FunagramsDataLoader;
+			productName = FunagramsDataLoader;
+			productReference = DC853EBF1E99E32900FAC0E6 /* FunagramsDataLoader */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DC853EB71E99E32900FAC0E6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = pluggablez;
+				TargetAttributes = {
+					DC853EBE1E99E32900FAC0E6 = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = FE4KUE66JE;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = DC853EBA1E99E32900FAC0E6 /* Build configuration list for PBXProject "FunagramsDataLoader" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = DC853EB61E99E32900FAC0E6;
+			productRefGroup = DC853EC01E99E32900FAC0E6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DC853EBE1E99E32900FAC0E6 /* FunagramsDataLoader */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DC853EBB1E99E32900FAC0E6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC853EE31E99E44200FAC0E6 /* Modes+CoreDataProperties.swift in Sources */,
+				DC853EE11E99E44200FAC0E6 /* Levels+CoreDataProperties.swift in Sources */,
+				DC853EE01E99E44200FAC0E6 /* Levels+CoreDataClass.swift in Sources */,
+				DC7A9A711E9A6BC100448A21 /* FunagramModel.xcdatamodeld in Sources */,
+				DC853EE41E99E44200FAC0E6 /* Scores+CoreDataClass.swift in Sources */,
+				DC853EDC1E99E44200FAC0E6 /* Categories+CoreDataClass.swift in Sources */,
+				DC853EDF1E99E44200FAC0E6 /* Games+CoreDataProperties.swift in Sources */,
+				DC853EDD1E99E44200FAC0E6 /* Categories+CoreDataProperties.swift in Sources */,
+				DC853ECA1E99E39B00FAC0E6 /* CoreDataMO.swift in Sources */,
+				DC853EE21E99E44200FAC0E6 /* Modes+CoreDataClass.swift in Sources */,
+				DC853EDA1E99E44200FAC0E6 /* Anagrams+CoreDataClass.swift in Sources */,
+				DC853EDE1E99E44200FAC0E6 /* Games+CoreDataClass.swift in Sources */,
+				DC853EC31E99E32900FAC0E6 /* main.swift in Sources */,
+				DC853EE51E99E44200FAC0E6 /* Scores+CoreDataProperties.swift in Sources */,
+				DC853EDB1E99E44200FAC0E6 /* Anagrams+CoreDataProperties.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		DC853EC41E99E32900FAC0E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DC853EC51E99E32900FAC0E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		DC853EC71E99E32900FAC0E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = FE4KUE66JE;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		DC853EC81E99E32900FAC0E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = FE4KUE66JE;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DC853EBA1E99E32900FAC0E6 /* Build configuration list for PBXProject "FunagramsDataLoader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC853EC41E99E32900FAC0E6 /* Debug */,
+				DC853EC51E99E32900FAC0E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DC853EC61E99E32900FAC0E6 /* Build configuration list for PBXNativeTarget "FunagramsDataLoader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC853EC71E99E32900FAC0E6 /* Debug */,
+				DC853EC81E99E32900FAC0E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DC7A9A6F1E9A6BC000448A21 /* FunagramModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DC7A9A701E9A6BC100448A21 /* FunagramModel.xcdatamodel */,
+			);
+			currentVersion = DC7A9A701E9A6BC100448A21 /* FunagramModel.xcdatamodel */;
+			name = FunagramModel.xcdatamodeld;
+			path = ../Funagrams/FunagramsKit/FunagramModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = DC853EB71E99E32900FAC0E6 /* Project object */;
+}
