@@ -1,0 +1,143 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>funagrams | Privacy</title>
+	<link href='css/style.css' rel='stylesheet' type='text/css' />
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/move-top.js"></script>
+	<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){		
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+			});
+		});
+	</script>
+<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("#myform").validate({
+			debug: false,
+			rules: {
+				name: {
+					required: true
+				},
+				email: {
+					required: true,
+					email: true
+				}
+			},
+			messages: {
+				name: "*",
+				email: "*",
+			},
+			submitHandler: function(form) {
+				// do other stuff for a valid form
+				$.post('process.asp', $("#myform").serialize(), function(data) {
+					$('#results').html(data);
+				});
+			}
+		});
+	});
+	</script>
+</head>
+<body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!---start-wrap---->
+	<!---start-header---->
+	<div class="header">
+	<div class="wrap">
+		<div class="logo">
+			<a href="index.html">funagrams</a>
+		</div>
+		<div class="top-nav">
+			<ul>
+				<li class="active"><a href="index.html#home">works</a></li>
+				<li><a href="index.html#features">features</a></li>
+				<li><a href="index.html#about">credits</a></li>
+				<li><a href="privacy.html">privacy</a></li>
+				<li><a href="index.html#contact">contact</a></li>
+			</ul>
+		</div>
+		<div class="clear"> </div>
+	</div>
+	<!---//End-header---->
+	</div>
+	<!---start-image-banner---->
+	<div class="top-grids" id="features">
+        <center><h3 style="font-size: 2em">privacy</h3></center><br>
+			<p style="margin: 15px">Last modified: 16-Apr-2017<br>
+                Funagrams ("us", "we", or "our") operates http://www.funagrams.com (the "Site"). This page informs you of our policies regarding the collection, use and disclosure of Personal Information we receive from users of the Site.<br><br>
+                
+                We use your Personal Information only for providing and improving the Site. By using the Site, you agree to the collection and use of information in accordance with this policy.<br><br>
+                <span style="font-weight: bold">Information Collection And Use</span><br>
+                While using our Site, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you. Personally identifiable information may include, but is not limited to your name ("Personal Information").<br><br>
+                <span style="font-weight: bold">Log Data</span><br>
+                Like many site operators, we collect information that your browser sends whenever you visit our Site ("Log Data"). This Log Data may include information such as your computer's Internet Protocol ("IP") address, browser type, browser version, the pages of our Site that you visit, the time and date of your visit, the time spent on those pages and other statistics.<br><br>
+                <span style="font-weight: bold">Cookies</span><br>
+                Cookies are files with small amount of data, which may include an anonymous unique identifier. Cookies are sent to your browser from a web site and stored on your computer's hard drive. Like many sites, we use "cookies" to collect information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Site.<br><br>
+                <span style="font-weight: bold">Security</span><br>
+                The security of your Personal Information is important to us, but remember that no method of transmission over the Internet, or method of electronic storage, is 100% secure. While we strive to use commercially acceptable means to protect your Personal Information, we cannot guarantee its absolute security.<br><br>
+                <span style="font-weight: bold">Changes To This Privacy Policy</span>
+                Funagrams may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on the Site. You are advised to review this Privacy Policy periodically for any changes.<br><br>
+                <span style="font-weight: bold">Contact Us</span><br>
+                If you have any questions about this Privacy Policy, please contact us.</p>
+			<div class="clear"> </div>
+<script lang="text/javascript">/*
+*  How to load a feed via the Feeds API.
+*/
+
+google.load("feeds", "1");
+
+// Our callback function, for when a feed is loaded.
+function feedLoaded(result) {
+  if (!result.error) {
+    // Grab the container we will put the results into
+    var container = document.getElementById("content");
+    container.innerHTML = '';
+
+    // Loop through the feeds, putting the titles onto the page.
+    // Check out the result object for a list of properties returned in each entry.
+    // http://code.google.com/apis/ajaxfeeds/documentation/reference.html#JSON
+    for (var i = 1; i < result.feed.entries.length; i++) {
+      var entry = result.feed.entries[i];
+      var div = document.createElement("div");
+      div.innerHTML = entry.content;
+      container.appendChild(div);
+    }
+  }
+}
+
+function OnLoad() {
+  // Create a feed instance that will grab Digg's feed.
+  var feed = new google.feeds.Feed("https://itunes.apple.com/us/rss/customerreviews/id=817237014/sortBy=mostRecent/xml");
+
+  // Calling load sends the request off.  It requires a callback function.
+  feed.load(feedLoaded);
+}
+
+google.setOnLoadCallback(OnLoad);​
+</script>
+		<div class="clear"> </div>
+	</div>
+
+	<!---//End-image-banner---->
+<!---//End-wrap---->
+</body>
+</html>
