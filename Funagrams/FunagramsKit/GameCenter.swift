@@ -39,6 +39,32 @@ public enum Skill: Int {
             return ""
         }
     }
+    
+    public var settings: String {
+        switch self {
+        case .amateur:
+            return "settingsSkillAmateur"
+        case .professional:
+            return "settingsSkillProfessional"
+        case .expert:
+            return "settingsSkillExpert"
+        default:
+            return ""
+        }
+    }
+    
+    public static func settings(rawValue: String) -> Skill {
+        switch rawValue {
+        case "settingsSkillAmateur":
+            return Skill.amateur
+        case "settingsSkillProfessional":
+            return Skill.professional
+        case "settingsSkillExpert":
+            return Skill.expert
+        default:
+            return Skill.none
+        }
+    }
 }
 
 public enum Level: Int {

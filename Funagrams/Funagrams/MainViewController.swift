@@ -44,7 +44,7 @@ class MainViewController: UIViewController, GKGameCenterControllerDelegate {
         // load last saved game settings
         
         // set skill button based on last selection
-        currentSkill = Skill.amateur
+        currentSkill = Settings.userSkill
         btnCurrentSkill.setImage(UIImage(named: currentSkill.imageName), for: .normal)
     }
 
@@ -81,18 +81,21 @@ class MainViewController: UIViewController, GKGameCenterControllerDelegate {
     @IBAction func btnSkillAmateur_Click(_ sender: UIButton) {
         currentSkill = Skill.amateur
         btnCurrentSkill.setImage(UIImage(named: "BtnSkillAmateurImage"), for: .normal)
+        Settings.userSkill = Skill.amateur
         dismissGameSkillView()
     }
     
     @IBAction func btnSkillProfessional_Click(_ sender: UIButton) {
         currentSkill = Skill.professional
         btnCurrentSkill.setImage(UIImage(named: "BtnSkillProfessionalImage"), for: .normal)
+        Settings.userSkill = Skill.professional
         dismissGameSkillView()
     }
     
     @IBAction func btnSkillExpert_Click(_ sender: UIButton) {
         currentSkill = Skill.expert
         btnCurrentSkill.setImage(UIImage(named: "BtnSkillExpertImage"), for: .normal)
+        Settings.userSkill = Skill.expert
         dismissGameSkillView()
     }
     
@@ -186,7 +189,7 @@ class MainViewController: UIViewController, GKGameCenterControllerDelegate {
                 // game center not enabled
                 self.isGameCenterEnabled = false
                 print("LocalPlayer could not be authenticated")
-                print(error!)
+                print(error?.localizedDescription as Any)
             }
         }
     }

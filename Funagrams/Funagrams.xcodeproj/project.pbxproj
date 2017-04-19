@@ -50,9 +50,11 @@
 		DC7FB12C1E836E9000300F3D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7FB12B1E836E9000300F3D /* Settings.swift */; };
 		DC836E9C1E9083420066F003 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC836E9B1E9083420066F003 /* GradientView.swift */; };
 		DC853E9C1E99647C00FAC0E6 /* UICollectionView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC853E9B1E99647B00FAC0E6 /* UICollectionView+.swift */; };
+		DCBC33F01EA5BC08007657B6 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DCBC33EF1EA5BC08007657B6 /* Settings.bundle */; };
+		DCBC33F21EA6EF13007657B6 /* Bundle+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBC33F11EA6EF13007657B6 /* Bundle+.swift */; };
 		DCE44D2E1E93B7FD00BE0EF2 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE44D2D1E93B7FD00BE0EF2 /* GameViewController.swift */; };
 		DCE44D301E944B2700BE0EF2 /* AlphabetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE44D2F1E944B2700BE0EF2 /* AlphabetCollectionViewCell.swift */; };
-		DCE44D331E946AC100BE0EF2 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE44D321E946AC100BE0EF2 /* Utility.swift */; };
+		DCE44D331E946AC100BE0EF2 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE44D321E946AC100BE0EF2 /* Settings.swift */; };
 		DCE44D351E94734600BE0EF2 /* BgMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DCE44D341E94734500BE0EF2 /* BgMusic.mp3 */; };
 		DCE44D371E94744B00BE0EF2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE44D361E94744B00BE0EF2 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
@@ -161,9 +163,11 @@
 		DC7FB12B1E836E9000300F3D /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		DC836E9B1E9083420066F003 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		DC853E9B1E99647B00FAC0E6 /* UICollectionView+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+.swift"; sourceTree = "<group>"; };
+		DCBC33EF1EA5BC08007657B6 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		DCBC33F11EA6EF13007657B6 /* Bundle+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+.swift"; sourceTree = "<group>"; };
 		DCE44D2D1E93B7FD00BE0EF2 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		DCE44D2F1E944B2700BE0EF2 /* AlphabetCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlphabetCollectionViewCell.swift; sourceTree = "<group>"; };
-		DCE44D321E946AC100BE0EF2 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		DCE44D321E946AC100BE0EF2 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		DCE44D341E94734500BE0EF2 /* BgMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BgMusic.mp3; sourceTree = "<group>"; };
 		DCE44D361E94744B00BE0EF2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -250,6 +254,7 @@
 				DC7FB0C81E83606300300F3D /* LaunchScreen.storyboard */,
 				DC7FB0CB1E83606300300F3D /* Info.plist */,
 				DC7FB1101E83638200300F3D /* Supporting Files */,
+				DCBC33EF1EA5BC08007657B6 /* Settings.bundle */,
 			);
 			path = Funagrams;
 			sourceTree = "<group>";
@@ -357,6 +362,7 @@
 				DC6852A01E91977600A610FE /* UIImage+.swift */,
 				DC853E9B1E99647B00FAC0E6 /* UICollectionView+.swift */,
 				DC382E4E1E9B318A0058102C /* RoundChartView.swift */,
+				DCBC33F11EA6EF13007657B6 /* Bundle+.swift */,
 			);
 			name = Global;
 			sourceTree = "<group>";
@@ -364,7 +370,7 @@
 		DCE44D311E946A8C00BE0EF2 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				DCE44D321E946AC100BE0EF2 /* Utility.swift */,
+				DCE44D321E946AC100BE0EF2 /* Settings.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -391,6 +397,7 @@
 				DC7FB0B61E83606300300F3D /* Frameworks */,
 				DC7FB0B71E83606300300F3D /* Resources */,
 				DC7FB10C1E8361DB00300F3D /* Embed Frameworks */,
+				DCBC33F31EA6F1BF007657B6 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -555,6 +562,7 @@
 				DC7FB0C71E83606300300F3D /* Assets.xcassets in Resources */,
 				DC7FB0C21E83606300300F3D /* Main.storyboard in Resources */,
 				DCE44D351E94734600BE0EF2 /* BgMusic.mp3 in Resources */,
+				DCBC33F01EA5BC08007657B6 /* Settings.bundle in Resources */,
 				DC7FB1121E8363B800300F3D /* iTunesArtwork@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -592,12 +600,29 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		DCBC33F31EA6F1BF007657B6 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\nversionNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"$INFOPLIST_FILE\")\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\n/usr/libexec/PlistBuddy -c \"Set PreferenceSpecifiers:0:Title \\\"Game     v$versionNumber ($buildNumber)\\\"\" $SRCROOT/$PRODUCT_NAME/Settings.bundle/Root.plist";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DC7FB0B51E83606300300F3D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCE44D331E946AC100BE0EF2 /* Utility.swift in Sources */,
+				DCE44D331E946AC100BE0EF2 /* Settings.swift in Sources */,
 				DC7FB0BF1E83606300300F3D /* MainViewController.swift in Sources */,
 				DCE44D2E1E93B7FD00BE0EF2 /* GameViewController.swift in Sources */,
 				DCE44D301E944B2700BE0EF2 /* AlphabetCollectionViewCell.swift in Sources */,
@@ -649,6 +674,7 @@
 				DC836E9C1E9083420066F003 /* GradientView.swift in Sources */,
 				DC5F43B21E990F510044AED0 /* Modes+CoreDataClass.swift in Sources */,
 				DC7FB1141E83649400300F3D /* FunagramsKit.swift in Sources */,
+				DCBC33F21EA6EF13007657B6 /* Bundle+.swift in Sources */,
 				DC6852A11E91977600A610FE /* UIImage+.swift in Sources */,
 				DC7FB1261E836C2200300F3D /* Languages.swift in Sources */,
 			);

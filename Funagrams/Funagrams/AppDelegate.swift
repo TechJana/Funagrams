@@ -19,7 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        playBackgroundMusic()
+        if Settings.canPlayMusic {
+            playBackgroundMusic()
+        }
         
         return true
     }
@@ -40,6 +42,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        // check the music settings and react accordingly
+        if Settings.canPlayMusic  &&  bgMusicPlayer == nil {
+            // play music
+            playBackgroundMusic()
+        }
+        else if !Settings.canPlayMusic && bgMusicPlayer != nil {
+            // stop music
+            if (bgMusicPlayer?.isPlaying)! {
+                bgMusicPlayer?.stop()
+            }
+        }
+        else if Settings.canPlayMusic  &&  bgMusicPlayer != nil {
+            // resume music
+            if !(bgMusicPlayer?.isPlaying)! {
+                bgMusicPlayer?.play()
+            }
+        }
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
