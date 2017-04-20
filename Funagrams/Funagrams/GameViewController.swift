@@ -9,6 +9,7 @@
 import UIKit
 import FunagramsKit
 import GameKit
+import GoogleMobileAds
 
 class GameViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
@@ -20,6 +21,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     @IBOutlet var btnBack: UIButton!
     @IBOutlet var btnHint: UIButton!
     @IBOutlet var visualEffectBlurView: UIVisualEffectView!
+    @IBOutlet var adBannerView: GADBannerView!
     
     var alphabets: [String] = []
     var blurEffect: UIVisualEffect!
@@ -63,8 +65,16 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
         //currentLevel = DataManager.getLastIncompleteLevel(skill: userSkill)!
         loadGame(skill: userSkill)
         
-        // stop the timer when the game is over or exited
-        //timer.invalidate()
+        // google ads
+        print("Google Mobile Ads SDK version: \(GADRequest.sdkVersion())")
+        let request = GADRequest()
+        #if DEBUG
+            request.testDevices = [kGADSimulatorID]
+        #endif
+        adBannerView.adUnitID = GoogleAdsHelper.readPropertyFromGoogleService(propertyName: GoogleAdsHelper.Properties.Banner)
+        adBannerView.rootViewController = self
+        adBannerView.adSize = kGADAdSizeSmartBannerLandscape
+        adBannerView.load(request)
     }
     
     override func viewWillAppear(_ animated: Bool) {

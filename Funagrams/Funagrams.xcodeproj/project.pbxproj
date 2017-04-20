@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		57147241EB669B3A30A32F1D /* Pods_Funagrams.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF7D4F05E1759A7C8B16082A /* Pods_Funagrams.framework */; };
+		DC32C33F1EA84C970064F806 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DC32C33E1EA84C970064F806 /* GoogleService-Info.plist */; };
+		DC32C3411EA853610064F806 /* GoogleAdsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC32C3401EA853610064F806 /* GoogleAdsHelper.swift */; };
 		DC382E4F1E9B318A0058102C /* RoundChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC382E4E1E9B318A0058102C /* RoundChartView.swift */; };
 		DC5F43B21E990F510044AED0 /* Modes+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5F43A61E990F510044AED0 /* Modes+CoreDataClass.swift */; };
 		DC5F43B31E990F510044AED0 /* Modes+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5F43A71E990F510044AED0 /* Modes+CoreDataProperties.swift */; };
@@ -112,6 +115,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1734CEDBF3F250E6C31162D2 /* Pods-Funagrams.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Funagrams.release.xcconfig"; path = "../Pods/Target Support Files/Pods-Funagrams/Pods-Funagrams.release.xcconfig"; sourceTree = "<group>"; };
+		73E51076D3B36C52950EC38A /* Pods-Funagrams.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Funagrams.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-Funagrams/Pods-Funagrams.debug.xcconfig"; sourceTree = "<group>"; };
+		DC32C33E1EA84C970064F806 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DC32C3401EA853610064F806 /* GoogleAdsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAdsHelper.swift; sourceTree = "<group>"; };
 		DC382E4E1E9B318A0058102C /* RoundChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundChartView.swift; sourceTree = "<group>"; };
 		DC5F43A61E990F510044AED0 /* Modes+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Modes+CoreDataClass.swift"; sourceTree = "<group>"; };
 		DC5F43A71E990F510044AED0 /* Modes+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Modes+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -170,6 +177,7 @@
 		DCE44D321E946AC100BE0EF2 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		DCE44D341E94734500BE0EF2 /* BgMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BgMusic.mp3; sourceTree = "<group>"; };
 		DCE44D361E94744B00BE0EF2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		DF7D4F05E1759A7C8B16082A /* Pods_Funagrams.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Funagrams.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +188,7 @@
 				DCE44D371E94744B00BE0EF2 /* AVFoundation.framework in Frameworks */,
 				DC7FB1071E8361DA00300F3D /* FunagramsKit.framework in Frameworks */,
 				DC7FB1181E8365DA00300F3D /* GameKit.framework in Frameworks */,
+				57147241EB669B3A30A32F1D /* Pods_Funagrams.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +224,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C8F3DD54A9216B25D29F805 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				73E51076D3B36C52950EC38A /* Pods-Funagrams.debug.xcconfig */,
+				1734CEDBF3F250E6C31162D2 /* Pods-Funagrams.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		DC7FB0B01E83606300300F3D = {
 			isa = PBXGroup;
 			children = (
@@ -225,6 +243,7 @@
 				DC7FB1001E8361DA00300F3D /* FunagramsKitTests */,
 				DC7FB0BA1E83606300300F3D /* Products */,
 				DC7FB1161E8365DA00300F3D /* Frameworks */,
+				1C8F3DD54A9216B25D29F805 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -252,6 +271,7 @@
 				DC7FB0C01E83606300300F3D /* Main.storyboard */,
 				DC7FB0C61E83606300300F3D /* Assets.xcassets */,
 				DC7FB0C81E83606300300F3D /* LaunchScreen.storyboard */,
+				DC32C33E1EA84C970064F806 /* GoogleService-Info.plist */,
 				DC7FB0CB1E83606300300F3D /* Info.plist */,
 				DC7FB1101E83638200300F3D /* Supporting Files */,
 				DCBC33EF1EA5BC08007657B6 /* Settings.bundle */,
@@ -317,6 +337,7 @@
 			children = (
 				DCE44D361E94744B00BE0EF2 /* AVFoundation.framework */,
 				DC7FB1171E8365DA00300F3D /* GameKit.framework */,
+				DF7D4F05E1759A7C8B16082A /* Pods_Funagrams.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -363,6 +384,7 @@
 				DC853E9B1E99647B00FAC0E6 /* UICollectionView+.swift */,
 				DC382E4E1E9B318A0058102C /* RoundChartView.swift */,
 				DCBC33F11EA6EF13007657B6 /* Bundle+.swift */,
+				DC32C3401EA853610064F806 /* GoogleAdsHelper.swift */,
 			);
 			name = Global;
 			sourceTree = "<group>";
@@ -393,11 +415,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DC7FB0E41E83606400300F3D /* Build configuration list for PBXNativeTarget "Funagrams" */;
 			buildPhases = (
+				0F0654CB7B3A80D85D22A557 /* [CP] Check Pods Manifest.lock */,
 				DC7FB0B51E83606300300F3D /* Sources */,
 				DC7FB0B61E83606300300F3D /* Frameworks */,
 				DC7FB0B71E83606300300F3D /* Resources */,
 				DC7FB10C1E8361DB00300F3D /* Embed Frameworks */,
 				DCBC33F31EA6F1BF007657B6 /* Run Script */,
+				DEA5C7B3F9557B1A64647427 /* [CP] Embed Pods Frameworks */,
+				F950D09D39E38AFCF59F4C9E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -564,6 +589,7 @@
 				DCE44D351E94734600BE0EF2 /* BgMusic.mp3 in Resources */,
 				DCBC33F01EA5BC08007657B6 /* Settings.bundle in Resources */,
 				DC7FB1121E8363B800300F3D /* iTunesArtwork@2x.png in Resources */,
+				DC32C33F1EA84C970064F806 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,6 +627,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0F0654CB7B3A80D85D22A557 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		DCBC33F31EA6F1BF007657B6 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -614,6 +655,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/bash\nversionNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"$INFOPLIST_FILE\")\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\n/usr/libexec/PlistBuddy -c \"Set PreferenceSpecifiers:0:Title \\\"Game     v$versionNumber ($buildNumber)\\\"\" $SRCROOT/$PRODUCT_NAME/Settings.bundle/Root.plist";
+		};
+		DEA5C7B3F9557B1A64647427 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Funagrams/Pods-Funagrams-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F950D09D39E38AFCF59F4C9E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-Funagrams/Pods-Funagrams-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -651,6 +722,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC68529D1E91909700A610FE /* Helper.swift in Sources */,
+				DC32C3411EA853610064F806 /* GoogleAdsHelper.swift in Sources */,
 				DC5F43B91E990F510044AED0 /* Games+CoreDataProperties.swift in Sources */,
 				DC7FB1241E836BCF00300F3D /* String+.swift in Sources */,
 				DC5F43B41E990F510044AED0 /* Categories+CoreDataClass.swift in Sources */,
@@ -833,6 +905,7 @@
 		};
 		DC7FB0E51E83606400300F3D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73E51076D3B36C52950EC38A /* Pods-Funagrams.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -849,6 +922,7 @@
 		};
 		DC7FB0E61E83606400300F3D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1734CEDBF3F250E6C31162D2 /* Pods-Funagrams.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
