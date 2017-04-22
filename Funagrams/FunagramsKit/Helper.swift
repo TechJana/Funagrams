@@ -18,4 +18,26 @@ public class Helper {
         let yDistance = firstPoint.y - secondPoint.y
         return sqrt(xDistance * xDistance + yDistance * yDistance)
     }
+    
+    public class func askToRateApp(appID: String) {
+        let reviewString = "https://itunes.apple.com/us/app/id\(appID)?ls=1&mt=8&action=write-review"
+        
+        if let checkURL = URL(string: reviewString) {
+            Helper.open(url: checkURL)
+        } else {
+            print("invalid url")
+        }
+    }
+    
+    public class func open(url: URL) {
+        if #available(iOS 10, *) {
+            UIApplication.shared.open(url, options: [:], completionHandler: { (success) in
+                print("Open \(url): \(success)")
+            })
+        } else {
+            if UIApplication.shared.openURL(url) {
+                print("Open \(url): success")
+            }
+        }
+    }
 }

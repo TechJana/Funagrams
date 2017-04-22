@@ -46,6 +46,7 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     public var currentGame: Games?
     var maxHintCount: Int = 0
     var hintDisplayedCount: Int = 0
+    var gamesPlayedSoFar: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -296,7 +297,9 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     func loadGame(skill: Skill) {
         let maximumTileCount: Int = Int((self.view.frame.width - (tileSize.width + tileSpacing)) / (tileSize.width + tileSpacing))
-        currentGame = DataManager.getNextGame(skill: userSkill, anagramMaxLength: maximumTileCount)
+        let nextGame = DataManager.getNextGame(skill: userSkill, anagramMaxLength: maximumTileCount)
+        currentGame = nextGame.games
+        gamesPlayedSoFar = nextGame.gamesPlayedSoFar
 
         if currentGame == nil {
             // something terrible happened, so dismiss current view and let user know
@@ -378,6 +381,20 @@ class GameViewController: UIViewController, UICollectionViewDataSource, UICollec
                 (result : UIAlertAction) -> Void in
                 print("OK")
 //                self.dismiss(animated: true, completion: nil)
+                
+                // check if we need to ask for app review
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                if appDelegate.appRatingRequestFrequency.filter({ (searchItem) -> Bool in
+                    return (searchItem == self.gamesPlayedSoFar)
+                }).count > 0 {
+                    // we can ask for app review
+                    if #available(iOS 10.3, *) {
+                        SKStoreReviewController.requestReview()
+                    } else {
+                        // Fallback on earlier versions
+                        Helper.askToRateApp(appID: appDelegate.appId)
+                    }
+                }
                 
                 // move to next level
                 self.hintDisplayedCount = 0

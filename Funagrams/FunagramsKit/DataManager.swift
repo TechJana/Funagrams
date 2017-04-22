@@ -29,7 +29,7 @@ public class DataManager: NSObject {
         }
     }
     
-    public class func getNextGame(skill: Skill, anagramMaxLength: Int) -> Games? {
+    public class func getNextGame(skill: Skill, anagramMaxLength: Int) -> (games: Games?, gamesPlayedSoFar: Int) {
         var games: Games?
         
         var levelsNotPlayed: String = ""
@@ -87,7 +87,7 @@ public class DataManager: NSObject {
             // not sure what to do here
         }
         
-        return games
+        return (games, levelNotPlayed.count)
     }
     
     public class func getLastIncompleteLevel(skill: Skill) -> Level? {

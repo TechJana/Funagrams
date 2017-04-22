@@ -15,7 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     let soundFile = URL.init(fileURLWithPath: Bundle.main.path(forResource: "BgMusic", ofType: "mp3")!)
     var bgMusicPlayer: AVAudioPlayer?
-
+    let appRatingRequestFrequency: [Int] = [3, 8, 13, 21]
+    let appId = "817237014"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
